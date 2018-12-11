@@ -76,4 +76,23 @@ class EmailTemplates extends AbstractModel
     {
         return 'email_templates';
     }
+
+    /**
+     * Retrieve email template by name
+     * @param $name
+     * @return EmailTemplates
+     */
+    public function getByName(string $name): EmailTemplates
+    {
+        $emailTemplate = self::findFirst([
+            'conditions' => 'users_id = ?0 and company_id = ?1 and app_id = ?2 and name = ?3 and is_deleted = 0',
+            'bind' => [$this->di->getUserData()->getId(), $this->di->getUserData()->default_company, $this->di->getApp()->getId(), $name]
+        ]);
+
+        if (!$emailTemplate) {
+            throw new UnprocessableEntityHttpException((string) current($emailTemplate->getMessages()));
+        }
+
+        return $emailTemplate;
+    }
 }
