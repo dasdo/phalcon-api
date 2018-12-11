@@ -21,7 +21,7 @@ class UsersInviteCest
 
         $hash = $data['invite_hash'];
 
-        $I->sendPost('/v1/users/invite/insert?hash=' . $hash, [
+        $I->sendPost('/v1/user-invites/' . $hash, [
             'firstname' => 'testFirstName',
             'lastname' => 'testLastName',
             'displayname' => 'testDisplayName',

@@ -60,6 +60,7 @@ $defaultCrudRoutes = [
     'languages',
     'AppsPlans' => 'apps-plans',
     'roles',
+    'UsersInvite' => 'users-invite'
 ];
 
 foreach ($defaultCrudRoutes as $key => $route) {
@@ -135,7 +136,7 @@ $router->post('/users/invite', [
     ]
 ]);
 
-$router->post('/users/invite/insert', [
+$router->post('/user-invites/{hash}', [
     'Gewaer\Api\Controllers\UsersController',
     'processUserInvite',
     'options' => [

@@ -13,6 +13,7 @@ use Gewaer\Exception\UnprocessableEntityHttpException;
 use Phalcon\Http\Response;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation;
+use Phalcon\Security\Random;
 
 /**
  * Class AuthController
@@ -102,6 +103,7 @@ class AuthController extends \Baka\Auth\AuthController
     public function insertInvite(): Response
     {
         $request = $this->request->getPost();
+        $random = new Random();
 
         $validation = new Validation();
         $validation->add('email', new PresenceOf(['message' => _('The email is required.')]));
@@ -121,7 +123,7 @@ class AuthController extends \Baka\Auth\AuthController
         $userInvite->app_id = $this->app->getId();
         $userInvite->role_id = $request['role'] == 'Admins' ? 1 : 2;
         $userInvite->email = $request['email'];
-        $userInvite->invite_hash = hash('md5', $request['email']);
+        $userInvite->invite_hash = $random->base58();
         $userInvite->created_at = date('Y-m-d H:m:s');
 
         if (!$userInvite->save()) {

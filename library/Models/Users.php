@@ -6,6 +6,7 @@ namespace Gewaer\Models;
 use Gewaer\Traits\PermissionsTrait;
 use Gewaer\Exception\ModelException;
 use Phalcon\Cashier\Billable;
+use Gewaer\Exception\UnprocessableEntityHttpException;
 
 class Users extends \Baka\Auth\Models\Users
 {
@@ -134,6 +135,37 @@ class Users extends \Baka\Auth\Models\Users
             if (!$userRoles->save()) {
                 throw new ModelException((string) current($userRoles->getMessages()));
             }
+        }
+    }
+
+    /**
+     * Function that executes after saving a new User
+     */
+    public function afterSave()
+    {
+        //Create new company associated company
+        $newUserAssocCompany = new UsersAssociatedCompany();
+        $newUserAssocCompany->users_id = $this->id;
+        $newUserAssocCompany->company_id = $this->default_company;
+        $newUserAssocCompany->identify_id = 1;
+        $newUserAssocCompany->user_active = 1;
+        $newUserAssocCompany->user_role = $this->roles_id == 1 ? 'admins' : 'users';
+        $newUserAssocCompany->created_at = date('Y-m-d H:m:s');
+
+        if (!$newUserAssocCompany->save()) {
+            throw new UnprocessableEntityHttpException((string) current($newUserAssocCompany->getMessages()));
+        }
+        //Insert record into user_roles
+        $userRole = new UserRoles();
+        $userRole->users_id = $this->id;
+        $userRole->roles_id = $this->roles_id;
+        $userRole->apps_id = $this->di->getApp()->getId();
+        $userRole->company_id = $this->default_company;
+        $userRole->created_at = date('Y-m-d H:m:s');
+        $userRole->is_deleted = 0;
+
+        if (!$userRole->save()) {
+            throw new UnprocessableEntityHttpException((string) current($userRole->getMessages()));
         }
     }
 }

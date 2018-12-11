@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\Users;
-use Gewaer\Models\UserRoles;
 use Gewaer\Models\UserLinkedSources;
 use Baka\Auth\Models\Sources;
 use Gewaer\Models\UsersInvite;
 use Gewaer\Models\Companies;
-use Gewaer\Models\UsersAssociatedCompany;
 use Phalcon\Http\Response;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
@@ -242,10 +240,9 @@ class UsersController extends \Baka\Auth\UsersController
      * Add invited user to our system
      * @return Response
      */
-    public function processUserInvite(): Response
+    public function processUserInvite(string $hash): Response
     {
         $request = $this->request->getPost();
-        $hash = $this->request->getQuery('hash', 'string');
 
         if (empty($request)) {
             $request = $this->request->getJsonRawBody(true);
@@ -284,44 +281,13 @@ class UsersController extends \Baka\Auth\UsersController
         $request['email'] = $usersInvite->email;
         $request['roles_id'] = $usersInvite->role_id;
         $request['created_at'] = date('Y-m-d H:m:s');
-
-        if ($company = Companies::findFirst($this->userData->default_company)) {
-            $request['name'] = $company->name;
-            $request['default_company'] = $this->userData->default_company;
-        }
+        $request['name'] = $this->userData->defaultCompany;
+        $request['default_company'] = $this->userData->default_company;
 
         //Lets insert the new user to our system.
 
         if ($this->model->save($request, $this->createFields)) {
-            $userArray = $this->model->toArray();
-
-            //Create new company associated company
-            $newUserAssocCompany = new UsersAssociatedCompany();
-            $newUserAssocCompany->users_id = $userArray['id'];
-            $newUserAssocCompany->company_id = $this->userData->default_company;
-            $newUserAssocCompany->identify_id = 1;
-            $newUserAssocCompany->user_active = 1;
-            $newUserAssocCompany->user_role = $userArray['roles_id'] == 1 ? 'admins' : 'users';
-            $newUserAssocCompany->created_at = date('Y-m-d H:m:s');
-
-            if ($newUserAssocCompany->save()) {
-                //Insert record into user_roles
-                $userRole = new UserRoles();
-                $userRole->users_id = $userArray['id'];
-                $userRole->roles_id = $userArray['roles_id'];
-                $userRole->apps_id = $this->app->getId();
-                $userRole->company_id = $this->userData->default_company;
-                $userRole->created_at = date('Y-m-d H:m:s');
-                $userRole->is_deleted = 0;
-
-                if ($userRole->save()) {
-                    return $this->response($this->model->toArray());
-                } else {
-                    throw new UnprocessableEntityHttpException((string) current($userRole->getMessages()));
-                }
-            } else {
-                throw new UnprocessableEntityHttpException((string) current($newUserAssocCompany->getMessages()));
-            }
+            return $this->response($this->model->toArray());
         } else {
             //if not thorw exception
             throw new UnprocessableEntityHttpException((string) current($this->model->getMessages()));
