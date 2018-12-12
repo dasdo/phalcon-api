@@ -57,6 +57,7 @@ class PlansSubscriptions extends AbstractMigration
         $this->table("users")->changeColumn('lastname', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'firstname'])->update();
         $this->table("users")->changeColumn('displayname', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'roles_id'])->update();
         
+        $this->execute("ALTER TABLE `users` CHANGE COLUMN `roles_id` `roles_id` INT(11) NULL DEFAULT '1' AFTER `lastname`;");
         $this->execute("ALTER TABLE `users` CHANGE COLUMN `sex` `sex` ENUM('U', 'M', 'F') NULL DEFAULT 'U' COLLATE 'utf8mb4_unicode_ci' AFTER `lastvisit`;");
         $this->execute("ALTER TABLE `users` CHANGE COLUMN `timezone` `timezone` VARCHAR(128) NULL DEFAULT 'America/New_York' COLLATE 'utf8mb4_unicode_ci' AFTER `dob`;");
 

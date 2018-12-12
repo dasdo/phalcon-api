@@ -151,7 +151,7 @@ class AppsPlans extends AbstractModel
             'bind' => [$this->getId(), $this->apps_id, $key]
         ]);
 
-        if ($setting) {
+        if (is_object($setting)) {
             return $setting->value;
         }
 
@@ -167,12 +167,12 @@ class AppsPlans extends AbstractModel
     public function set(string $key, string $value) : bool
     {
         $setting = new AppsPlansSettings();
-        $settings->apps_plans_id = $this->getId();
-        $settings->apps_id = $this->getId();
-        $settings->key = $key;
-        $settings->value = $value;
+        $setting->apps_plans_id = $this->getId();
+        $setting->apps_id = $this->getId();
+        $setting->key = $key;
+        $setting->value = $value;
 
-        if (!$settings->save()) {
+        if (!$setting->save()) {
             throw new ModelException((string) current($settings->getMessages()));
         }
 

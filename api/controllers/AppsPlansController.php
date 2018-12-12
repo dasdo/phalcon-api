@@ -20,6 +20,10 @@ use Baka\Auth\Models\UserCompanyApps;
  *
  * @package Gewaer\Api\Controllers
  *
+ * @property Users $userData
+ * @property Request $request
+ * @property Config $config
+ * @property Apps $app
  */
 class AppsPlansController extends BaseController
 {
@@ -54,8 +58,7 @@ class AppsPlansController extends BaseController
     /**
      * Given the app plan stripe id , subscribe the current company to this aps
      *
-     * @param string $stripeId
-     * @return void
+     * @return Response
      */
     public function create(): Response
     {
@@ -140,7 +143,7 @@ class AppsPlansController extends BaseController
      * Cancel a given subscription
      *
      * @param string $stripeId
-     * @return boolean
+     * @return Response
      */
     public function edit($stripeId) : Response
     {
@@ -155,7 +158,7 @@ class AppsPlansController extends BaseController
             'bind' => [$this->userData->getId(), $this->userData->default_company, $this->app->getId()]
         ]);
 
-        if (!$userSubscription) {
+        if (!is_object($userSubscription)) {
             throw new NotFoundHttpException(_('No current subscription found'));
         }
 
@@ -176,7 +179,7 @@ class AppsPlansController extends BaseController
      * Cancel a given subscription
      *
      * @param string $stripeId
-     * @return boolean
+     * @return Response
      */
     public function delete($stripeId): Response
     {
@@ -191,7 +194,7 @@ class AppsPlansController extends BaseController
             'bind' => [$this->userData->getId(), $this->userData->default_company, $this->app->getId()]
         ]);
 
-        if (!$userSubscription) {
+        if (!is_object($userSubscription)) {
             throw new NotFoundHttpException(_('No current subscription found'));
         }
 

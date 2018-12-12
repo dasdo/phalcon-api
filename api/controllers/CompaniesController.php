@@ -104,7 +104,6 @@ class CompaniesController extends BaseController
 
         //try to save all the fields we allow
         if ($this->model->save($request, $this->createFields)) {
-            
             $this->db->commit();
             return $this->response($this->model->toArray());
         } else {

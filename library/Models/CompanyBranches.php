@@ -6,6 +6,12 @@ namespace Gewaer\Models;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 
+/**
+ * Class CompanyBranches
+ *
+ * @package Gewaer\Models
+ *
+ */
 class CompanyBranches extends AbstractModel
 {
     /**
@@ -19,6 +25,12 @@ class CompanyBranches extends AbstractModel
      * @var string
      */
     public $name;
+
+    /**
+     *
+     * @var string
+     */
+    public $description;
 
     /**
      *
