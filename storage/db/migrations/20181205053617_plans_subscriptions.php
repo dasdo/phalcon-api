@@ -100,14 +100,14 @@ class PlansSubscriptions extends AbstractMigration
         $this->table("users_associated_company")->changeColumn('identify_id', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'company_id'])->update();
         $this->table("users_associated_company")->changeColumn('user_role', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'user_active'])->update();
         
-        $table = $this->table("subscriptions", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
+        $table = $this->table("subscriptions", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
         $table->addColumn('id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'identity' => 'enable'])
             ->addColumn('user_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'id'])
             ->addColumn('company_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'user_id'])
             ->addColumn('apps_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'company_id'])
-            ->addColumn('name', 'string', ['null' => false, 'limit' => 250, 'collation' => "utf8_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'apps_id'])
-            ->addColumn('stripe_id', 'string', ['null' => false, 'limit' => 250, 'collation' => "utf8_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'name'])
-            ->addColumn('stripe_plan', 'string', ['null' => false, 'limit' => 250, 'collation' => "utf8_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'stripe_id'])
+            ->addColumn('name', 'string', ['null' => false, 'limit' => 250, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'apps_id'])
+            ->addColumn('stripe_id', 'string', ['null' => false, 'limit' => 250, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'name'])
+            ->addColumn('stripe_plan', 'string', ['null' => false, 'limit' => 250, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'stripe_id'])
             ->addColumn('quantity', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'stripe_plan'])
             ->addColumn('trial_ends_at', 'timestamp', ['null' => true, 'after' => 'quantity'])
             ->addColumn('ends_at', 'timestamp', ['null' => true, 'after' => 'trial_ends_at'])
