@@ -15,6 +15,7 @@ use Gewaer\Exception\UnprocessableEntityHttpException;
  * @property Users $user
  * @property Config $config
  * @property Apps $app
+ * @property Companies $defaultCompany
  * @property \Phalcon\Di $di
  */
 class Users extends \Baka\Auth\Models\Users
