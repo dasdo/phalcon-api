@@ -173,7 +173,7 @@ class AppsPlans extends AbstractModel
         $setting->value = $value;
 
         if (!$setting->save()) {
-            throw new ModelException((string) current($settings->getMessages()));
+            throw new ModelException((string) current($setting->getMessages()));
         }
 
         return true;
