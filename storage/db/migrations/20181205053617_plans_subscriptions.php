@@ -132,6 +132,8 @@ class PlansSubscriptions extends AbstractMigration
             ->addColumn('is_deleted', 'blob', ['null' => true, 'limit' => MysqlAdapter::BLOB_TINY, 'after' => 'updated_at'])
             ->save();
 
+
+
         $table = $this->table("apps_plans_settings", ['id' => false, 'primary_key' => ["apps_plans_id", "apps_id", "key"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
         $table->addColumn('apps_plans_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10])
             ->addColumn('apps_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'apps_plans_id'])
