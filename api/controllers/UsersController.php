@@ -7,18 +7,15 @@ namespace Gewaer\Api\Controllers;
 use Gewaer\Models\Users;
 use Gewaer\Models\UserLinkedSources;
 use Baka\Auth\Models\Sources;
-use Gewaer\Models\UsersInvite;
 use Gewaer\Models\Companies;
 use Phalcon\Http\Response;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Gewaer\Exception\BadRequestHttpException;
 use Gewaer\Exception\UnprocessableEntityHttpException;
-use Phalcon\Validation\Validator\StringLength;
 use Baka\Http\QueryParser;
 use Gewaer\Exception\ModelException;
 use Gewaer\Exception\NotFoundHttpException;
-use Gewaer\Exception\ServerErrorHttpException;
 use Gewaer\Models\AccessList;
 
 /**
@@ -234,63 +231,5 @@ class UsersController extends \Baka\Auth\UsersController
             'msg' => $msg,
             'user' => $this->userData
         ]);
-    }
-
-    /**
-     * Add invited user to our system
-     * @return Response
-     */
-    public function processUserInvite(string $hash): Response
-    {
-        $request = $this->request->getPost();
-
-        if (empty($request)) {
-            $request = $this->request->getJsonRawBody(true);
-        }
-
-        //Ok let validate user password
-        $validation = new Validation();
-        $validation->add('password', new PresenceOf(['message' => _('The password is required.')]));
-
-        $validation->add(
-            'password',
-            new StringLength([
-                'min' => 8,
-                'messageMinimum' => _('Password is too short. Minimum 8 characters.'),
-            ])
-        );
-
-        //validate this form for password
-        $messages = $validation->validate($request);
-        if (count($messages)) {
-            foreach ($messages as $message) {
-                throw new ServerErrorHttpException((string)$message);
-            }
-        }
-
-        //Lets find users_invite by hash on our database
-        $usersInvite = UsersInvite::findFirst([
-                'conditions' => 'invite_hash = ?0 and is_deleted = 0',
-                'bind' => [$hash]
-            ]);
-
-        if (!$usersInvite) {
-            throw new NotFoundHttpException('Users Invite not found');
-        }
-
-        $request['email'] = $usersInvite->email;
-        $request['roles_id'] = $usersInvite->role_id;
-        $request['created_at'] = date('Y-m-d H:m:s');
-        $request['name'] = $this->userData->defaultCompany;
-        $request['default_company'] = $this->userData->default_company;
-
-        //Lets insert the new user to our system.
-
-        if ($this->model->save($request, $this->createFields)) {
-            return $this->response($this->model->toArray());
-        } else {
-            //if not thorw exception
-            throw new UnprocessableEntityHttpException((string) current($this->model->getMessages()));
-        }
     }
 }
