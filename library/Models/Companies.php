@@ -7,6 +7,16 @@ use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Gewaer\Exception\ModelException;
 
+/**
+ * Class Companies
+ *
+ * @package Gewaer\Models
+ *
+ * @property Users $user
+ * @property Config $config
+ * @property Apps $app
+ * @property \Phalcon\Di $di
+ */
 class Companies extends \Baka\Auth\Models\Companies
 {
     /**
@@ -144,16 +154,17 @@ class Companies extends \Baka\Auth\Models\Companies
             $this->user->default_company_branch = $branch->getId();
         }
 
-        //we need to assign this company to a plan
-        if (empty($this->appPlanId)) {
-            $plan = AppsPlans::getDefaultPlan();
-        }
-
         //look for the default plan for this app
         $companyApps = new UserCompanyApps();
         $companyApps->company_id = $this->getId();
         $companyApps->apps_id = $this->di->getApp()->getId();
-        $companyApps->stripe_id = $plan->stripe_id;
+        
+        //we need to assign this company to a plan
+        if (empty($this->appPlanId)) {
+            $plan = AppsPlans::getDefaultPlan();
+            $companyApps->stripe_id = $plan->stripe_id;
+        }
+
         $companyApps->subscriptions_id = 0;
 
         if (!$companyApps->save()) {

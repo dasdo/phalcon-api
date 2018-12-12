@@ -20,6 +20,10 @@ use Baka\Auth\Models\UserCompanyApps;
  *
  * @package Gewaer\Api\Controllers
  *
+ * @property Users $userData
+ * @property Request $request
+ * @property Config $config
+ * @property Apps $app
  */
 class AppsPlansController extends BaseController
 {
@@ -54,8 +58,7 @@ class AppsPlansController extends BaseController
     /**
      * Given the app plan stripe id , subscribe the current company to this aps
      *
-     * @param string $stripeId
-     * @return void
+     * @return Response
      */
     public function create(): Response
     {
@@ -88,7 +91,7 @@ class AppsPlansController extends BaseController
 
         $appPlan = $this->model->findFirstByStripeId($stripeId);
 
-        if (!$appPlan) {
+        if (!is_object($appPlan)) {
             throw new NotFoundHttpException(_('This plan doesnt exist'));
         }
 
@@ -97,7 +100,7 @@ class AppsPlansController extends BaseController
             'bind' => [$this->userData->getId(), $this->userData->default_company, $this->app->getId()]
         ]);
 
-        if ($userSubscription) {
+        if (is_object($userSubscription)) {
             throw new NotFoundHttpException(_('You are already subscribed to this plan'));
         }
 
@@ -126,7 +129,7 @@ class AppsPlansController extends BaseController
         ]);
 
         //udpate the company app to the new plan
-        if ($companyApp) {
+        if (is_object($companyApp)) {
             $companyApp->strip_id = $stripeId;
             $companyApp->subscriptions_id = $this->userData->subscription($appPlan->stripe_plan)->getId();
             $companyApp->update();
@@ -137,16 +140,16 @@ class AppsPlansController extends BaseController
     }
 
     /**
-     * Cancel a given subscription
+     * Update a given subscription
      *
      * @param string $stripeId
-     * @return boolean
+     * @return Response
      */
     public function edit($stripeId) : Response
     {
         $appPlan = $this->model->findFirstByStripeId($stripeId);
 
-        if (!$appPlan) {
+        if (!is_object($appPlan)) {
             throw new NotFoundHttpException(_('This plan doesnt exist'));
         }
 
@@ -155,14 +158,20 @@ class AppsPlansController extends BaseController
             'bind' => [$this->userData->getId(), $this->userData->default_company, $this->app->getId()]
         ]);
 
-        if (!$userSubscription) {
+        if (!is_object($userSubscription)) {
             throw new NotFoundHttpException(_('No current subscription found'));
         }
 
         $this->userData->subscription($userSubscription->name)->swap($stripeId);
 
+        //update company app
+        $companyApp = UserCompanyApps::findFirst([
+            'conditions' => 'company_id = ?0 and apps_id = ?1',
+            'bind' => [$this->userData->defaultCompany->getId(), $this->app->getId()]
+        ]);
+
         //udpate the company app to the new plan
-        if ($companyApp) {
+        if (is_object($companyApp)) {
             $companyApp->strip_id = $stripeId;
             $companyApp->subscriptions_id = $this->userData->subscription($stripeId)->getId();
             $companyApp->update();
@@ -176,13 +185,13 @@ class AppsPlansController extends BaseController
      * Cancel a given subscription
      *
      * @param string $stripeId
-     * @return boolean
+     * @return Response
      */
     public function delete($stripeId): Response
     {
         $appPlan = $this->model->findFirstByStripeId($stripeId);
 
-        if (!$appPlan) {
+        if (!is_object($appPlan)) {
             throw new NotFoundHttpException(_('This plan doesnt exist'));
         }
 
@@ -191,7 +200,7 @@ class AppsPlansController extends BaseController
             'bind' => [$this->userData->getId(), $this->userData->default_company, $this->app->getId()]
         ]);
 
-        if (!$userSubscription) {
+        if (!is_object($userSubscription)) {
             throw new NotFoundHttpException(_('No current subscription found'));
         }
 
