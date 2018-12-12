@@ -66,7 +66,7 @@ class PlansSubscriptions extends AbstractMigration
         $this->execute("ALTER TABLE `users` CHANGE COLUMN `profile_privacy` `profile_privacy` TINYINT(1) NULL DEFAULT '0' COLLATE 'utf8mb4_unicode_ci' AFTER `timezone`;");
         $this->execute("ALTER TABLE `users` CHANGE COLUMN `user_last_loging_try` `user_last_login_try` INT(11) NULL DEFAULT NULL AFTER `user_login_tries`;");
         $this->table("users")->changeColumn('profile_image', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'profile_privacy'])->update();
-        $this->table("users")->changeColumn('profile_header', 'string', ['null' => true, 'limit' => 192, 'collation' => "utf8_bin", 'encoding' => "utf8mb4", 'after' => 'profile_image'])->update();
+        $this->table("users")->changeColumn('profile_header', 'string', ['null' => true, 'limit' => 192, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'profile_image'])->update();
         $this->table("users")->changeColumn('profile_header_mobile', 'string', ['null' => true, 'limit' => 192, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'profile_header'])->update();
         $this->table("users")->changeColumn('user_active', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'profile_header_mobile'])->update();
         $this->table("users")->changeColumn('user_login_tries', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'user_active'])->update();
@@ -74,10 +74,10 @@ class PlansSubscriptions extends AbstractMigration
         $this->table("users")->changeColumn('session_time', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_BIG, 'precision' => 19, 'after' => 'user_last_login_try'])->update();
         $this->table("users")->changeColumn('session_page', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'session_time'])->update();
         $this->table("users")->changeColumn('welcome', 'integer', ['null' => true, 'default' => "0", 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'session_page'])->update();
-        $this->table("users")->changeColumn('user_activation_key', 'string', ['null' => true, 'limit' => 64, 'collation' => "utf8_bin", 'encoding' => "utf8mb4", 'after' => 'welcome'])->update();
-        $this->table("users")->changeColumn('user_activation_email', 'string', ['null' => true, 'limit' => 64, 'collation' => "utf8_bin", 'encoding' => "utf8mb4", 'after' => 'user_activation_key'])->update();
-        $this->table("users")->changeColumn('user_activation_forgot', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8_bin", 'encoding' => "utf8mb4", 'after' => 'user_activation_email'])->update();
-        $this->table("users")->changeColumn('language', 'string', ['null' => true, 'limit' => 5, 'collation' => "utf8_bin", 'encoding' => "utf8mb4", 'after' => 'user_activation_forgot'])->update();
+        $this->table("users")->changeColumn('user_activation_key', 'string', ['null' => true, 'limit' => 64, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'welcome'])->update();
+        $this->table("users")->changeColumn('user_activation_email', 'string', ['null' => true, 'limit' => 64, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'user_activation_key'])->update();
+        $this->table("users")->changeColumn('user_activation_forgot', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'user_activation_email'])->update();
+        $this->table("users")->changeColumn('language', 'string', ['null' => true, 'limit' => 5, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'user_activation_forgot'])->update();
         $this->execute(" 
         ALTER TABLE `users`
             ADD COLUMN `karma` INT(11) NULL DEFAULT NULL AFTER `banned`,
@@ -221,7 +221,7 @@ class PlansSubscriptions extends AbstractMigration
         $table->save();
         $table = $this->table("users_associated_company", ['id' => false, 'primary_key' => ["users_id", "company_id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("banlist", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_bin", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("banlist", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
         $table = $this->table("user_roles", ['id' => false, 'primary_key' => ["users_id", "apps_id", "company_id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
         $table->save();
