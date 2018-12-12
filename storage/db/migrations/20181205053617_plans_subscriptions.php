@@ -9,12 +9,12 @@ class PlansSubscriptions extends AbstractMigration
     {
         $this->execute("ALTER DATABASE CHARACTER SET 'utf8';");
         $this->execute("ALTER DATABASE COLLATE='utf8mb4_unicode_ci';");
-        $this->table("apps")->changeColumn('name', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'id'])->update();
-        $this->table("apps")->changeColumn('description', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'name'])->update();
+        $this->table("apps")->changeColumn('name', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'id'])->update();
+        $this->table("apps")->changeColumn('description', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'name'])->update();
        
         $table = $this->table("apps");
         
-        $table->addColumn('url', 'string', ['null' => true, 'limit' => 255, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'description'])->save();
+        $table->addColumn('url', 'string', ['null' => true, 'limit' => 255, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'description'])->save();
         $table->addColumn('is_actived', 'boolean', ['null' => true, 'default' => "0", 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'url'])->save();
         $this->table("apps")->changeColumn('created_at', 'datetime', ['null' => true, 'after' => 'is_actived'])->update();
         $this->table("apps")->changeColumn('updated_at', 'datetime', ['null' => true, 'after' => 'created_at'])->update();
@@ -26,36 +26,36 @@ class PlansSubscriptions extends AbstractMigration
         $table->addColumn('dob', 'date', ['null' => true, 'after' => 'sex'])->save();
 
 
-        $this->table("apps_roles")->changeColumn('roles_name', 'string', ['null' => false, 'limit' => 32, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'apps_id'])->update();
-        $this->table("companies")->changeColumn('name', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'id'])->update();
-        $this->table("companies")->changeColumn('profile_image', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'name'])->update();
-        $this->table("companies")->changeColumn('website', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'profile_image'])->update();
-        $this->table("company_settings")->changeColumn('name', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'company_id'])->update();
-        $this->table("company_settings")->changeColumn('value', 'text', ['null' => false, 'limit' => MysqlAdapter::TEXT_LONG, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'name'])->update();
-        $this->table("languages")->changeColumn('id', 'string', ['null' => false, 'limit' => 2, 'collation' => "utf8_general_ci", 'encoding' => "utf8"])->update();
-        $this->table("languages")->changeColumn('name', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'id'])->update();
-        $this->table("languages")->changeColumn('title', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'name'])->update();
-        $this->table("session_keys")->changeColumn('sessions_id', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8"])->update();
-        $this->table("session_keys")->changeColumn('last_ip', 'string', ['null' => true, 'limit' => 39, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'users_id'])->update();
-        $this->table("sessions")->changeColumn('id', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8"])->update();
-        $this->table("sessions")->changeColumn('token', 'text', ['null' => false, 'limit' => 65535, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'users_id'])->update();
-        $this->table("sessions")->changeColumn('ip', 'string', ['null' => false, 'limit' => 39, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'time'])->update();
-        $this->table("sessions")->changeColumn('page', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'ip'])->update();
+        $this->table("apps_roles")->changeColumn('roles_name', 'string', ['null' => false, 'limit' => 32, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'apps_id'])->update();
+        $this->table("companies")->changeColumn('name', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'id'])->update();
+        $this->table("companies")->changeColumn('profile_image', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'name'])->update();
+        $this->table("companies")->changeColumn('website', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'profile_image'])->update();
+        $this->table("company_settings")->changeColumn('name', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'company_id'])->update();
+        $this->table("company_settings")->changeColumn('value', 'text', ['null' => false, 'limit' => MysqlAdapter::TEXT_LONG, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'name'])->update();
+        $this->table("languages")->changeColumn('id', 'string', ['null' => false, 'limit' => 2, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4"])->update();
+        $this->table("languages")->changeColumn('name', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'id'])->update();
+        $this->table("languages")->changeColumn('title', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'name'])->update();
+        $this->table("session_keys")->changeColumn('sessions_id', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4"])->update();
+        $this->table("session_keys")->changeColumn('last_ip', 'string', ['null' => true, 'limit' => 39, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'users_id'])->update();
+        $this->table("sessions")->changeColumn('id', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4"])->update();
+        $this->table("sessions")->changeColumn('token', 'text', ['null' => false, 'limit' => 65535, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'users_id'])->update();
+        $this->table("sessions")->changeColumn('ip', 'string', ['null' => false, 'limit' => 39, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'time'])->update();
+        $this->table("sessions")->changeColumn('page', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'ip'])->update();
         $this->table("sessions")->changeColumn('logged_in', 'enum', ['null' => false, 'default' => "0", 'limit' => 1, 'values' => ['0','1'], 'after' => 'page'])->update();
         $this->table("sessions")->changeColumn('is_admin', 'enum', ['null' => true, 'default' => "0", 'limit' => 1, 'values' => ['0','1'], 'after' => 'logged_in'])->update();
-        $this->table("sources")->changeColumn('title', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'id'])->update();
-        $this->table("sources")->changeColumn('url', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'title'])->update();
-        $this->table("sources")->changeColumn('language_id', 'string', ['null' => true, 'limit' => 5, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'url'])->update();
-        $this->table("user_config")->changeColumn('name', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'users_id'])->update();
-        $this->table("user_config")->changeColumn('value', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'name'])->update();
-        $this->table("user_linked_sources")->changeColumn('source_users_id', 'string', ['null' => false, 'limit' => 30, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'source_id'])->update();
-        $this->table("user_linked_sources")->changeColumn('source_users_id_text', 'string', ['null' => true, 'limit' => 255, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'source_users_id'])->update();
-        $this->table("user_linked_sources")->changeColumn('source_username', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'source_users_id_text'])->update();
-        $this->table("users")->changeColumn('email', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'id'])->update();
-        $this->table("users")->changeColumn('password', 'string', ['null' => false, 'limit' => 255, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'email'])->update();
-        $this->table("users")->changeColumn('firstname', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'password'])->update();
-        $this->table("users")->changeColumn('lastname', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'firstname'])->update();
-        $this->table("users")->changeColumn('displayname', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'roles_id'])->update();
+        $this->table("sources")->changeColumn('title', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'id'])->update();
+        $this->table("sources")->changeColumn('url', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'title'])->update();
+        $this->table("sources")->changeColumn('language_id', 'string', ['null' => true, 'limit' => 5, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'url'])->update();
+        $this->table("user_config")->changeColumn('name', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'users_id'])->update();
+        $this->table("user_config")->changeColumn('value', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'name'])->update();
+        $this->table("user_linked_sources")->changeColumn('source_users_id', 'string', ['null' => false, 'limit' => 30, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'source_id'])->update();
+        $this->table("user_linked_sources")->changeColumn('source_users_id_text', 'string', ['null' => true, 'limit' => 255, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'source_users_id'])->update();
+        $this->table("user_linked_sources")->changeColumn('source_username', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'source_users_id_text'])->update();
+        $this->table("users")->changeColumn('email', 'string', ['null' => false, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'id'])->update();
+        $this->table("users")->changeColumn('password', 'string', ['null' => false, 'limit' => 255, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'email'])->update();
+        $this->table("users")->changeColumn('firstname', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'password'])->update();
+        $this->table("users")->changeColumn('lastname', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'firstname'])->update();
+        $this->table("users")->changeColumn('displayname', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'roles_id'])->update();
         
         $this->execute("ALTER TABLE `users` CHANGE COLUMN `sex` `sex` ENUM('U', 'M', 'F') NULL DEFAULT 'U' COLLATE 'utf8mb4_unicode_ci' AFTER `lastvisit`;");
         $this->execute("ALTER TABLE `users` CHANGE COLUMN `timezone` `timezone` VARCHAR(128) NULL DEFAULT 'America/New_York' COLLATE 'utf8mb4_unicode_ci' AFTER `dob`;");
@@ -65,19 +65,19 @@ class PlansSubscriptions extends AbstractMigration
         $this->table("users")->changeColumn('country_id', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_SMALL, 'precision' => 5, 'signed' => false, 'after' => 'state_id'])->update();
         $this->execute("ALTER TABLE `users` CHANGE COLUMN `profile_privacy` `profile_privacy` TINYINT(1) NULL DEFAULT '0' COLLATE 'utf8mb4_unicode_ci' AFTER `timezone`;");
         $this->execute("ALTER TABLE `users` CHANGE COLUMN `user_last_loging_try` `user_last_login_try` INT(11) NULL DEFAULT NULL AFTER `user_login_tries`;");
-        $this->table("users")->changeColumn('profile_image', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'profile_privacy'])->update();
-        $this->table("users")->changeColumn('profile_header', 'string', ['null' => true, 'limit' => 192, 'collation' => "utf8_bin", 'encoding' => "utf8", 'after' => 'profile_image'])->update();
-        $this->table("users")->changeColumn('profile_header_mobile', 'string', ['null' => true, 'limit' => 192, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'profile_header'])->update();
+        $this->table("users")->changeColumn('profile_image', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'profile_privacy'])->update();
+        $this->table("users")->changeColumn('profile_header', 'string', ['null' => true, 'limit' => 192, 'collation' => "utf8_bin", 'encoding' => "utf8mb4", 'after' => 'profile_image'])->update();
+        $this->table("users")->changeColumn('profile_header_mobile', 'string', ['null' => true, 'limit' => 192, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'profile_header'])->update();
         $this->table("users")->changeColumn('user_active', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'profile_header_mobile'])->update();
         $this->table("users")->changeColumn('user_login_tries', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'user_active'])->update();
         $this->table("users")->changeColumn('user_last_login_try', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_BIG, 'precision' => 19, 'after' => 'user_login_tries'])->update();
         $this->table("users")->changeColumn('session_time', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_BIG, 'precision' => 19, 'after' => 'user_last_login_try'])->update();
         $this->table("users")->changeColumn('session_page', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'session_time'])->update();
         $this->table("users")->changeColumn('welcome', 'integer', ['null' => true, 'default' => "0", 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'session_page'])->update();
-        $this->table("users")->changeColumn('user_activation_key', 'string', ['null' => true, 'limit' => 64, 'collation' => "utf8_bin", 'encoding' => "utf8", 'after' => 'welcome'])->update();
-        $this->table("users")->changeColumn('user_activation_email', 'string', ['null' => true, 'limit' => 64, 'collation' => "utf8_bin", 'encoding' => "utf8", 'after' => 'user_activation_key'])->update();
-        $this->table("users")->changeColumn('user_activation_forgot', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8_bin", 'encoding' => "utf8", 'after' => 'user_activation_email'])->update();
-        $this->table("users")->changeColumn('language', 'string', ['null' => true, 'limit' => 5, 'collation' => "utf8_bin", 'encoding' => "utf8", 'after' => 'user_activation_forgot'])->update();
+        $this->table("users")->changeColumn('user_activation_key', 'string', ['null' => true, 'limit' => 64, 'collation' => "utf8_bin", 'encoding' => "utf8mb4", 'after' => 'welcome'])->update();
+        $this->table("users")->changeColumn('user_activation_email', 'string', ['null' => true, 'limit' => 64, 'collation' => "utf8_bin", 'encoding' => "utf8mb4", 'after' => 'user_activation_key'])->update();
+        $this->table("users")->changeColumn('user_activation_forgot', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8_bin", 'encoding' => "utf8mb4", 'after' => 'user_activation_email'])->update();
+        $this->table("users")->changeColumn('language', 'string', ['null' => true, 'limit' => 5, 'collation' => "utf8_bin", 'encoding' => "utf8mb4", 'after' => 'user_activation_forgot'])->update();
         $this->execute(" 
         ALTER TABLE `users`
             ADD COLUMN `karma` INT(11) NULL DEFAULT NULL AFTER `banned`,
@@ -97,17 +97,17 @@ class PlansSubscriptions extends AbstractMigration
         $this->table("users")->changeColumn('is_deleted', 'integer', ['null' => false, 'default' => "0", 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'updated_at'])->update();
         $table->save();
        
-        $this->table("users_associated_company")->changeColumn('identify_id', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'company_id'])->update();
-        $this->table("users_associated_company")->changeColumn('user_role', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8", 'after' => 'user_active'])->update();
+        $this->table("users_associated_company")->changeColumn('identify_id', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'company_id'])->update();
+        $this->table("users_associated_company")->changeColumn('user_role', 'string', ['null' => true, 'limit' => 45, 'collation' => "utf8_general_ci", 'encoding' => "utf8mb4", 'after' => 'user_active'])->update();
         
-        $table = $this->table("subscriptions", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
+        $table = $this->table("subscriptions", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
         $table->addColumn('id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'identity' => 'enable'])
             ->addColumn('user_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'id'])
             ->addColumn('company_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'user_id'])
             ->addColumn('apps_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'company_id'])
-            ->addColumn('name', 'string', ['null' => false, 'limit' => 250, 'collation' => "utf8_unicode_ci", 'encoding' => "utf8", 'after' => 'apps_id'])
-            ->addColumn('stripe_id', 'string', ['null' => false, 'limit' => 250, 'collation' => "utf8_unicode_ci", 'encoding' => "utf8", 'after' => 'name'])
-            ->addColumn('stripe_plan', 'string', ['null' => false, 'limit' => 250, 'collation' => "utf8_unicode_ci", 'encoding' => "utf8", 'after' => 'stripe_id'])
+            ->addColumn('name', 'string', ['null' => false, 'limit' => 250, 'collation' => "utf8_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'apps_id'])
+            ->addColumn('stripe_id', 'string', ['null' => false, 'limit' => 250, 'collation' => "utf8_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'name'])
+            ->addColumn('stripe_plan', 'string', ['null' => false, 'limit' => 250, 'collation' => "utf8_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'stripe_id'])
             ->addColumn('quantity', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'stripe_plan'])
             ->addColumn('trial_ends_at', 'timestamp', ['null' => true, 'after' => 'quantity'])
             ->addColumn('ends_at', 'timestamp', ['null' => true, 'after' => 'trial_ends_at'])
@@ -116,13 +116,13 @@ class PlansSubscriptions extends AbstractMigration
             ->addColumn('is_deleted', 'integer', ['null' => false, 'default' => "0", 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'updated_at'])
             ->save();
        
-        $table = $this->table("apps_plans", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
+        $table = $this->table("apps_plans", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
         $table->addColumn('id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'identity' => 'enable'])
             ->addColumn('apps_id', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'id'])
-            ->addColumn('name', 'string', ['null' => true, 'limit' => 255, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8", 'after' => 'apps_id'])
-            ->addColumn('description', 'string', ['null' => true, 'limit' => 255, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8", 'after' => 'name'])
-            ->addColumn('stripe_id', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8", 'after' => 'description'])
-            ->addColumn('stripe_plan', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8", 'after' => 'stripe_id'])
+            ->addColumn('name', 'string', ['null' => true, 'limit' => 255, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'apps_id'])
+            ->addColumn('description', 'string', ['null' => true, 'limit' => 255, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'name'])
+            ->addColumn('stripe_id', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'description'])
+            ->addColumn('stripe_plan', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'stripe_id'])
             ->addColumn('pricing', 'decimal', ['null' => true, 'precision' => 10, 'scale' => 2, 'after' => 'stripe_plan'])
             ->addColumn('currency_id', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'pricing'])
             ->addColumn('free_trial_dates', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'currency_id'])
@@ -131,11 +131,11 @@ class PlansSubscriptions extends AbstractMigration
             ->addColumn('is_deleted', 'blob', ['null' => true, 'limit' => MysqlAdapter::BLOB_TINY, 'after' => 'updated_at'])
             ->save();
 
-        $table = $this->table("apps_plans_settings", ['id' => false, 'primary_key' => ["apps_plans_id", "apps_id", "key"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
+        $table = $this->table("apps_plans_settings", ['id' => false, 'primary_key' => ["apps_plans_id", "apps_id", "key"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
         $table->addColumn('apps_plans_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10])
             ->addColumn('apps_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'apps_plans_id'])
-            ->addColumn('key', 'string', ['null' => false, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8", 'after' => 'apps_id'])
-            ->addColumn('value', 'string', ['null' => false, 'limit' => 255, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8", 'after' => 'key'])
+            ->addColumn('key', 'string', ['null' => false, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'apps_id'])
+            ->addColumn('value', 'string', ['null' => false, 'limit' => 255, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'key'])
             ->addColumn('created_at', 'datetime', ['null' => false, 'after' => 'value'])
             ->addColumn('updadate_at', 'datetime', ['null' => true, 'after' => 'created_at'])
             ->addColumn('is_deleted', 'boolean', ['null' => true, 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'updadate_at'])
@@ -160,23 +160,23 @@ class PlansSubscriptions extends AbstractMigration
         $table = $this->table("apps_plans_settings");
         $table->addIndex(['apps_plans_id'], ['name' => "plansapps", 'unique' => false])->save();
         
-        $table = $this->table("company_branches", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
+        $table = $this->table("company_branches", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
         $table->addColumn('id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'identity' => 'enable'])
             ->addColumn('company_id', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'id'])
             ->addColumn('users_id', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'company_id'])
-            ->addColumn('name', 'string', ['null' => true, 'limit' => 255, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8", 'after' => 'users_id'])
-            ->addColumn('description', 'string', ['null' => true, 'limit' => 255, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8", 'after' => 'name'])
+            ->addColumn('name', 'string', ['null' => true, 'limit' => 255, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'users_id'])
+            ->addColumn('description', 'string', ['null' => true, 'limit' => 255, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'name'])
             ->addColumn('created_at', 'datetime', ['null' => false, 'after' => 'description'])
             ->addColumn('updated_at', 'datetime', ['null' => true, 'after' => 'created_at'])
             ->addColumn('is_deleted', 'boolean', ['null' => true, 'default' => "0", 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'updated_at'])
             ->save();
 
-        $table = $this->table("currency", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
+        $table = $this->table("currency", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
         $table->addColumn('id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'identity' => 'enable'])
-            ->addColumn('country', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8", 'after' => 'id'])
-            ->addColumn('currency', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8", 'after' => 'country'])
-            ->addColumn('code', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8", 'after' => 'currency'])
-            ->addColumn('symbol', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8", 'after' => 'code'])
+            ->addColumn('country', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'id'])
+            ->addColumn('currency', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'country'])
+            ->addColumn('code', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'currency'])
+            ->addColumn('symbol', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'code'])
             ->addColumn('created_at', 'datetime', ['null' => false, 'after' => 'symbol'])
             ->addColumn('updated_at', 'datetime', ['null' => true, 'after' => 'created_at'])
             ->addColumn('is_deleted', 'boolean', ['null' => true, 'default' => "0", 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'updated_at'])
@@ -194,36 +194,36 @@ class PlansSubscriptions extends AbstractMigration
         $this->table("roles_inherits")->changeColumn('roles_name', 'string', ['null' => false, 'limit' => 32, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4"])->update();
         $this->table("roles_inherits")->changeColumn('roles_inherit', 'string', ['null' => false, 'limit' => 32, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'roles_name'])->update();
         
-        $table = $this->table("apps", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("apps", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("apps_roles", ['id' => false, 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("apps_roles", ['id' => false, 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("companies", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "					", 'row_format' => "Compact"]);
+        $table = $this->table("companies", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "					", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("company_settings", ['id' => false, 'primary_key' => ["name"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("company_settings", ['id' => false, 'primary_key' => ["name"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("languages", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Dynamic"]);
+        $table = $this->table("languages", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Dynamic"]);
         $table->save();
-        $table = $this->table("session_keys", ['id' => false, 'primary_key' => ["sessions_id", "users_id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("session_keys", ['id' => false, 'primary_key' => ["sessions_id", "users_id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("sessions", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("sessions", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("sources", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("sources", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
 
-        $table = $this->table("user_company_apps", ['id' => false, 'primary_key' => ["company_id", "apps_id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("user_company_apps", ['id' => false, 'primary_key' => ["company_id", "apps_id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("user_config", ['id' => false, 'primary_key' => ["users_id", "name"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("user_config", ['id' => false, 'primary_key' => ["users_id", "name"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("user_linked_sources", ['id' => false, 'primary_key' => ["users_id", "source_id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("user_linked_sources", ['id' => false, 'primary_key' => ["users_id", "source_id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("users", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("users", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("users_associated_company", ['id' => false, 'primary_key' => ["users_id", "company_id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("users_associated_company", ['id' => false, 'primary_key' => ["users_id", "company_id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_general_ci", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("banlist", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8_bin", 'comment' => "", 'row_format' => "Compact"]);
+        $table = $this->table("banlist", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8_bin", 'comment' => "", 'row_format' => "Compact"]);
         $table->save();
-        $table = $this->table("user_roles", ['id' => false, 'primary_key' => ["users_id", "apps_id", "company_id"], 'engine' => "InnoDB", 'encoding' => "utf8", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
+        $table = $this->table("user_roles", ['id' => false, 'primary_key' => ["users_id", "apps_id", "company_id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
         $table->save();
         $table = $this->table("access_list", ['id' => false, 'primary_key' => ["roles_name", "resources_name", "access_name", "apps_id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8mb4_unicode_ci", 'comment' => "", 'row_format' => "Dynamic"]);
         $table->save();
