@@ -24,6 +24,7 @@ use Phalcon\Security\Random;
  * @property Request $request
  * @property Config $config
  * @property \Baka\Mail\Message $mail
+ * @property Apps $app
  */
 class AuthController extends \Baka\Auth\AuthController
 {

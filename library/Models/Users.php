@@ -8,6 +8,16 @@ use Gewaer\Exception\ModelException;
 use Phalcon\Cashier\Billable;
 use Gewaer\Exception\UnprocessableEntityHttpException;
 
+/**
+ * Class Users
+ *
+ * @package Gewaer\Models
+ *
+ * @property Users $user
+ * @property Config $config
+ * @property Apps $app
+ * @property \Phalcon\Di $di
+ */
 class Users extends \Baka\Auth\Models\Users
 {
     use PermissionsTrait;
