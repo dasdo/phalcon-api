@@ -68,7 +68,7 @@ class UsersInviteController extends BaseController
         }
 
         //Save data to users_invite table and generate a hash for the invite
-        $userInvite = new UsersInvite();
+        $userInvite = $this->model;
         $userInvite->company_id = $this->userData->default_company;
         $userInvite->app_id = $this->app->getId();
         $userInvite->role_id = $request['role'] == 'Admins' ? 1 : 2;
@@ -132,6 +132,7 @@ class UsersInviteController extends BaseController
         $newUser->displayname = $request['displayname'];
         $newUser->password = $request['password'];
         $newUser->email = $usersInvite->email;
+        $newUser->user_active = 1;
         $newUser->roles_id = $usersInvite->role_id;
         $newUser->created_at = date('Y-m-d H:m:s');
         // $newUser->name = $this->userData->defaultCompany; //Como puedo agregar este campo si es de una relacion ?

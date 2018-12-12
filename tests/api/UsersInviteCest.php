@@ -26,6 +26,7 @@ class UsersInviteCest
             'lastname' => 'testLastName',
             'displayname' => 'testDisplayName',
             'password' => 'testpassword',
+            'user_active' => 1
         ]);
 
         $I->seeResponseIsSuccessful();
