@@ -102,13 +102,15 @@ class UsersInviteController extends BaseController
 
         $invitationUrl = $this->config->app->frontEndUrl . 'user-invite/' . $userInviteArray['invite_hash'];
 
-        $subject = _('You have been invited!');
-        $this->mail
+        if (array_key_exists('dont_send', $request)) {
+            $subject = _('You have been invited!');
+            $this->mail
             ->to($userInviteArray['email'])
             ->subject($subject)
             ->params($invitationUrl)
             ->content($emailTemplate->template)
             ->sendNow();
+        }
 
         return $this->response($userInviteArray);
     }

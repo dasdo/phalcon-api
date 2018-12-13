@@ -10,7 +10,8 @@ class UsersInviteCest
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/users/invite', [
             'email' => $testEmail,
-            'role' => 'Admins'
+            'role' => 'Admins',
+            'dont_send' => 1
         ]);
 
         $I->seeResponseIsSuccessful();

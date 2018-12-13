@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\Users;
-use Baka\Auth\Models\Users as BakaUsers;
 use Gewaer\Models\UserLinkedSources;
 use Gewaer\Exception\ServerErrorHttpException;
 
@@ -48,34 +47,23 @@ class AuthController extends \Baka\Auth\AuthController
         $send = true;
         $subject = null;
         $body = null;
-
         switch ($type) {
             case 'recover':
                 $recoveryLink = $this->config->app->frontEndUrl . '/user/reset/' . $user->user_activation_forgot;
-
                 $subject = _('Password Recovery');
                 $body = sprintf(_('Click %shere%s to set a new password for your account.'), '<a href="' . $recoveryLink . '" target="_blank">', '</a>');
-
                 // send email to recover password
                 break;
             case 'reset':
                 $activationUrl = $this->config->app->frontEndUrl . '/user/activate/' . $user->user_activation_key;
-
                 $subject = _('Password Updated!');
                 $body = sprintf(_('Your password was update please, use this link to activate your account: %sActivate account%s'), '<a href="' . $activationUrl . '">', '</a>');
                 // send email that password was update
-                break;
-            case 'invite':
-                //Send invitation link to person
-                $subject = _('You have been invited!');
-                $body = sprintf(_('Your have been invite to join our system, use this link to succesfully create your account: %Create account%s'), '<a href="' . $activationUrl . '">', '</a>');
-
                 break;
             default:
                 $send = false;
                 break;
         }
-
         if ($send) {
             $this->mail
                 ->to($user->email)
