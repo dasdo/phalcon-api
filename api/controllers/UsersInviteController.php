@@ -12,11 +12,16 @@ use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\StringLength;
 use Gewaer\Exception\UnprocessableEntityHttpException;
 use Gewaer\Exception\NotFoundHttpException;
+use Gewaer\Exception\ServerErrorHttpException;
 use Phalcon\Http\Response;
+use Gewaer\Models\EmailTemplates;
 
 /**
  * Class LanguagesController
- *
+ * @property Users $userData
+ * @property Request $request
+ * @property Config $config
+ * @property Apps $app
  * @package Gewaer\Api\Controllers
  *
  */
@@ -81,6 +86,28 @@ class UsersInviteController extends BaseController
         }
 
         $userInviteArray = $userInvite->toArray();
+
+        //Fetch email template of user
+        $emailTemplate = EmailTemplates::findFirst([
+            'conditions' => 'users_id = ?0 and company_id = ?1 and app_id = ?2 and is_deleted = 0',
+            'bind' => [$this->userData->getId(), $this->userData->default_company, $this->app->getId()]
+        ]);
+
+        if (!$emailTemplate) {
+            throw new NotFoundHttpException('Email Template not found');
+        }
+
+        // Lets send the mail
+
+        $invitationUrl = $this->config->app->frontEndUrl . 'user-invite/' . $userInviteArray['invite_hash'];
+
+        $subject = _('You have been invited!');
+        $this->mail
+            ->to($userInviteArray['email'])
+            ->subject($subject)
+            ->params($invitationUrl)
+            ->content($emailTemplate->template)
+            ->sendNow();
 
         return $this->response($userInviteArray);
     }

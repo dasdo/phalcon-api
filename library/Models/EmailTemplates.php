@@ -3,6 +3,18 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
+use Gewaer\Exception\UnprocessableEntityHttpException;
+use \Phalcon\Di;
+
+/**
+ * Classs for Email Templates
+ * @property Users $userData
+ * @property Request $request
+ * @property Config $config
+ * @property Apps $app
+ * @property \Phalcon\DI $di
+ *
+ */
 class EmailTemplates extends AbstractModel
 {
     /**
@@ -85,11 +97,11 @@ class EmailTemplates extends AbstractModel
     public function getByName(string $name): EmailTemplates
     {
         $emailTemplate = self::findFirst([
-            'conditions' => 'users_id = ?0 and company_id = ?1 and app_id = ?2 and name = ?3 and is_deleted = 0',
-            'bind' => [$this->di->getUserData()->getId(), $this->di->getUserData()->defaulCompany->getId(), $this->di->getApp()->getId(), $name]
+            'conditions' => 'company_id = ?1 and app_id = ?2 and name = ?3 and is_deleted = 0',
+            'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getConfig()->app->id, $name]
         ]);
 
-        if (!$emailTemplate) {
+        if (!is_object($emailTemplate)) {
             throw new UnprocessableEntityHttpException((string) current($emailTemplate->getMessages()));
         }
 
