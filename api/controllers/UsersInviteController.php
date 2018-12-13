@@ -94,7 +94,7 @@ class UsersInviteController extends BaseController
             'bind' => [$this->userData->getId(), $this->userData->default_company, $this->app->getId()]
         ]);
 
-        if (!$emailTemplate) {
+        if (!is_object($emailTemplate)) {
             throw new NotFoundHttpException('Email Template not found');
         }
 
@@ -151,9 +151,10 @@ class UsersInviteController extends BaseController
                 'bind' => [$hash]
             ]);
 
-        if (!$usersInvite) {
+        if (!is_object($usersInvite)) {
             throw new NotFoundHttpException('Users Invite not found');
         }
+
         $newUser = new Users();
         $newUser->firstname = $request['firstname'];
         $newUser->lastname = $request['lastname'];
