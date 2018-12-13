@@ -22,6 +22,7 @@ use Gewaer\Models\EmailTemplates;
  * @property Request $request
  * @property Config $config
  * @property Apps $app
+ * @property Mail $mail
  * @package Gewaer\Api\Controllers
  *
  */
