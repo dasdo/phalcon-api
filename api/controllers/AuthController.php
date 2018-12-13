@@ -42,7 +42,7 @@ class AuthController extends \Baka\Auth\AuthController
     * @param String $emailAction
     * @param Users  $user
     */
-    protected function sendEmail(BakaUsers $user, string $type): void
+    protected function sendEmail(Users $user, string $type): void
     {
         $send = true;
         $subject = null;
