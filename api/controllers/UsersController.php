@@ -7,6 +7,7 @@ namespace Gewaer\Api\Controllers;
 use Gewaer\Models\Users;
 use Gewaer\Models\UserLinkedSources;
 use Baka\Auth\Models\Sources;
+use Gewaer\Models\Companies;
 use Phalcon\Http\Response;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
@@ -52,7 +53,7 @@ class UsersController extends \Baka\Auth\UsersController
         $this->model = new Users();
 
         //if you are not a admin you cant see all the users
-        if (!$this->userData->hasRole('Default.Admins')) {
+        if (!$this->userData->hasRole('Defaults.Admins')) {
             $this->additionalSearchFields = [
                 ['id', ':', $this->userData->getId()],
             ];
@@ -122,7 +123,12 @@ class UsersController extends \Baka\Auth\UsersController
      */
     public function edit($id) : Response
     {
-        if ($user = $this->model->findFirst($this->userData->getId())) {
+        //none admin users can only edit themselves
+        if (!$this->userData->hasRole('Default.Admins')) {
+            $id = $this->userData->getId();
+        }
+
+        if ($user = $this->model->findFirst($id)) {
             $request = $this->request->getPut();
 
             if (empty($request)) {

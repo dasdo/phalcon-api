@@ -3,8 +3,20 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
+class UsersInvite extends AbstractModel
 {
+    /**
+     *
+     * @var integer
+     */
+    public $id;
+
+    /**
+     *
+     * @var string
+     */
+    public $invite_hash;
+
     /**
      *
      * @var integer
@@ -15,19 +27,25 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
      *
      * @var integer
      */
-    public $apps_id;
-
-    /**
-     *
-     * @var string
-     */
-    public $stripe_id;
+    public $role_id;
 
     /**
      *
      * @var integer
      */
-    public $subscriptions_id;
+    public $app_id;
+
+    /**
+     *
+     * @var string
+     */
+    public $email;
+
+    /**
+     *
+     * @var integer
+     */
+    public $is_deleted;
 
     /**
      *
@@ -42,19 +60,11 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
     public $updated_at;
 
     /**
-     *
-     * @var integer
-     */
-    public $is_deleted;
-
-    /**
      * Initialize method for model.
      */
     public function initialize()
     {
-        parent::initialize();
-
-        $this->setSource('user_company_apps');
+        $this->setSource('users_invite');
     }
 
     /**
@@ -64,6 +74,6 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
      */
     public function getSource(): string
     {
-        return 'user_company_apps';
+        return 'users_invite';
     }
 }

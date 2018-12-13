@@ -58,7 +58,10 @@ $defaultCrudRoutes = [
     'users',
     'companies',
     'languages',
+    'AppsPlans' => 'apps-plans',
     'roles',
+    'UsersInvite' => 'users-invite',
+    'EmailTemplates' => 'email-templates'
 ];
 
 foreach ($defaultCrudRoutes as $key => $route) {
@@ -121,6 +124,22 @@ $router->post('/auth/forgot', [
 $router->post('/auth/reset/{key}', [
     'Gewaer\Api\Controllers\AuthController',
     'reset',
+    'options' => [
+        'jwt' => false,
+    ]
+]);
+
+$router->post('/users/invite', [
+    'Gewaer\Api\Controllers\UsersInviteController',
+    'insertInvite',
+    'options' => [
+        'jwt' => false,
+    ]
+]);
+
+$router->post('/user-invites/{hash}', [
+    'Gewaer\Api\Controllers\UsersInviteController',
+    'processUserInvite',
     'options' => [
         'jwt' => false,
     ]

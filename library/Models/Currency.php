@@ -3,31 +3,37 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
+class Currency extends AbstractModel
 {
     /**
      *
      * @var integer
      */
-    public $company_id;
-
-    /**
-     *
-     * @var integer
-     */
-    public $apps_id;
+    public $id;
 
     /**
      *
      * @var string
      */
-    public $stripe_id;
+    public $country;
 
     /**
      *
-     * @var integer
+     * @var string
      */
-    public $subscriptions_id;
+    public $currency;
+
+    /**
+     *
+     * @var string
+     */
+    public $code;
+
+    /**
+     *
+     * @var string
+     */
+    public $symbel;
 
     /**
      *
@@ -52,9 +58,7 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
      */
     public function initialize()
     {
-        parent::initialize();
-
-        $this->setSource('user_company_apps');
+        $this->setSource('currency');
     }
 
     /**
@@ -62,8 +66,8 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
      *
      * @return string
      */
-    public function getSource(): string
+    public function getSource() : string
     {
-        return 'user_company_apps';
+        return 'currency';
     }
 }

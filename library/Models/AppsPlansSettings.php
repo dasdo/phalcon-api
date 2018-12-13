@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
+class AppsPlansSettings extends AbstractModel
 {
     /**
      *
      * @var integer
      */
-    public $company_id;
+    public $apps_plans_id;
 
     /**
      *
@@ -21,13 +21,13 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
      *
      * @var string
      */
-    public $stripe_id;
+    public $key;
 
     /**
      *
-     * @var integer
+     * @var string
      */
-    public $subscriptions_id;
+    public $value;
 
     /**
      *
@@ -52,9 +52,14 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
      */
     public function initialize()
     {
-        parent::initialize();
+        $this->setSource('apps_plans');
 
-        $this->setSource('user_company_apps');
+        $this->belongsTo(
+            'apps_id',
+            'Gewaer\Models\Apps',
+            'id',
+            ['alias' => 'app']
+        );
     }
 
     /**
@@ -62,8 +67,8 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
      *
      * @return string
      */
-    public function getSource(): string
+    public function getSource() : string
     {
-        return 'user_company_apps';
+        return 'apps_plans';
     }
 }

@@ -25,6 +25,13 @@ class AppsRoles extends \Baka\Auth\Models\AppsRoles
         parent::initialize();
 
         $this->setSource('apps_roles');
+
+        $this->belongsTo(
+            'apps_id',
+            'Gewaer\Models\Apps',
+            'id',
+            ['alias' => 'app']
+        );
     }
 
     /**
