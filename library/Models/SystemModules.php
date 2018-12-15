@@ -3,13 +3,31 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
+class SystemModules extends AbstractModel
 {
     /**
      *
      * @var integer
      */
-    public $company_id;
+    public $id;
+
+    /**
+     *
+     * @var integer
+     */
+    public $name;
+
+    /**
+     *
+     * @var integer
+     */
+    public $slug;
+
+    /**
+     *
+     * @var string
+     */
+    public $model_name;
 
     /**
      *
@@ -19,15 +37,15 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
 
     /**
      *
-     * @var string
+     * @var integer
      */
-    public $stripe_id;
+    public $parents_id;
 
     /**
      *
      * @var integer
      */
-    public $subscriptions_id;
+    public $menu_order;
 
     /**
      *
@@ -68,7 +86,14 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
             ['alias' => 'app']
         );
 
-        $this->setSource('user_company_apps');
+        $this->belongsTo(
+            'company_branches_id',
+            'Gewaer\Models\CompanyBranches',
+            'id',
+            ['alias' => 'companyBranch']
+        );
+
+        $this->setSource('user_company_apps_activities');
     }
 
     /**
@@ -78,6 +103,6 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
      */
     public function getSource(): string
     {
-        return 'user_company_apps';
+        return 'user_company_apps_activities';
     }
 }

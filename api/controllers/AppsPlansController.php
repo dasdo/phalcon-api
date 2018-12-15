@@ -24,6 +24,7 @@ use Baka\Auth\Models\UserCompanyApps;
  * @property Request $request
  * @property Config $config
  * @property Apps $app
+ * @property \Phalcon\Db\Adapter\Pdo\Mysql $db
  */
 class AppsPlansController extends BaseController
 {
@@ -115,6 +116,8 @@ class AppsPlansController extends BaseController
             'api_key' => $this->config->stripe->secret
         ])->id;
 
+        $this->db->begin();
+
         //if fails it will throw exception
         if ($appPlan->free_trial_dates == 0) {
             $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->create($card);
@@ -128,12 +131,25 @@ class AppsPlansController extends BaseController
             'bind' => [$this->userData->defaultCompany->getId(), $this->app->getId()]
         ]);
 
-        //udpate the company app to the new plan
+        //update the company app to the new plan
         if (is_object($companyApp)) {
+            $subscription = $this->userData->subscription($appPlan->stripe_plan);
             $companyApp->strip_id = $stripeId;
-            $companyApp->subscriptions_id = $this->userData->subscription($appPlan->stripe_plan)->getId();
-            $companyApp->update();
+            $companyApp->subscriptions_id = $subscription->getId();
+            if (!$companyApp->update()) {
+                $this->db->rollback();
+                throw new UnprocessableEntityHttpException((string) current($companyApp->getMessages()));
+            }
+
+            //update the subscription with the plan
+            $subscription->apps_plans_id = $appPlan->getId();
+            if (!$subscription->update()) {
+                $this->db->rollback();
+                throw new UnprocessableEntityHttpException((string) current($subscription->getMessages()));
+            }
         }
+
+        $this->db->commit();
 
         //sucess
         return $this->response($appPlan);
@@ -162,6 +178,7 @@ class AppsPlansController extends BaseController
             throw new NotFoundHttpException(_('No current subscription found'));
         }
 
+        $this->db->begin();
         $this->userData->subscription($userSubscription->name)->swap($stripeId);
 
         //update company app
@@ -170,12 +187,26 @@ class AppsPlansController extends BaseController
             'bind' => [$this->userData->defaultCompany->getId(), $this->app->getId()]
         ]);
 
-        //udpate the company app to the new plan
+        //update the company app to the new plan
         if (is_object($companyApp)) {
+            $subscription = $this->userData->subscription($stripeId);
             $companyApp->strip_id = $stripeId;
-            $companyApp->subscriptions_id = $this->userData->subscription($stripeId)->getId();
-            $companyApp->update();
+            $companyApp->subscriptions_id = $subscription->getId();
+            if (!$companyApp->update()) {
+                $this->db->rollback();
+                throw new UnprocessableEntityHttpException((string) current($companyApp->getMessages()));
+            }
+
+            //update the subscription with the plan
+
+            $subscription->apps_plans_id = $appPlan->getId();
+            if (!$subscription->update()) {
+                $this->db->rollback();
+                throw new UnprocessableEntityHttpException((string) current($subscription->getMessages()));
+            }
         }
+
+        $this->db->commit();
 
         //return the new subscription plan
         return $this->response($appPlan);

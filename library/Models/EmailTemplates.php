@@ -76,6 +76,27 @@ class EmailTemplates extends AbstractModel
      */
     public function initialize()
     {
+        $this->belongsTo(
+            'company_id',
+            'Gewaer\Models\Companies',
+            'id',
+            ['alias' => 'company']
+        );
+
+        $this->belongsTo(
+            'apps_id',
+            'Gewaer\Models\Apps',
+            'id',
+            ['alias' => 'app']
+        );
+
+        $this->belongsTo(
+            'users_id',
+            'Gewaer\Models\Users',
+            'id',
+            ['alias' => 'user']
+        );
+
         $this->setSource('email_templates');
     }
 

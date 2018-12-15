@@ -42,6 +42,13 @@ class UsersAssociatedCompany extends \Baka\Auth\Models\UsersAssociatedCompany
     {
         parent::initialize();
 
+        $this->belongsTo(
+            'company_id',
+            'Gewaer\Models\Companies',
+            'id',
+            ['alias' => 'company']
+        );
+
         $this->setSource('users_associated_company');
     }
 

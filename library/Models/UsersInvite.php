@@ -65,6 +65,20 @@ class UsersInvite extends AbstractModel
     public function initialize()
     {
         $this->setSource('users_invite');
+
+        $this->belongsTo(
+            'company_id',
+            'Gewaer\Models\Companies',
+            'id',
+            ['alias' => 'company']
+        );
+
+        $this->belongsTo(
+            'apps_id',
+            'Gewaer\Models\Apps',
+            'id',
+            ['alias' => 'app']
+        );
     }
 
     /**
