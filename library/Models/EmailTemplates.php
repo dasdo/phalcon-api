@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Gewaer\Models;
 
 use Gewaer\Exception\UnprocessableEntityHttpException;
-use \Phalcon\Di;
+use Phalcon\Di;
 
 /**
  * Classs for Email Templates

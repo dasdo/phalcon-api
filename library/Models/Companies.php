@@ -96,6 +96,15 @@ class Companies extends \Baka\Auth\Models\Companies
             'company_id',
             ['alias' => 'branches']
         );
+
+        $this->hasOne(
+            'id',
+            'Gewaer\Models\CompanyBranches',
+            'company_id',
+            [
+                'alias' => 'branch',
+            ]
+        );
     }
 
     /**
@@ -144,6 +153,7 @@ class Companies extends \Baka\Auth\Models\Companies
         $branch->company_id = $this->getId();
         $branch->users_id = $this->user->getId();
         $branch->name = 'Default';
+        $branch->is_default = 1;
         $branch->description = '';
         if (!$branch->save()) {
             throw new ModelException((string) current($branch->getMessages()));
@@ -152,13 +162,14 @@ class Companies extends \Baka\Auth\Models\Companies
         //assign default branch to the user
         if (empty($this->user->default_company_branch)) {
             $this->user->default_company_branch = $branch->getId();
+            $this->user->update();
         }
 
         //look for the default plan for this app
         $companyApps = new UserCompanyApps();
         $companyApps->company_id = $this->getId();
         $companyApps->apps_id = $this->di->getApp()->getId();
-        
+
         //we need to assign this company to a plan
         if (empty($this->appPlanId)) {
             $plan = AppsPlans::getDefaultPlan();

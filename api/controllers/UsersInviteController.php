@@ -159,6 +159,7 @@ class UsersInviteController extends BaseController
         $newUser->roles_id = $usersInvite->role_id;
         $newUser->created_at = date('Y-m-d H:m:s');
         $newUser->default_company = $usersInvite->company_id;
+        $newUser->default_company_branch = $usersInvite->company->branch->getId();
 
         try {
             $this->db->begin();

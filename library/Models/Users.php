@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Gewaer\Models;
 
 use Gewaer\Traits\PermissionsTrait;
+use Gewaer\Traits\SubscriptionPlanLimitTrait;
 use Phalcon\Cashier\Billable;
 use Gewaer\Exception\UnprocessableEntityHttpException;
 
@@ -22,6 +23,7 @@ class Users extends \Baka\Auth\Models\Users
 {
     use PermissionsTrait;
     use Billable;
+    use SubscriptionPlanLimitTrait;
 
     public $default_company_branch;
     public $roles_id;
@@ -43,9 +45,18 @@ class Users extends \Baka\Auth\Models\Users
      */
     public function initialize()
     {
-        parent::initialize();
-
         $this->setSource('users');
+
+        //overwrite parent relationships
+        $this->hasOne('id', 'Baka\Auth\Models\Sessions', 'users_id', ['alias' => 'session']);
+        $this->hasMany('id', 'Baka\Auth\Models\Sessions', 'users_id', ['alias' => 'sessions']);
+        $this->hasMany('id', 'Baka\Auth\Models\SessionKeys', 'users_id', ['alias' => 'sessionKeys']);
+        $this->hasMany('id', 'Baka\Auth\Models\Banlist', 'users_id', ['alias' => 'bans']);
+        $this->hasMany('id', 'Baka\Auth\Models\Sessions', 'users_id', ['alias' => 'sessions']);
+        $this->hasMany('id', 'Gewaer\Models\UserConfig', 'users_id', ['alias' => 'config']);
+        $this->hasMany('id', 'Gewaer\Models\UserLinkedSources', 'users_id', ['alias' => 'sources']);
+        $this->hasMany('id', 'Baka\Auth\Models\UsersAssociatedCompany', 'users_id', ['alias' => 'companies']);
+        $this->hasOne('default_company', 'Gewaer\Models\Companies', 'id', ['alias' => 'defaultCompany']);
 
         $this->hasOne(
             'id',
@@ -128,6 +139,9 @@ class Users extends \Baka\Auth\Models\Users
     {
         parent::beforeCreate();
 
+        //confirm if the app reach its limit
+        $this->isAtLimit();
+
         //Assign admin role to the system if we dont get a specify role
         if (empty($this->roles_id)) {
             $role = Roles::findFirstByName('Admins');
@@ -145,6 +159,11 @@ class Users extends \Baka\Auth\Models\Users
     {
         if (empty($this->default_company)) {
             parent::afterCreate();
+        } else {
+            //we have the company id
+            if (empty($this->default_company_branch)) {
+                $this->default_company_branch = $this->defaultCompany->branch->getId();
+            }
         }
 
         //Create new company associated company
@@ -169,5 +188,8 @@ class Users extends \Baka\Auth\Models\Users
         if (!$userRole->save()) {
             throw new UnprocessableEntityHttpException((string) current($userRole->getMessages()));
         }
+
+        //update model total activity
+        $this->updateAppActivityLimit();
     }
 }

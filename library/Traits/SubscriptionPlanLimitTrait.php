@@ -8,13 +8,14 @@ use Gewaer\Models\Subscription;
 use Gewaer\Models\UserCompanyAppsActivities;
 use Gewaer\Exception\SubscriptionPlanLimitException;
 use Gewaer\Exception\ServerErrorHttpException;
+use ReflectionClass;
 
 /**
  * Trait ResponseTrait
  *
  * @package Gewaer\Traits
  */
-trait SubscriptionPlanLimit
+trait SubscriptionPlanLimitTrait
 {
     /**
      * Get the key for the subscriptoin plan limit
@@ -23,7 +24,7 @@ trait SubscriptionPlanLimit
      */
     private function getSubcriptionPlanLimitModelKey(): string
     {
-        return strtolower(get_class($this)) . '_total';
+        return strtolower((new ReflectionClass($this))->getShortName()) . '_total';
     }
 
     /**
@@ -38,13 +39,13 @@ trait SubscriptionPlanLimit
 
         if (is_object($appPlan)) {
             //get the current module limit for this plan
-            $appPlanLimit = $appPlan::get($this->getSubcriptionPlanLimitModelKey());
+            $appPlanLimit = $appPlan->get($this->getSubcriptionPlanLimitModelKey());
 
             if (!is_null($appPlanLimit)) {
                 //get tht total activity of the company current plan
                 $currentCompanyAppActivityTotal = UserCompanyAppsActivities::get($this->getSubcriptionPlanLimitModelKey());
 
-                if ($appPlanLimit == $currentCompanyAppActivityTotal) {
+                if ($currentCompanyAppActivityTotal >= $appPlanLimit) {
                     throw new SubscriptionPlanLimitException(_($subcription->company->name . ' has reach the limit of it current plan ' . $appPlan->name . ' please upgrade or contact support'));
                 }
             }

@@ -5,7 +5,17 @@ namespace Gewaer\Models;
 
 use Gewaer\Exception\ServerErrorHttpException;
 use Gewaer\Exception\ModelException;
+use Phalcon\Di;
 
+/**
+ * Classs for UserCompanyAppsActivities
+ * @property Users $userData
+ * @property Request $request
+ * @property Config $config
+ * @property Apps $app
+ * @property \Phalcon\DI $di
+ *
+ */
 class UserCompanyAppsActivities extends AbstractModel
 {
     /**
@@ -61,8 +71,6 @@ class UserCompanyAppsActivities extends AbstractModel
      */
     public function initialize()
     {
-        parent::initialize();
-
         $this->belongsTo(
             'company_id',
             'Gewaer\Models\Companies',
@@ -103,11 +111,11 @@ class UserCompanyAppsActivities extends AbstractModel
     * @param string $key
     * @param string $value
     */
-    public function get(string $key) : string
+    public static function get(string $key) : string
     {
         $setting = self::findFirst([
             'conditions' => 'company_id = ?0 and apps_id = ?1 and key = ?2',
-            'bind' => [$this->di->getUserData()->default_company, $this->di->getApp()->getId(), $key]
+            'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId(), $key]
         ]);
 
         if (is_object($setting)) {
@@ -123,13 +131,21 @@ class UserCompanyAppsActivities extends AbstractModel
      * @param string $key
      * @param string $value
      */
-    public function set(string $key, string $value) : bool
+    public static function set(string $key, $value) : bool
     {
-        $activity = new self();
-        $activity->company_id = $this->di->getUserData()->default_company;
-        $activity->default_company_branch = $this->di->getUserData()->default_company_bran;
-        $activity->apps_id = $this->di->getApp()->getId();
-        $activity->key = $key;
+        $activity = self::findFirst([
+            'conditions' => 'company_id = ?0 and apps_id = ?1 and key = ?2',
+            'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId(), $key]
+        ]);
+
+        if (!is_object($activity)) {
+            $activity = new self();
+            $activity->company_id = Di::getDefault()->getUserData()->default_company;
+            $activity->company_branches_id = Di::getDefault()->getUserData()->default_company_branch;
+            $activity->apps_id = Di::getDefault()->getApp()->getId();
+            $activity->key = $key;
+        }
+
         $activity->value = $value;
 
         if (!$activity->save()) {

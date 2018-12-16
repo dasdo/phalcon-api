@@ -1,11 +1,19 @@
 <?php
 
+namespace Gewaer\Tests\api;
+
+use Phalcon\Security\Random;
+use ApiTester;
+
 class UsersInviteCest
 {
     public function insertInvite(ApiTester $I):void
     {
         $userData = $I->apiLogin();
-        $testEmail = 'testMCs@example.com';
+        $random = new Random();
+        $userName = $random->base58();
+
+        $testEmail = $userName . '@example.com';
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/users/invite', [
@@ -25,7 +33,7 @@ class UsersInviteCest
         $I->sendPost('/v1/user-invites/' . $hash, [
             'firstname' => 'testFirstsName',
             'lastname' => 'testLastName',
-            'displayname' => 'testDispslayName',
+            'displayname' => $userName,
             'password' => 'testpassword',
             'user_active' => 1
         ]);

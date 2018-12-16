@@ -4,6 +4,7 @@ namespace Gewaer\Models;
 
 use Phalcon\Cashier\Subscription as PhalconSubscription;
 use Gewaer\Exception\ServerErrorHttpException;
+use Phalcon\Di;
 
 class Subscription extends PhalconSubscription
 {
@@ -45,15 +46,15 @@ class Subscription extends PhalconSubscription
      *
      * @return void
      */
-    public function getActiveForThisApp(): Subscription
+    public static function getActiveForThisApp(): Subscription
     {
         $subscription = self::findFirst([
-            'conditions' => 'company_id = ?1 and apps_id = ?2 and is_deleted  = 0',
-            'bind' => [$this->di->getUserData()->default_company, $this->di->getApp()->getId()]
+            'conditions' => 'company_id = ?0 and apps_id = ?1 and is_deleted  = 0',
+            'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId()]
         ]);
 
         if (!is_object($subscription)) {
-            throw new ServerErrorHttpException(_('No active subscription for this app ' . $this->di->getApp()->getId()));
+            throw new ServerErrorHttpException(_('No active subscription for this app ' . Di::getDefault()->getApp()->getId() . ' at the company ' . Di::getDefault()->getUserData()->default_company));
         }
 
         return $subscription;

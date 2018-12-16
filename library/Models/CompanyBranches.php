@@ -46,6 +46,12 @@ class CompanyBranches extends AbstractModel
 
     /**
      *
+     * @var integer
+     */
+    public $is_default;
+
+    /**
+     *
      * @var string
      */
     public $created_at;

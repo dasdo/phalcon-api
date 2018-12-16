@@ -156,7 +156,7 @@ class AppsPlans extends AbstractModel
             return $setting->value;
         }
 
-        throw new ServerErrorHttpException(_('No settings found with this ' . $key));
+        throw new ServerErrorHttpException(_('No settings found with for ' . $key . ' at this app ' . $this->apps_id));
     }
 
     /**
@@ -165,12 +165,20 @@ class AppsPlans extends AbstractModel
      * @param string $key
      * @param string $value
      */
-    public function set(string $key, string $value) : bool
+    public function set(string $key, $value) : bool
     {
-        $setting = new AppsPlansSettings();
-        $setting->apps_plans_id = $this->getId();
-        $setting->apps_id = $this->getId();
-        $setting->key = $key;
+        $setting = AppsPlansSettings::findFirst([
+            'conditions' => 'apps_plans_id = ?0 and apps_id = ?1 and key = ?2',
+            'bind' => [$this->getId(), $this->apps_id, $key]
+        ]);
+
+        if (!is_object($setting)) {
+            $setting = new AppsPlansSettings();
+            $setting->apps_plans_id = $this->getId();
+            $setting->apps_id = $this->getId();
+            $setting->key = $key;
+        }
+
         $setting->value = $value;
 
         if (!$setting->save()) {
