@@ -115,15 +115,15 @@ class EmailTemplates extends AbstractModel
      * @param $name
      * @return EmailTemplates
      */
-    public function getByName(string $name): EmailTemplates
+    public static function getByName(string $name): EmailTemplates
     {
         $emailTemplate = self::findFirst([
-            'conditions' => 'company_id = ?1 and app_id = ?2 and name = ?3 and is_deleted = 0',
+            'conditions' => 'company_id in (?0, 0) and app_id in (?1, 0) and name = ?2 and is_deleted = 0',
             'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getConfig()->app->id, $name]
         ]);
 
         if (!is_object($emailTemplate)) {
-            throw new UnprocessableEntityHttpException((string) current($emailTemplate->getMessages()));
+            throw new UnprocessableEntityHttpException(_('No template ' . $name . ' found for this app ' . Di::getDefault()->getApp()->name));
         }
 
         return $emailTemplate;

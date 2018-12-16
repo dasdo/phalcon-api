@@ -1,16 +1,16 @@
-<?php 
+<?php
 
 class UsersInviteCest
 {
     public function insertInvite(ApiTester $I):void
     {
         $userData = $I->apiLogin();
-        $testEmail = 'testMC@example.com';
+        $testEmail = 'testMCs@example.com';
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/users/invite', [
             'email' => $testEmail,
-            'role' => 'Admins',
+            'role' => 'Canvas.Admins',
             'dont_send' => 1
         ]);
 
@@ -23,9 +23,9 @@ class UsersInviteCest
         $hash = $data['invite_hash'];
 
         $I->sendPost('/v1/user-invites/' . $hash, [
-            'firstname' => 'testFirstName',
+            'firstname' => 'testFirstsName',
             'lastname' => 'testLastName',
-            'displayname' => 'testDisplayName',
+            'displayname' => 'testDispslayName',
             'password' => 'testpassword',
             'user_active' => 1
         ]);

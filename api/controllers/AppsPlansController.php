@@ -179,7 +179,8 @@ class AppsPlansController extends BaseController
         }
 
         $this->db->begin();
-        $this->userData->subscription($userSubscription->name)->swap($stripeId);
+
+        $subscription = $this->userData->subscription($userSubscription->name)->swap($stripeId);
 
         //update company app
         $companyApp = UserCompanyApps::findFirst([
@@ -189,7 +190,9 @@ class AppsPlansController extends BaseController
 
         //update the company app to the new plan
         if (is_object($companyApp)) {
-            $subscription = $this->userData->subscription($stripeId);
+            $subscription->name = $stripeId;
+            $subscription->save();
+
             $companyApp->strip_id = $stripeId;
             $companyApp->subscriptions_id = $subscription->getId();
             if (!$companyApp->update()) {
@@ -202,6 +205,7 @@ class AppsPlansController extends BaseController
             $subscription->apps_plans_id = $appPlan->getId();
             if (!$subscription->update()) {
                 $this->db->rollback();
+
                 throw new UnprocessableEntityHttpException((string) current($subscription->getMessages()));
             }
         }

@@ -15,6 +15,7 @@ use Gewaer\Exception\NotFoundHttpException;
 use Gewaer\Exception\ServerErrorHttpException;
 use Phalcon\Http\Response;
 use Gewaer\Models\EmailTemplates;
+use Gewaer\Models\Roles;
 
 /**
  * Class LanguagesController
@@ -77,7 +78,7 @@ class UsersInviteController extends BaseController
         $userInvite = $this->model;
         $userInvite->company_id = $this->userData->default_company;
         $userInvite->app_id = $this->app->getId();
-        $userInvite->role_id = $request['role'] == 'Admins' ? 1 : 2;
+        $userInvite->role_id = Roles::getByAppName($request['role'], $this->userData->defaultCompany)->getId();
         $userInvite->email = $request['email'];
         $userInvite->invite_hash = $random->base58();
         $userInvite->created_at = date('Y-m-d H:m:s');
@@ -86,33 +87,24 @@ class UsersInviteController extends BaseController
             throw new UnprocessableEntityHttpException((string) current($userInvite->getMessages()));
         }
 
-        $userInviteArray = $userInvite->toArray();
-
         //Fetch email template of user
-        $emailTemplate = EmailTemplates::findFirst([
-            'conditions' => 'users_id = ?0 and company_id = ?1 and app_id = ?2 and is_deleted = 0',
-            'bind' => [$this->userData->getId(), $this->userData->default_company, $this->app->getId()]
-        ]);
-
-        if (!is_object($emailTemplate)) {
-            throw new NotFoundHttpException('Email Template not found');
-        }
+        $emailTemplate = EmailTemplates::getByName('users-invite');
 
         // Lets send the mail
 
-        $invitationUrl = $this->config->app->frontEndUrl . 'user-invite/' . $userInviteArray['invite_hash'];
+        $invitationUrl = $this->config->app->frontEndUrl . 'user-invite/' . $userInvite->invite_hash;
 
         if (!defined('API_TESTS')) {
             $subject = _('You have been invited!');
             $this->mail
-            ->to($userInviteArray['email'])
+            ->to($userInvite->email)
             ->subject($subject)
             ->params($invitationUrl)
             ->content($emailTemplate->template)
             ->sendNow();
         }
 
-        return $this->response($userInviteArray);
+        return $this->response($userInvite);
     }
 
     /**
@@ -161,21 +153,26 @@ class UsersInviteController extends BaseController
         $newUser->firstname = $request['firstname'];
         $newUser->lastname = $request['lastname'];
         $newUser->displayname = $request['displayname'];
-        $newUser->password = $request['password'];
+        $newUser->password = ltrim(trim($request['password']));
         $newUser->email = $usersInvite->email;
         $newUser->user_active = 1;
         $newUser->roles_id = $usersInvite->role_id;
         $newUser->created_at = date('Y-m-d H:m:s');
-        // $newUser->name = $this->userData->defaultCompany; //Como puedo agregar este campo si es de una relacion ?
-        $newUser->default_company = $this->userData->default_company;
+        $newUser->default_company = $usersInvite->company_id;
 
-        //Lets insert the new user to our system.
+        try {
+            $this->db->begin();
 
-        if ($newUser->save()) {
-            return $this->response($newUser->toArray());
-        } else {
-            //if not thorw exception
-            throw new UnprocessableEntityHttpException((string) current($newUser->getMessages()));
+            //signup
+            $newUser->signup();
+
+            $this->db->commit();
+        } catch (Exception $e) {
+            $this->db->rollback();
+
+            throw new UnprocessableEntityHttpException($e->getMessage());
         }
+
+        return $this->response($newUser);
     }
 }
