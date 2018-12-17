@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare (strict_types = 1);
 
 namespace Gewaer\Models;
 
@@ -100,17 +100,17 @@ class UserCompanyAppsActivities extends AbstractModel
      *
      * @return string
      */
-    public function getSource(): string
+    public function getSource() : string
     {
         return 'user_company_apps_activities';
     }
 
     /**
-    * Get the value of the settins by it key
-    *
-    * @param string $key
-    * @param string $value
-    */
+     * Get the value of the settins by it key
+     *
+     * @param string $key
+     * @param string $value
+     */
     public static function get(string $key) : string
     {
         $setting = self::findFirst([
@@ -149,7 +149,7 @@ class UserCompanyAppsActivities extends AbstractModel
         $activity->value = $value;
 
         if (!$activity->save()) {
-            throw new ModelException((string) current($activity->getMessages()));
+            throw new ModelException((string)current($activity->getMessages()));
         }
 
         return true;

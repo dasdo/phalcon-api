@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare (strict_types = 1);
 
 namespace Gewaer\Models;
 
@@ -156,7 +156,7 @@ class Companies extends \Baka\Auth\Models\Companies
         $branch->is_default = 1;
         $branch->description = '';
         if (!$branch->save()) {
-            throw new ModelException((string) current($branch->getMessages()));
+            throw new ModelException((string)current($branch->getMessages()));
         }
 
         //assign default branch to the user
@@ -177,9 +177,11 @@ class Companies extends \Baka\Auth\Models\Companies
         }
 
         $companyApps->subscriptions_id = 0;
+        $companyApps->created_at = date('Y-m-d H:i:s');
+        $companyApps->is_deleted = 0;
 
         if (!$companyApps->save()) {
-            throw new ModelException((string) current($companyApps->getMessages()));
+            throw new ModelException((string)current($companyApps->getMessages()));
         }
     }
 }

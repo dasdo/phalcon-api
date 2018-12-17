@@ -46,7 +46,7 @@ class Subscription extends PhalconSubscription
      *
      * @return void
      */
-    public static function getActiveForThisApp(): Subscription
+    public static function getActiveForThisApp() : Subscription
     {
         $subscription = self::findFirst([
             'conditions' => 'company_id = ?0 and apps_id = ?1 and is_deleted  = 0',

@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare (strict_types = 1);
 
 namespace Gewaer\Models;
 
@@ -76,8 +76,10 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
      *
      * @return string
      */
-    public function getSource(): string
+    public function getSource() : string
     {
         return 'user_company_apps';
     }
+
+
 }

@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare (strict_types = 1);
 
 namespace Gewaer\Models;
 
@@ -94,7 +94,7 @@ class Users extends \Baka\Auth\Models\Users
      *
      * @return string
      */
-    public function getSource(): string
+    public function getSource() : string
     {
         return 'users';
     }
@@ -104,7 +104,7 @@ class Users extends \Baka\Auth\Models\Users
      *
      * @return string
      */
-    public function getKey(): string
+    public function getKey() : string
     {
         return $this->id;
     }
@@ -175,7 +175,7 @@ class Users extends \Baka\Auth\Models\Users
         $newUserAssocCompany->user_role = $this->roles_id == 1 ? 'admins' : 'users';
 
         if (!$newUserAssocCompany->save()) {
-            throw new UnprocessableEntityHttpException((string) current($newUserAssocCompany->getMessages()));
+            throw new UnprocessableEntityHttpException((string)current($newUserAssocCompany->getMessages()));
         }
 
         //Insert record into user_roles
@@ -186,7 +186,7 @@ class Users extends \Baka\Auth\Models\Users
         $userRole->company_id = $this->default_company;
 
         if (!$userRole->save()) {
-            throw new UnprocessableEntityHttpException((string) current($userRole->getMessages()));
+            throw new UnprocessableEntityHttpException((string)current($userRole->getMessages()));
         }
 
         //update model total activity

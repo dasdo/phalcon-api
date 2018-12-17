@@ -13,17 +13,17 @@ class EmailTemplatesCest
      * @param ApiTester $I
      * @return void
      */
-    public function insertTemplate(ApiTester $I):void
+    public function insertTemplate(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
-        $testName = 'Test';
+        $testName = 'test_' . time();
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/' . $this->model, [
             'users_id' => 1,
             'company_id' => 1,
             'app_id' => 1,
-            'name' => 'Test',
+            'name' => $testName,
             'template' => 'Hello!!! This is a test email template',
         ]);
 
@@ -43,7 +43,7 @@ class EmailTemplatesCest
     public function updateTemplate(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
-        $updatedName = 'Updated Test Name';
+        $updatedName = 'Updated Test Name 2';
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendGet('/v1/' . $this->model);
@@ -53,13 +53,13 @@ class EmailTemplatesCest
         $data = json_decode($response, true);
 
         $I->sendPUT('/v1/' . $this->model . '/' . $data[count($data) - 1]['id'], [
-            'name' => $updatedName
+            'template' => $updatedName
         ]);
 
         $I->seeResponseIsSuccessful();
         $response = $I->grabResponse();
         $data = json_decode($response, true);
 
-        $I->assertTrue($data['name'] == $updatedName);
+        $I->assertTrue($data['template'] == $updatedName);
     }
 }

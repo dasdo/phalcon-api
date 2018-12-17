@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types = 1);
 
 namespace Gewaer\Traits;
 
@@ -9,6 +9,7 @@ use Gewaer\Models\UserCompanyAppsActivities;
 use Gewaer\Exception\SubscriptionPlanLimitException;
 use Gewaer\Exception\ServerErrorHttpException;
 use ReflectionClass;
+use Phalcon\Di;
 
 /**
  * Trait ResponseTrait
@@ -22,7 +23,7 @@ trait SubscriptionPlanLimitTrait
      *
      * @return string
      */
-    private function getSubcriptionPlanLimitModelKey(): string
+    private function getSubcriptionPlanLimitModelKey() : string
     {
         return strtolower((new ReflectionClass($this))->getShortName()) . '_total';
     }
@@ -32,7 +33,7 @@ trait SubscriptionPlanLimitTrait
      *
      * @return boolean
      */
-    public function isAtLimit(): bool
+    public function isAtLimit() : bool
     {
         $subcription = Subscription::getActiveForThisApp();
         $appPlan = $subcription->appPlan;
@@ -59,18 +60,18 @@ trait SubscriptionPlanLimitTrait
      *
      * @return boolean
      */
-    public function updateAppActivityLimit(): bool
+    public function updateAppActivityLimit() : bool
     {
         $companyAppActivityLimit = UserCompanyAppsActivities::findFirst([
             'conditions' => 'company_id = ?0 and apps_id = ?1 and key = ?2',
-            'bind' => [$this->di->getUserData()->default_company, $this->di->getApp()->getId(), $this->getSubcriptionPlanLimitModelKey()]
+            'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId(), $this->getSubcriptionPlanLimitModelKey()]
         ]);
 
         if (is_object($companyAppActivityLimit)) {
             //its a varchar so lets make sure we convert it to int
-            $companyAppActivityLimit->value = (int) $companyAppActivityLimit->value + 1;
+            $companyAppActivityLimit->value = (int)$companyAppActivityLimit->value + 1;
             if (!$companyAppActivityLimit->save()) {
-                throw new ServerErrorHttpException((string) current($companyAppActivityLimit->getMessages()));
+                throw new ServerErrorHttpException((string)current($companyAppActivityLimit->getMessages()));
             }
         } else {
             $userCopmanyAppsActivites = new UserCompanyAppsActivities();

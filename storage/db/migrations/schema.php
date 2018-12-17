@@ -1,17 +1,17 @@
 <?php
 
-return array (
-  'database' => 
-  array (
+return array(
+  'database' =>
+    array(
     'default_character_set_name' => 'utf8',
     'default_collation_name' => 'utf8_general_mysql500_ci',
   ),
-  'tables' => 
-  array (
-    'apps' => 
-    array (
-      'table' => 
-      array (
+  'tables' =>
+    array(
+    'apps' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'apps',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -19,25 +19,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Compact',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11) unsigned',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => 'auto_increment',
@@ -45,21 +45,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'name' => 
-        array (
+        'name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -69,21 +69,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'description' => 
-        array (
+        'description' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'description',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -93,21 +93,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'url' => 
-        array (
+        'url' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'url',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '255',
           'CHARACTER_OCTET_LENGTH' => '765',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(255)',
@@ -117,8 +117,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_actived' => 
-        array (
+        'is_actived' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
@@ -127,13 +127,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(1)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -141,23 +141,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -165,23 +165,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -189,23 +189,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '8',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -214,20 +214,20 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'apps',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -235,12 +235,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'apps_roles' => 
-    array (
-      'table' => 
-      array (
+    'apps_roles' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'apps_roles',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -248,25 +248,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Compact',
       ),
-      'columns' => 
-      array (
-        'apps_id' => 
-        array (
+      'columns' =>
+        array(
+        'apps_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_roles',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -274,21 +274,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'roles_name' => 
-        array (
+        'roles_name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_roles',
           'COLUMN_NAME' => 'roles_name',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '32',
           'CHARACTER_OCTET_LENGTH' => '96',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(32)',
@@ -299,15 +299,14 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-      ),
-      'foreign_keys' => NULL,
+      'indexes' =>
+        array(),
+      'foreign_keys' => null,
     ),
-    'companies' => 
-    array (
-      'table' => 
-      array (
+    'companies' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'companies',
         'engine' => 'InnoDB',
         'table_comment' => '					',
@@ -315,25 +314,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Compact',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => 'auto_increment',
@@ -341,21 +340,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'name' => 
-        array (
+        'name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -365,21 +364,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'profile_image' => 
-        array (
+        'profile_image' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'profile_image',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -389,21 +388,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'website' => 
-        array (
+        'website' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'website',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -413,23 +412,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'users_id' => 
-        array (
+        'users_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'MUL',
           'EXTRA' => '',
@@ -437,23 +436,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -461,23 +460,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -485,23 +484,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '8',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -510,71 +509,71 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'companies',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'name' => 
-        array (
-          1 => 
-          array (
+        'name' =>
+          array(
+          1 =>
+            array(
             'Table' => 'companies',
             'Non_unique' => '0',
             'Key_name' => 'name',
             'Seq_in_index' => '1',
             'Column_name' => 'name',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => 'YES',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'companies',
             'Non_unique' => '0',
             'Key_name' => 'name',
             'Seq_in_index' => '2',
             'Column_name' => 'users_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'users_id' => 
-        array (
-          1 => 
-          array (
+        'users_id' =>
+          array(
+          1 =>
+            array(
             'Table' => 'companies',
             'Non_unique' => '1',
             'Key_name' => 'users_id',
             'Seq_in_index' => '1',
             'Column_name' => 'users_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -582,12 +581,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'company_settings' => 
-    array (
-      'table' => 
-      array (
+    'company_settings' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'company_settings',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -595,25 +594,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Compact',
       ),
-      'columns' => 
-      array (
-        'company_id' => 
-        array (
+      'columns' =>
+        array(
+        'company_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_settings',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'MUL',
           'EXTRA' => '',
@@ -624,21 +623,21 @@ return array (
 - modulo leads, agent default, rotation default , etc',
           'GENERATION_EXPRESSION' => '',
         ),
-        'name' => 
-        array (
+        'name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_settings',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -648,21 +647,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'value' => 
-        array (
+        'value' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_settings',
           'COLUMN_NAME' => 'value',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'longtext',
           'CHARACTER_MAXIMUM_LENGTH' => '4294967295',
           'CHARACTER_OCTET_LENGTH' => '4294967295',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'longtext',
@@ -672,23 +671,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_settings',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -696,23 +695,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_settings',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -720,23 +719,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_settings',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -745,71 +744,71 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'company_settings',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'name',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'index4' => 
-        array (
-          1 => 
-          array (
+        'index4' =>
+          array(
+          1 =>
+            array(
             'Table' => 'company_settings',
             'Non_unique' => '1',
             'Key_name' => 'index4',
             'Seq_in_index' => '1',
             'Column_name' => 'name',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'index5' => 
-        array (
-          1 => 
-          array (
+        'index5' =>
+          array(
+          1 =>
+            array(
             'Table' => 'company_settings',
             'Non_unique' => '1',
             'Key_name' => 'index5',
             'Seq_in_index' => '1',
             'Column_name' => 'company_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'company_settings',
             'Non_unique' => '1',
             'Key_name' => 'index5',
             'Seq_in_index' => '2',
             'Column_name' => 'name',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -817,12 +816,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'languages' => 
-    array (
-      'table' => 
-      array (
+    'languages' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'languages',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -830,23 +829,23 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Dynamic',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '2',
           'CHARACTER_OCTET_LENGTH' => '6',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(2)',
@@ -856,21 +855,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'name' => 
-        array (
+        'name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -880,21 +879,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'title' => 
-        array (
+        'title' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'title',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -904,23 +903,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'order' => 
-        array (
+        'order' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'order',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(3) unsigned',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -928,23 +927,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -952,23 +951,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -976,23 +975,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(1)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -1001,20 +1000,20 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'languages',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -1022,12 +1021,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'session_keys' => 
-    array (
-      'table' => 
-      array (
+    'session_keys' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'session_keys',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -1035,23 +1034,23 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Compact',
       ),
-      'columns' => 
-      array (
-        'sessions_id' => 
-        array (
+      'columns' =>
+        array(
+        'sessions_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'session_keys',
           'COLUMN_NAME' => 'sessions_id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -1061,23 +1060,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'users_id' => 
-        array (
+        'users_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'session_keys',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'bigint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '20',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'bigint(20) unsigned',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -1085,21 +1084,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'last_ip' => 
-        array (
+        'last_ip' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'session_keys',
           'COLUMN_NAME' => 'last_ip',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '39',
           'CHARACTER_OCTET_LENGTH' => '117',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(39)',
@@ -1109,23 +1108,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'last_login' => 
-        array (
+        'last_login' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'session_keys',
           'COLUMN_NAME' => 'last_login',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'bigint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '19',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'bigint(20)',
           'COLUMN_KEY' => 'MUL',
           'EXTRA' => '',
@@ -1134,89 +1133,89 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'session_keys',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'sessions_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'session_keys',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '2',
             'Column_name' => 'users_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'last_login' => 
-        array (
-          1 => 
-          array (
+        'last_login' =>
+          array(
+          1 =>
+            array(
             'Table' => 'session_keys',
             'Non_unique' => '1',
             'Key_name' => 'last_login',
             'Seq_in_index' => '1',
             'Column_name' => 'last_login',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'user_id' => 
-        array (
-          1 => 
-          array (
+        'user_id' =>
+          array(
+          1 =>
+            array(
             'Table' => 'session_keys',
             'Non_unique' => '1',
             'Key_name' => 'user_id',
             'Seq_in_index' => '1',
             'Column_name' => 'users_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'session_id' => 
-        array (
-          1 => 
-          array (
+        'session_id' =>
+          array(
+          1 =>
+            array(
             'Table' => 'session_keys',
             'Non_unique' => '1',
             'Key_name' => 'session_id',
             'Seq_in_index' => '1',
             'Column_name' => 'sessions_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -1224,12 +1223,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'sessions' => 
-    array (
-      'table' => 
-      array (
+    'sessions' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'sessions',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -1237,23 +1236,23 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Compact',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -1263,23 +1262,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'users_id' => 
-        array (
+        'users_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'bigint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '20',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'bigint(20) unsigned',
           'COLUMN_KEY' => 'MUL',
           'EXTRA' => '',
@@ -1287,21 +1286,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'token' => 
-        array (
+        'token' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'token',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'text',
           'CHARACTER_MAXIMUM_LENGTH' => '65535',
           'CHARACTER_OCTET_LENGTH' => '65535',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'text',
@@ -1311,23 +1310,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'start' => 
-        array (
+        'start' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'start',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'bigint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '19',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'bigint(20)',
           'COLUMN_KEY' => 'MUL',
           'EXTRA' => '',
@@ -1335,8 +1334,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'time' => 
-        array (
+        'time' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
@@ -1345,13 +1344,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'bigint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '19',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'bigint(20)',
           'COLUMN_KEY' => 'MUL',
           'EXTRA' => '',
@@ -1359,21 +1358,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'ip' => 
-        array (
+        'ip' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'ip',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '39',
           'CHARACTER_OCTET_LENGTH' => '117',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(39)',
@@ -1383,21 +1382,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'page' => 
-        array (
+        'page' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'page',
           'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -1407,8 +1406,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'logged_in' => 
-        array (
+        'logged_in' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
@@ -1419,9 +1418,9 @@ return array (
           'DATA_TYPE' => 'enum',
           'CHARACTER_MAXIMUM_LENGTH' => '1',
           'CHARACTER_OCTET_LENGTH' => '3',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'enum(\'0\',\'1\')',
@@ -1431,8 +1430,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_admin' => 
-        array (
+        'is_admin' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
@@ -1443,9 +1442,9 @@ return array (
           'DATA_TYPE' => 'enum',
           'CHARACTER_MAXIMUM_LENGTH' => '1',
           'CHARACTER_OCTET_LENGTH' => '3',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'enum(\'0\',\'1\')',
@@ -1456,92 +1455,92 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'sessions',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'user_id' => 
-        array (
-          1 => 
-          array (
+        'user_id' =>
+          array(
+          1 =>
+            array(
             'Table' => 'sessions',
             'Non_unique' => '1',
             'Key_name' => 'user_id',
             'Seq_in_index' => '1',
             'Column_name' => 'users_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'time' => 
-        array (
-          1 => 
-          array (
+        'time' =>
+          array(
+          1 =>
+            array(
             'Table' => 'sessions',
             'Non_unique' => '1',
             'Key_name' => 'time',
             'Seq_in_index' => '1',
             'Column_name' => 'time',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'logged_in' => 
-        array (
-          1 => 
-          array (
+        'logged_in' =>
+          array(
+          1 =>
+            array(
             'Table' => 'sessions',
             'Non_unique' => '1',
             'Key_name' => 'logged_in',
             'Seq_in_index' => '1',
             'Column_name' => 'logged_in',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'start' => 
-        array (
-          1 => 
-          array (
+        'start' =>
+          array(
+          1 =>
+            array(
             'Table' => 'sessions',
             'Non_unique' => '1',
             'Key_name' => 'start',
             'Seq_in_index' => '1',
             'Column_name' => 'start',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -1549,12 +1548,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'sources' => 
-    array (
-      'table' => 
-      array (
+    'sources' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'sources',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -1562,25 +1561,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Compact',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sources',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'smallint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '5',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'smallint(5) unsigned',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => 'auto_increment',
@@ -1588,21 +1587,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'title' => 
-        array (
+        'title' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sources',
           'COLUMN_NAME' => 'title',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -1612,21 +1611,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'url' => 
-        array (
+        'url' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sources',
           'COLUMN_NAME' => 'url',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -1636,21 +1635,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'language_id' => 
-        array (
+        'language_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sources',
           'COLUMN_NAME' => 'language_id',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '5',
           'CHARACTER_OCTET_LENGTH' => '15',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(5)',
@@ -1660,23 +1659,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'added_date' => 
-        array (
+        'added_date' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sources',
           'COLUMN_NAME' => 'added_date',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -1684,23 +1683,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_date' => 
-        array (
+        'updated_date' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sources',
           'COLUMN_NAME' => 'updated_date',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -1709,38 +1708,38 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'sources',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'unq1' => 
-        array (
-          1 => 
-          array (
+        'unq1' =>
+          array(
+          1 =>
+            array(
             'Table' => 'sources',
             'Non_unique' => '0',
             'Key_name' => 'unq1',
             'Seq_in_index' => '1',
             'Column_name' => 'url',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -1748,379 +1747,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'suscriptions' => 
-    array (
-      'table' => 
-      array (
-        'table_name' => 'suscriptions',
-        'engine' => 'InnoDB',
-        'table_comment' => '',
-        'table_collation' => 'utf8_general_ci',
-        'character_set_name' => 'utf8',
-        'row_format' => 'Compact',
-      ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'id',
-          'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'NO',
-          'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => '10',
-          'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'int(11)',
-          'COLUMN_KEY' => 'PRI',
-          'EXTRA' => 'auto_increment',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'plans_id' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'plans_id',
-          'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => '10',
-          'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'int(11)',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'users_id' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'users_id',
-          'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'NO',
-          'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => '10',
-          'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'int(11)',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'apps_id' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'apps_id',
-          'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => '10',
-          'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'int(11)',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'stripe_id' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'stripe_id',
-          'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'varchar',
-          'CHARACTER_MAXIMUM_LENGTH' => '45',
-          'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => 'utf8',
-          'COLLATION_NAME' => 'utf8_general_ci',
-          'COLUMN_TYPE' => 'varchar(45)',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'company_id' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'company_id',
-          'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'NO',
-          'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => '10',
-          'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'int(11)',
-          'COLUMN_KEY' => 'UNI',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'stripe_plan' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'stripe_plan',
-          'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'varchar',
-          'CHARACTER_MAXIMUM_LENGTH' => '45',
-          'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => 'utf8',
-          'COLLATION_NAME' => 'utf8_general_ci',
-          'COLUMN_TYPE' => 'varchar(45)',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'quantity' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'quantity',
-          'ORDINAL_POSITION' => '8',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => '10',
-          'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'int(11)',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'trial_ends_at' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'trial_ends_at',
-          'ORDINAL_POSITION' => '9',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'datetime',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'ends_at' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'ends_at',
-          'ORDINAL_POSITION' => '10',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'datetime',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'created_at' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'created_at',
-          'ORDINAL_POSITION' => '11',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'datetime',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'updated_at' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'updated_at',
-          'ORDINAL_POSITION' => '12',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'datetime',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'is_deleted' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'suscriptions',
-          'COLUMN_NAME' => 'is_deleted',
-          'ORDINAL_POSITION' => '13',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => '10',
-          'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'int(11)',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-      ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
-            'Table' => 'suscriptions',
-            'Non_unique' => '0',
-            'Key_name' => 'PRIMARY',
-            'Seq_in_index' => '1',
-            'Column_name' => 'id',
-            'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
-            'Null' => '',
-            'Index_type' => 'BTREE',
-            'Comment' => '',
-            'Index_comment' => '',
-          ),
-        ),
-        'company_id' => 
-        array (
-          1 => 
-          array (
-            'Table' => 'suscriptions',
-            'Non_unique' => '0',
-            'Key_name' => 'company_id',
-            'Seq_in_index' => '1',
-            'Column_name' => 'company_id',
-            'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
-            'Null' => '',
-            'Index_type' => 'BTREE',
-            'Comment' => '',
-            'Index_comment' => '',
-          ),
-        ),
-      ),
-      'foreign_keys' => NULL,
-    ),
-    'user_company_apps' => 
-    array (
-      'table' => 
-      array (
+    'user_company_apps' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'user_company_apps',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -2128,25 +1760,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Compact',
       ),
-      'columns' => 
-      array (
-        'company_id' => 
-        array (
+      'columns' =>
+        array(
+        'company_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -2154,23 +1786,23 @@ return array (
           'COLUMN_COMMENT' => 'the apps the company has paid for , crm, websitemanager, etc',
           'GENERATION_EXPRESSION' => '',
         ),
-        'apps_id' => 
-        array (
+        'apps_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -2178,21 +1810,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'stripe_id' => 
-        array (
+        'stripe_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'stripe_id',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '50',
           'CHARACTER_OCTET_LENGTH' => '150',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(50)',
@@ -2202,23 +1834,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'subscriptions_id' => 
-        array (
+        'subscriptions_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'subscriptions_id',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -2226,23 +1858,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -2250,23 +1882,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -2274,8 +1906,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
@@ -2284,13 +1916,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(4)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -2299,35 +1931,35 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'user_company_apps',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'company_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'user_company_apps',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '2',
             'Column_name' => 'apps_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -2335,12 +1967,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'user_config' => 
-    array (
-      'table' => 
-      array (
+    'user_config' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'user_config',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -2348,25 +1980,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Compact',
       ),
-      'columns' => 
-      array (
-        'users_id' => 
-        array (
+      'columns' =>
+        array(
+        'users_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_config',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'bigint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '20',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'bigint(20) unsigned',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -2374,21 +2006,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'name' => 
-        array (
+        'name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_config',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -2398,21 +2030,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'value' => 
-        array (
+        'value' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_config',
           'COLUMN_NAME' => 'value',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -2422,23 +2054,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_config',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -2446,23 +2078,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_config',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -2471,35 +2103,35 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'user_config',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'users_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'user_config',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '2',
             'Column_name' => 'name',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -2507,12 +2139,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'user_linked_sources' => 
-    array (
-      'table' => 
-      array (
+    'user_linked_sources' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'user_linked_sources',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -2520,25 +2152,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Compact',
       ),
-      'columns' => 
-      array (
-        'users_id' => 
-        array (
+      'columns' =>
+        array(
+        'users_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_linked_sources',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'bigint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '20',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'bigint(20) unsigned',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -2546,23 +2178,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'source_id' => 
-        array (
+        'source_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_linked_sources',
           'COLUMN_NAME' => 'source_id',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'smallint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '5',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'smallint(5) unsigned',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -2570,21 +2202,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'source_users_id' => 
-        array (
+        'source_users_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_linked_sources',
           'COLUMN_NAME' => 'source_users_id',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '30',
           'CHARACTER_OCTET_LENGTH' => '90',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(30)',
@@ -2594,21 +2226,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'source_users_id_text' => 
-        array (
+        'source_users_id_text' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_linked_sources',
           'COLUMN_NAME' => 'source_users_id_text',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '255',
           'CHARACTER_OCTET_LENGTH' => '765',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(255)',
@@ -2618,21 +2250,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'source_username' => 
-        array (
+        'source_username' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_linked_sources',
           'COLUMN_NAME' => 'source_username',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -2643,140 +2275,140 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'user_linked_sources',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'users_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'user_linked_sources',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '2',
             'Column_name' => 'source_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'user_id' => 
-        array (
-          1 => 
-          array (
+        'user_id' =>
+          array(
+          1 =>
+            array(
             'Table' => 'user_linked_sources',
             'Non_unique' => '1',
             'Key_name' => 'user_id',
             'Seq_in_index' => '1',
             'Column_name' => 'users_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'source_user_id' => 
-        array (
-          1 => 
-          array (
+        'source_user_id' =>
+          array(
+          1 =>
+            array(
             'Table' => 'user_linked_sources',
             'Non_unique' => '1',
             'Key_name' => 'source_user_id',
             'Seq_in_index' => '1',
             'Column_name' => 'source_users_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'source_user_id_text' => 
-        array (
-          1 => 
-          array (
+        'source_user_id_text' =>
+          array(
+          1 =>
+            array(
             'Table' => 'user_linked_sources',
             'Non_unique' => '1',
             'Key_name' => 'source_user_id_text',
             'Seq_in_index' => '1',
             'Column_name' => 'source_users_id_text',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => 'YES',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'source_username' => 
-        array (
-          1 => 
-          array (
+        'source_username' =>
+          array(
+          1 =>
+            array(
             'Table' => 'user_linked_sources',
             'Non_unique' => '1',
             'Key_name' => 'source_username',
             'Seq_in_index' => '1',
             'Column_name' => 'source_username',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'user_id_2' => 
-        array (
-          1 => 
-          array (
+        'user_id_2' =>
+          array(
+          1 =>
+            array(
             'Table' => 'user_linked_sources',
             'Non_unique' => '1',
             'Key_name' => 'user_id_2',
             'Seq_in_index' => '1',
             'Column_name' => 'users_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'user_linked_sources',
             'Non_unique' => '1',
             'Key_name' => 'user_id_2',
             'Seq_in_index' => '2',
             'Column_name' => 'source_users_id_text',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => 'YES',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -2784,12 +2416,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'users' => 
-    array (
-      'table' => 
-      array (
+    'users' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'users',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -2797,25 +2429,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Compact',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'bigint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '20',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'bigint(20) unsigned',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => 'auto_increment',
@@ -2823,21 +2455,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'email' => 
-        array (
+        'email' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'email',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -2847,21 +2479,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'password' => 
-        array (
+        'password' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'password',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '255',
           'CHARACTER_OCTET_LENGTH' => '765',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(255)',
@@ -2871,21 +2503,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'firstname' => 
-        array (
+        'firstname' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'firstname',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -2895,21 +2527,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'lastname' => 
-        array (
+        'lastname' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'lastname',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -2919,23 +2551,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'roles_id' => 
-        array (
+        'roles_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'roles_id',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -2943,21 +2575,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'displayname' => 
-        array (
+        'displayname' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'displayname',
           'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -2967,23 +2599,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'registered' => 
-        array (
+        'registered' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'registered',
           'ORDINAL_POSITION' => '8',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -2991,23 +2623,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'lastvisit' => 
-        array (
+        'lastvisit' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'lastvisit',
           'ORDINAL_POSITION' => '9',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3015,23 +2647,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'dob' => 
-        array (
+        'dob' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'dob',
           'ORDINAL_POSITION' => '10',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'date',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'date',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3039,8 +2671,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'sex' => 
-        array (
+        'sex' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
@@ -3051,9 +2683,9 @@ return array (
           'DATA_TYPE' => 'enum',
           'CHARACTER_MAXIMUM_LENGTH' => '1',
           'CHARACTER_OCTET_LENGTH' => '3',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'enum(\'U\',\'M\',\'F\')',
@@ -3063,8 +2695,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'timezone' => 
-        array (
+        'timezone' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
@@ -3075,9 +2707,9 @@ return array (
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '128',
           'CHARACTER_OCTET_LENGTH' => '384',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(128)',
@@ -3087,23 +2719,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'default_company' => 
-        array (
+        'default_company' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'default_company',
           'ORDINAL_POSITION' => '13',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3111,23 +2743,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'default_company_branch' => 
-        array (
+        'default_company_branch' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'default_company_branch',
           'ORDINAL_POSITION' => '14',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3135,23 +2767,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'city_id' => 
-        array (
+        'city_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'city_id',
           'ORDINAL_POSITION' => '15',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'mediumint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '7',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'mediumint(8) unsigned',
           'COLUMN_KEY' => 'MUL',
           'EXTRA' => '',
@@ -3159,23 +2791,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'state_id' => 
-        array (
+        'state_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'state_id',
           'ORDINAL_POSITION' => '16',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11) unsigned',
           'COLUMN_KEY' => 'MUL',
           'EXTRA' => '',
@@ -3183,23 +2815,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'country_id' => 
-        array (
+        'country_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'country_id',
           'ORDINAL_POSITION' => '17',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'smallint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '5',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'smallint(5) unsigned',
           'COLUMN_KEY' => 'MUL',
           'EXTRA' => '',
@@ -3207,8 +2839,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'profile_privacy' => 
-        array (
+        'profile_privacy' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
@@ -3219,9 +2851,9 @@ return array (
           'DATA_TYPE' => 'enum',
           'CHARACTER_MAXIMUM_LENGTH' => '1',
           'CHARACTER_OCTET_LENGTH' => '3',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'enum(\'0\',\'1\')',
@@ -3231,21 +2863,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'interests' => 
-        array (
+        'interests' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'interests',
           'ORDINAL_POSITION' => '19',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'mediumtext',
           'CHARACTER_MAXIMUM_LENGTH' => '16777215',
           'CHARACTER_OCTET_LENGTH' => '16777215',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'mediumtext',
@@ -3255,21 +2887,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'profile_image' => 
-        array (
+        'profile_image' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'profile_image',
           'ORDINAL_POSITION' => '20',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '45',
           'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(45)',
@@ -3279,21 +2911,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'profile_remote_image' => 
-        array (
+        'profile_remote_image' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'profile_remote_image',
           'ORDINAL_POSITION' => '21',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '255',
           'CHARACTER_OCTET_LENGTH' => '765',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(255)',
@@ -3303,21 +2935,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'profile_header' => 
-        array (
+        'profile_header' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'profile_header',
           'ORDINAL_POSITION' => '22',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '192',
           'CHARACTER_OCTET_LENGTH' => '576',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_bin',
           'COLUMN_TYPE' => 'varchar(192)',
@@ -3327,21 +2959,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'profile_header_mobile' => 
-        array (
+        'profile_header_mobile' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'profile_header_mobile',
           'ORDINAL_POSITION' => '23',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '192',
           'CHARACTER_OCTET_LENGTH' => '576',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(192)',
@@ -3351,23 +2983,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'user_active' => 
-        array (
+        'user_active' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_active',
           'ORDINAL_POSITION' => '24',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3375,23 +3007,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'user_level' => 
-        array (
+        'user_level' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_level',
           'ORDINAL_POSITION' => '25',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3399,23 +3031,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'user_login_tries' => 
-        array (
+        'user_login_tries' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_login_tries',
           'ORDINAL_POSITION' => '26',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3423,23 +3055,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'user_last_login_try' => 
-        array (
+        'user_last_login_try' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_last_login_try',
           'ORDINAL_POSITION' => '27',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'bigint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '19',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'bigint(20)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3447,23 +3079,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'session_time' => 
-        array (
+        'session_time' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'session_time',
           'ORDINAL_POSITION' => '28',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'bigint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '19',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'bigint(20)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3471,23 +3103,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'session_page' => 
-        array (
+        'session_page' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'session_page',
           'ORDINAL_POSITION' => '29',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3495,8 +3127,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'welcome' => 
-        array (
+        'welcome' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
@@ -3505,13 +3137,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3519,21 +3151,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'user_activation_key' => 
-        array (
+        'user_activation_key' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_activation_key',
           'ORDINAL_POSITION' => '31',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '64',
           'CHARACTER_OCTET_LENGTH' => '192',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_bin',
           'COLUMN_TYPE' => 'varchar(64)',
@@ -3543,21 +3175,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'user_activation_email' => 
-        array (
+        'user_activation_email' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_activation_email',
           'ORDINAL_POSITION' => '32',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '64',
           'CHARACTER_OCTET_LENGTH' => '192',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_bin',
           'COLUMN_TYPE' => 'varchar(64)',
@@ -3567,21 +3199,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'user_activation_forgot' => 
-        array (
+        'user_activation_forgot' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_activation_forgot',
           'ORDINAL_POSITION' => '33',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '100',
           'CHARACTER_OCTET_LENGTH' => '300',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_bin',
           'COLUMN_TYPE' => 'varchar(100)',
@@ -3591,21 +3223,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'language' => 
-        array (
+        'language' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'language',
           'ORDINAL_POSITION' => '34',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '5',
           'CHARACTER_OCTET_LENGTH' => '15',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_bin',
           'COLUMN_TYPE' => 'varchar(5)',
@@ -3615,23 +3247,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'karma' => 
-        array (
+        'karma' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'karma',
           'ORDINAL_POSITION' => '35',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3639,23 +3271,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'votes' => 
-        array (
+        'votes' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'votes',
           'ORDINAL_POSITION' => '36',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11) unsigned',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3663,23 +3295,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'votes_points' => 
-        array (
+        'votes_points' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'votes_points',
           'ORDINAL_POSITION' => '37',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -3687,8 +3319,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'banned' => 
-        array (
+        'banned' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
@@ -3699,9 +3331,9 @@ return array (
           'DATA_TYPE' => 'char',
           'CHARACTER_MAXIMUM_LENGTH' => '1',
           'CHARACTER_OCTET_LENGTH' => '3',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'char(1)',
@@ -3711,449 +3343,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'stripe_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
-          'COLUMN_NAME' => 'created_at',
+          'COLUMN_NAME' => 'stripe_id',
           'ORDINAL_POSITION' => '39',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'datetime',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'updated_at' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'users',
-          'COLUMN_NAME' => 'updated_at',
-          'ORDINAL_POSITION' => '40',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'datetime',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'is_deleted' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'users',
-          'COLUMN_NAME' => 'is_deleted',
-          'ORDINAL_POSITION' => '41',
-          'COLUMN_DEFAULT' => '0',
-          'IS_NULLABLE' => 'NO',
-          'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => '10',
-          'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'int(11)',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-      ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
-            'Table' => 'users',
-            'Non_unique' => '0',
-            'Key_name' => 'PRIMARY',
-            'Seq_in_index' => '1',
-            'Column_name' => 'id',
-            'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
-            'Null' => '',
-            'Index_type' => 'BTREE',
-            'Comment' => '',
-            'Index_comment' => '',
-          ),
-        ),
-        'unq1' => 
-        array (
-          1 => 
-          array (
-            'Table' => 'users',
-            'Non_unique' => '0',
-            'Key_name' => 'unq1',
-            'Seq_in_index' => '1',
-            'Column_name' => 'email',
-            'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
-            'Null' => '',
-            'Index_type' => 'BTREE',
-            'Comment' => '',
-            'Index_comment' => '',
-          ),
-        ),
-        'unq2' => 
-        array (
-          1 => 
-          array (
-            'Table' => 'users',
-            'Non_unique' => '0',
-            'Key_name' => 'unq2',
-            'Seq_in_index' => '1',
-            'Column_name' => 'displayname',
-            'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
-            'Null' => 'YES',
-            'Index_type' => 'BTREE',
-            'Comment' => '',
-            'Index_comment' => '',
-          ),
-        ),
-        'idx1' => 
-        array (
-          1 => 
-          array (
-            'Table' => 'users',
-            'Non_unique' => '1',
-            'Key_name' => 'idx1',
-            'Seq_in_index' => '1',
-            'Column_name' => 'city_id',
-            'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
-            'Null' => 'YES',
-            'Index_type' => 'BTREE',
-            'Comment' => '',
-            'Index_comment' => '',
-          ),
-        ),
-        'idx2' => 
-        array (
-          1 => 
-          array (
-            'Table' => 'users',
-            'Non_unique' => '1',
-            'Key_name' => 'idx2',
-            'Seq_in_index' => '1',
-            'Column_name' => 'state_id',
-            'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
-            'Null' => 'YES',
-            'Index_type' => 'BTREE',
-            'Comment' => '',
-            'Index_comment' => '',
-          ),
-        ),
-        'idx3' => 
-        array (
-          1 => 
-          array (
-            'Table' => 'users',
-            'Non_unique' => '1',
-            'Key_name' => 'idx3',
-            'Seq_in_index' => '1',
-            'Column_name' => 'country_id',
-            'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
-            'Null' => 'YES',
-            'Index_type' => 'BTREE',
-            'Comment' => '',
-            'Index_comment' => '',
-          ),
-        ),
-      ),
-      'foreign_keys' => NULL,
-    ),
-    'users_associated_company' => 
-    array (
-      'table' => 
-      array (
-        'table_name' => 'users_associated_company',
-        'engine' => 'InnoDB',
-        'table_comment' => '',
-        'table_collation' => 'utf8_general_ci',
-        'character_set_name' => 'utf8',
-        'row_format' => 'Compact',
-      ),
-      'columns' => 
-      array (
-        'users_id' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'users_associated_company',
-          'COLUMN_NAME' => 'users_id',
-          'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'NO',
-          'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => '10',
-          'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'int(11)',
-          'COLUMN_KEY' => 'PRI',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'company_id' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'users_associated_company',
-          'COLUMN_NAME' => 'company_id',
-          'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'NO',
-          'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => '10',
-          'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'int(11)',
-          'COLUMN_KEY' => 'PRI',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'identify_id' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'users_associated_company',
-          'COLUMN_NAME' => 'identify_id',
-          'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'varchar',
-          'CHARACTER_MAXIMUM_LENGTH' => '45',
-          'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => 'utf8',
-          'COLLATION_NAME' => 'utf8_general_ci',
-          'COLUMN_TYPE' => 'varchar(45)',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'user_active' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'users_associated_company',
-          'COLUMN_NAME' => 'user_active',
-          'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => '1',
-          'IS_NULLABLE' => 'NO',
-          'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => '3',
-          'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'tinyint(1)',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'user_role' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'users_associated_company',
-          'COLUMN_NAME' => 'user_role',
-          'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'YES',
-          'DATA_TYPE' => 'varchar',
-          'CHARACTER_MAXIMUM_LENGTH' => '45',
-          'CHARACTER_OCTET_LENGTH' => '135',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => 'utf8',
-          'COLLATION_NAME' => 'utf8_general_ci',
-          'COLUMN_TYPE' => 'varchar(45)',
-          'COLUMN_KEY' => '',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-      ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
-            'Table' => 'users_associated_company',
-            'Non_unique' => '0',
-            'Key_name' => 'PRIMARY',
-            'Seq_in_index' => '1',
-            'Column_name' => 'users_id',
-            'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
-            'Null' => '',
-            'Index_type' => 'BTREE',
-            'Comment' => '',
-            'Index_comment' => '',
-          ),
-          2 => 
-          array (
-            'Table' => 'users_associated_company',
-            'Non_unique' => '0',
-            'Key_name' => 'PRIMARY',
-            'Seq_in_index' => '2',
-            'Column_name' => 'company_id',
-            'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
-            'Null' => '',
-            'Index_type' => 'BTREE',
-            'Comment' => '',
-            'Index_comment' => '',
-          ),
-        ),
-        'users_id' => 
-        array (
-          1 => 
-          array (
-            'Table' => 'users_associated_company',
-            'Non_unique' => '0',
-            'Key_name' => 'users_id',
-            'Seq_in_index' => '1',
-            'Column_name' => 'users_id',
-            'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
-            'Null' => '',
-            'Index_type' => 'BTREE',
-            'Comment' => '',
-            'Index_comment' => '',
-          ),
-          2 => 
-          array (
-            'Table' => 'users_associated_company',
-            'Non_unique' => '0',
-            'Key_name' => 'users_id',
-            'Seq_in_index' => '2',
-            'Column_name' => 'company_id',
-            'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
-            'Null' => '',
-            'Index_type' => 'BTREE',
-            'Comment' => '',
-            'Index_comment' => '',
-          ),
-        ),
-      ),
-      'foreign_keys' => NULL,
-    ),
-    'ut_migrations' => 
-    array (
-      'table' => 
-      array (
-        'table_name' => 'ut_migrations',
-        'engine' => 'InnoDB',
-        'table_comment' => '',
-        'table_collation' => 'utf8_general_ci',
-        'character_set_name' => 'utf8',
-        'row_format' => 'Dynamic',
-      ),
-      'columns' => 
-      array (
-        'version' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'ut_migrations',
-          'COLUMN_NAME' => 'version',
-          'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'NO',
-          'DATA_TYPE' => 'bigint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => '19',
-          'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
-          'COLUMN_TYPE' => 'bigint(20)',
-          'COLUMN_KEY' => 'PRI',
-          'EXTRA' => '',
-          'PRIVILEGES' => 'select,insert,update,references',
-          'COLUMN_COMMENT' => '',
-          'GENERATION_EXPRESSION' => '',
-        ),
-        'migration_name' => 
-        array (
-          'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'ut_migrations',
-          'COLUMN_NAME' => 'migration_name',
-          'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '100',
           'CHARACTER_OCTET_LENGTH' => '300',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_ci',
           'COLUMN_TYPE' => 'varchar(100)',
@@ -4163,23 +3367,547 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'start_time' => 
-        array (
+        'card_brand' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users',
+          'COLUMN_NAME' => 'card_brand',
+          'ORDINAL_POSITION' => '40',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '50',
+          'CHARACTER_OCTET_LENGTH' => '150',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_ci',
+          'COLUMN_TYPE' => 'varchar(50)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'card_last_four' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users',
+          'COLUMN_NAME' => 'card_last_four',
+          'ORDINAL_POSITION' => '41',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(4)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'trial_ends_at' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users',
+          'COLUMN_NAME' => 'trial_ends_at',
+          'ORDINAL_POSITION' => '42',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'datetime',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => '0',
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'datetime',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'created_at' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users',
+          'COLUMN_NAME' => 'created_at',
+          'ORDINAL_POSITION' => '43',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'datetime',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => '0',
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'datetime',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'updated_at' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users',
+          'COLUMN_NAME' => 'updated_at',
+          'ORDINAL_POSITION' => '44',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'datetime',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => '0',
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'datetime',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'is_deleted' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users',
+          'COLUMN_NAME' => 'is_deleted',
+          'ORDINAL_POSITION' => '45',
+          'COLUMN_DEFAULT' => '0',
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+      ),
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'users',
+            'Non_unique' => '0',
+            'Key_name' => 'PRIMARY',
+            'Seq_in_index' => '1',
+            'Column_name' => 'id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+        'unq1' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'users',
+            'Non_unique' => '0',
+            'Key_name' => 'unq1',
+            'Seq_in_index' => '1',
+            'Column_name' => 'email',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+        'unq2' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'users',
+            'Non_unique' => '0',
+            'Key_name' => 'unq2',
+            'Seq_in_index' => '1',
+            'Column_name' => 'displayname',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => 'YES',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+        'idx1' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'users',
+            'Non_unique' => '1',
+            'Key_name' => 'idx1',
+            'Seq_in_index' => '1',
+            'Column_name' => 'city_id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => 'YES',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+        'idx2' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'users',
+            'Non_unique' => '1',
+            'Key_name' => 'idx2',
+            'Seq_in_index' => '1',
+            'Column_name' => 'state_id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => 'YES',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+        'idx3' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'users',
+            'Non_unique' => '1',
+            'Key_name' => 'idx3',
+            'Seq_in_index' => '1',
+            'Column_name' => 'country_id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => 'YES',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+      ),
+      'foreign_keys' => null,
+    ),
+    'users_associated_company' =>
+      array(
+      'table' =>
+        array(
+        'table_name' => 'users_associated_company',
+        'engine' => 'InnoDB',
+        'table_comment' => '',
+        'table_collation' => 'utf8_general_ci',
+        'character_set_name' => 'utf8',
+        'row_format' => 'Compact',
+      ),
+      'columns' =>
+        array(
+        'users_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_associated_company',
+          'COLUMN_NAME' => 'users_id',
+          'ORDINAL_POSITION' => '1',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => 'PRI',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'company_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_associated_company',
+          'COLUMN_NAME' => 'company_id',
+          'ORDINAL_POSITION' => '2',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => 'PRI',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'identify_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_associated_company',
+          'COLUMN_NAME' => 'identify_id',
+          'ORDINAL_POSITION' => '3',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '45',
+          'CHARACTER_OCTET_LENGTH' => '135',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_ci',
+          'COLUMN_TYPE' => 'varchar(45)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'user_active' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_associated_company',
+          'COLUMN_NAME' => 'user_active',
+          'ORDINAL_POSITION' => '4',
+          'COLUMN_DEFAULT' => '1',
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'tinyint',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '3',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'tinyint(1)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'user_role' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_associated_company',
+          'COLUMN_NAME' => 'user_role',
+          'ORDINAL_POSITION' => '5',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '45',
+          'CHARACTER_OCTET_LENGTH' => '135',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_ci',
+          'COLUMN_TYPE' => 'varchar(45)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+      ),
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'users_associated_company',
+            'Non_unique' => '0',
+            'Key_name' => 'PRIMARY',
+            'Seq_in_index' => '1',
+            'Column_name' => 'users_id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+          2 =>
+            array(
+            'Table' => 'users_associated_company',
+            'Non_unique' => '0',
+            'Key_name' => 'PRIMARY',
+            'Seq_in_index' => '2',
+            'Column_name' => 'company_id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+        'users_id' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'users_associated_company',
+            'Non_unique' => '0',
+            'Key_name' => 'users_id',
+            'Seq_in_index' => '1',
+            'Column_name' => 'users_id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+          2 =>
+            array(
+            'Table' => 'users_associated_company',
+            'Non_unique' => '0',
+            'Key_name' => 'users_id',
+            'Seq_in_index' => '2',
+            'Column_name' => 'company_id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+      ),
+      'foreign_keys' => null,
+    ),
+    'ut_migrations' =>
+      array(
+      'table' =>
+        array(
+        'table_name' => 'ut_migrations',
+        'engine' => 'InnoDB',
+        'table_comment' => '',
+        'table_collation' => 'utf8_general_ci',
+        'character_set_name' => 'utf8',
+        'row_format' => 'Dynamic',
+      ),
+      'columns' =>
+        array(
+        'version' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'ut_migrations',
+          'COLUMN_NAME' => 'version',
+          'ORDINAL_POSITION' => '1',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'bigint',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '19',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'bigint(20)',
+          'COLUMN_KEY' => 'PRI',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'migration_name' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'ut_migrations',
+          'COLUMN_NAME' => 'migration_name',
+          'ORDINAL_POSITION' => '2',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '100',
+          'CHARACTER_OCTET_LENGTH' => '300',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_ci',
+          'COLUMN_TYPE' => 'varchar(100)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'start_time' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'ut_migrations',
           'COLUMN_NAME' => 'start_time',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'timestamp',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'timestamp',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4187,23 +3915,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'end_time' => 
-        array (
+        'end_time' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'ut_migrations',
           'COLUMN_NAME' => 'end_time',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'timestamp',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'timestamp',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4211,8 +3939,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'breakpoint' => 
-        array (
+        'breakpoint' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'ut_migrations',
@@ -4221,13 +3949,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(1)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4236,20 +3964,20 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'ut_migrations',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'version',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -4257,12 +3985,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'banlist' => 
-    array (
-      'table' => 
-      array (
+    'banlist' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'banlist',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -4270,25 +3998,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Compact',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'banlist',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'mediumint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '7',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'mediumint(8) unsigned',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => 'auto_increment',
@@ -4296,8 +4024,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'users_id' => 
-        array (
+        'users_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'banlist',
@@ -4306,13 +4034,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'bigint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '19',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'bigint(20)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4320,8 +4048,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'ip' => 
-        array (
+        'ip' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'banlist',
@@ -4332,9 +4060,9 @@ return array (
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '35',
           'CHARACTER_OCTET_LENGTH' => '35',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'latin1',
           'COLLATION_NAME' => 'latin1_swedish_ci',
           'COLUMN_TYPE' => 'varchar(35)',
@@ -4344,21 +4072,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'email' => 
-        array (
+        'email' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'banlist',
           'COLUMN_NAME' => 'email',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '255',
           'CHARACTER_OCTET_LENGTH' => '255',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'latin1',
           'COLLATION_NAME' => 'latin1_swedish_ci',
           'COLUMN_TYPE' => 'varchar(255)',
@@ -4369,53 +4097,53 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'banlist',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'ban_ip_user_id' => 
-        array (
-          1 => 
-          array (
+        'ban_ip_user_id' =>
+          array(
+          1 =>
+            array(
             'Table' => 'banlist',
             'Non_unique' => '1',
             'Key_name' => 'ban_ip_user_id',
             'Seq_in_index' => '1',
             'Column_name' => 'ip',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'banlist',
             'Non_unique' => '1',
             'Key_name' => 'ban_ip_user_id',
             'Seq_in_index' => '2',
             'Column_name' => 'users_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -4423,12 +4151,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'subscriptions' => 
-    array (
-      'table' => 
-      array (
+    'subscriptions' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'subscriptions',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -4436,25 +4164,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Dynamic',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => 'auto_increment',
@@ -4462,23 +4190,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'user_id' => 
-        array (
+        'user_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'user_id',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4486,23 +4214,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'company_id' => 
-        array (
+        'company_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4510,23 +4238,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'apps_id' => 
-        array (
+        'apps_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4534,21 +4262,45 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'name' => 
-        array (
+        'apps_plans_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'subscriptions',
+          'COLUMN_NAME' => 'apps_plans_id',
+          'ORDINAL_POSITION' => '5',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'name',
-          'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'ORDINAL_POSITION' => '6',
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '250',
           'CHARACTER_OCTET_LENGTH' => '750',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_unicode_ci',
           'COLUMN_TYPE' => 'varchar(250)',
@@ -4558,21 +4310,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'stripe_id' => 
-        array (
+        'stripe_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'stripe_id',
-          'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'ORDINAL_POSITION' => '7',
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '250',
           'CHARACTER_OCTET_LENGTH' => '750',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_unicode_ci',
           'COLUMN_TYPE' => 'varchar(250)',
@@ -4582,21 +4334,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'stripe_plan' => 
-        array (
+        'stripe_plan' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'stripe_plan',
-          'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'ORDINAL_POSITION' => '8',
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '250',
           'CHARACTER_OCTET_LENGTH' => '750',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_unicode_ci',
           'COLUMN_TYPE' => 'varchar(250)',
@@ -4606,23 +4358,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'quantity' => 
-        array (
+        'quantity' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'quantity',
-          'ORDINAL_POSITION' => '8',
-          'COLUMN_DEFAULT' => NULL,
+          'ORDINAL_POSITION' => '9',
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4630,23 +4382,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'trial_ends_at' => 
-        array (
+        'trial_ends_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'trial_ends_at',
-          'ORDINAL_POSITION' => '9',
-          'COLUMN_DEFAULT' => NULL,
+          'ORDINAL_POSITION' => '10',
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'timestamp',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'timestamp',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4654,23 +4406,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'ends_at' => 
-        array (
+        'ends_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'ends_at',
-          'ORDINAL_POSITION' => '10',
-          'COLUMN_DEFAULT' => NULL,
+          'ORDINAL_POSITION' => '11',
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'timestamp',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'timestamp',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4678,23 +4430,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'created_at',
-          'ORDINAL_POSITION' => '11',
-          'COLUMN_DEFAULT' => NULL,
+          'ORDINAL_POSITION' => '12',
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4702,23 +4454,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'updated_at',
-          'ORDINAL_POSITION' => '12',
-          'COLUMN_DEFAULT' => NULL,
+          'ORDINAL_POSITION' => '13',
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4726,23 +4478,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'is_deleted',
-          'ORDINAL_POSITION' => '13',
+          'ORDINAL_POSITION' => '14',
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(4)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4751,20 +4503,20 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'subscriptions',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -4772,12 +4524,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'apps_plans' => 
-    array (
-      'table' => 
-      array (
+    'apps_plans' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'apps_plans',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -4785,25 +4537,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Dynamic',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => 'auto_increment',
@@ -4811,23 +4563,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'apps_id' => 
-        array (
+        'apps_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4835,21 +4587,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'name' => 
-        array (
+        'name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '255',
           'CHARACTER_OCTET_LENGTH' => '765',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_mysql500_ci',
           'COLUMN_TYPE' => 'varchar(255)',
@@ -4859,21 +4611,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'description' => 
-        array (
+        'description' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'description',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '255',
           'CHARACTER_OCTET_LENGTH' => '765',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_mysql500_ci',
           'COLUMN_TYPE' => 'varchar(255)',
@@ -4883,21 +4635,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'stripe_id' => 
-        array (
+        'stripe_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'stripe_id',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '100',
           'CHARACTER_OCTET_LENGTH' => '300',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_mysql500_ci',
           'COLUMN_TYPE' => 'varchar(100)',
@@ -4907,21 +4659,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'stripe_plan' => 
-        array (
+        'stripe_plan' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'stripe_plan',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '100',
           'CHARACTER_OCTET_LENGTH' => '300',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_mysql500_ci',
           'COLUMN_TYPE' => 'varchar(100)',
@@ -4931,23 +4683,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'pricing' => 
-        array (
+        'pricing' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'pricing',
           'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'decimal',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '2',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'decimal(10,2)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4955,23 +4707,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'currency_id' => 
-        array (
+        'currency_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'currency_id',
           'ORDINAL_POSITION' => '8',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -4979,23 +4731,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'free_trial_dates' => 
-        array (
+        'free_trial_dates' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'free_trial_dates',
           'ORDINAL_POSITION' => '9',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(2)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5003,8 +4755,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_default' => 
-        array (
+        'is_default' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
@@ -5013,13 +4765,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(4)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5027,23 +4779,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '11',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'date',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'date',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5051,23 +4803,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '12',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5075,8 +4827,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
@@ -5085,13 +4837,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(4)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5100,20 +4852,20 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'apps_plans',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -5121,12 +4873,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'apps_plans_settings' => 
-    array (
-      'table' => 
-      array (
+    'apps_plans_settings' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'apps_plans_settings',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -5134,25 +4886,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Dynamic',
       ),
-      'columns' => 
-      array (
-        'apps_plans_id' => 
-        array (
+      'columns' =>
+        array(
+        'apps_plans_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'apps_plans_id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -5160,23 +4912,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'apps_id' => 
-        array (
+        'apps_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -5184,21 +4936,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'key' => 
-        array (
+        'key' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'key',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '100',
           'CHARACTER_OCTET_LENGTH' => '300',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_mysql500_ci',
           'COLUMN_TYPE' => 'varchar(100)',
@@ -5208,21 +4960,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'value' => 
-        array (
+        'value' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'value',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '255',
           'CHARACTER_OCTET_LENGTH' => '765',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_mysql500_ci',
           'COLUMN_TYPE' => 'varchar(255)',
@@ -5232,23 +4984,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5256,23 +5008,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updadate_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
-          'COLUMN_NAME' => 'updadate_at',
+          'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5280,23 +5032,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(1)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5305,119 +5057,119 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'apps_plans_settings',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'apps_plans_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'apps_plans_settings',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '2',
             'Column_name' => 'key',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          3 => 
-          array (
+          3 =>
+            array(
             'Table' => 'apps_plans_settings',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '3',
             'Column_name' => 'apps_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'appskeys' => 
-        array (
-          1 => 
-          array (
+        'appskeys' =>
+          array(
+          1 =>
+            array(
             'Table' => 'apps_plans_settings',
             'Non_unique' => '0',
             'Key_name' => 'appskeys',
             'Seq_in_index' => '1',
             'Column_name' => 'apps_plans_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'apps_plans_settings',
             'Non_unique' => '0',
             'Key_name' => 'appskeys',
             'Seq_in_index' => '2',
             'Column_name' => 'key',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'appkey' => 
-        array (
-          1 => 
-          array (
+        'appkey' =>
+          array(
+          1 =>
+            array(
             'Table' => 'apps_plans_settings',
             'Non_unique' => '1',
             'Key_name' => 'appkey',
             'Seq_in_index' => '1',
             'Column_name' => 'key',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
         ),
-        'plansapps' => 
-        array (
-          1 => 
-          array (
+        'plansapps' =>
+          array(
+          1 =>
+            array(
             'Table' => 'apps_plans_settings',
             'Non_unique' => '1',
             'Key_name' => 'plansapps',
             'Seq_in_index' => '1',
             'Column_name' => 'apps_plans_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -5425,12 +5177,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'company_branches' => 
-    array (
-      'table' => 
-      array (
+    'company_branches' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'company_branches',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -5438,25 +5190,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Dynamic',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => 'auto_increment',
@@ -5464,23 +5216,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'company_id' => 
-        array (
+        'company_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5488,23 +5240,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'users_id' => 
-        array (
+        'users_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5512,21 +5264,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'name' => 
-        array (
+        'name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '255',
           'CHARACTER_OCTET_LENGTH' => '765',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_mysql500_ci',
           'COLUMN_TYPE' => 'varchar(255)',
@@ -5536,21 +5288,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'description' => 
-        array (
+        'description' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'description',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '255',
           'CHARACTER_OCTET_LENGTH' => '765',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_mysql500_ci',
           'COLUMN_TYPE' => 'varchar(255)',
@@ -5560,23 +5312,47 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'is_default' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'company_branches',
+          'COLUMN_NAME' => 'is_default',
+          'ORDINAL_POSITION' => '6',
+          'COLUMN_DEFAULT' => '0',
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'tinyint',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '3',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'tinyint(1)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'created_at',
-          'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'ORDINAL_POSITION' => '7',
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5584,23 +5360,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'updated_at',
-          'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'ORDINAL_POSITION' => '8',
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5608,23 +5384,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'is_deleted',
-          'ORDINAL_POSITION' => '8',
+          'ORDINAL_POSITION' => '9',
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(1)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5633,20 +5409,20 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'company_branches',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -5654,12 +5430,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'currency' => 
-    array (
-      'table' => 
-      array (
+    'currency' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'currency',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -5667,25 +5443,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Dynamic',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => 'auto_increment',
@@ -5693,21 +5469,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'country' => 
-        array (
+        'country' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'country',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '100',
           'CHARACTER_OCTET_LENGTH' => '300',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_mysql500_ci',
           'COLUMN_TYPE' => 'varchar(100)',
@@ -5717,21 +5493,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'currency' => 
-        array (
+        'currency' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'currency',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '100',
           'CHARACTER_OCTET_LENGTH' => '300',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_mysql500_ci',
           'COLUMN_TYPE' => 'varchar(100)',
@@ -5741,21 +5517,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'code' => 
-        array (
+        'code' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'code',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '100',
           'CHARACTER_OCTET_LENGTH' => '300',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_mysql500_ci',
           'COLUMN_TYPE' => 'varchar(100)',
@@ -5765,21 +5541,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'symbol' => 
-        array (
+        'symbol' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'symbol',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '100',
           'CHARACTER_OCTET_LENGTH' => '300',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8',
           'COLLATION_NAME' => 'utf8_general_mysql500_ci',
           'COLUMN_TYPE' => 'varchar(100)',
@@ -5789,23 +5565,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5813,23 +5589,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5837,8 +5613,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
@@ -5847,13 +5623,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(1)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5862,20 +5638,20 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'currency',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -5883,12 +5659,563 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'user_roles' => 
-    array (
-      'table' => 
-      array (
+    'system_modules' =>
+      array(
+      'table' =>
+        array(
+        'table_name' => 'system_modules',
+        'engine' => 'InnoDB',
+        'table_comment' => 'list of modules , user can interact on each of the diff apps',
+        'table_collation' => 'utf8_general_mysql500_ci',
+        'character_set_name' => 'utf8',
+        'row_format' => 'Dynamic',
+      ),
+      'columns' =>
+        array(
+        'id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'system_modules',
+          'COLUMN_NAME' => 'id',
+          'ORDINAL_POSITION' => '1',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => 'PRI',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'name' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'system_modules',
+          'COLUMN_NAME' => 'name',
+          'ORDINAL_POSITION' => '2',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '100',
+          'CHARACTER_OCTET_LENGTH' => '300',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_mysql500_ci',
+          'COLUMN_TYPE' => 'varchar(100)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'slug' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'system_modules',
+          'COLUMN_NAME' => 'slug',
+          'ORDINAL_POSITION' => '3',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '100',
+          'CHARACTER_OCTET_LENGTH' => '300',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_mysql500_ci',
+          'COLUMN_TYPE' => 'varchar(100)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'model_name' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'system_modules',
+          'COLUMN_NAME' => 'model_name',
+          'ORDINAL_POSITION' => '4',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '100',
+          'CHARACTER_OCTET_LENGTH' => '300',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_mysql500_ci',
+          'COLUMN_TYPE' => 'varchar(100)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'apps_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'system_modules',
+          'COLUMN_NAME' => 'apps_id',
+          'ORDINAL_POSITION' => '5',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'parents_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'system_modules',
+          'COLUMN_NAME' => 'parents_id',
+          'ORDINAL_POSITION' => '6',
+          'COLUMN_DEFAULT' => '0',
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'menu_order' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'system_modules',
+          'COLUMN_NAME' => 'menu_order',
+          'ORDINAL_POSITION' => '7',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'created_at' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'system_modules',
+          'COLUMN_NAME' => 'created_at',
+          'ORDINAL_POSITION' => '8',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'datetime',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => '0',
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'datetime',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'updated_at' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'system_modules',
+          'COLUMN_NAME' => 'updated_at',
+          'ORDINAL_POSITION' => '9',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'datetime',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => '0',
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'datetime',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'is_deleted' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'system_modules',
+          'COLUMN_NAME' => 'is_deleted',
+          'ORDINAL_POSITION' => '10',
+          'COLUMN_DEFAULT' => '0',
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'tinyint',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '3',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'tinyint(1)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+      ),
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'system_modules',
+            'Non_unique' => '0',
+            'Key_name' => 'PRIMARY',
+            'Seq_in_index' => '1',
+            'Column_name' => 'id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+      ),
+      'foreign_keys' => null,
+    ),
+    'user_company_apps_activities' =>
+      array(
+      'table' =>
+        array(
+        'table_name' => 'user_company_apps_activities',
+        'engine' => 'InnoDB',
+        'table_comment' => 'what are the uses doing in the current app they are using?',
+        'table_collation' => 'utf8_general_mysql500_ci',
+        'character_set_name' => 'utf8',
+        'row_format' => 'Dynamic',
+      ),
+      'columns' =>
+        array(
+        'company_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'user_company_apps_activities',
+          'COLUMN_NAME' => 'company_id',
+          'ORDINAL_POSITION' => '1',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => 'PRI',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'company_branches_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'user_company_apps_activities',
+          'COLUMN_NAME' => 'company_branches_id',
+          'ORDINAL_POSITION' => '2',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => 'PRI',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'apps_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'user_company_apps_activities',
+          'COLUMN_NAME' => 'apps_id',
+          'ORDINAL_POSITION' => '3',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => 'PRI',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'key' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'user_company_apps_activities',
+          'COLUMN_NAME' => 'key',
+          'ORDINAL_POSITION' => '4',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '50',
+          'CHARACTER_OCTET_LENGTH' => '150',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_mysql500_ci',
+          'COLUMN_TYPE' => 'varchar(50)',
+          'COLUMN_KEY' => 'PRI',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'value' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'user_company_apps_activities',
+          'COLUMN_NAME' => 'value',
+          'ORDINAL_POSITION' => '5',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '255',
+          'CHARACTER_OCTET_LENGTH' => '765',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_mysql500_ci',
+          'COLUMN_TYPE' => 'varchar(255)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'created_at' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'user_company_apps_activities',
+          'COLUMN_NAME' => 'created_at',
+          'ORDINAL_POSITION' => '6',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'datetime',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => '0',
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'datetime',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'updated_at' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'user_company_apps_activities',
+          'COLUMN_NAME' => 'updated_at',
+          'ORDINAL_POSITION' => '7',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'datetime',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => '0',
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'datetime',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'is_deleted' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'user_company_apps_activities',
+          'COLUMN_NAME' => 'is_deleted',
+          'ORDINAL_POSITION' => '8',
+          'COLUMN_DEFAULT' => '0',
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'tinyint',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '3',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'tinyint(1)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+      ),
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'user_company_apps_activities',
+            'Non_unique' => '0',
+            'Key_name' => 'PRIMARY',
+            'Seq_in_index' => '1',
+            'Column_name' => 'company_id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+          2 =>
+            array(
+            'Table' => 'user_company_apps_activities',
+            'Non_unique' => '0',
+            'Key_name' => 'PRIMARY',
+            'Seq_in_index' => '2',
+            'Column_name' => 'company_branches_id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+          3 =>
+            array(
+            'Table' => 'user_company_apps_activities',
+            'Non_unique' => '0',
+            'Key_name' => 'PRIMARY',
+            'Seq_in_index' => '3',
+            'Column_name' => 'apps_id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+          4 =>
+            array(
+            'Table' => 'user_company_apps_activities',
+            'Non_unique' => '0',
+            'Key_name' => 'PRIMARY',
+            'Seq_in_index' => '4',
+            'Column_name' => 'key',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+      ),
+      'foreign_keys' => null,
+    ),
+    'user_roles' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'user_roles',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -5896,25 +6223,25 @@ return array (
         'character_set_name' => 'utf8',
         'row_format' => 'Dynamic',
       ),
-      'columns' => 
-      array (
-        'users_id' => 
-        array (
+      'columns' =>
+        array(
+        'users_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -5922,23 +6249,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'roles_id' => 
-        array (
+        'roles_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'roles_id',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -5946,23 +6273,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'apps_id' => 
-        array (
+        'apps_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -5970,23 +6297,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'company_id' => 
-        array (
+        'company_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -5994,23 +6321,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6018,23 +6345,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6042,23 +6369,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(1)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6067,50 +6394,50 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'user_roles',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'users_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'user_roles',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '2',
             'Column_name' => 'apps_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          3 => 
-          array (
+          3 =>
+            array(
             'Table' => 'user_roles',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '3',
             'Column_name' => 'company_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -6118,12 +6445,566 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'access_list' => 
-    array (
-      'table' => 
-      array (
+    'email_templates' =>
+      array(
+      'table' =>
+        array(
+        'table_name' => 'email_templates',
+        'engine' => 'InnoDB',
+        'table_comment' => '',
+        'table_collation' => 'utf8mb4_unicode_ci',
+        'character_set_name' => 'utf8mb4',
+        'row_format' => 'Dynamic',
+      ),
+      'columns' =>
+        array(
+        'id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'email_templates',
+          'COLUMN_NAME' => 'id',
+          'ORDINAL_POSITION' => '1',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => 'PRI',
+          'EXTRA' => 'auto_increment',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'users_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'email_templates',
+          'COLUMN_NAME' => 'users_id',
+          'ORDINAL_POSITION' => '2',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'company_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'email_templates',
+          'COLUMN_NAME' => 'company_id',
+          'ORDINAL_POSITION' => '3',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => 'MUL',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'app_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'email_templates',
+          'COLUMN_NAME' => 'app_id',
+          'ORDINAL_POSITION' => '4',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'name' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'email_templates',
+          'COLUMN_NAME' => 'name',
+          'ORDINAL_POSITION' => '5',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '64',
+          'CHARACTER_OCTET_LENGTH' => '256',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8mb4',
+          'COLLATION_NAME' => 'utf8mb4_unicode_ci',
+          'COLUMN_TYPE' => 'varchar(64)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'template' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'email_templates',
+          'COLUMN_NAME' => 'template',
+          'ORDINAL_POSITION' => '6',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'longtext',
+          'CHARACTER_MAXIMUM_LENGTH' => '4294967295',
+          'CHARACTER_OCTET_LENGTH' => '4294967295',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8mb4',
+          'COLLATION_NAME' => 'utf8mb4_unicode_ci',
+          'COLUMN_TYPE' => 'longtext',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'created_at' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'email_templates',
+          'COLUMN_NAME' => 'created_at',
+          'ORDINAL_POSITION' => '7',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'datetime',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => '0',
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'datetime',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'updated_at' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'email_templates',
+          'COLUMN_NAME' => 'updated_at',
+          'ORDINAL_POSITION' => '8',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'datetime',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => '0',
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'datetime',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'is_deleted' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'email_templates',
+          'COLUMN_NAME' => 'is_deleted',
+          'ORDINAL_POSITION' => '9',
+          'COLUMN_DEFAULT' => '0',
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'tinyint',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '3',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'tinyint(4)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+      ),
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'email_templates',
+            'Non_unique' => '0',
+            'Key_name' => 'PRIMARY',
+            'Seq_in_index' => '1',
+            'Column_name' => 'id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+        'company_id_app_id_name' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'email_templates',
+            'Non_unique' => '0',
+            'Key_name' => 'company_id_app_id_name',
+            'Seq_in_index' => '1',
+            'Column_name' => 'company_id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+          2 =>
+            array(
+            'Table' => 'email_templates',
+            'Non_unique' => '0',
+            'Key_name' => 'company_id_app_id_name',
+            'Seq_in_index' => '2',
+            'Column_name' => 'app_id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+          3 =>
+            array(
+            'Table' => 'email_templates',
+            'Non_unique' => '0',
+            'Key_name' => 'company_id_app_id_name',
+            'Seq_in_index' => '3',
+            'Column_name' => 'name',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+      ),
+      'foreign_keys' => null,
+    ),
+    'users_invite' =>
+      array(
+      'table' =>
+        array(
+        'table_name' => 'users_invite',
+        'engine' => 'InnoDB',
+        'table_comment' => '',
+        'table_collation' => 'utf8mb4_unicode_ci',
+        'character_set_name' => 'utf8mb4',
+        'row_format' => 'Dynamic',
+      ),
+      'columns' =>
+        array(
+        'id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_invite',
+          'COLUMN_NAME' => 'id',
+          'ORDINAL_POSITION' => '1',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => 'PRI',
+          'EXTRA' => 'auto_increment',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'invite_hash' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_invite',
+          'COLUMN_NAME' => 'invite_hash',
+          'ORDINAL_POSITION' => '2',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '200',
+          'CHARACTER_OCTET_LENGTH' => '800',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8mb4',
+          'COLLATION_NAME' => 'utf8mb4_unicode_ci',
+          'COLUMN_TYPE' => 'varchar(200)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'company_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_invite',
+          'COLUMN_NAME' => 'company_id',
+          'ORDINAL_POSITION' => '3',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'role_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_invite',
+          'COLUMN_NAME' => 'role_id',
+          'ORDINAL_POSITION' => '4',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'app_id' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_invite',
+          'COLUMN_NAME' => 'app_id',
+          'ORDINAL_POSITION' => '5',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'int',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '10',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'int(11)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'email' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_invite',
+          'COLUMN_NAME' => 'email',
+          'ORDINAL_POSITION' => '6',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '64',
+          'CHARACTER_OCTET_LENGTH' => '256',
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => 'utf8mb4',
+          'COLLATION_NAME' => 'utf8mb4_unicode_ci',
+          'COLUMN_TYPE' => 'varchar(64)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'created_at' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_invite',
+          'COLUMN_NAME' => 'created_at',
+          'ORDINAL_POSITION' => '7',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'datetime',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => '0',
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'datetime',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'updated_at' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_invite',
+          'COLUMN_NAME' => 'updated_at',
+          'ORDINAL_POSITION' => '8',
+          'COLUMN_DEFAULT' => null,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'datetime',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => '0',
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'datetime',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'is_deleted' =>
+          array(
+          'TABLE_CATALOG' => 'def',
+          'TABLE_SCHEMA' => 'gonano',
+          'TABLE_NAME' => 'users_invite',
+          'COLUMN_NAME' => 'is_deleted',
+          'ORDINAL_POSITION' => '9',
+          'COLUMN_DEFAULT' => '0',
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'tinyint',
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => '3',
+          'NUMERIC_SCALE' => '0',
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
+          'COLUMN_TYPE' => 'tinyint(4)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+      ),
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
+            'Table' => 'users_invite',
+            'Non_unique' => '0',
+            'Key_name' => 'PRIMARY',
+            'Seq_in_index' => '1',
+            'Column_name' => 'id',
+            'Collation' => 'A',
+            'Sub_part' => null,
+            'Packed' => null,
+            'Null' => '',
+            'Index_type' => 'BTREE',
+            'Comment' => '',
+            'Index_comment' => '',
+          ),
+        ),
+      ),
+      'foreign_keys' => null,
+    ),
+    'access_list' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'access_list',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -6131,23 +7012,23 @@ return array (
         'character_set_name' => 'utf8mb4',
         'row_format' => 'Dynamic',
       ),
-      'columns' => 
-      array (
-        'roles_name' => 
-        array (
+      'columns' =>
+        array(
+        'roles_name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'roles_name',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '32',
           'CHARACTER_OCTET_LENGTH' => '128',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8mb4',
           'COLLATION_NAME' => 'utf8mb4_unicode_520_ci',
           'COLUMN_TYPE' => 'varchar(32)',
@@ -6157,21 +7038,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'resources_name' => 
-        array (
+        'resources_name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'resources_name',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '32',
           'CHARACTER_OCTET_LENGTH' => '128',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8mb4',
           'COLLATION_NAME' => 'utf8mb4_unicode_520_ci',
           'COLUMN_TYPE' => 'varchar(32)',
@@ -6181,21 +7062,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'access_name' => 
-        array (
+        'access_name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'access_name',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '32',
           'CHARACTER_OCTET_LENGTH' => '128',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8mb4',
           'COLLATION_NAME' => 'utf8mb4_unicode_520_ci',
           'COLUMN_TYPE' => 'varchar(32)',
@@ -6205,23 +7086,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'allowed' => 
-        array (
+        'allowed' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'allowed',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(3)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6229,23 +7110,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'apps_id' => 
-        array (
+        'apps_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -6253,23 +7134,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6277,23 +7158,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6301,8 +7182,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
@@ -6311,13 +7192,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(4)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6326,65 +7207,65 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'access_list',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'roles_name',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'access_list',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '2',
             'Column_name' => 'resources_name',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          3 => 
-          array (
+          3 =>
+            array(
             'Table' => 'access_list',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '3',
             'Column_name' => 'access_name',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          4 => 
-          array (
+          4 =>
+            array(
             'Table' => 'access_list',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '4',
             'Column_name' => 'apps_id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -6392,12 +7273,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'resources' => 
-    array (
-      'table' => 
-      array (
+    'resources' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'resources',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -6405,25 +7286,25 @@ return array (
         'character_set_name' => 'utf8mb4',
         'row_format' => 'Dynamic',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => 'auto_increment',
@@ -6431,21 +7312,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'name' => 
-        array (
+        'name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '32',
           'CHARACTER_OCTET_LENGTH' => '128',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8mb4',
           'COLLATION_NAME' => 'utf8mb4_unicode_520_ci',
           'COLUMN_TYPE' => 'varchar(32)',
@@ -6455,21 +7336,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'description' => 
-        array (
+        'description' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'description',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'text',
           'CHARACTER_MAXIMUM_LENGTH' => '65535',
           'CHARACTER_OCTET_LENGTH' => '65535',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8mb4',
           'COLLATION_NAME' => 'utf8mb4_unicode_520_ci',
           'COLUMN_TYPE' => 'text',
@@ -6479,23 +7360,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'apps_id' => 
-        array (
+        'apps_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6503,23 +7384,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6527,23 +7408,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6551,8 +7432,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
@@ -6561,13 +7442,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(4)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6576,20 +7457,20 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'resources',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -6597,12 +7478,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'resources_accesses' => 
-    array (
-      'table' => 
-      array (
+    'resources_accesses' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'resources_accesses',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -6610,23 +7491,23 @@ return array (
         'character_set_name' => 'utf8mb4',
         'row_format' => 'Dynamic',
       ),
-      'columns' => 
-      array (
-        'resources_name' => 
-        array (
+      'columns' =>
+        array(
+        'resources_name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources_accesses',
           'COLUMN_NAME' => 'resources_name',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '32',
           'CHARACTER_OCTET_LENGTH' => '128',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8mb4',
           'COLLATION_NAME' => 'utf8mb4_unicode_520_ci',
           'COLUMN_TYPE' => 'varchar(32)',
@@ -6636,21 +7517,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'access_name' => 
-        array (
+        'access_name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources_accesses',
           'COLUMN_NAME' => 'access_name',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '32',
           'CHARACTER_OCTET_LENGTH' => '128',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8mb4',
           'COLLATION_NAME' => 'utf8mb4_unicode_520_ci',
           'COLUMN_TYPE' => 'varchar(32)',
@@ -6660,23 +7541,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'apps_id' => 
-        array (
+        'apps_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources_accesses',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6684,23 +7565,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources_accesses',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => '',
@@ -6708,23 +7589,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources_accesses',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6732,8 +7613,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources_accesses',
@@ -6742,13 +7623,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(4)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6757,50 +7638,50 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'resources_accesses',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'resources_name',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'resources_accesses',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '2',
             'Column_name' => 'access_name',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          3 => 
-          array (
+          3 =>
+            array(
             'Table' => 'resources_accesses',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '3',
             'Column_name' => 'created_at',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -6808,12 +7689,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'roles' => 
-    array (
-      'table' => 
-      array (
+    'roles' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'roles',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -6821,25 +7702,25 @@ return array (
         'character_set_name' => 'utf8mb4',
         'row_format' => 'Dynamic',
       ),
-      'columns' => 
-      array (
-        'id' => 
-        array (
+      'columns' =>
+        array(
+        'id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => 'PRI',
           'EXTRA' => 'auto_increment',
@@ -6847,21 +7728,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'name' => 
-        array (
+        'name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '32',
           'CHARACTER_OCTET_LENGTH' => '128',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8mb4',
           'COLLATION_NAME' => 'utf8mb4_unicode_520_ci',
           'COLUMN_TYPE' => 'varchar(32)',
@@ -6871,21 +7752,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'description' => 
-        array (
+        'description' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'description',
           'ORDINAL_POSITION' => '3',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'text',
           'CHARACTER_MAXIMUM_LENGTH' => '65535',
           'CHARACTER_OCTET_LENGTH' => '65535',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8mb4',
           'COLLATION_NAME' => 'utf8mb4_unicode_520_ci',
           'COLUMN_TYPE' => 'text',
@@ -6895,23 +7776,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'scope' => 
-        array (
+        'scope' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'scope',
           'ORDINAL_POSITION' => '4',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6919,23 +7800,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'company_id' => 
-        array (
+        'company_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '5',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6943,23 +7824,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'apps_id' => 
-        array (
+        'apps_id' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '6',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '10',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'int(11)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6967,23 +7848,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'created_at' => 
-        array (
+        'created_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '7',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -6991,23 +7872,23 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'updated_at' => 
-        array (
+        'updated_at' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '8',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
           'DATETIME_PRECISION' => '0',
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'datetime',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -7015,8 +7896,8 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'is_deleted' => 
-        array (
+        'is_deleted' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
@@ -7025,13 +7906,13 @@ return array (
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'tinyint',
-          'CHARACTER_MAXIMUM_LENGTH' => NULL,
-          'CHARACTER_OCTET_LENGTH' => NULL,
+          'CHARACTER_MAXIMUM_LENGTH' => null,
+          'CHARACTER_OCTET_LENGTH' => null,
           'NUMERIC_PRECISION' => '3',
           'NUMERIC_SCALE' => '0',
-          'DATETIME_PRECISION' => NULL,
-          'CHARACTER_SET_NAME' => NULL,
-          'COLLATION_NAME' => NULL,
+          'DATETIME_PRECISION' => null,
+          'CHARACTER_SET_NAME' => null,
+          'COLLATION_NAME' => null,
           'COLUMN_TYPE' => 'tinyint(4)',
           'COLUMN_KEY' => '',
           'EXTRA' => '',
@@ -7040,20 +7921,20 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'roles',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'id',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -7061,12 +7942,12 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
-    'roles_inherits' => 
-    array (
-      'table' => 
-      array (
+    'roles_inherits' =>
+      array(
+      'table' =>
+        array(
         'table_name' => 'roles_inherits',
         'engine' => 'InnoDB',
         'table_comment' => '',
@@ -7074,23 +7955,23 @@ return array (
         'character_set_name' => 'utf8mb4',
         'row_format' => 'Dynamic',
       ),
-      'columns' => 
-      array (
-        'roles_name' => 
-        array (
+      'columns' =>
+        array(
+        'roles_name' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles_inherits',
           'COLUMN_NAME' => 'roles_name',
           'ORDINAL_POSITION' => '1',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '32',
           'CHARACTER_OCTET_LENGTH' => '128',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8mb4',
           'COLLATION_NAME' => 'utf8mb4_unicode_520_ci',
           'COLUMN_TYPE' => 'varchar(32)',
@@ -7100,21 +7981,21 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'roles_inherit' => 
-        array (
+        'roles_inherit' =>
+          array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles_inherits',
           'COLUMN_NAME' => 'roles_inherit',
           'ORDINAL_POSITION' => '2',
-          'COLUMN_DEFAULT' => NULL,
+          'COLUMN_DEFAULT' => null,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'varchar',
           'CHARACTER_MAXIMUM_LENGTH' => '32',
           'CHARACTER_OCTET_LENGTH' => '128',
-          'NUMERIC_PRECISION' => NULL,
-          'NUMERIC_SCALE' => NULL,
-          'DATETIME_PRECISION' => NULL,
+          'NUMERIC_PRECISION' => null,
+          'NUMERIC_SCALE' => null,
+          'DATETIME_PRECISION' => null,
           'CHARACTER_SET_NAME' => 'utf8mb4',
           'COLLATION_NAME' => 'utf8mb4_unicode_520_ci',
           'COLUMN_TYPE' => 'varchar(32)',
@@ -7125,35 +8006,35 @@ return array (
           'GENERATION_EXPRESSION' => '',
         ),
       ),
-      'indexes' => 
-      array (
-        'PRIMARY' => 
-        array (
-          1 => 
-          array (
+      'indexes' =>
+        array(
+        'PRIMARY' =>
+          array(
+          1 =>
+            array(
             'Table' => 'roles_inherits',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
             'Column_name' => 'roles_name',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
           ),
-          2 => 
-          array (
+          2 =>
+            array(
             'Table' => 'roles_inherits',
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '2',
             'Column_name' => 'roles_inherit',
             'Collation' => 'A',
-            'Sub_part' => NULL,
-            'Packed' => NULL,
+            'Sub_part' => null,
+            'Packed' => null,
             'Null' => '',
             'Index_type' => 'BTREE',
             'Comment' => '',
@@ -7161,7 +8042,7 @@ return array (
           ),
         ),
       ),
-      'foreign_keys' => NULL,
+      'foreign_keys' => null,
     ),
   ),
 );
