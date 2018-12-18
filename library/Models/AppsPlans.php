@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare (strict_types = 1);
 
 namespace Gewaer\Models;
 
@@ -100,6 +100,13 @@ class AppsPlans extends AbstractModel
             'id',
             ['alias' => 'app']
         );
+
+        $this->hasMany(
+            'apps_id',
+            'Gewaer\Models\AppsPlansSettings',
+            'apps_id',
+            ['alias' => 'settings']
+        );
     }
 
     /**
@@ -121,7 +128,7 @@ class AppsPlans extends AbstractModel
      *
      * @return AppsPlans
      */
-    public function settings(): AppsPlans
+    public function settings() : AppsPlans
     {
         return $this;
     }
@@ -131,7 +138,7 @@ class AppsPlans extends AbstractModel
      *
      * @return AppsPlans
      */
-    public static function getDefaultPlan(): AppsPlans
+    public static function getDefaultPlan() : AppsPlans
     {
         return AppsPlans::findFirst([
             'conditions' => 'apps_id = ?0 and is_default = 1',
@@ -182,7 +189,7 @@ class AppsPlans extends AbstractModel
         $setting->value = $value;
 
         if (!$setting->save()) {
-            throw new ModelException((string) current($setting->getMessages()));
+            throw new ModelException((string)current($setting->getMessages()));
         }
 
         return true;
