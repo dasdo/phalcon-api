@@ -135,8 +135,21 @@ class UsersController extends \Baka\Auth\UsersController
                 $request = $this->request->getJsonRawBody(true);
             }
 
-            //clean pass
+            //update password
             if (array_key_exists('new_password', $request) && !empty($request['new_password'])) {
+
+                  //Ok let validate user password
+                $validation = new Validation();
+                $validation->add('new_password', new PresenceOf(['message' => 'The new_password is required.']));
+                $validation->add('current_password', new PresenceOf(['message' => 'The current_password is required.']));
+                $validation->add('confirm_new_password', new PresenceOf(['message' => 'The confirm_new_password is required.']));
+                $messages = $validation->validate($request);
+
+                if (count($messages)) {
+                    foreach ($messages as $message) {
+                        throw new BadRequestHttpException((string)$message);
+                    }
+                }
 
                 $user->updatePassword($request['current_password'], $request['new_password'], $request['confirm_new_password']);
                 unset($request['password']);
