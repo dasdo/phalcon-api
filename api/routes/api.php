@@ -137,7 +137,15 @@ $router->post('/users/invite', [
     ]
 ]);
 
-$router->post('/user-invites/{hash}', [
+$router->post('/users-invite/{hash}', [
+    'Gewaer\Api\Controllers\UsersInviteController',
+    'processUserInvite',
+    'options' => [
+        'jwt' => false,
+    ]
+]);
+
+$router->get('/users-invite/{hash}', [
     'Gewaer\Api\Controllers\UsersInviteController',
     'processUserInvite',
     'options' => [

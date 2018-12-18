@@ -30,7 +30,7 @@ class UsersInviteCest
 
         $hash = $data['invite_hash'];
 
-        $I->sendPost('/v1/user-invites/' . $hash, [
+        $I->sendPost('/v1/users-invite/' . $hash, [
             'firstname' => 'testFirstsName',
             'lastname' => 'testLastName',
             'displayname' => $userName,

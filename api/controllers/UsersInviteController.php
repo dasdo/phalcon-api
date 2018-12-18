@@ -54,6 +54,25 @@ class UsersInviteController extends BaseController
     }
 
     /**
+     * Get users invite by hash
+     * @param string $hash
+     * @return Response
+     */
+    public function getByHash(string $hash):Response
+    {
+        $userInvite = $this->model::findFirst([
+            'conditions' => 'invite_hash =  ?0 and is_deleted = 0',
+            'bind' => [$hash]
+        ]);
+
+        if (!is_object($userInvite)) {
+            throw new NotFoundHttpException('Users Invite not found');
+        }
+
+        return $this->response($user);
+    }
+
+    /**
      * Sets up invitation information for a would be user
      * @return Response
      */
