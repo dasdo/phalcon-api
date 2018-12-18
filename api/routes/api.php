@@ -131,10 +131,7 @@ $router->post('/auth/reset/{key}', [
 
 $router->post('/users/invite', [
     'Gewaer\Api\Controllers\UsersInviteController',
-    'insertInvite',
-    'options' => [
-        'jwt' => false,
-    ]
+    'insertInvite'
 ]);
 
 $router->post('/users-invite/{hash}', [
