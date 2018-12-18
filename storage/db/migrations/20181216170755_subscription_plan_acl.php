@@ -27,9 +27,9 @@ class SubscriptionPlanAcl extends AbstractMigration
         $this->table("subscriptions")->changeColumn('quantity', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'stripe_plan'])->update();
         $this->table("subscriptions")->changeColumn('trial_ends_at', 'timestamp', ['null' => true, 'after' => 'quantity'])->update();
         $this->table("subscriptions")->changeColumn('ends_at', 'timestamp', ['null' => true, 'after' => 'trial_ends_at'])->update();
-       // $this->table("subscriptions")->changeColumn('created_at', 'datetime', ['null' => false, 'after' => 'ends_at'])->update();
-       // $this->table("subscriptions")->changeColumn('updated_at', 'datetime', ['null' => true, 'after' => 'created_at'])->update();
-       // $this->table("subscriptions")->changeColumn('is_deleted', 'integer', ['null' => false, 'default' => "0", 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'updated_at'])->update();
+       //$this->table("subscriptions")->changeColumn('created_at', 'datetime', ['null' => false, 'after' => 'ends_at'])->update();
+       //$this->table("subscriptions")->changeColumn('updated_at', 'datetime', ['null' => true, 'after' => 'created_at'])->update();
+       //$this->table("subscriptions")->changeColumn('is_deleted', 'integer', ['null' => false, 'default' => "0", 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'updated_at'])->update();
         $table->save();
 
         $table = $this->table("apps_plans_settings");
@@ -43,9 +43,9 @@ class SubscriptionPlanAcl extends AbstractMigration
 
         $table = $this->table("company_branches");
         $table->addColumn('is_default', 'boolean', ['null' => true, 'default' => "0", 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'description'])->save();
-     //   $this->table("company_branches")->changeColumn('created_at', 'datetime', ['null' => false, 'after' => 'is_default'])->update();
-      //  $this->table("company_branches")->changeColumn('updated_at', 'datetime', ['null' => true, 'after' => 'created_at'])->update();
-      //  $this->table("company_branches")->changeColumn('is_deleted', 'boolean', ['null' => true, 'default' => "0", 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'updated_at'])->update();
+     //  $this->table("company_branches")->changeColumn('created_at', 'datetime', ['null' => false, 'after' => 'is_default'])->update();
+      // $this->table("company_branches")->changeColumn('updated_at', 'datetime', ['null' => true, 'after' => 'created_at'])->update();
+      // $this->table("company_branches")->changeColumn('is_deleted', 'boolean', ['null' => true, 'default' => "0", 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'updated_at'])->update();
         $table->save();
 
         $table = $this->table("system_modules", ['id' => false, 'primary_key' => ["id"], 'engine' => "InnoDB", 'encoding' => "utf8mb4", 'collation' => "utf8mb4_unicode_ci", 'comment' => "list of modules , user can interact on each of the diff apps", 'row_format' => "Dynamic"]);
