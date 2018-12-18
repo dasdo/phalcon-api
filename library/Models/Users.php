@@ -140,8 +140,9 @@ class Users extends \Baka\Auth\Models\Users
         parent::beforeCreate();
 
         //confirm if the app reach its limit
+        
         $this->isAtLimit();
-
+    
         //Assign admin role to the system if we dont get a specify role
         if (empty($this->roles_id)) {
             $role = Roles::findFirstByName('Admins');
@@ -158,7 +159,21 @@ class Users extends \Baka\Auth\Models\Users
     public function afterCreate()
     {
         if (empty($this->default_company)) {
-            parent::afterCreate();
+            //create company
+            $company = new Companies();
+            $company->name = $this->defaultCompanyName;
+            $company->users_id = $this->getId();
+            
+            if (!$company->save()) {
+                throw new Exception(current($company->getMessages()));
+            }
+
+            $this->default_company = $company->getId();
+
+            if (!$this->update()) {
+                throw new Exception(current($this->getMessages()));
+            }
+
         } else {
             //we have the company id
             if (empty($this->default_company_branch)) {

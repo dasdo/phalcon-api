@@ -35,6 +35,10 @@ trait SubscriptionPlanLimitTrait
      */
     public function isAtLimit() : bool
     {
+        if (!is_object($this->di->getUserData) && !$this->di->getUserData()->isLoggedIn()) {
+            return false;
+        }
+
         $subcription = Subscription::getActiveForThisApp();
         $appPlan = $subcription->appPlan;
 
@@ -62,6 +66,10 @@ trait SubscriptionPlanLimitTrait
      */
     public function updateAppActivityLimit() : bool
     {
+        if (!is_object($this->di->getUserData) && !$this->di->getUserData()->isLoggedIn()) {
+            return false;
+        }
+        
         $companyAppActivityLimit = UserCompanyAppsActivities::findFirst([
             'conditions' => 'company_id = ?0 and apps_id = ?1 and key = ?2',
             'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId(), $this->getSubcriptionPlanLimitModelKey()]
