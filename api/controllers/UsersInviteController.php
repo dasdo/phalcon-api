@@ -69,7 +69,7 @@ class UsersInviteController extends BaseController
             throw new NotFoundHttpException('Users Invite not found');
         }
 
-        return $this->response($user);
+        return $this->response($userInvite);
     }
 
     /**
