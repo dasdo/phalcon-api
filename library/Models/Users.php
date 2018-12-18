@@ -140,8 +140,10 @@ class Users extends \Baka\Auth\Models\Users
         parent::beforeCreate();
 
         //confirm if the app reach its limit
-        $this->isAtLimit();
-
+        if (is_object($this->di->getUserData) && $this->di->getUserData()->isLoggedIn()) {
+            $this->isAtLimit();
+        }
+        
         //Assign admin role to the system if we dont get a specify role
         if (empty($this->roles_id)) {
             $role = Roles::findFirstByName('Admins');
@@ -190,6 +192,8 @@ class Users extends \Baka\Auth\Models\Users
         }
 
         //update model total activity
-        $this->updateAppActivityLimit();
+        if (is_object($this->di->getUserData) && $this->di->getUserData()->isLoggedIn()) {
+            $this->updateAppActivityLimit();
+        }
     }
 }
