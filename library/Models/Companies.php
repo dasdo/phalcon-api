@@ -105,6 +105,18 @@ class Companies extends \Baka\Auth\Models\Companies
                 'alias' => 'branch',
             ]
         );
+
+        $this->hasOne(
+            'id',
+            'Gewaer\Models\UserCompanyApps',
+            'company_id',
+            [
+                'alias' => 'app',
+                'params' => [
+                    'conditions' => 'apps_id = '.$this->di->getApp()->getId()
+                ]
+            ]
+        );
     }
 
     /**
