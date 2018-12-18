@@ -8,6 +8,7 @@ class SubscriptionPlanAcl extends AbstractMigration
     public function change()
     {
         $table = $this->table("users");
+       
         //$table->addColumn('stripe_id', 'string', ['null' => true, 'limit' => 100, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'banned'])->save();
         //$table->addColumn('card_brand', 'string', ['null' => true, 'limit' => 50, 'collation' => "utf8mb4_unicode_ci", 'encoding' => "utf8mb4", 'after' => 'stripe_id'])->save();
         //$table->addColumn('card_last_four', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'card_brand'])->save();
