@@ -14,4 +14,10 @@ use Baka\Http\Rest\CrudExtendedController;
  */
 abstract class BaseController extends CrudExtendedController
 {
+    /**
+     * activate softdelete
+     * 
+     * @var int
+     */
+    public $softDelete = 1;
 }
