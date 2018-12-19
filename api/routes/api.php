@@ -61,7 +61,10 @@ $defaultCrudRoutes = [
     'AppsPlans' => 'apps-plans',
     'roles',
     'UsersInvite' => 'users-invite',
-    'EmailTemplates' => 'email-templates'
+    'EmailTemplates' => 'email-templates',
+    'CompanyCustomFields' => 'company-custom-fields',
+    'modules',
+    'CustomFields' => 'custom-fields'
 ];
 
 foreach ($defaultCrudRoutes as $key => $route) {

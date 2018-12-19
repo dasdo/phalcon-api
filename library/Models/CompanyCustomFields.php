@@ -54,19 +54,19 @@ class CompanyCustomFields extends AbstractModel
     {
         $this->setSource('company_custom_fields');
 
-        // $this->belongsTo(
-        //     'company_id',
-        //     'Gewaer\Models\Companies',
-        //     'id',
-        //     ['alias' => 'company']
-        // );
+        $this->belongsTo(
+            'company_id',
+            'Gewaer\Models\Companies',
+            'id',
+            ['alias' => 'company']
+        );
 
-        // $this->belongsTo(
-        //     'apps_id',
-        //     'Gewaer\Models\Apps',
-        //     'id',
-        //     ['alias' => 'app']
-        // );
+        $this->belongsTo(
+            'custom_field_id',
+            'Gewaer\Models\CustomFields',
+            'id',
+            ['alias' => 'fields']
+        );
     }
 
     /**

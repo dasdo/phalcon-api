@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\Companies;
+use Gewaer\Models\CompanyCustomFields;
+use Gewaer\Models\CustomFields;
 use Phalcon\Http\Response;
 use Gewaer\Exception\UnprocessableEntityHttpException;
 use Baka\Http\QueryParser;
@@ -136,6 +138,24 @@ class CompaniesController extends BaseController
 
             //update
             if ($company->update($request, $this->updateFields)) {
+                //lets update any custom fields for this company. We should not use Exceptions here, let it just fail
+                $customFields = CompanyCustomFields::find([
+                    'conditions' => 'company_id = ?0 and is_deleted = 0',
+                    'bind' => [$this->userData->default_company]
+                ]);
+
+                //If array key exists in request then we update said custom field
+                foreach ($customFields as $customField) {
+                    //Search for custom field object based on id
+
+                    $field = CustomFields::findFirst($customField->custom_field_id);
+
+                    if (array_key_exists($field->name, $request)) {
+                        $customField->value = $request[$field->name];
+                        $customField->update();
+                    }
+                }
+
                 return $this->response($company);
             } else {
                 //didnt work

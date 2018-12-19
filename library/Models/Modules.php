@@ -55,6 +55,13 @@ class Modules extends AbstractModel
         //     ['alias' => 'company']
         // );
 
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\CustomFields',
+            'modules_id',
+            ['alias' => 'fields']
+        );
+
         // $this->belongsTo(
         //     'apps_id',
         //     'Gewaer\Models\Apps',

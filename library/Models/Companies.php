@@ -1,5 +1,5 @@
 <?php
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Gewaer\Models;
 
@@ -97,6 +97,13 @@ class Companies extends \Baka\Auth\Models\Companies
             ['alias' => 'branches']
         );
 
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\CompanyCustomFields',
+            'company_id',
+            ['alias' => 'fields']
+        );
+
         $this->hasOne(
             'id',
             'Gewaer\Models\CompanyBranches',
@@ -113,7 +120,7 @@ class Companies extends \Baka\Auth\Models\Companies
             [
                 'alias' => 'app',
                 'params' => [
-                    'conditions' => 'apps_id = '.$this->di->getApp()->getId()
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId()
                 ]
             ]
         );
