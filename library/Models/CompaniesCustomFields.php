@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
+// use Baka\Database\CustomFields\CustomeFieldsInterface;
+
+
 class CompaniesCustomFields extends AbstractModel
 {
     /**
@@ -15,13 +18,13 @@ class CompaniesCustomFields extends AbstractModel
      *
      * @var integer
      */
-    public $company_id;
+    public $companies_id;
 
     /**
      *
      * @var integer
      */
-    public $custom_field_id;
+    public $custom_fields_id;
 
     /**
      *
@@ -55,14 +58,14 @@ class CompaniesCustomFields extends AbstractModel
         $this->setSource('companies_custom_fields');
 
         $this->belongsTo(
-            'company_id',
+            'companies_id',
             'Gewaer\Models\Companies',
             'id',
             ['alias' => 'company']
         );
 
         $this->belongsTo(
-            'custom_field_id',
+            'custom_fields_id',
             'Gewaer\Models\CustomFields',
             'id',
             ['alias' => 'fields']
@@ -77,5 +80,15 @@ class CompaniesCustomFields extends AbstractModel
     public function getSource(): string
     {
         return 'companies_custom_fields';
+    }
+
+    /**
+     * Set the custom primary field id
+     *
+     * @param int $id
+     */
+    public function setCustomId(int $id)
+    {
+        $this->companies_id = $id;
     }
 }

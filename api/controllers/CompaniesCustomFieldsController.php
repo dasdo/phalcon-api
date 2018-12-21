@@ -19,14 +19,14 @@ class CompaniesCustomFieldsController extends BaseController
      *
      * @var array
      */
-    protected $createFields = ['company_id', 'custom_field_id', 'value'];
+    protected $createFields = ['companies_id', 'custom_field_id', 'value'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['company_id', 'custom_field_id', 'value'];
+    protected $updateFields = ['companies_id', 'custom_field_id', 'value'];
 
     /**
      * set objects

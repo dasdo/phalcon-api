@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace Gewaer\Models;
+use Exception;
 
 abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomFields
 {
@@ -18,9 +19,6 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
             return;
         }
 
-        print_r($models->toArray());
-        die();
-
         $conditions = [];
         $fieldsIn = null;
 
@@ -30,13 +28,11 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
 
         $conditions = 'modules_id = ? ' . $fieldsIn;
 
-        $bind = [$this->getId(), $models->getId(), $this->di->getUserData()->default_company, $this->di->getApp()->getId()];
+        $bind = [$this->getId(),$this->di->getApp()->getId(), $models->getId(), $this->di->getUserData()->default_company];
+
 
         // $customFieldsValueTable = $this->getSource() . '_custom_fields';
         $customFieldsValueTable = $this->getSource() . '_custom_fields';
-
-        print_r($customFieldsValueTable);
-        die();
 
         //We are to make a new query to replace old gewaer implementation.
         $result = $this->getReadConnection()->prepare("SELECT l.{$this->getSource()}_id,
@@ -52,8 +48,8 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
                                           AND l.{$this->getSource()}_id = ?
                                           AND c.apps_id = ?
                                           AND c.modules_id = ?
-                                          AND c.company_id = ? 
-                                          AND l.company_id = c.company_id");
+                                          AND c.companies_id = ? 
+                                          AND l.companies_id = c.companies_id");
 
         $result->execute($bind);
 
@@ -63,9 +59,6 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
         while ($row = $result->fetch(\PDO::FETCH_OBJ)) {
             $listOfCustomFields[$row->name] = $row->value;
         }
-
-        print_r($listOfCustomFields);
-        die();
 
         return $listOfCustomFields;
     }

@@ -64,7 +64,7 @@ class GewearCanvasInit extends AbstractMigration
         $table = $this->table('companies');
         $table->addIndex(['users_id'], ['name' => 'users_id', 'unique' => false])->save();
         $table = $this->table('companies_settings', ['id' => false, 'primary_key' => ['company_id', 'name'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
-        $table->addColumn('company_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'comment' => 'tabla donde se guardan las configuraciones en key value de los diferentes modelos
+        $table->addColumn('companies_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'comment' => 'tabla donde se guardan las configuraciones en key value de los diferentes modelos
 
 - general, zoho key, mandrill email settings
 - modulo leads, agent default, rotation default , etc'])

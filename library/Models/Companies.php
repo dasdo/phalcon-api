@@ -94,28 +94,28 @@ class Companies extends \Gewaer\Models\AbstractCustomFieldsModel
         $this->hasMany(
             'id',
             'Gewaer\Models\CompanyBranches',
-            'company_id',
+            'companies_id',
             ['alias' => 'branches']
         );
 
         $this->hasMany(
             'id',
             'Gewaer\Models\CompanyCustomFields',
-            'company_id',
+            'companies_id',
             ['alias' => 'fields']
         );
 
         $this->hasMany(
             'id',
             'Gewaer\Models\CustomFields',
-            'company_id',
+            'companies_id',
             ['alias' => 'custom-fields']
         );
 
         $this->hasOne(
             'id',
             'Gewaer\Models\CompanyBranches',
-            'company_id',
+            'companies_id',
             [
                 'alias' => 'branch',
             ]
@@ -227,7 +227,7 @@ class Companies extends \Gewaer\Models\AbstractCustomFieldsModel
          * @var CompanyBranches
          */
         $branch = new CompanyBranches();
-        $branch->company_id = $this->getId();
+        $branch->companies_id = $this->getId();
         $branch->users_id = $this->user->getId();
         $branch->name = 'Default';
         $branch->is_default = 1;

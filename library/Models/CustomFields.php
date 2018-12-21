@@ -21,7 +21,7 @@ class CustomFields extends AbstractModel
      *
      * @var integer
      */
-    public $company_id;
+    public $companies_id;
 
     /**
      *
@@ -87,7 +87,7 @@ class CustomFields extends AbstractModel
         );
 
         $this->belongsTo(
-            'company_id',
+            'companies_id',
             'Gewaer\Models\Apps',
             'id',
             ['alias' => 'companies']
