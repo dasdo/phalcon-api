@@ -57,7 +57,7 @@ class Modules extends AbstractModel
 
         $this->hasMany(
             'id',
-            'Gewaer\Models\CustomFields',
+            'Gewaer\CustomFields\CustomFields',
             'modules_id',
             ['alias' => 'fields']
         );

@@ -21,7 +21,7 @@ class CustomFieldsCest
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/' . $this->model, [
             'users_id' => 3,
-            'company_id' => 1,
+            'companies_id' => 1,
             'apps_id' => 1,
             'name' => $testName,
             'modules_id' => 1,

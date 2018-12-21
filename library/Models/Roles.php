@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Gewaer\Models;
 
 use Gewaer\Exception\ServerErrorHttpException;
-use Baka\Auth\Models\Companies as BakaCompanies;
+use Gewaer\Models\Companies;
 
 class Roles extends AbstractModel
 {
@@ -93,7 +93,7 @@ class Roles extends AbstractModel
      * @param string $role
      * @return Roles
      */
-    public static function getByAppName(string $role, BakaCompanies $company): Roles
+    public static function getByAppName(string $role, Companies $company): Roles
     {
         //echeck if we have a dot , taht means we are sending the specific app to use
         if (strpos($role, '.') === false) {

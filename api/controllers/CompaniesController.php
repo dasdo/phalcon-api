@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\Companies;
-use Gewaer\Models\CompanyCustomFields;
-use Gewaer\Models\CustomFields;
 use Phalcon\Http\Response;
 use Gewaer\Exception\UnprocessableEntityHttpException;
 use Baka\Http\QueryParser;

@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-// use Baka\Database\CustomFields\CustomeFieldsInterface;
-
+use Gewaer\Models\AbstractModel;
 
 class CompaniesCustomFields extends AbstractModel
 {
@@ -66,7 +65,7 @@ class CompaniesCustomFields extends AbstractModel
 
         $this->belongsTo(
             'custom_fields_id',
-            'Gewaer\Models\CustomFields',
+            'Gewaer\CustomFields\CustomFields',
             'id',
             ['alias' => 'fields']
         );

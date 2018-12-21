@@ -97,7 +97,7 @@ class UsersInviteController extends BaseController
         $userInvite = $this->model;
         $userInvite->company_id = $this->userData->default_company;
         $userInvite->app_id = $this->app->getId();
-        $userInvite->role_id = Roles::getByAppName($request['role'], $this->userData->defaultCompany)->getId();
+        $userInvite->role_id = Roles::getByAppName($request['role'],$this->userData->defaultCompany)->getId();
         $userInvite->email = $request['email'];
         $userInvite->invite_hash = $random->base58();
         $userInvite->created_at = date('Y-m-d H:m:s');

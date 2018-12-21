@@ -1,11 +1,11 @@
 <?php 
 
-class CompanyCustomFieldsCest
+class CompaniesCustomFieldsCest
 {
     /**
      * Model
      */
-    protected $model = 'company-custom-fields';
+    protected $model = 'companies-custom-fields';
 
     /**
      * Create a new Email Templates
@@ -13,16 +13,16 @@ class CompanyCustomFieldsCest
      * @param ApiTester $I
      * @return void
      */
-    public function insertCompanyCustomField(ApiTester $I) : void
+    public function insertCompaniesCustomField(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
         $testValue = 'test_' . time();
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/' . $this->model, [
-            'company_id' => 3,
-            'custom_field_id' => 1,
-            'value' => $testName
+            'companies_id' => 3,
+            'custom_fields_id' => 1,
+            'value' => $testValue
         ]);
 
         $I->seeResponseIsSuccessful();
@@ -38,7 +38,7 @@ class CompanyCustomFieldsCest
      * @param ApiTester $I
      * @return void
      */
-    public function updateCompanyCustomField(ApiTester $I) : void
+    public function updateCompaniesCustomField(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
         $updatedValue = 'Updated Value';
@@ -51,13 +51,13 @@ class CompanyCustomFieldsCest
         $data = json_decode($response, true);
 
         $I->sendPUT('/v1/' . $this->model . '/' . $data[count($data) - 1]['id'], [
-            'value' => $updatedName
+            'value' => $updatedValue
         ]);
 
         $I->seeResponseIsSuccessful();
         $response = $I->grabResponse();
         $data = json_decode($response, true);
 
-        $I->assertTrue($data['value'] == $updatedName);
+        $I->assertTrue($data['value'] == $updatedValue);
     }
 }

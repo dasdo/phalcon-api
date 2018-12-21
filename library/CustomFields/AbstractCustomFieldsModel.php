@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Gewaer\Models;
+namespace Gewaer\CustomFields;
 use Exception;
+use Gewaer\Models\Modules;
 
 abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomFields
 {

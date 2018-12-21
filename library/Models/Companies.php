@@ -17,7 +17,7 @@ use Gewaer\Exception\ModelException;
  * @property Apps $app
  * @property \Phalcon\Di $di
  */
-class Companies extends \Gewaer\Models\AbstractCustomFieldsModel
+class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
 {
     /**
      *
@@ -93,28 +93,28 @@ class Companies extends \Gewaer\Models\AbstractCustomFieldsModel
 
         $this->hasMany(
             'id',
-            'Gewaer\Models\CompanyBranches',
+            'Gewaer\Models\CompaniesBranches',
             'companies_id',
             ['alias' => 'branches']
         );
 
         $this->hasMany(
             'id',
-            'Gewaer\Models\CompanyCustomFields',
+            'Gewaer\Models\CompaniesCustomFields',
             'companies_id',
             ['alias' => 'fields']
         );
 
         $this->hasMany(
             'id',
-            'Gewaer\Models\CustomFields',
+            'Gewaer\CustomFields\CustomFields',
             'companies_id',
             ['alias' => 'custom-fields']
         );
 
         $this->hasOne(
             'id',
-            'Gewaer\Models\CompanyBranches',
+            'Gewaer\Models\CompaniesBranches',
             'companies_id',
             [
                 'alias' => 'branch',

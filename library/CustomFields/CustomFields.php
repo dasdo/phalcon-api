@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Gewaer\Models;
+namespace Gewaer\CustomFields;
+
+use Gewaer\Models\AbstractModel;
 
 class CustomFields extends AbstractModel
 {
