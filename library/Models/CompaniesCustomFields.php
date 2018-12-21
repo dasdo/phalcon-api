@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class CompanyCustomFields extends AbstractModel
+class CompaniesCustomFields extends AbstractModel
 {
     /**
      *
@@ -52,7 +52,7 @@ class CompanyCustomFields extends AbstractModel
      */
     public function initialize()
     {
-        $this->setSource('company_custom_fields');
+        $this->setSource('companies_custom_fields');
 
         $this->belongsTo(
             'company_id',
@@ -76,6 +76,6 @@ class CompanyCustomFields extends AbstractModel
      */
     public function getSource(): string
     {
-        return 'company_custom_fields';
+        return 'companies_custom_fields';
     }
 }

@@ -20,8 +20,8 @@ class EmailTemplatesCest
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/' . $this->model, [
-            'users_id' => 1,
-            'company_id' => 1,
+            'users_id' => 3,
+            'company_id' => 3,
             'app_id' => 1,
             'name' => $testName,
             'template' => 'Hello!!! This is a test email template',
@@ -46,7 +46,7 @@ class EmailTemplatesCest
         $updatedName = 'Updated Test Name 2';
 
         $I->haveHttpHeader('Authorization', $userData->token);
-        $I->sendGet('/v1/' . $this->model);
+        $I->sendGet("/v1/{$this->model}");
 
         $I->seeResponseIsSuccessful();
         $response = $I->grabResponse();

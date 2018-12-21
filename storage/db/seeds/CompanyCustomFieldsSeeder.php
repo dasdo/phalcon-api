@@ -10,12 +10,12 @@ class CompanyCustomFieldsSeeder extends AbstractSeed
             [
                 'company_id' => 1,
                 'custom_field_id' => 1,
-                'name' => 'example_value',
+                'value' => 'example_value',
                 'created_at' => date('Y-m-d H:m:s'),
             ],
         ];
 
-        $posts = $this->table('company-custom-fields');
+        $posts = $this->table('companies_custom_fields');
         $posts->insert($data)
               ->save();
     }

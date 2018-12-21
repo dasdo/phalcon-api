@@ -37,8 +37,8 @@ class GewearCanvasInit extends AbstractMigration
         $table = $this->table('apps');
         $table->insert($data)->save();
 
-        $this->execute("update apps set id = 0 where id = 1");
-        $this->execute("update apps set id = 1 where id = 2");
+        $this->execute('update apps set id = 0 where id = 1');
+        $this->execute('update apps set id = 1 where id = 2');
 
         $table = $this->table('apps_roles', ['id' => false, 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
         $table->addColumn('apps_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10])
@@ -63,7 +63,7 @@ class GewearCanvasInit extends AbstractMigration
         }
         $table = $this->table('companies');
         $table->addIndex(['users_id'], ['name' => 'users_id', 'unique' => false])->save();
-        $table = $this->table('company_settings', ['id' => false, 'primary_key' => ['company_id', 'name'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
+        $table = $this->table('companies_settings', ['id' => false, 'primary_key' => ['company_id', 'name'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
         $table->addColumn('company_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'comment' => 'tabla donde se guardan las configuraciones en key value de los diferentes modelos
 
 - general, zoho key, mandrill email settings
@@ -75,7 +75,7 @@ class GewearCanvasInit extends AbstractMigration
             ->addColumn('is_deleted', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'updated_at'])
             ->save();
 
-         //add default companies
+        //add default companies
         $data = [
             [
                 'name' => 'Canvas',
@@ -88,18 +88,17 @@ class GewearCanvasInit extends AbstractMigration
         $table = $this->table('companies');
         $table->insert($data)->save();
 
-
-        $table = $this->table('company_settings');
+        $table = $this->table('companies_settings');
         if ($table->hasIndex('index4')) {
             $table->removeIndexByName('index4')->save();
         }
-        $table = $this->table('company_settings');
+        $table = $this->table('companies_settings');
         $table->addIndex(['name'], ['name' => 'index4', 'unique' => false])->save();
-        $table = $this->table('company_settings');
+        $table = $this->table('companies_settings');
         if ($table->hasIndex('index5')) {
             $table->removeIndexByName('index5')->save();
         }
-        $table = $this->table('company_settings');
+        $table = $this->table('companies_settings');
         $table->addIndex(['company_id', 'name'], ['name' => 'index5', 'unique' => false])->save();
 
         $table = $this->table('session_keys', ['id' => false, 'primary_key' => ['sessions_id', 'users_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
@@ -296,7 +295,6 @@ class GewearCanvasInit extends AbstractMigration
             ->addColumn('is_deleted', 'boolean', ['null' => true, 'default' => '0', 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'status'])
             ->save();
 
-
         //add default languages
         $data = [
             [
@@ -309,12 +307,11 @@ class GewearCanvasInit extends AbstractMigration
                 'status' => 1,
                 'user_active' => 1,
                 'is_deleted' => 0
-            ], 
+            ],
         ];
 
         $table = $this->table('users');
         $table->insert($data)->save();
-
 
         $table = $this->table('users_associated_company', ['id' => false, 'primary_key' => ['users_id', 'company_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
         $table->addColumn('users_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10])

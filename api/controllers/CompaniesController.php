@@ -19,7 +19,7 @@ use Baka\Http\QueryParser;
  * @property Users $userData
  * @property Request $request
  */
-class CompaniesController extends BaseController
+class CompaniesController extends \Baka\Http\Rest\CrudCustomFieldsController
 {
     /*
      * fields we accept to create
@@ -114,55 +114,60 @@ class CompaniesController extends BaseController
         }
     }
 
-    /**
-     * Update a User Info
-     *
-     * @method PUT
-     * @url /v1/company/{id}
-     *
-     * @return Response
-     */
-    public function edit($id) : Response
-    {
-        $company = $this->model->findFirst([
-            'id = ?0 AND is_deleted = 0 and users_id = ?1',
-            'bind' => [$id, $this->userData->getId()],
-        ]);
+    // /**
+    //  * Update a User Info
+    //  *
+    //  * @method PUT
+    //  * @url /v1/company/{id}
+    //  *
+    //  * @return Response
+    //  */
+    // public function edit($id) : Response
+    // {
+    //     $company = $this->model->findFirst([
+    //         'id = ?0 AND is_deleted = 0 and users_id = ?1',
+    //         'bind' => [$id, $this->userData->getId()],
+    //     ]);
 
-        if ($company) {
-            $request = $this->request->getPut();
+    //     if ($company) {
+    //         $request = $this->request->getPut();
 
-            if (empty($request)) {
-                $request = $this->request->getJsonRawBody(true);
-            }
+    //         if (empty($request)) {
+    //             $request = $this->request->getJsonRawBody(true);
+    //         }
 
-            //update
-            if ($company->update($request, $this->updateFields)) {
-                //lets update any custom fields for this company. We should not use Exceptions here, let it just fail
-                $customFields = CompanyCustomFields::find([
-                    'conditions' => 'company_id = ?0 and is_deleted = 0',
-                    'bind' => [$this->userData->default_company]
-                ]);
+    //         $this->model->setCustomFields($request);
 
-                //If array key exists in request then we update said custom field
-                foreach ($customFields as $customField) {
-                    //Search for custom field object based on id
+    //         print_r($this->model->getAllCustomFields());
+    //         die();
 
-                    $field = CustomFields::findFirst($customField->custom_field_id);
+    //         //update
+    //         if ($company->update($request, $this->updateFields)) {
+    //             // //lets update any custom fields for this company. We should not use Exceptions here, let it just fail
+    //             // $customFields = CompanyCustomFields::find([
+    //             //     'conditions' => 'company_id = ?0 and is_deleted = 0',
+    //             //     'bind' => [$this->userData->default_company]
+    //             // ]);
 
-                    if (array_key_exists($field->name, $request)) {
-                        $customField->value = $request[$field->name];
-                        $customField->update();
-                    }
-                }
+    //             // //If array key exists in request then we update said custom field
+    //             // foreach ($customFields as $customField) {
+    //             //     //Search for custom field object based on id
 
-                return $this->response($company);
-            } else {
-                //didnt work
-                throw new UnprocessableEntityHttpException((string) current($company->getMessages()));
-            }
-        } else {
-            throw new UnprocessableEntityHttpException('Record not found');
-        }
-    }
+    //             //     $field = CustomFields::findFirst($customField->custom_field_id);
+
+    //             //     if (array_key_exists($field->name, $request)) {
+    //             //         $customField->value = $request[$field->name];
+    //             //         $customField->update();
+    //             //     }
+    //             // }
+
+    //             return $this->response($company);
+    //         } else {
+    //             //didnt work
+    //             throw new UnprocessableEntityHttpException((string) current($company->getMessages()));
+    //         }
+    //     } else {
+    //         throw new UnprocessableEntityHttpException('Record not found');
+    //     }
+    // }
 }

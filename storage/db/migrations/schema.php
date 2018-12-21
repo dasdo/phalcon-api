@@ -5179,11 +5179,11 @@ return array(
       ),
       'foreign_keys' => null,
     ),
-    'company_branches' =>
+    'companies_branches' =>
       array(
       'table' =>
         array(
-        'table_name' => 'company_branches',
+        'table_name' => 'companies_branches',
         'engine' => 'InnoDB',
         'table_comment' => '',
         'table_collation' => 'utf8_general_mysql500_ci',
@@ -5196,7 +5196,7 @@ return array(
           array(
           'TABLE_CATALOG' => 'def',
           'TABLE_SCHEMA' => 'gonano',
-          'TABLE_NAME' => 'company_branches',
+          'TABLE_NAME' => 'companies_branches',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
           'COLUMN_DEFAULT' => null,

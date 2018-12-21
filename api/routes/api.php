@@ -62,7 +62,7 @@ $defaultCrudRoutes = [
     'roles',
     'UsersInvite' => 'users-invite',
     'EmailTemplates' => 'email-templates',
-    'CompanyCustomFields' => 'company-custom-fields',
+    'CompaniesCustomFields' => 'companies-custom-fields',
     'modules',
     'CustomFields' => 'custom-fields'
 ];

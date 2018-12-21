@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Api\Controllers;
 
-use Gewaer\Models\CompanyCustomFields;
+use Gewaer\Models\CompaniesCustomFields;
 
 /**
  * Class LanguagesController
@@ -12,7 +12,7 @@ use Gewaer\Models\CompanyCustomFields;
  * @package Gewaer\Api\Controllers
  *
  */
-class CompanyCustomFieldsController extends BaseController
+class CompaniesCustomFieldsController extends BaseController
 {
     /*
      * fields we accept to create
@@ -35,6 +35,6 @@ class CompanyCustomFieldsController extends BaseController
      */
     public function onConstruct()
     {
-        $this->model = new CompanyCustomFields();
+        $this->model = new CompaniesCustomFields();
     }
 }

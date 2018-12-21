@@ -86,12 +86,12 @@ class CustomFields extends AbstractModel
             ['alias' => 'company-fields']
         );
 
-        // $this->belongsTo(
-        //     'apps_id',
-        //     'Gewaer\Models\Apps',
-        //     'id',
-        //     ['alias' => 'app']
-        // );
+        $this->belongsTo(
+            'company_id',
+            'Gewaer\Models\Apps',
+            'id',
+            ['alias' => 'companies']
+        );
     }
 
     /**

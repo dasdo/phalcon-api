@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class CompanySettings extends \Baka\Auth\Models\CompanySettings
+class CompaniesSettings extends \Baka\Auth\Models\CompanySettings
 {
     /**
      *
@@ -55,7 +55,7 @@ class CompanySettings extends \Baka\Auth\Models\CompanySettings
             ['alias' => 'company']
         );
 
-        $this->setSource('company_settings');
+        $this->setSource('companies_settings');
     }
 
     /**
@@ -65,6 +65,6 @@ class CompanySettings extends \Baka\Auth\Models\CompanySettings
      */
     public function getSource(): string
     {
-        return 'company_settings';
+        return 'companies_settings';
     }
 }
