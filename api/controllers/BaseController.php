@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types = 1);
 
 namespace Gewaer\Api\Controllers;
 
@@ -16,7 +16,6 @@ abstract class BaseController extends CrudExtendedController
 {
     /**
      * activate softdelete
-     * 
      * @var int
      */
     public $softDelete = 1;
