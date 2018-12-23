@@ -62,6 +62,7 @@ class SwooleResponse extends Response
         
         //reest di
         $this->_sent = false;
+        $this->getDi()->get('db')->close();
         $this->getDi()->reset();
 
         return $this;

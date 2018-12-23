@@ -31,6 +31,9 @@ $router->get('/status', [
 $router->get('/timezones', [
     'Gewaer\Api\Controllers\TimeZonesController',
     'index',
+    'options' => [
+        'jwt' => false,
+    ]
 ]);
 
 /**
