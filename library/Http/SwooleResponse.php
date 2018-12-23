@@ -59,6 +59,10 @@ class SwooleResponse extends Response
         // 处理
         $this->response->status($this->getStatusCode());
         $this->response->end($this->_content);
+        
+        //reest di
+        $this->_sent = false;
+        $this->getDi()->reset();
 
         return $this;
     }

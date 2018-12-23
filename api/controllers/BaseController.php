@@ -38,27 +38,6 @@ abstract class BaseController extends CrudExtendedController
         //$response->setContentType('application/vnd.api+json', 'UTF-8');
         $response->setJsonContent($content);
 
-        //clean services we need to be fresh on each request
-        if (defined('ENGINE') && ENGINE == 'SWOOLE') {
-            //$this->db->close();
-           
-            //remove the userData service
-            if ($this->di->has('userData')) {
-                $service = $this->di->getService('userData');
-                $this->di->remove($service->getName());
-            }
-
-            //close db
-            if ($this->di->has('db')) {
-                $db = $this->di->getService('db');
-                $this->db->close();
-                $this->di->remove($db->getName());
-            }
-
-             $this->di->reset();
-
-        }
-
         return $response;
     }
 }

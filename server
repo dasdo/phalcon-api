@@ -15,6 +15,7 @@ define('ENGINE', 'SWOOLE');
 
 use Phalcon\Di\FactoryDefault;
 use Gewaer\Bootstrap\Swoole;
+use Gewaer\Http\SwooleResponse;
 
 $script = $argv[0];
 if (empty($argv[1])) {
@@ -90,8 +91,12 @@ switch ($action) {
                     'trace' => $e->getTrace(),
                 ];
 
+                //if we get a exception before response
+                if (!is_object($SResponse)) {
+                    $SResponse = new SwooleResponse();
+                    $SResponse->init($response);
+                }
                 //$di->getLog()->addError($e->getMessage(), $e->getTrace());
-                $bootstrap->getContainer()->reset();
 
                 $SResponse->setStatusCode(500);
                 $SResponse->setJsonContent($error)->send();
