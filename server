@@ -1,0 +1,124 @@
+#!/usr/bin/env php
+<?php
+// +----------------------------------------------------------------------
+// | server.php [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2016-2017 limingxinleo All rights reserved.
+// +----------------------------------------------------------------------
+// | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
+// +----------------------------------------------------------------------
+
+define('ROOT_PATH', __DIR__);
+define('APP_PATH', ROOT_PATH);
+define('IS_CLI', false);
+define('ENGINE', 'SWOOLE');
+
+use Phalcon\Di\FactoryDefault;
+use Gewaer\Bootstrap\Swoole;
+
+$script = $argv[0];
+if (empty($argv[1])) {
+    echo './server [start|restart|reload|stop|status]' . PHP_EOL;
+    exit;
+}
+
+$action = $argv[1];
+
+/** @var FactoryDefault $di */
+            //composer autoload
+require_once __DIR__ . '/vendor/autoload.php';
+
+/**
+ * Get config service for use in inline setup below
+ */
+
+$pidDir = ROOT_PATH;
+$logDir = ROOT_PATH . '/logs';
+$host = '0.0.0.0';
+$port = 8081;
+
+$pidFile = $pidDir . 'swoole_http_server.pid';
+$logFile = $logDir . 'swoole_http_server.log';
+
+$pid = 0;
+if (file_exists($pidFile)) {
+    $pid = intval(file_get_contents($pidFile));
+    if (!swoole_process::kill($pid, 0)) {
+        $pid = 0;
+    }
+}
+
+switch ($action) {
+    case 'restart':
+        if ($pid > 0) {
+            swoole_process::kill($pid);
+            while (swoole_process::kill($pid, 0)) {
+            }
+        }
+    // no break
+    case 'start':
+        $http = new swoole_http_server($host, $port);
+        $http->set([
+            'dispatch_mode' => 2,
+            'worker_num' => 10,
+            'max_request' => 10000,
+            'log_file' => $logFile,
+            'log_level' => 5,
+            'pid_file' => $pidFile,
+            'open_tcp_nodelay' => 1,
+            'daemonize' => 0,
+        ]);
+        $http->on('workerStart', function () {
+            /** @var FactoryDefault $di */
+            require __DIR__ . '/library/Core/autoload.php';
+        });
+        $http->on('request', function ($request, $response) {
+            try {
+                $bootstrap = new Swoole();
+                $bootstrap->setup();
+
+                $SRequest = $bootstrap->getContainer()->get('request');
+                $SResponse = $bootstrap->getContainer()->get('response');
+                $SResponse->init($response);
+                $SRequest->init($request);
+
+                $bootstrap->run();
+            } catch (Throwable $e) {
+                //Server errores FATAL
+                $error = [
+                    'message' => $e->getMessage(),
+                    'trace' => $e->getTrace(),
+                ];
+
+                //$di->getLog()->addError($e->getMessage(), $e->getTrace());
+                $bootstrap->getContainer()->reset();
+
+                $SResponse->setStatusCode(500);
+                $SResponse->setJsonContent($error)->send();
+            }
+        });
+        echo 'swoole http server start.' . PHP_EOL;
+        $http->start();
+        break;
+    case 'reload':
+        if ($pid > 0 && swoole_process::kill($pid, SIGUSR1)) {
+            echo 'swoole http server reload successed.' . PHP_EOL;
+        } else {
+            echo 'swoole http server is not running' . PHP_EOL;
+        }
+        break;
+    case 'stop':
+        if ($pid > 0 && swoole_process::kill($pid)) {
+            echo 'swoole http server stop successed.' . PHP_EOL;
+        } else {
+            echo 'swoole http server is not running' . PHP_EOL;
+        }
+        break;
+    case 'status':
+        if ($pid > 0) {
+            echo 'swoole http server is running. master pid is ' . $pid . PHP_EOL;
+        } else {
+            echo 'swoole http server is not running' . PHP_EOL;
+        }
+        break;
+}

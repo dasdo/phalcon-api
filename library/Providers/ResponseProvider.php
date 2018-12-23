@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Gewaer\Providers;
 
-use Gewaer\Http\Request;
-use Gewaer\Http\SwooleRequest;
+use Phalcon\Http\Response;
+use Gewaer\Http\SwooleResponse;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\DiInterface;
 
-class RequestProvider implements ServiceProviderInterface
+class ResponseProvider implements ServiceProviderInterface
 {
     /**
      * @param DiInterface $container
@@ -17,9 +17,9 @@ class RequestProvider implements ServiceProviderInterface
     public function register(DiInterface $container)
     {
         if (defined('ENGINE') && ENGINE === 'SWOOLE') {
-            $container->setShared('request', new SwooleRequest());
+            $container->setShared('response', new SwooleResponse());
         } else {
-            $container->setShared('request', new Request());
+            $container->setShared('response', new Response());
         }
     }
 }

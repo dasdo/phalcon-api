@@ -27,7 +27,7 @@ class NotFoundMiddleware extends Plugin implements MiddlewareInterface
      */
     public function beforeNotFound()
     {
-        $apiResponse = new Response();
+        $apiResponse = $this->response;
         $this->halt(
             $this->application,
             Response::NOT_FOUND,

@@ -8,7 +8,6 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\Micro\MiddlewareInterface;
 use Baka\Auth\Models\Sessions;
 use Gewaer\Models\Users;
-use Phalcon\Http\Request;
 use Gewaer\Exception\UnauthorizedHttpException;
 use Gewaer\Constants\Flags;
 
@@ -30,15 +29,15 @@ class AuthenticationMiddleware implements MiddlewareInterface
     {
         $auth = $api->getService('auth');
         $config = $api->getService('config');
+        $request = $api->getService('request');
 
         // to get the payload
         $data = $auth->data();
 
         $api->getDI()->setShared(
             'userData',
-            function () use ($config, $data) {
+            function () use ($config, $data, $request) {
                 $session = new Sessions();
-                $request = new Request();
 
                 //all is empty and is dev, ok take use the first user
                 if (empty($data) && empty($data['sessionId']) && strtolower($config->app->env) == Flags::DEVELOPMENT) {
