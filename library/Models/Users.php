@@ -7,6 +7,7 @@ use Gewaer\Traits\PermissionsTrait;
 use Gewaer\Traits\SubscriptionPlanLimitTrait;
 use Phalcon\Cashier\Billable;
 use Gewaer\Exception\UnprocessableEntityHttpException;
+use Carbon\Carbon;
 
 /**
  * Class Users
@@ -131,6 +132,37 @@ class Users extends \Baka\Auth\Models\Users
     }
 
     /**
+     * Strat a free trial
+     *
+     * @param Users $user
+     * @return Subscription
+     */
+    public function startFreeTrial() : Subscription
+    {
+        $defaultPlan = AppsPlans::getDefaultPlan();
+
+        $subscription = new Subscription();
+        $subscription->user_id = $this->getId();
+        $subscription->company_id = $this->default_company;
+        $subscription->apps_id = $this->di->getApp()->getId();
+        $subscription->apps_plans_id = $this->di->getApp()->default_apps_plan_id;
+        $subscription->name = $defaultPlan->name;
+        $subscription->stripe_id = $defaultPlan->stripe_id;
+        $subscription->stripe_plan = $defaultPlan->stripe_plan;
+        $subscription->quantity = 1;
+        $subscription->trial_ends_at = Carbon::now()->addDays($this->di->getApp()->plan->free_trial_dates)->toDateTimeString();
+
+        if (!$subscription->save()) {
+            throw new ServerErrorHttpException((string)current($this->getMessages()));
+        }
+
+        $this->trial_ends_at = $subscription->trial_ends_at;
+        $this->update();
+
+        return $subscription;
+    }
+
+    /**
      * Before create
      *
      * @return void
@@ -139,9 +171,11 @@ class Users extends \Baka\Auth\Models\Users
     {
         parent::beforeCreate();
 
-        //confirm if the app reach its limit
-
-        $this->isAtLimit();
+        //this is only empty when creating a new user
+        if (!empty($this->default_company)) {
+            //confirm if the app reach its limit
+            $this->isAtLimit();
+        }
 
         //Assign admin role to the system if we dont get a specify role
         if (empty($this->roles_id)) {
@@ -158,8 +192,11 @@ class Users extends \Baka\Auth\Models\Users
      */
     public function afterCreate()
     {
+        /**
+         * User signing up for a new app / plan
+         * How do we know? well he doesnt have a default_company
+         */
         if (empty($this->default_company)) {
-            //create company
             $company = new Companies();
             $company->name = $this->defaultCompanyName;
             $company->users_id = $this->getId();
@@ -173,6 +210,13 @@ class Users extends \Baka\Auth\Models\Users
             if (!$this->update()) {
                 throw new Exception(current($this->getMessages()));
             }
+
+            $this->default_company_branch = $this->defaultCompany->branch->getId();
+            $this->update();
+
+            //update default subscription free trial
+            $company->app->subscriptions_id = $this->startFreeTrial()->getId();
+            $company->update();
         } else {
             //we have the company id
             if (empty($this->default_company_branch)) {

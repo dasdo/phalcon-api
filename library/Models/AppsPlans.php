@@ -1,5 +1,5 @@
 <?php
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Gewaer\Models;
 
@@ -152,7 +152,7 @@ class AppsPlans extends AbstractModel
      * @param string $key
      * @param string $value
      */
-    public function get(string $key) : string
+    public function get(string $key) : ?string
     {
         $setting = AppsPlansSettings::findFirst([
             'conditions' => 'apps_plans_id = ?0 and apps_id = ?1 and key = ?2',
@@ -163,7 +163,8 @@ class AppsPlans extends AbstractModel
             return $setting->value;
         }
 
-        throw new ServerErrorHttpException(_('No settings found with for ' . $key . ' at this app ' . $this->apps_id));
+        return null;
+        //throw new ServerErrorHttpException(_('No settings found with for ' . $key . ' at this app ' . $this->apps_id));
     }
 
     /**

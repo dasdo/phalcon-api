@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Gewaer\Traits;
 
@@ -35,7 +35,7 @@ trait SubscriptionPlanLimitTrait
      */
     public function isAtLimit() : bool
     {
-        if (!is_object($this->di->getUserData) && !$this->di->getUserData()->isLoggedIn()) {
+        if (!Di::getDefault()->has('userData')) {
             return false;
         }
 
@@ -66,10 +66,10 @@ trait SubscriptionPlanLimitTrait
      */
     public function updateAppActivityLimit() : bool
     {
-        if (!is_object($this->di->getUserData) && !$this->di->getUserData()->isLoggedIn()) {
+        if (!Di::getDefault()->has('userData')) {
             return false;
         }
-        
+
         $companyAppActivityLimit = UserCompanyAppsActivities::findFirst([
             'conditions' => 'company_id = ?0 and apps_id = ?1 and key = ?2',
             'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId(), $this->getSubcriptionPlanLimitModelKey()]

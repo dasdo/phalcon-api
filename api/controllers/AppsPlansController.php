@@ -180,7 +180,15 @@ class AppsPlansController extends BaseController
 
         $this->db->begin();
 
-        $subscription = $this->userData->subscription($userSubscription->name)->swap($stripeId);
+        $subscription = $this->userData->subscription($userSubscription->name);
+
+        if ($subscription->onTrial()) {
+            $subscription->name = $appPlan->name;
+            $subscription->stripe_id = $appPlan->stripe_id;
+            $subscription->stripe_plan = $appPlan->stripe_plan;
+        } else {
+            $subscription->swap($stripeId);
+        }
 
         //update company app
         $companyApp = UserCompanyApps::findFirst([
@@ -201,7 +209,6 @@ class AppsPlansController extends BaseController
             }
 
             //update the subscription with the plan
-
             $subscription->apps_plans_id = $appPlan->getId();
             if (!$subscription->update()) {
                 $this->db->rollback();
@@ -239,7 +246,13 @@ class AppsPlansController extends BaseController
             throw new NotFoundHttpException(_('No current subscription found'));
         }
 
-        $subscription = $this->userData->subscription($userSubscription->name)->cancel();
+        $subscription = $this->userData->subscription($userSubscription->name);
+
+        //if on trial you can cancel without going to stripe
+        if (!$subscription->onTrial()) {
+            $subscription->cancel();
+        }
+
         $subscription->is_deleted = 1;
         $subscription->update();
 

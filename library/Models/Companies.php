@@ -1,11 +1,11 @@
 <?php
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Gewaer\Models;
 
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
-use Gewaer\Exception\ModelException;
+use Gewaer\Exception\ServerErrorHttpException;
 
 /**
  * Class Companies
@@ -113,7 +113,31 @@ class Companies extends \Baka\Auth\Models\Companies
             [
                 'alias' => 'app',
                 'params' => [
-                    'conditions' => 'apps_id = '.$this->di->getApp()->getId()
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId()
+                ]
+            ]
+        );
+
+        $this->hasOne(
+            'id',
+            'Gewaer\Models\Subscription',
+            'company_id',
+            [
+                'alias' => 'subscription',
+                'params' => [
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId() . ' AND ends_at is null'
+                ]
+            ]
+        );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\Subscription',
+            'company_id',
+            [
+                'alias' => 'subscriptions',
+                'params' => [
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId()
                 ]
             ]
         );
@@ -168,19 +192,14 @@ class Companies extends \Baka\Auth\Models\Companies
         $branch->is_default = 1;
         $branch->description = '';
         if (!$branch->save()) {
-            throw new ModelException((string)current($branch->getMessages()));
-        }
-
-        //assign default branch to the user
-        if (empty($this->user->default_company_branch)) {
-            $this->user->default_company_branch = $branch->getId();
-            $this->user->update();
+            throw new ServerErrorHttpException((string)current($branch->getMessages()));
         }
 
         //look for the default plan for this app
         $companyApps = new UserCompanyApps();
         $companyApps->company_id = $this->getId();
         $companyApps->apps_id = $this->di->getApp()->getId();
+        $companyApps->subscriptions_id = 0;
 
         //we need to assign this company to a plan
         if (empty($this->appPlanId)) {
@@ -188,12 +207,11 @@ class Companies extends \Baka\Auth\Models\Companies
             $companyApps->stripe_id = $plan->stripe_id;
         }
 
-        $companyApps->subscriptions_id = 0;
         $companyApps->created_at = date('Y-m-d H:i:s');
         $companyApps->is_deleted = 0;
 
         if (!$companyApps->save()) {
-            throw new ModelException((string)current($companyApps->getMessages()));
+            throw new ServerErrorHttpException((string)current($companyApps->getMessages()));
         }
     }
 }

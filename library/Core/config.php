@@ -31,6 +31,11 @@ return [
         'supportEmail' => envValue('APP_SUPPORT_EMAIL'),
         'time' => microtime(true),
         'namespaceName' => envValue('APP_NAMESPACE'),
+        'subscription' => [
+            'defaultPlan' => [
+                'name' => 'default-free-trial'
+            ]
+        ]
     ],
     'cache' => [
         'data' => [
@@ -112,6 +117,7 @@ return [
     ],
     'stripe' => [
         'secret' => getenv('STRIPE_SECRET'),
-        'public' => getenv('STRIPE_PUBLIC')
+        'public' => getenv('STRIPE_PUBLIC'),
+        
     ]
 ];

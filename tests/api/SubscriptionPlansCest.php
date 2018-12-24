@@ -1,5 +1,7 @@
 <?php
 
+use Gewaer\Models\Subscription;
+
 class AppsPlanCest
 {
     /**
@@ -84,6 +86,13 @@ class AppsPlanCest
         $I->seeResponseIsSuccessful();
         $response = $I->grabResponse();
         $data = json_decode($response, true);
+
+        //we need to update all subscriptions for other test
+        $subscriptions = Subscription::find();
+        foreach ($subscriptions as $subscription) {
+            $subscription->is_deleted = 0;
+            $subscription->update();
+        }
 
         $I->assertTrue(isset($data['id']));
     }
