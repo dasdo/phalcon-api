@@ -6,6 +6,19 @@ use Phalcon\Cashier\Subscription as PhalconSubscription;
 use Gewaer\Exception\ServerErrorHttpException;
 use Phalcon\Di;
 
+/**
+ * Trait Subscription
+ *
+ * @package Gewaer\Models
+ *
+ * @property Users $user
+ * @property AppsPlans $appPlan
+ * @property CompanyBranches $branches
+ * @property Companies $company
+ * @property UserCompanyApps $app
+ * @property \Phalcon\Di $di
+ *
+ */
 class Subscription extends PhalconSubscription
 {
     /**
@@ -43,6 +56,12 @@ class Subscription extends PhalconSubscription
      * @var string
      */
     public $stripe_id;
+
+    /**
+     *
+     * @var string
+     */
+    public $stripe_plan;
 
     /**
      *

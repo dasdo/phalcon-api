@@ -13,8 +13,10 @@ use Gewaer\Exception\ServerErrorHttpException;
  * @package Gewaer\Models
  *
  * @property Users $user
+ * @property CompanyBranches $branch
+ * @property CompanyBranches $branches
  * @property Config $config
- * @property Apps $app
+ * @property UserCompanyApps $app
  * @property \Phalcon\Di $di
  */
 class Companies extends \Baka\Auth\Models\Companies

@@ -15,6 +15,14 @@ use Phalcon\Di;
  * Trait ResponseTrait
  *
  * @package Gewaer\Traits
+ *
+ * @property Users $user
+ * @property AppsPlans $appPlan
+ * @property CompanyBranches $branches
+ * @property Companies $company
+ * @property UserCompanyApps $app
+ * @property \Phalcon\Di $di
+ *
  */
 trait SubscriptionPlanLimitTrait
 {
