@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
+use Phalcon\Di;
+
 class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
 {
     /**

@@ -13,7 +13,7 @@ use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Gewaer\Exception\UnprocessableEntityHttpException;
 use Phalcon\Cashier\Subscription;
-use Baka\Auth\Models\UserCompanyApps;
+use Gewaer\Models\UserCompanyApps;
 
 /**
  * Class LanguagesController
