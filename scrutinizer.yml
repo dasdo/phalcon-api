@@ -62,6 +62,7 @@ build:
           - composer install --no-interaction
           - composer update --no-interaction
           - ./vendor/bin/phinx migrate -e development
+          - ./vendor/bin/phinx seed:run
           - ./vendor/bin/codecept build
 
 #    project_setup:

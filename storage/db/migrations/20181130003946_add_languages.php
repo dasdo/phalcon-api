@@ -17,28 +17,7 @@ class AddLanguages extends AbstractMigration
             ->addColumn('is_deleted', 'boolean', ['null' => false, 'default' => '0', 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'updated_at'])
             ->save();
 
-        //add default languages
-        $data = [
-            [
-                'id' => 'EN',
-                'name' => 'English',
-                'title' => 'English',
-                'order' => 1,
-                'created_at' => date('Y-m-d H:i:s'),
-                'is_deleted' => 0
-            ], [
-                'id' => 'ES',
-                'name' => 'Español',
-                'title' => 'Español',
-                'order' => 2,
-                'created_at' => date('Y-m-d H:i:s'),
-                'is_deleted' => 0
-            ]
-        ];
-
-        $table = $this->table('languages');
-        $table->insert($data)->save();
-
+     
         $table = $this->table('users');
         $table->addColumn('roles_id', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'lastname'])->save();
         $table->save();

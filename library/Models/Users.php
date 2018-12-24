@@ -247,7 +247,9 @@ class Users extends \Baka\Auth\Models\Users
             throw new UnprocessableEntityHttpException((string)current($userRole->getMessages()));
         }
 
-        //update model total activity
-        $this->updateAppActivityLimit();
+        //update user activity when its not a empty user
+        if (empty($this->default_company)) {
+            $this->updateAppActivityLimit();
+        }
     }
 }

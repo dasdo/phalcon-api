@@ -9,6 +9,7 @@ use Gewaer\Providers\AclProvider;
 use Gewaer\Providers\ConfigProvider;
 use Gewaer\Providers\DatabaseProvider;
 use Gewaer\Models\Users;
+use Page\Data;
 
 class AclCest
 {
@@ -88,7 +89,7 @@ class AclCest
     public function checkUsersAssignRole(IntegrationTester $I)
     {
         $acl = $this->aclService();
-        $userData = Users::findFirst(1);
+        $userData = Users::findFirstByEmail(Data::loginJson()['email']);
 
         $I->assertTrue($userData->assignRole('Default.Admins'));
     }
@@ -96,7 +97,7 @@ class AclCest
     public function checkUsersHasPermission(IntegrationTester $I)
     {
         $acl = $this->aclService();
-        $userData = Users::findFirst(1);
+        $userData = Users::findFirstByEmail(Data::loginJson()['email']);
 
         $I->assertTrue($userData->can('Users.create'));
     }
@@ -104,7 +105,7 @@ class AclCest
     public function checkUsersDoesntHavePermission(IntegrationTester $I)
     {
         $acl = $this->aclService();
-        $userData = Users::findFirst(1);
+        $userData = Users::findFirstByEmail(Data::loginJson()['email']);
 
         $I->assertFalse($userData->can('Users.delete'));
     }
@@ -112,7 +113,7 @@ class AclCest
     public function checkUsersRemoveRole(IntegrationTester $I)
     {
         $acl = $this->aclService();
-        $userData = Users::findFirst(1);
+        $userData = Users::findFirstByEmail(Data::loginJson()['email']);
 
         $I->assertTrue($userData->removeRole('Default.Admins'));
     }
