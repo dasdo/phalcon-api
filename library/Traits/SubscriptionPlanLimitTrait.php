@@ -25,7 +25,8 @@ trait SubscriptionPlanLimitTrait
      */
     private function getSubcriptionPlanLimitModelKey() : string
     {
-        return strtolower((new ReflectionClass($this))->getShortName()) . '_total';
+        $key = $this->subscriptionPlanLimitKey ?? (new ReflectionClass($this))->getShortName();
+        return strtolower($key) . '_total';
     }
 
     /**

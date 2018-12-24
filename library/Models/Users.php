@@ -174,6 +174,7 @@ class Users extends \Baka\Auth\Models\Users
         //this is only empty when creating a new user
         if (!empty($this->default_company)) {
             //confirm if the app reach its limit
+            die('3');
             $this->isAtLimit();
         }
 
@@ -248,7 +249,7 @@ class Users extends \Baka\Auth\Models\Users
         }
 
         //update user activity when its not a empty user
-        if (empty($this->default_company)) {
+        if (!empty($this->default_company)) {
             $this->updateAppActivityLimit();
         }
     }

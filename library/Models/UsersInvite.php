@@ -3,8 +3,12 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
+use Gewaer\Traits\SubscriptionPlanLimitTrait;
+
 class UsersInvite extends AbstractModel
 {
+    use SubscriptionPlanLimitTrait;
+
     /**
      *
      * @var integer
@@ -60,6 +64,11 @@ class UsersInvite extends AbstractModel
     public $updated_at;
 
     /**
+     * Subscription plan key
+     */
+    protected $subscriptionPlanLimitKey = 'users';
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
@@ -89,5 +98,16 @@ class UsersInvite extends AbstractModel
     public function getSource(): string
     {
         return 'users_invite';
+    }
+
+    /**
+     * What to do after the creation of a new users
+     *  - Assign default role
+     *
+     * @return void
+     */
+    public function afterCreate()
+    {
+        $this->updateAppActivityLimit();
     }
 }

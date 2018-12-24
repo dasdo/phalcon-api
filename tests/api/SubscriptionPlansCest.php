@@ -14,6 +14,13 @@ class AppsPlanCest
     {
         $userData = $I->apiLogin();
 
+        //when doing a signup we create a subscription, so need to delete to confirm this test
+        $subscriptions = Subscription::find('user_id =' . $userData->id);
+        foreach ($subscriptions as $subscription) {
+            $subscription->is_deleted = 1;
+            $subscription->update();
+        }
+
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/apps-plans', [
             'stripe_id' => 'monthly-10-1',
