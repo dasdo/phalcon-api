@@ -118,6 +118,5 @@ return [
     'stripe' => [
         'secret' => getenv('STRIPE_SECRET'),
         'public' => getenv('STRIPE_PUBLIC'),
-        
     ]
 ];

@@ -14,6 +14,7 @@ use Phalcon\Validation\Validator\PresenceOf;
 use Gewaer\Exception\UnprocessableEntityHttpException;
 use Phalcon\Cashier\Subscription;
 use Gewaer\Models\UserCompanyApps;
+use function Gewaer\Core\paymentGatewayIsActive;
 
 /**
  * Class LanguagesController
@@ -105,48 +106,50 @@ class AppsPlansController extends BaseController
             throw new NotFoundHttpException(_('You are already subscribed to this plan'));
         }
 
-        $card = StripeToken::create([
-            'card' => [
-                'number' => $cardNumber,
-                'exp_month' => $expMonth,
-                'exp_year' => $expYear,
-                'cvc' => $cvc,
-            ],
-        ], [
-            'api_key' => $this->config->stripe->secret
-        ])->id;
+        //we can only run stripe paymenta gateway if we have the key
+        if (paymentGatewayIsActive()) {
+            $card = StripeToken::create([
+                'card' => [
+                    'number' => $cardNumber,
+                    'exp_month' => $expMonth,
+                    'exp_year' => $expYear,
+                    'cvc' => $cvc,
+                ],
+            ], [
+                'api_key' => $this->config->stripe->secret
+            ])->id;
 
-        $this->db->begin();
+            $this->db->begin();
 
-        //if fails it will throw exception
-        if ($appPlan->free_trial_dates == 0) {
-            $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->create($card);
-        } else {
-            $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->trialDays($appPlan->free_trial_dates)->create($card);
-        }
-
-        //update company app
-        $companyApp = UserCompanyApps::getCurrentApp();
-
-        //update the company app to the new plan
-        if (is_object($companyApp)) {
-            $subscription = $this->userData->subscription($appPlan->stripe_plan);
-            $companyApp->stripe_id = $stripeId;
-            $companyApp->subscriptions_id = $subscription->getId();
-            if (!$companyApp->update()) {
-                $this->db->rollback();
-                throw new UnprocessableEntityHttpException((string) current($companyApp->getMessages()));
+            if ($appPlan->free_trial_dates == 0) {
+                $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->create($card);
+            } else {
+                $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->trialDays($appPlan->free_trial_dates)->create($card);
             }
 
-            //update the subscription with the plan
-            $subscription->apps_plans_id = $appPlan->getId();
-            if (!$subscription->update()) {
-                $this->db->rollback();
-                throw new UnprocessableEntityHttpException((string) current($subscription->getMessages()));
-            }
-        }
+            //update company app
+            $companyApp = UserCompanyApps::getCurrentApp();
 
-        $this->db->commit();
+            //update the company app to the new plan
+            if (is_object($companyApp)) {
+                $subscription = $this->userData->subscription($appPlan->stripe_plan);
+                $companyApp->stripe_id = $stripeId;
+                $companyApp->subscriptions_id = $subscription->getId();
+                if (!$companyApp->update()) {
+                    $this->db->rollback();
+                    throw new UnprocessableEntityHttpException((string)current($companyApp->getMessages()));
+                }
+
+                //update the subscription with the plan
+                $subscription->apps_plans_id = $appPlan->getId();
+                if (!$subscription->update()) {
+                    $this->db->rollback();
+                    throw new UnprocessableEntityHttpException((string)current($subscription->getMessages()));
+                }
+            }
+
+            $this->db->commit();
+        }
 
         //sucess
         return $this->response($appPlan);
