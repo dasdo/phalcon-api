@@ -6,9 +6,9 @@ use Phalcon\Security\Random;
 use Gewaer\Models\UserCompanyAppsActivities;
 use Gewaer\Models\AppsPlans;
 use ApiTester;
-use Gewaer\Exception\SubscriptionPlanLimitException;
 use Gewaer\Models\Companies;
 use Gewaer\Models\Users;
+use Exception;
 
 class SubscriptionLimitCest
 {
@@ -135,7 +135,7 @@ class SubscriptionLimitCest
             $I->seeResponseIsSuccessful();
             $response = $I->grabResponse();
             $dataInvite = json_decode($response, true);
-        } catch (SubscriptionPlanLimitException $e) {
+        } catch (Exception $e) {
             $reachLimit = true;
         }
 

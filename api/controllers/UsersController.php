@@ -135,9 +135,22 @@ class UsersController extends \Baka\Auth\UsersController
                 $request = $this->request->getJsonRawBody(true);
             }
 
-            //clean pass
-            if (array_key_exists('password', $request) && !empty($request['password'])) {
-                $user->password = Users::passwordHash($request['password']);
+            //update password
+            if (array_key_exists('new_password', $request) && !empty($request['new_password'])) {
+                //Ok let validate user password
+                $validation = new Validation();
+                $validation->add('new_password', new PresenceOf(['message' => 'The new_password is required.']));
+                $validation->add('current_password', new PresenceOf(['message' => 'The current_password is required.']));
+                $validation->add('confirm_new_password', new PresenceOf(['message' => 'The confirm_new_password is required.']));
+                $messages = $validation->validate($request);
+
+                if (count($messages)) {
+                    foreach ($messages as $message) {
+                        throw new BadRequestHttpException((string)$message);
+                    }
+                }
+
+                $user->updatePassword($request['current_password'], $request['new_password'], $request['confirm_new_password']);
                 unset($request['password']);
             }
 
@@ -156,7 +169,7 @@ class UsersController extends \Baka\Auth\UsersController
                 return $this->response($user);
             } else {
                 //didnt work
-                throw new ModelException((string) current($user->getMessages()));
+                throw new ModelException((string)current($user->getMessages()));
             }
         } else {
             throw new NotFoundHttpException('Record not found');
@@ -170,7 +183,7 @@ class UsersController extends \Baka\Auth\UsersController
      * @method PUT
      * @return Response
      */
-    public function updateNotifications($id): Response
+    public function updateNotifications($id) : Response
     {
         //get the notification array
         //delete the current ones
@@ -186,7 +199,7 @@ class UsersController extends \Baka\Auth\UsersController
      * @method POST
      * @return Response
      */
-    public function devices(): Response
+    public function devices() : Response
     {
         //Ok let validate user password
         $validation = new Validation();
@@ -197,7 +210,7 @@ class UsersController extends \Baka\Auth\UsersController
         $messages = $validation->validate($this->request->getPost());
         if (count($messages)) {
             foreach ($messages as $message) {
-                throw new BadRequestHttpException((string) $message);
+                throw new BadRequestHttpException((string)$message);
             }
         }
 
@@ -215,7 +228,7 @@ class UsersController extends \Baka\Auth\UsersController
                 $userSource->source_username = $this->userData->displayname . ' ' . $app;
 
                 if (!$userSource->save()) {
-                    throw new UnprocessableEntityHttpException((string) current($userSource->getMessages()));
+                    throw new UnprocessableEntityHttpException((string)current($userSource->getMessages()));
                 }
 
                 $msg = 'User Device Associated';

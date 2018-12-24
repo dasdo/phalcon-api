@@ -131,7 +131,7 @@ class AppsPlansController extends BaseController
         //update the company app to the new plan
         if (is_object($companyApp)) {
             $subscription = $this->userData->subscription($appPlan->stripe_plan);
-            $companyApp->strip_id = $stripeId;
+            $companyApp->stripe_id = $stripeId;
             $companyApp->subscriptions_id = $subscription->getId();
             if (!$companyApp->update()) {
                 $this->db->rollback();
@@ -195,7 +195,7 @@ class AppsPlansController extends BaseController
             $subscription->name = $stripeId;
             $subscription->save();
 
-            $companyApp->strip_id = $stripeId;
+            $companyApp->stripe_id = $stripeId;
             $companyApp->subscriptions_id = $subscription->getId();
             if (!$companyApp->update()) {
                 $this->db->rollback();
