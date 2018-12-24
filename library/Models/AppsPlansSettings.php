@@ -52,7 +52,7 @@ class AppsPlansSettings extends AbstractModel
      */
     public function initialize()
     {
-        $this->setSource('apps_plans');
+        $this->setSource('apps_plans_settings');
 
         $this->belongsTo(
             'apps_id',
@@ -69,6 +69,6 @@ class AppsPlansSettings extends AbstractModel
      */
     public function getSource() : string
     {
-        return 'apps_plans';
+        return 'apps_plans_settings';
     }
 }

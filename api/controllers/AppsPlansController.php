@@ -13,7 +13,8 @@ use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Gewaer\Exception\UnprocessableEntityHttpException;
 use Phalcon\Cashier\Subscription;
-use Baka\Auth\Models\UserCompanyApps;
+use Gewaer\Models\UserCompanyApps;
+use function Gewaer\Core\paymentGatewayIsActive;
 
 /**
  * Class LanguagesController
@@ -24,6 +25,7 @@ use Baka\Auth\Models\UserCompanyApps;
  * @property Request $request
  * @property Config $config
  * @property Apps $app
+ * @property \Phalcon\Db\Adapter\Pdo\Mysql $db
  */
 class AppsPlansController extends BaseController
 {
@@ -104,35 +106,49 @@ class AppsPlansController extends BaseController
             throw new NotFoundHttpException(_('You are already subscribed to this plan'));
         }
 
-        $card = StripeToken::create([
-            'card' => [
-                'number' => $cardNumber,
-                'exp_month' => $expMonth,
-                'exp_year' => $expYear,
-                'cvc' => $cvc,
-            ],
-        ], [
-            'api_key' => $this->config->stripe->secret
-        ])->id;
+        //we can only run stripe paymenta gateway if we have the key
+        if (paymentGatewayIsActive()) {
+            $card = StripeToken::create([
+                'card' => [
+                    'number' => $cardNumber,
+                    'exp_month' => $expMonth,
+                    'exp_year' => $expYear,
+                    'cvc' => $cvc,
+                ],
+            ], [
+                'api_key' => $this->config->stripe->secret
+            ])->id;
 
-        //if fails it will throw exception
-        if ($appPlan->free_trial_dates == 0) {
-            $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->create($card);
-        } else {
-            $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->trialDays($appPlan->free_trial_dates)->create($card);
-        }
+            $this->db->begin();
 
-        //update company app
-        $companyApp = UserCompanyApps::findFirst([
-            'conditions' => 'company_id = ?0 and apps_id = ?1',
-            'bind' => [$this->userData->defaultCompany->getId(), $this->app->getId()]
-        ]);
+            if ($appPlan->free_trial_dates == 0) {
+                $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->create($card);
+            } else {
+                $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->trialDays($appPlan->free_trial_dates)->create($card);
+            }
 
-        //udpate the company app to the new plan
-        if (is_object($companyApp)) {
-            $companyApp->strip_id = $stripeId;
-            $companyApp->subscriptions_id = $this->userData->subscription($appPlan->stripe_plan)->getId();
-            $companyApp->update();
+            //update company app
+            $companyApp = UserCompanyApps::getCurrentApp();
+
+            //update the company app to the new plan
+            if (is_object($companyApp)) {
+                $subscription = $this->userData->subscription($appPlan->stripe_plan);
+                $companyApp->stripe_id = $stripeId;
+                $companyApp->subscriptions_id = $subscription->getId();
+                if (!$companyApp->update()) {
+                    $this->db->rollback();
+                    throw new UnprocessableEntityHttpException((string)current($companyApp->getMessages()));
+                }
+
+                //update the subscription with the plan
+                $subscription->apps_plans_id = $appPlan->getId();
+                if (!$subscription->update()) {
+                    $this->db->rollback();
+                    throw new UnprocessableEntityHttpException((string)current($subscription->getMessages()));
+                }
+            }
+
+            $this->db->commit();
         }
 
         //sucess
@@ -162,20 +178,43 @@ class AppsPlansController extends BaseController
             throw new NotFoundHttpException(_('No current subscription found'));
         }
 
-        $this->userData->subscription($userSubscription->name)->swap($stripeId);
+        $this->db->begin();
+
+        $subscription = $this->userData->subscription($userSubscription->name);
+
+        if ($subscription->onTrial()) {
+            $subscription->name = $appPlan->name;
+            $subscription->stripe_id = $appPlan->stripe_id;
+            $subscription->stripe_plan = $appPlan->stripe_plan;
+        } else {
+            $subscription->swap($stripeId);
+        }
 
         //update company app
-        $companyApp = UserCompanyApps::findFirst([
-            'conditions' => 'company_id = ?0 and apps_id = ?1',
-            'bind' => [$this->userData->defaultCompany->getId(), $this->app->getId()]
-        ]);
+        $companyApp = UserCompanyApps::getCurrentApp();
 
-        //udpate the company app to the new plan
+        //update the company app to the new plan
         if (is_object($companyApp)) {
-            $companyApp->strip_id = $stripeId;
-            $companyApp->subscriptions_id = $this->userData->subscription($stripeId)->getId();
-            $companyApp->update();
+            $subscription->name = $stripeId;
+            $subscription->save();
+
+            $companyApp->stripe_id = $stripeId;
+            $companyApp->subscriptions_id = $subscription->getId();
+            if (!$companyApp->update()) {
+                $this->db->rollback();
+                throw new UnprocessableEntityHttpException((string) current($companyApp->getMessages()));
+            }
+
+            //update the subscription with the plan
+            $subscription->apps_plans_id = $appPlan->getId();
+            if (!$subscription->update()) {
+                $this->db->rollback();
+
+                throw new UnprocessableEntityHttpException((string) current($subscription->getMessages()));
+            }
         }
+
+        $this->db->commit();
 
         //return the new subscription plan
         return $this->response($appPlan);
@@ -204,7 +243,13 @@ class AppsPlansController extends BaseController
             throw new NotFoundHttpException(_('No current subscription found'));
         }
 
-        $subscription = $this->userData->subscription($userSubscription->name)->cancel();
+        $subscription = $this->userData->subscription($userSubscription->name);
+
+        //if on trial you can cancel without going to stripe
+        if (!$subscription->onTrial()) {
+            $subscription->cancel();
+        }
+
         $subscription->is_deleted = 1;
         $subscription->update();
 

@@ -1,16 +1,28 @@
-<?php 
+<?php
+
+namespace Gewaer\Tests\api;
+
+use Phalcon\Security\Random;
+use ApiTester;
+use Gewaer\Models\AppsPlans;
 
 class UsersInviteCest
 {
     public function insertInvite(ApiTester $I):void
     {
         $userData = $I->apiLogin();
-        $testEmail = 'testMC@example.com';
+        $random = new Random();
+        $userName = $random->base58();
+
+        $testEmail = $userName . '@example.com';
+
+        //reset
+        AppsPlans::findFirst(1)->set('users_total', 10);
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/users/invite', [
             'email' => $testEmail,
-            'role' => 'Admins',
+            'role' => 'Canvas.Admins',
             'dont_send' => 1
         ]);
 
@@ -23,9 +35,9 @@ class UsersInviteCest
         $hash = $data['invite_hash'];
 
         $I->sendPost('/v1/user-invites/' . $hash, [
-            'firstname' => 'testFirstName',
+            'firstname' => 'testFirstsName',
             'lastname' => 'testLastName',
-            'displayname' => 'testDisplayName',
+            'displayname' => $userName,
             'password' => 'testpassword',
             'user_active' => 1
         ]);

@@ -9,6 +9,8 @@ use Gewaer\Bootstrap\Api;
 use Gewaer\Mvc\Model\AbstractModel;
 use Phalcon\DI\FactoryDefault as PhDI;
 use Phalcon\Config as PhConfig;
+use Gewaer\Models\Users;
+use Page\Data;
 
 // here you can define custom actions
 // all public methods declared in helper class will be available in $I
@@ -33,6 +35,14 @@ class Integration extends Module
         $app = new Api();
         $app->setup();
         $this->diContainer = $app->getContainer();
+
+        //set userData to emulae logged in user
+        $this->diContainer->set(
+            'userData',
+            function () {
+                return Users::findFirstByEmail(Data::loginJson()['email']);
+            }
+        );
 
         if ($this->config['rollback']) {
             $this->diContainer->get('db')->begin();
@@ -79,7 +89,7 @@ class Integration extends Module
      *
      * @return array
      */
-    public function getModelRelationships(string $class): array
+    public function getModelRelationships(string $class) : array
     {
         /** @var AbstractModel $class */
         $model = new $class();

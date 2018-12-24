@@ -75,6 +75,13 @@ class Roles extends AbstractModel
     public function initialize()
     {
         $this->setSource('roles');
+
+        $this->hasMany(
+            'roles_name',
+            'Gewaer\Models\Roles',
+            'name',
+            ['alias' => 'role']
+        );
     }
 
     /**

@@ -3,16 +3,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-use Phalcon\Validation;
-use Phalcon\Validation\Validator\PresenceOf;
-
-/**
- * Class CompanyBranches
- *
- * @package Gewaer\Models
- *
- */
-class CompanyBranches extends AbstractModel
+class SystemModules extends AbstractModel
 {
     /**
      *
@@ -22,33 +13,39 @@ class CompanyBranches extends AbstractModel
 
     /**
      *
-     * @var string
+     * @var integer
      */
     public $name;
 
     /**
      *
+     * @var integer
+     */
+    public $slug;
+
+    /**
+     *
      * @var string
      */
-    public $description;
+    public $model_name;
 
     /**
      *
      * @var integer
      */
-    public $company_id;
+    public $apps_id;
 
     /**
      *
      * @var integer
      */
-    public $users_id;
+    public $parents_id;
 
     /**
      *
      * @var integer
      */
-    public $is_default;
+    public $menu_order;
 
     /**
      *
@@ -73,8 +70,6 @@ class CompanyBranches extends AbstractModel
      */
     public function initialize()
     {
-        $this->setSource('company_branches');
-
         $this->belongsTo(
             'company_id',
             'Gewaer\Models\Companies',
@@ -83,31 +78,20 @@ class CompanyBranches extends AbstractModel
         );
 
         $this->belongsTo(
-            'users_id',
-            'Gewaer\Models\Users',
+            'apps_id',
+            'Gewaer\Models\Apps',
             'id',
-            ['alias' => 'id']
-        );
-    }
-
-    /**
-     * Model validation
-     *
-     * @return void
-     */
-    public function validation()
-    {
-        $validator = new Validation();
-
-        $validator->add(
-            'name',
-            new PresenceOf([
-                'model' => $this,
-                'required' => true,
-            ])
+            ['alias' => 'app']
         );
 
-        return $this->validate($validator);
+        $this->belongsTo(
+            'company_branches_id',
+            'Gewaer\Models\CompanyBranches',
+            'id',
+            ['alias' => 'companyBranch']
+        );
+
+        $this->setSource('user_company_apps_activities');
     }
 
     /**
@@ -115,8 +99,8 @@ class CompanyBranches extends AbstractModel
      *
      * @return string
      */
-    public function getSource() : string
+    public function getSource(): string
     {
-        return 'company_branches';
+        return 'user_company_apps_activities';
     }
 }

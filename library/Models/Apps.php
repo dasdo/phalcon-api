@@ -33,6 +33,12 @@ class Apps extends \Baka\Auth\Models\Apps
      *
      * @var integer
      */
+    public $default_apps_plan_id;
+
+    /**
+     *
+     * @var integer
+     */
     public $is_actived;
 
     /**
@@ -67,6 +73,20 @@ class Apps extends \Baka\Auth\Models\Apps
         parent::initialize();
 
         $this->setSource('apps');
+
+        $this->hasOne(
+            'default_apps_plan_id',
+            'Gewaer\Models\AppsPlans',
+            'id',
+            ['alias' => 'plan']
+        );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\AppsPlans',
+            'apps_id',
+            ['alias' => 'plans']
+        );
     }
 
     /**

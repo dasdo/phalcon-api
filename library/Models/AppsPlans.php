@@ -6,6 +6,17 @@ namespace Gewaer\Models;
 use Gewaer\Exception\ModelException;
 use Phalcon\Di;
 
+/**
+ * Class AppsPlans
+ *
+ * @package Gewaer\Models
+ *
+ * @property Users $user
+ * @property Config $config
+ * @property Apps $app
+ * @property Companies $defaultCompany
+ * @property \Phalcon\Di $di
+ */
 class AppsPlans extends AbstractModel
 {
     /**
@@ -99,6 +110,13 @@ class AppsPlans extends AbstractModel
             'id',
             ['alias' => 'app']
         );
+
+        $this->hasMany(
+            'apps_id',
+            'Gewaer\Models\AppsPlansSettings',
+            'apps_id',
+            ['alias' => 'settings']
+        );
     }
 
     /**
@@ -120,7 +138,7 @@ class AppsPlans extends AbstractModel
      *
      * @return AppsPlans
      */
-    public function settings(): AppsPlans
+    public function settings() : AppsPlans
     {
         return $this;
     }
@@ -130,7 +148,7 @@ class AppsPlans extends AbstractModel
      *
      * @return AppsPlans
      */
-    public static function getDefaultPlan(): AppsPlans
+    public static function getDefaultPlan() : AppsPlans
     {
         return AppsPlans::findFirst([
             'conditions' => 'apps_id = ?0 and is_default = 1',
@@ -144,7 +162,7 @@ class AppsPlans extends AbstractModel
      * @param string $key
      * @param string $value
      */
-    public function get(string $key) : string
+    public function get(string $key) : ?string
     {
         $setting = AppsPlansSettings::findFirst([
             'conditions' => 'apps_plans_id = ?0 and apps_id = ?1 and key = ?2',
@@ -152,10 +170,10 @@ class AppsPlans extends AbstractModel
         ]);
 
         if (is_object($setting)) {
-            return $setting->value;
+            return (string) $setting->value;
         }
 
-        throw new ModelException(_('No settings found with this ' . $key));
+        return null;
     }
 
     /**
@@ -164,18 +182,40 @@ class AppsPlans extends AbstractModel
      * @param string $key
      * @param string $value
      */
-    public function set(string $key, string $value) : bool
+    public function set(string $key, $value) : bool
     {
-        $setting = new AppsPlansSettings();
-        $setting->apps_plans_id = $this->getId();
-        $setting->apps_id = $this->getId();
-        $setting->key = $key;
+        $setting = AppsPlansSettings::findFirst([
+            'conditions' => 'apps_plans_id = ?0 and apps_id = ?1 and key = ?2',
+            'bind' => [$this->getId(), $this->apps_id, $key]
+        ]);
+
+        if (!is_object($setting)) {
+            $setting = new AppsPlansSettings();
+            $setting->apps_plans_id = $this->getId();
+            $setting->apps_id = $this->getId();
+            $setting->key = $key;
+        }
+
         $setting->value = $value;
 
         if (!$setting->save()) {
-            throw new ModelException((string) current($setting->getMessages()));
+            throw new ModelException((string)current($setting->getMessages()));
         }
 
         return true;
+    }
+
+    /**
+     * After save
+     *
+     * @return void
+     */
+    public function afterSave()
+    {
+        //if we udpate the is_default for this plan we need to remove all others and update the main app
+        if ($this->is_default) {
+            $this->app->default_apps_plan_id = $this->getId();
+            $this->app->update();
+        }
     }
 }

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Gewaer\Api\Controllers;
 
-use Gewaer\Models\EmailTemplates;
+use Gewaer\Models\AccessList;
 
 /**
- * Class LanguagesController
+ * Class RolesController
  *
  * @package Gewaer\Api\Controllers
  *
@@ -18,21 +18,21 @@ use Gewaer\Models\EmailTemplates;
  * @property Apps $app
  *
  */
-class EmailTemplatesController extends BaseController
+class RolesAccesListController extends BaseController
 {
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $createFields = ['users_id', 'company_id', 'app_id', 'name', 'template'];
+    protected $createFields = [];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['users_id', 'company_id', 'app_id', 'name', 'template'];
+    protected $updateFields = [];
 
     /**
      * set objects
@@ -41,10 +41,12 @@ class EmailTemplatesController extends BaseController
      */
     public function onConstruct()
     {
-        $this->model = new EmailTemplates();
+        $this->model = new AccessList();
+
+        //get the list of roes for the systema + my company
         $this->additionalSearchFields = [
             ['is_deleted', ':', 0],
-            ['company_id', ':', '(0,' . $this->userData->default_company . ')'],
+            ['apps_id', ':', $this->app->getId()],
         ];
     }
 }

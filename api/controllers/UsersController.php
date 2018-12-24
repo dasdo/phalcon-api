@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Gewaer\Api\Controllers;
 
@@ -137,8 +137,7 @@ class UsersController extends \Baka\Auth\UsersController
 
             //update password
             if (array_key_exists('new_password', $request) && !empty($request['new_password'])) {
-
-                  //Ok let validate user password
+                //Ok let validate user password
                 $validation = new Validation();
                 $validation->add('new_password', new PresenceOf(['message' => 'The new_password is required.']));
                 $validation->add('current_password', new PresenceOf(['message' => 'The current_password is required.']));

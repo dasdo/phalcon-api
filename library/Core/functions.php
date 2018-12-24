@@ -66,3 +66,15 @@ if (true !== function_exists('Gewaer\Core\appUrl')) {
         );
     }
 }
+
+if (true !== function_exists('Gewaer\Core\paymentGatewayIsActive')) {
+    /**
+     * Do we have a payment metho actived on the app?
+     *
+     * @return boolean
+     */
+    function paymentGatewayIsActive(): bool
+    {
+        return !empty(getenv('STRIPE_SECRET')) ? true : false;
+    }
+}

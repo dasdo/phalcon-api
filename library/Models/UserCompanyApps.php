@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
+use Phalcon\Di;
+
 class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
 {
     /**
@@ -54,6 +56,20 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
     {
         parent::initialize();
 
+        $this->belongsTo(
+            'company_id',
+            'Gewaer\Models\Companies',
+            'id',
+            ['alias' => 'company']
+        );
+
+        $this->belongsTo(
+            'apps_id',
+            'Gewaer\Models\Apps',
+            'id',
+            ['alias' => 'app']
+        );
+
         $this->setSource('user_company_apps');
     }
 
@@ -62,8 +78,21 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
      *
      * @return string
      */
-    public function getSource(): string
+    public function getSource() : string
     {
         return 'user_company_apps';
+    }
+
+    /**
+     * Get the current company app
+     *
+     * @return void
+     */
+    public static function getCurrentApp(): UserCompanyApps
+    {
+        return self::findFirst([
+            'conditions' => 'company_id = ?0 and apps_id = ?1',
+            'bind' => [Di::getDefault()->getUserData()->defaultCompany->getId(), Di::getDefault()->getApp()->getId()]
+        ]);
     }
 }

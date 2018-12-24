@@ -49,9 +49,9 @@ build:
           -
             command: 'cd ~/ && rm -rf cphalcon && git clone -q --depth=1 https://github.com/phalcon/cphalcon.git && cd cphalcon/build && ./install'
           -
-            command: 'cp -v /home/scrutinizer/cphalcon/build/php7/64bits/modules/phalcon.so  /home/scrutinizer/.phpenv/versions/7.2.0/lib/php/extensions/no-debug-zts-20170718'
+            command: 'cp -v /home/scrutinizer/cphalcon/build/php7/64bits/modules/phalcon.so  /home/scrutinizer/.phpenv/versions/7.2.13/lib/php/extensions/no-debug-zts-2017071'
             only_if: 'test -e /home/scrutinizer/cphalcon/build/php7/64bits/modules/phalcon.so'
-          - sed -i '$ a \\n[Phalcon]\nextension=phalcon.so\n' /home/scrutinizer/.phpenv/versions/7.2.0/etc/php.ini
+          - sed -i '$ a \\n[Phalcon]\nextension=phalcon.so\n' /home/scrutinizer/.phpenv/versions/7.2.13/etc/php.ini
           - php -m | grep -i Phalcon
           - sudo /etc/init.d/apache2 restart
           - beanstalkd -p 11300 &
@@ -62,6 +62,7 @@ build:
           - composer install --no-interaction
           - composer update --no-interaction
           - ./vendor/bin/phinx migrate -e development
+          - ./vendor/bin/phinx seed:run
           - ./vendor/bin/codecept build
 
 #    project_setup:
