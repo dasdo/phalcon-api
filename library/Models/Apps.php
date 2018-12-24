@@ -87,7 +87,6 @@ class Apps extends \Baka\Auth\Models\Apps
             'apps_id',
             ['alias' => 'plans']
         );
-
     }
 
     /**

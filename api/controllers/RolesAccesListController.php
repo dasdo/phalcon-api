@@ -12,6 +12,11 @@ use Gewaer\Models\AccessList;
  * @package Gewaer\Api\Controllers
  *
  * @property Users $userData
+ * @property Request $request
+ * @property Config $config
+ * @property \Baka\Mail\Message $mail
+ * @property Apps $app
+ *
  */
 class RolesAccesListController extends BaseController
 {

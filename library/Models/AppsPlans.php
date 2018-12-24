@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-use Gewaer\Exception\ServerErrorHttpException;
 use Gewaer\Exception\ModelException;
 use Phalcon\Di;
 
@@ -171,11 +170,10 @@ class AppsPlans extends AbstractModel
         ]);
 
         if (is_object($setting)) {
-            return $setting->value;
+            return (string) $setting->value;
         }
 
         return null;
-        //throw new ServerErrorHttpException(_('No settings found with for ' . $key . ' at this app ' . $this->apps_id));
     }
 
     /**

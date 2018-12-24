@@ -6,7 +6,8 @@ namespace Gewaer\Models;
 use Gewaer\Traits\PermissionsTrait;
 use Gewaer\Traits\SubscriptionPlanLimitTrait;
 use Phalcon\Cashier\Billable;
-use Gewaer\Exception\UnprocessableEntityHttpException;
+use Gewaer\Exception\ServerErrorHttpException;
+use Exception;
 use Carbon\Carbon;
 
 /**
@@ -230,7 +231,7 @@ class Users extends \Baka\Auth\Models\Users
             $this->default_company = $company->getId();
 
             if (!$this->update()) {
-                throw new Exception(current($this->getMessages()));
+                throw new ServerErrorHttpException(current($this->getMessages()));
             }
 
             $this->default_company_branch = $this->defaultCompany->branch->getId();
@@ -255,7 +256,7 @@ class Users extends \Baka\Auth\Models\Users
         $newUserAssocCompany->user_role = $this->roles_id == 1 ? 'admins' : 'users';
 
         if (!$newUserAssocCompany->save()) {
-            throw new UnprocessableEntityHttpException((string)current($newUserAssocCompany->getMessages()));
+            throw new ServerErrorHttpException((string)current($newUserAssocCompany->getMessages()));
         }
 
         //Insert record into user_roles
@@ -266,7 +267,7 @@ class Users extends \Baka\Auth\Models\Users
         $userRole->company_id = $this->default_company;
 
         if (!$userRole->save()) {
-            throw new UnprocessableEntityHttpException((string)current($userRole->getMessages()));
+            throw new ServerErrorHttpException((string)current($userRole->getMessages()));
         }
 
         //update user activity when its not a empty user

@@ -88,7 +88,7 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
      *
      * @return void
      */
-    public static function getCurrentApp()
+    public static function getCurrentApp(): UserCompanyApps
     {
         return self::findFirst([
             'conditions' => 'company_id = ?0 and apps_id = ?1',

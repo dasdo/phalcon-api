@@ -16,6 +16,7 @@ use Gewaer\Exception\ServerErrorHttpException;
 use Phalcon\Http\Response;
 use Gewaer\Models\EmailTemplates;
 use Gewaer\Models\Roles;
+use Exception;
 
 /**
  * Class LanguagesController
