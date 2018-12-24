@@ -12,11 +12,13 @@ class InitGewaer extends AbstractSeed
                 'name' => 'Default',
                 'description' => 'Gewaer Ecosystem',
                 'created_at' => date('Y-m-d H:i:s'),
+                'default_apps_plan_id' => 1,
                 'is_deleted' => 0
             ], [
                 'name' => 'CRM',
                 'description' => 'CRM App',
                 'created_at' => date('Y-m-d H:i:s'),
+                'default_apps_plan_id' => 1,
                 'is_deleted' => 0
             ]
         ];
@@ -164,7 +166,7 @@ class InitGewaer extends AbstractSeed
                 'pricing' => 10,
                 'currency_id' => 1,
                 'free_trial_dates' => 14,
-                'is_default' => 1
+                'is_default' => 0
             ],
         ];
 

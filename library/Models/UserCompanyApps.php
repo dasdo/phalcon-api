@@ -1,5 +1,5 @@
 <?php
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Gewaer\Models;
 
@@ -81,5 +81,16 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
         return 'user_company_apps';
     }
 
-
+    /**
+     * Get the current company app
+     *
+     * @return void
+     */
+    public static function getCurrentApp()
+    {
+        return self::findFirst([
+            'conditions' => 'company_id = ?0 and apps_id = ?1',
+            'bind' => [Di::getDefault()->getUserData()->defaultCompany->getId(), Di::getDefault()->getApp()->getId()]
+        ]);
+    }
 }

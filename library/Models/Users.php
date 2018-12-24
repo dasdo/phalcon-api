@@ -111,6 +111,28 @@ class Users extends \Baka\Auth\Models\Users
     }
 
     /**
+     * A company owner is the first person that register this company
+     * This only ocurres when signing up the first time, after that all users invites
+     * come with a default_company id attached
+     *
+     * @return boolean
+     */
+    public function isOwner(): bool
+    {
+        return empty($this->default_company) ? true : false;
+    }
+
+    /**
+     * Does the user have a role assign to him?
+     *
+     * @return boolean
+     */
+    public function hasRole(): bool
+    {
+        return !empty($this->roles_id) ? true : false;
+    }
+
+    /**
      * Get all of the subscriptions for the user.
      */
     public function subscriptions()
@@ -172,14 +194,13 @@ class Users extends \Baka\Auth\Models\Users
         parent::beforeCreate();
 
         //this is only empty when creating a new user
-        if (!empty($this->default_company)) {
+        if (!$this->isOwner()) {
             //confirm if the app reach its limit
-            die('3');
             $this->isAtLimit();
         }
 
         //Assign admin role to the system if we dont get a specify role
-        if (empty($this->roles_id)) {
+        if (!$this->hasRole()) {
             $role = Roles::findFirstByName('Admins');
             $this->roles_id = $role->getId();
         }
@@ -197,7 +218,7 @@ class Users extends \Baka\Auth\Models\Users
          * User signing up for a new app / plan
          * How do we know? well he doesnt have a default_company
          */
-        if (empty($this->default_company)) {
+        if ($this->isOwner()) {
             $company = new Companies();
             $company->name = $this->defaultCompanyName;
             $company->users_id = $this->getId();
@@ -249,7 +270,7 @@ class Users extends \Baka\Auth\Models\Users
         }
 
         //update user activity when its not a empty user
-        if (!empty($this->default_company)) {
+        if (!$this->isOwner()) {
             $this->updateAppActivityLimit();
         }
     }

@@ -126,10 +126,7 @@ class AppsPlansController extends BaseController
         }
 
         //update company app
-        $companyApp = UserCompanyApps::findFirst([
-            'conditions' => 'company_id = ?0 and apps_id = ?1',
-            'bind' => [$this->userData->defaultCompany->getId(), $this->app->getId()]
-        ]);
+        $companyApp = UserCompanyApps::getCurrentApp();
 
         //update the company app to the new plan
         if (is_object($companyApp)) {
@@ -191,10 +188,7 @@ class AppsPlansController extends BaseController
         }
 
         //update company app
-        $companyApp = UserCompanyApps::findFirst([
-            'conditions' => 'company_id = ?0 and apps_id = ?1',
-            'bind' => [$this->userData->defaultCompany->getId(), $this->app->getId()]
-        ]);
+        $companyApp = UserCompanyApps::getCurrentApp();
 
         //update the company app to the new plan
         if (is_object($companyApp)) {
