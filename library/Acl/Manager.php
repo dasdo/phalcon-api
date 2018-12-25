@@ -577,7 +577,7 @@ class Manager extends Adapter
             // role_name in:
             'WHERE roles_id IN (',
                 // given 'role'-parameter
-            'SELECT ? ',
+            'SELECT roles_id ',
                 // inherited role_names
             "UNION SELECT roles_inherit FROM {$this->rolesInherits} WHERE roles_id = ?",
                 // or 'any'
@@ -589,14 +589,16 @@ class Manager extends Adapter
             //"AND access_name IN (?, '*')", you need to specify * , we are forcing to check always for permisions
             'AND access_name IN (?)',
             'AND apps_id = ? ',
+            'AND roles_id = ? ',
             // order be the sum of bools for 'literals' before 'any'
             'ORDER BY ' . $this->connection->escapeIdentifier('allowed') . ' DESC',
             // get only one...
             'LIMIT 1'
         ]);
 
+        
         // fetch one entry...
-        $allowed = $this->connection->fetchOne($sql, Db::FETCH_NUM, [$role, $roleObj->getId(), $resource, $access, $this->getApp()->getId()]);
+        $allowed = $this->connection->fetchOne($sql, Db::FETCH_NUM, [$roleObj->getId(), $resource, $access, $this->getApp()->getId(), $roleObj->getId()]);
 
         if (is_array($allowed)) {
             return (bool) $allowed[0];
