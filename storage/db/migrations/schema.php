@@ -24,7 +24,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -48,7 +47,6 @@ return array (
         'name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
@@ -72,7 +70,6 @@ return array (
         'description' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'description',
           'ORDINAL_POSITION' => '3',
@@ -96,7 +93,6 @@ return array (
         'url' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'url',
           'ORDINAL_POSITION' => '4',
@@ -120,7 +116,6 @@ return array (
         'default_apps_plan_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'default_apps_plan_id',
           'ORDINAL_POSITION' => '5',
@@ -144,7 +139,6 @@ return array (
         'is_actived' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'is_actived',
           'ORDINAL_POSITION' => '6',
@@ -168,7 +162,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '7',
@@ -192,7 +185,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '8',
@@ -216,7 +208,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '9',
@@ -277,7 +268,6 @@ return array (
         'apps_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_roles',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '1',
@@ -301,7 +291,6 @@ return array (
         'roles_name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_roles',
           'COLUMN_NAME' => 'roles_name',
           'ORDINAL_POSITION' => '2',
@@ -344,7 +333,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -368,7 +356,6 @@ return array (
         'name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
@@ -392,7 +379,6 @@ return array (
         'profile_image' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'profile_image',
           'ORDINAL_POSITION' => '3',
@@ -416,7 +402,6 @@ return array (
         'website' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'website',
           'ORDINAL_POSITION' => '4',
@@ -437,15 +422,129 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
+        'address' => 
+        array (
+          'TABLE_CATALOG' => 'def',
+          'TABLE_NAME' => 'companies',
+          'COLUMN_NAME' => 'address',
+          'ORDINAL_POSITION' => '5',
+          'COLUMN_DEFAULT' => NULL,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '255',
+          'CHARACTER_OCTET_LENGTH' => '765',
+          'NUMERIC_PRECISION' => NULL,
+          'NUMERIC_SCALE' => NULL,
+          'DATETIME_PRECISION' => NULL,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_ci',
+          'COLUMN_TYPE' => 'varchar(255)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'zipcode' => 
+        array (
+          'TABLE_CATALOG' => 'def',
+          'TABLE_NAME' => 'companies',
+          'COLUMN_NAME' => 'zipcode',
+          'ORDINAL_POSITION' => '6',
+          'COLUMN_DEFAULT' => NULL,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '50',
+          'CHARACTER_OCTET_LENGTH' => '150',
+          'NUMERIC_PRECISION' => NULL,
+          'NUMERIC_SCALE' => NULL,
+          'DATETIME_PRECISION' => NULL,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_ci',
+          'COLUMN_TYPE' => 'varchar(50)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'email' => 
+        array (
+          'TABLE_CATALOG' => 'def',
+          'TABLE_NAME' => 'companies',
+          'COLUMN_NAME' => 'email',
+          'ORDINAL_POSITION' => '7',
+          'COLUMN_DEFAULT' => NULL,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '50',
+          'CHARACTER_OCTET_LENGTH' => '150',
+          'NUMERIC_PRECISION' => NULL,
+          'NUMERIC_SCALE' => NULL,
+          'DATETIME_PRECISION' => NULL,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_ci',
+          'COLUMN_TYPE' => 'varchar(50)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'language' => 
+        array (
+          'TABLE_CATALOG' => 'def',
+          'TABLE_NAME' => 'companies',
+          'COLUMN_NAME' => 'language',
+          'ORDINAL_POSITION' => '8',
+          'COLUMN_DEFAULT' => NULL,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '3',
+          'CHARACTER_OCTET_LENGTH' => '9',
+          'NUMERIC_PRECISION' => NULL,
+          'NUMERIC_SCALE' => NULL,
+          'DATETIME_PRECISION' => NULL,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_ci',
+          'COLUMN_TYPE' => 'varchar(3)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'timezone' => 
+        array (
+          'TABLE_CATALOG' => 'def',
+          'TABLE_NAME' => 'companies',
+          'COLUMN_NAME' => 'timezone',
+          'ORDINAL_POSITION' => '9',
+          'COLUMN_DEFAULT' => NULL,
+          'IS_NULLABLE' => 'YES',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '50',
+          'CHARACTER_OCTET_LENGTH' => '150',
+          'NUMERIC_PRECISION' => NULL,
+          'NUMERIC_SCALE' => NULL,
+          'DATETIME_PRECISION' => NULL,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_ci',
+          'COLUMN_TYPE' => 'varchar(50)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
         'users_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'users_id',
-          'ORDINAL_POSITION' => '5',
+          'ORDINAL_POSITION' => '10',
           'COLUMN_DEFAULT' => NULL,
-          'IS_NULLABLE' => 'NO',
+          'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
           'CHARACTER_MAXIMUM_LENGTH' => NULL,
           'CHARACTER_OCTET_LENGTH' => NULL,
@@ -464,10 +563,9 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'created_at',
-          'ORDINAL_POSITION' => '6',
+          'ORDINAL_POSITION' => '11',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
@@ -488,10 +586,9 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'updated_at',
-          'ORDINAL_POSITION' => '7',
+          'ORDINAL_POSITION' => '12',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
@@ -512,10 +609,9 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'companies',
           'COLUMN_NAME' => 'is_deleted',
-          'ORDINAL_POSITION' => '8',
+          'ORDINAL_POSITION' => '13',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
@@ -581,7 +677,7 @@ return array (
             'Collation' => 'A',
             'Sub_part' => NULL,
             'Packed' => NULL,
-            'Null' => '',
+            'Null' => 'YES',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
@@ -599,7 +695,7 @@ return array (
             'Collation' => 'A',
             'Sub_part' => NULL,
             'Packed' => NULL,
-            'Null' => '',
+            'Null' => 'YES',
             'Index_type' => 'BTREE',
             'Comment' => '',
             'Index_comment' => '',
@@ -624,7 +720,6 @@ return array (
         'company_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_settings',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '1',
@@ -651,7 +746,6 @@ return array (
         'name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_settings',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
@@ -675,7 +769,6 @@ return array (
         'value' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_settings',
           'COLUMN_NAME' => 'value',
           'ORDINAL_POSITION' => '3',
@@ -699,7 +792,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_settings',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '4',
@@ -723,7 +815,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_settings',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '5',
@@ -747,7 +838,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_settings',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '6',
@@ -859,7 +949,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -883,7 +972,6 @@ return array (
         'name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
@@ -907,7 +995,6 @@ return array (
         'title' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'title',
           'ORDINAL_POSITION' => '3',
@@ -931,7 +1018,6 @@ return array (
         'order' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'order',
           'ORDINAL_POSITION' => '4',
@@ -955,7 +1041,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '5',
@@ -979,7 +1064,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '6',
@@ -1003,7 +1087,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'languages',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '7',
@@ -1064,7 +1147,6 @@ return array (
         'sessions_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'session_keys',
           'COLUMN_NAME' => 'sessions_id',
           'ORDINAL_POSITION' => '1',
@@ -1088,7 +1170,6 @@ return array (
         'users_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'session_keys',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '2',
@@ -1112,7 +1193,6 @@ return array (
         'last_ip' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'session_keys',
           'COLUMN_NAME' => 'last_ip',
           'ORDINAL_POSITION' => '3',
@@ -1136,7 +1216,6 @@ return array (
         'last_login' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'session_keys',
           'COLUMN_NAME' => 'last_login',
           'ORDINAL_POSITION' => '4',
@@ -1266,7 +1345,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -1290,7 +1368,6 @@ return array (
         'users_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '2',
@@ -1314,7 +1391,6 @@ return array (
         'token' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'token',
           'ORDINAL_POSITION' => '3',
@@ -1338,7 +1414,6 @@ return array (
         'start' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'start',
           'ORDINAL_POSITION' => '4',
@@ -1362,7 +1437,6 @@ return array (
         'time' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'time',
           'ORDINAL_POSITION' => '5',
@@ -1386,7 +1460,6 @@ return array (
         'ip' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'ip',
           'ORDINAL_POSITION' => '6',
@@ -1410,7 +1483,6 @@ return array (
         'page' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'page',
           'ORDINAL_POSITION' => '7',
@@ -1434,7 +1506,6 @@ return array (
         'logged_in' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'logged_in',
           'ORDINAL_POSITION' => '8',
@@ -1458,7 +1529,6 @@ return array (
         'is_admin' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sessions',
           'COLUMN_NAME' => 'is_admin',
           'ORDINAL_POSITION' => '9',
@@ -1591,7 +1661,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sources',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -1615,7 +1684,6 @@ return array (
         'title' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sources',
           'COLUMN_NAME' => 'title',
           'ORDINAL_POSITION' => '2',
@@ -1639,7 +1707,6 @@ return array (
         'url' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sources',
           'COLUMN_NAME' => 'url',
           'ORDINAL_POSITION' => '3',
@@ -1663,7 +1730,6 @@ return array (
         'language_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sources',
           'COLUMN_NAME' => 'language_id',
           'ORDINAL_POSITION' => '4',
@@ -1687,7 +1753,6 @@ return array (
         'added_date' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sources',
           'COLUMN_NAME' => 'added_date',
           'ORDINAL_POSITION' => '5',
@@ -1711,7 +1776,6 @@ return array (
         'updated_date' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'sources',
           'COLUMN_NAME' => 'updated_date',
           'ORDINAL_POSITION' => '6',
@@ -1790,7 +1854,6 @@ return array (
         'company_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '1',
@@ -1814,7 +1877,6 @@ return array (
         'apps_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '2',
@@ -1838,7 +1900,6 @@ return array (
         'stripe_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'stripe_id',
           'ORDINAL_POSITION' => '3',
@@ -1862,7 +1923,6 @@ return array (
         'subscriptions_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'subscriptions_id',
           'ORDINAL_POSITION' => '4',
@@ -1886,7 +1946,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '5',
@@ -1910,7 +1969,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '6',
@@ -1934,7 +1992,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '7',
@@ -2010,7 +2067,6 @@ return array (
         'users_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_config',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '1',
@@ -2034,7 +2090,6 @@ return array (
         'name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_config',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
@@ -2058,7 +2113,6 @@ return array (
         'value' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_config',
           'COLUMN_NAME' => 'value',
           'ORDINAL_POSITION' => '3',
@@ -2082,7 +2136,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_config',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '4',
@@ -2106,7 +2159,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_config',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '5',
@@ -2182,7 +2234,6 @@ return array (
         'users_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_linked_sources',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '1',
@@ -2206,7 +2257,6 @@ return array (
         'source_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_linked_sources',
           'COLUMN_NAME' => 'source_id',
           'ORDINAL_POSITION' => '2',
@@ -2230,7 +2280,6 @@ return array (
         'source_users_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_linked_sources',
           'COLUMN_NAME' => 'source_users_id',
           'ORDINAL_POSITION' => '3',
@@ -2254,7 +2303,6 @@ return array (
         'source_users_id_text' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_linked_sources',
           'COLUMN_NAME' => 'source_users_id_text',
           'ORDINAL_POSITION' => '4',
@@ -2278,7 +2326,6 @@ return array (
         'source_username' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_linked_sources',
           'COLUMN_NAME' => 'source_username',
           'ORDINAL_POSITION' => '5',
@@ -2459,7 +2506,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -2483,7 +2529,6 @@ return array (
         'email' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'email',
           'ORDINAL_POSITION' => '2',
@@ -2507,7 +2552,6 @@ return array (
         'password' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'password',
           'ORDINAL_POSITION' => '3',
@@ -2531,7 +2575,6 @@ return array (
         'firstname' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'firstname',
           'ORDINAL_POSITION' => '4',
@@ -2555,7 +2598,6 @@ return array (
         'lastname' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'lastname',
           'ORDINAL_POSITION' => '5',
@@ -2579,7 +2621,6 @@ return array (
         'roles_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'roles_id',
           'ORDINAL_POSITION' => '6',
@@ -2603,7 +2644,6 @@ return array (
         'displayname' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'displayname',
           'ORDINAL_POSITION' => '7',
@@ -2627,7 +2667,6 @@ return array (
         'registered' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'registered',
           'ORDINAL_POSITION' => '8',
@@ -2651,7 +2690,6 @@ return array (
         'lastvisit' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'lastvisit',
           'ORDINAL_POSITION' => '9',
@@ -2675,7 +2713,6 @@ return array (
         'dob' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'dob',
           'ORDINAL_POSITION' => '10',
@@ -2699,7 +2736,6 @@ return array (
         'sex' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'sex',
           'ORDINAL_POSITION' => '11',
@@ -2723,7 +2759,6 @@ return array (
         'timezone' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'timezone',
           'ORDINAL_POSITION' => '12',
@@ -2744,13 +2779,58 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
+        'phone_number' => 
+        array (
+          'TABLE_CATALOG' => 'def',
+          'TABLE_NAME' => 'users',
+          'COLUMN_NAME' => 'phone_number',
+          'ORDINAL_POSITION' => '13',
+          'COLUMN_DEFAULT' => 'America/New_York',
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '128',
+          'CHARACTER_OCTET_LENGTH' => '384',
+          'NUMERIC_PRECISION' => NULL,
+          'NUMERIC_SCALE' => NULL,
+          'DATETIME_PRECISION' => NULL,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_ci',
+          'COLUMN_TYPE' => 'varchar(128)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
+        'cell_phone_number' => 
+        array (
+          'TABLE_CATALOG' => 'def',
+          'TABLE_NAME' => 'users',
+          'COLUMN_NAME' => 'cell_phone_number',
+          'ORDINAL_POSITION' => '14',
+          'COLUMN_DEFAULT' => 'America/New_York',
+          'IS_NULLABLE' => 'NO',
+          'DATA_TYPE' => 'varchar',
+          'CHARACTER_MAXIMUM_LENGTH' => '128',
+          'CHARACTER_OCTET_LENGTH' => '384',
+          'NUMERIC_PRECISION' => NULL,
+          'NUMERIC_SCALE' => NULL,
+          'DATETIME_PRECISION' => NULL,
+          'CHARACTER_SET_NAME' => 'utf8',
+          'COLLATION_NAME' => 'utf8_general_ci',
+          'COLUMN_TYPE' => 'varchar(128)',
+          'COLUMN_KEY' => '',
+          'EXTRA' => '',
+          'PRIVILEGES' => 'select,insert,update,references',
+          'COLUMN_COMMENT' => '',
+          'GENERATION_EXPRESSION' => '',
+        ),
         'default_company' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'default_company',
-          'ORDINAL_POSITION' => '13',
+          'ORDINAL_POSITION' => '15',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
@@ -2771,10 +2851,9 @@ return array (
         'default_company_branch' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'default_company_branch',
-          'ORDINAL_POSITION' => '14',
+          'ORDINAL_POSITION' => '16',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
@@ -2795,10 +2874,9 @@ return array (
         'city_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'city_id',
-          'ORDINAL_POSITION' => '15',
+          'ORDINAL_POSITION' => '17',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'mediumint',
@@ -2819,10 +2897,9 @@ return array (
         'state_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'state_id',
-          'ORDINAL_POSITION' => '16',
+          'ORDINAL_POSITION' => '18',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
@@ -2843,10 +2920,9 @@ return array (
         'country_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'country_id',
-          'ORDINAL_POSITION' => '17',
+          'ORDINAL_POSITION' => '19',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'smallint',
@@ -2867,10 +2943,9 @@ return array (
         'profile_privacy' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'profile_privacy',
-          'ORDINAL_POSITION' => '18',
+          'ORDINAL_POSITION' => '20',
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'enum',
@@ -2891,10 +2966,9 @@ return array (
         'interests' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'interests',
-          'ORDINAL_POSITION' => '19',
+          'ORDINAL_POSITION' => '21',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'mediumtext',
@@ -2915,10 +2989,9 @@ return array (
         'profile_image' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'profile_image',
-          'ORDINAL_POSITION' => '20',
+          'ORDINAL_POSITION' => '22',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
@@ -2939,10 +3012,9 @@ return array (
         'profile_remote_image' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'profile_remote_image',
-          'ORDINAL_POSITION' => '21',
+          'ORDINAL_POSITION' => '23',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
@@ -2963,10 +3035,9 @@ return array (
         'profile_header' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'profile_header',
-          'ORDINAL_POSITION' => '22',
+          'ORDINAL_POSITION' => '24',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
@@ -2987,10 +3058,9 @@ return array (
         'profile_header_mobile' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'profile_header_mobile',
-          'ORDINAL_POSITION' => '23',
+          'ORDINAL_POSITION' => '25',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
@@ -3011,10 +3081,9 @@ return array (
         'user_active' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_active',
-          'ORDINAL_POSITION' => '24',
+          'ORDINAL_POSITION' => '26',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
@@ -3035,10 +3104,9 @@ return array (
         'user_level' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_level',
-          'ORDINAL_POSITION' => '25',
+          'ORDINAL_POSITION' => '27',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
@@ -3059,10 +3127,9 @@ return array (
         'user_login_tries' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_login_tries',
-          'ORDINAL_POSITION' => '26',
+          'ORDINAL_POSITION' => '28',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
@@ -3083,10 +3150,9 @@ return array (
         'user_last_login_try' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_last_login_try',
-          'ORDINAL_POSITION' => '27',
+          'ORDINAL_POSITION' => '29',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'bigint',
@@ -3107,10 +3173,9 @@ return array (
         'session_time' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'session_time',
-          'ORDINAL_POSITION' => '28',
+          'ORDINAL_POSITION' => '30',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'bigint',
@@ -3131,10 +3196,9 @@ return array (
         'session_page' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'session_page',
-          'ORDINAL_POSITION' => '29',
+          'ORDINAL_POSITION' => '31',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
@@ -3155,10 +3219,9 @@ return array (
         'welcome' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'welcome',
-          'ORDINAL_POSITION' => '30',
+          'ORDINAL_POSITION' => '32',
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
@@ -3179,10 +3242,9 @@ return array (
         'user_activation_key' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_activation_key',
-          'ORDINAL_POSITION' => '31',
+          'ORDINAL_POSITION' => '33',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
@@ -3203,10 +3265,9 @@ return array (
         'user_activation_email' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_activation_email',
-          'ORDINAL_POSITION' => '32',
+          'ORDINAL_POSITION' => '34',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
@@ -3227,10 +3288,9 @@ return array (
         'user_activation_forgot' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'user_activation_forgot',
-          'ORDINAL_POSITION' => '33',
+          'ORDINAL_POSITION' => '35',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
@@ -3251,10 +3311,9 @@ return array (
         'language' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'language',
-          'ORDINAL_POSITION' => '34',
+          'ORDINAL_POSITION' => '36',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
@@ -3275,10 +3334,9 @@ return array (
         'karma' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'karma',
-          'ORDINAL_POSITION' => '35',
+          'ORDINAL_POSITION' => '37',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
@@ -3299,10 +3357,9 @@ return array (
         'votes' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'votes',
-          'ORDINAL_POSITION' => '36',
+          'ORDINAL_POSITION' => '38',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
@@ -3323,10 +3380,9 @@ return array (
         'votes_points' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'votes_points',
-          'ORDINAL_POSITION' => '37',
+          'ORDINAL_POSITION' => '39',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
@@ -3347,10 +3403,9 @@ return array (
         'banned' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'banned',
-          'ORDINAL_POSITION' => '38',
+          'ORDINAL_POSITION' => '40',
           'COLUMN_DEFAULT' => 'N',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'char',
@@ -3371,10 +3426,9 @@ return array (
         'stripe_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'stripe_id',
-          'ORDINAL_POSITION' => '39',
+          'ORDINAL_POSITION' => '41',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
@@ -3395,10 +3449,9 @@ return array (
         'card_brand' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'card_brand',
-          'ORDINAL_POSITION' => '40',
+          'ORDINAL_POSITION' => '42',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'varchar',
@@ -3419,10 +3472,9 @@ return array (
         'card_last_four' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'card_last_four',
-          'ORDINAL_POSITION' => '41',
+          'ORDINAL_POSITION' => '43',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'int',
@@ -3443,10 +3495,9 @@ return array (
         'trial_ends_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'trial_ends_at',
-          'ORDINAL_POSITION' => '42',
+          'ORDINAL_POSITION' => '44',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
@@ -3467,10 +3518,9 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'created_at',
-          'ORDINAL_POSITION' => '43',
+          'ORDINAL_POSITION' => '45',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
@@ -3491,10 +3541,9 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'updated_at',
-          'ORDINAL_POSITION' => '44',
+          'ORDINAL_POSITION' => '46',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
           'DATA_TYPE' => 'datetime',
@@ -3515,10 +3564,9 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users',
           'COLUMN_NAME' => 'is_deleted',
-          'ORDINAL_POSITION' => '45',
+          'ORDINAL_POSITION' => '47',
           'COLUMN_DEFAULT' => '0',
           'IS_NULLABLE' => 'NO',
           'DATA_TYPE' => 'int',
@@ -3666,7 +3714,6 @@ return array (
         'users_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_associated_company',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '1',
@@ -3690,7 +3737,6 @@ return array (
         'company_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_associated_company',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '2',
@@ -3714,7 +3760,6 @@ return array (
         'identify_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_associated_company',
           'COLUMN_NAME' => 'identify_id',
           'ORDINAL_POSITION' => '3',
@@ -3738,7 +3783,6 @@ return array (
         'user_active' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_associated_company',
           'COLUMN_NAME' => 'user_active',
           'ORDINAL_POSITION' => '4',
@@ -3762,7 +3806,6 @@ return array (
         'user_role' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_associated_company',
           'COLUMN_NAME' => 'user_role',
           'ORDINAL_POSITION' => '5',
@@ -3871,7 +3914,6 @@ return array (
         'version' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'ut_migrations',
           'COLUMN_NAME' => 'version',
           'ORDINAL_POSITION' => '1',
@@ -3895,7 +3937,6 @@ return array (
         'migration_name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'ut_migrations',
           'COLUMN_NAME' => 'migration_name',
           'ORDINAL_POSITION' => '2',
@@ -3919,7 +3960,6 @@ return array (
         'start_time' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'ut_migrations',
           'COLUMN_NAME' => 'start_time',
           'ORDINAL_POSITION' => '3',
@@ -3943,7 +3983,6 @@ return array (
         'end_time' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'ut_migrations',
           'COLUMN_NAME' => 'end_time',
           'ORDINAL_POSITION' => '4',
@@ -3967,7 +4006,6 @@ return array (
         'breakpoint' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'ut_migrations',
           'COLUMN_NAME' => 'breakpoint',
           'ORDINAL_POSITION' => '5',
@@ -4028,7 +4066,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'banlist',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -4052,7 +4089,6 @@ return array (
         'users_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'banlist',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '2',
@@ -4076,7 +4112,6 @@ return array (
         'ip' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'banlist',
           'COLUMN_NAME' => 'ip',
           'ORDINAL_POSITION' => '3',
@@ -4100,7 +4135,6 @@ return array (
         'email' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'banlist',
           'COLUMN_NAME' => 'email',
           'ORDINAL_POSITION' => '4',
@@ -4194,7 +4228,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -4218,7 +4251,6 @@ return array (
         'user_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'user_id',
           'ORDINAL_POSITION' => '2',
@@ -4242,7 +4274,6 @@ return array (
         'company_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '3',
@@ -4266,7 +4297,6 @@ return array (
         'apps_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '4',
@@ -4290,7 +4320,6 @@ return array (
         'apps_plans_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'apps_plans_id',
           'ORDINAL_POSITION' => '5',
@@ -4314,7 +4343,6 @@ return array (
         'name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '6',
@@ -4338,7 +4366,6 @@ return array (
         'stripe_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'stripe_id',
           'ORDINAL_POSITION' => '7',
@@ -4362,7 +4389,6 @@ return array (
         'stripe_plan' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'stripe_plan',
           'ORDINAL_POSITION' => '8',
@@ -4386,7 +4412,6 @@ return array (
         'quantity' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'quantity',
           'ORDINAL_POSITION' => '9',
@@ -4410,7 +4435,6 @@ return array (
         'trial_ends_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'trial_ends_at',
           'ORDINAL_POSITION' => '10',
@@ -4434,7 +4458,6 @@ return array (
         'ends_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'ends_at',
           'ORDINAL_POSITION' => '11',
@@ -4458,7 +4481,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '12',
@@ -4482,7 +4504,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '13',
@@ -4506,7 +4527,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'subscriptions',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '14',
@@ -4567,7 +4587,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -4591,7 +4610,6 @@ return array (
         'apps_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '2',
@@ -4615,7 +4633,6 @@ return array (
         'name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '3',
@@ -4639,7 +4656,6 @@ return array (
         'description' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'description',
           'ORDINAL_POSITION' => '4',
@@ -4663,7 +4679,6 @@ return array (
         'stripe_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'stripe_id',
           'ORDINAL_POSITION' => '5',
@@ -4687,7 +4702,6 @@ return array (
         'stripe_plan' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'stripe_plan',
           'ORDINAL_POSITION' => '6',
@@ -4711,7 +4725,6 @@ return array (
         'pricing' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'pricing',
           'ORDINAL_POSITION' => '7',
@@ -4735,7 +4748,6 @@ return array (
         'currency_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'currency_id',
           'ORDINAL_POSITION' => '8',
@@ -4759,7 +4771,6 @@ return array (
         'free_trial_dates' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'free_trial_dates',
           'ORDINAL_POSITION' => '9',
@@ -4783,7 +4794,6 @@ return array (
         'is_default' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'is_default',
           'ORDINAL_POSITION' => '10',
@@ -4807,7 +4817,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '11',
@@ -4831,7 +4840,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '12',
@@ -4855,7 +4863,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '13',
@@ -4916,7 +4923,6 @@ return array (
         'apps_plans_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'apps_plans_id',
           'ORDINAL_POSITION' => '1',
@@ -4940,7 +4946,6 @@ return array (
         'apps_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '2',
@@ -4964,7 +4969,6 @@ return array (
         'key' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'key',
           'ORDINAL_POSITION' => '3',
@@ -4988,7 +4992,6 @@ return array (
         'value' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'value',
           'ORDINAL_POSITION' => '4',
@@ -5012,7 +5015,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '5',
@@ -5036,7 +5038,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '6',
@@ -5060,7 +5061,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'apps_plans_settings',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '7',
@@ -5220,7 +5220,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -5244,7 +5243,6 @@ return array (
         'company_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '2',
@@ -5268,7 +5266,6 @@ return array (
         'users_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '3',
@@ -5292,7 +5289,6 @@ return array (
         'name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '4',
@@ -5316,7 +5312,6 @@ return array (
         'description' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'description',
           'ORDINAL_POSITION' => '5',
@@ -5340,7 +5335,6 @@ return array (
         'is_default' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'is_default',
           'ORDINAL_POSITION' => '6',
@@ -5364,7 +5358,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '7',
@@ -5388,7 +5381,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '8',
@@ -5412,7 +5404,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'company_branches',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '9',
@@ -5473,7 +5464,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -5497,7 +5487,6 @@ return array (
         'country' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'country',
           'ORDINAL_POSITION' => '2',
@@ -5521,7 +5510,6 @@ return array (
         'currency' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'currency',
           'ORDINAL_POSITION' => '3',
@@ -5545,7 +5533,6 @@ return array (
         'code' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'code',
           'ORDINAL_POSITION' => '4',
@@ -5569,7 +5556,6 @@ return array (
         'symbol' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'symbol',
           'ORDINAL_POSITION' => '5',
@@ -5593,7 +5579,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '6',
@@ -5617,7 +5602,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '7',
@@ -5641,7 +5625,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'currency',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '8',
@@ -5702,7 +5685,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'system_modules',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -5726,7 +5708,6 @@ return array (
         'name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'system_modules',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
@@ -5750,7 +5731,6 @@ return array (
         'slug' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'system_modules',
           'COLUMN_NAME' => 'slug',
           'ORDINAL_POSITION' => '3',
@@ -5774,7 +5754,6 @@ return array (
         'model_name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'system_modules',
           'COLUMN_NAME' => 'model_name',
           'ORDINAL_POSITION' => '4',
@@ -5798,7 +5777,6 @@ return array (
         'apps_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'system_modules',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '5',
@@ -5822,7 +5800,6 @@ return array (
         'parents_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'system_modules',
           'COLUMN_NAME' => 'parents_id',
           'ORDINAL_POSITION' => '6',
@@ -5846,7 +5823,6 @@ return array (
         'menu_order' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'system_modules',
           'COLUMN_NAME' => 'menu_order',
           'ORDINAL_POSITION' => '7',
@@ -5870,7 +5846,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'system_modules',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '8',
@@ -5894,7 +5869,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'system_modules',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '9',
@@ -5918,7 +5892,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'system_modules',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '10',
@@ -5979,7 +5952,6 @@ return array (
         'company_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps_activities',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '1',
@@ -6003,7 +5975,6 @@ return array (
         'company_branches_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps_activities',
           'COLUMN_NAME' => 'company_branches_id',
           'ORDINAL_POSITION' => '2',
@@ -6027,7 +5998,6 @@ return array (
         'apps_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps_activities',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '3',
@@ -6051,7 +6021,6 @@ return array (
         'key' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps_activities',
           'COLUMN_NAME' => 'key',
           'ORDINAL_POSITION' => '4',
@@ -6075,7 +6044,6 @@ return array (
         'value' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps_activities',
           'COLUMN_NAME' => 'value',
           'ORDINAL_POSITION' => '5',
@@ -6099,7 +6067,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps_activities',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '6',
@@ -6123,7 +6090,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps_activities',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '7',
@@ -6147,7 +6113,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_company_apps_activities',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '8',
@@ -6253,7 +6218,6 @@ return array (
         'users_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '1',
@@ -6277,7 +6241,6 @@ return array (
         'roles_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'roles_id',
           'ORDINAL_POSITION' => '2',
@@ -6301,7 +6264,6 @@ return array (
         'apps_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '3',
@@ -6325,7 +6287,6 @@ return array (
         'company_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '4',
@@ -6349,7 +6310,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '5',
@@ -6373,7 +6333,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '6',
@@ -6397,7 +6356,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'user_roles',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '7',
@@ -6488,7 +6446,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'email_templates',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -6512,7 +6469,6 @@ return array (
         'users_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'email_templates',
           'COLUMN_NAME' => 'users_id',
           'ORDINAL_POSITION' => '2',
@@ -6536,7 +6492,6 @@ return array (
         'company_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'email_templates',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '3',
@@ -6560,7 +6515,6 @@ return array (
         'app_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'email_templates',
           'COLUMN_NAME' => 'app_id',
           'ORDINAL_POSITION' => '4',
@@ -6584,7 +6538,6 @@ return array (
         'name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'email_templates',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '5',
@@ -6608,7 +6561,6 @@ return array (
         'template' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'email_templates',
           'COLUMN_NAME' => 'template',
           'ORDINAL_POSITION' => '6',
@@ -6632,7 +6584,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'email_templates',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '7',
@@ -6656,7 +6607,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'email_templates',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '8',
@@ -6680,7 +6630,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'email_templates',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '9',
@@ -6789,7 +6738,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_invite',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -6813,7 +6761,6 @@ return array (
         'invite_hash' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_invite',
           'COLUMN_NAME' => 'invite_hash',
           'ORDINAL_POSITION' => '2',
@@ -6837,7 +6784,6 @@ return array (
         'company_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_invite',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '3',
@@ -6861,7 +6807,6 @@ return array (
         'role_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_invite',
           'COLUMN_NAME' => 'role_id',
           'ORDINAL_POSITION' => '4',
@@ -6885,7 +6830,6 @@ return array (
         'app_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_invite',
           'COLUMN_NAME' => 'app_id',
           'ORDINAL_POSITION' => '5',
@@ -6909,7 +6853,6 @@ return array (
         'email' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_invite',
           'COLUMN_NAME' => 'email',
           'ORDINAL_POSITION' => '6',
@@ -6933,7 +6876,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_invite',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '7',
@@ -6957,7 +6899,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_invite',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '8',
@@ -6981,7 +6922,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'users_invite',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '9',
@@ -7042,7 +6982,6 @@ return array (
         'roles_name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'roles_name',
           'ORDINAL_POSITION' => '1',
@@ -7066,7 +7005,6 @@ return array (
         'resources_name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'resources_name',
           'ORDINAL_POSITION' => '2',
@@ -7090,7 +7028,6 @@ return array (
         'access_name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'access_name',
           'ORDINAL_POSITION' => '3',
@@ -7114,7 +7051,6 @@ return array (
         'allowed' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'allowed',
           'ORDINAL_POSITION' => '4',
@@ -7138,7 +7074,6 @@ return array (
         'apps_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '5',
@@ -7162,7 +7097,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '6',
@@ -7186,7 +7120,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '7',
@@ -7210,7 +7143,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'access_list',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '8',
@@ -7316,7 +7248,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -7340,7 +7271,6 @@ return array (
         'name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
@@ -7364,7 +7294,6 @@ return array (
         'description' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'description',
           'ORDINAL_POSITION' => '3',
@@ -7388,7 +7317,6 @@ return array (
         'apps_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '4',
@@ -7412,7 +7340,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '5',
@@ -7436,7 +7363,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '6',
@@ -7460,7 +7386,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '7',
@@ -7521,7 +7446,6 @@ return array (
         'resources_name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources_accesses',
           'COLUMN_NAME' => 'resources_name',
           'ORDINAL_POSITION' => '1',
@@ -7545,7 +7469,6 @@ return array (
         'access_name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources_accesses',
           'COLUMN_NAME' => 'access_name',
           'ORDINAL_POSITION' => '2',
@@ -7569,7 +7492,6 @@ return array (
         'apps_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources_accesses',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '3',
@@ -7593,7 +7515,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources_accesses',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '4',
@@ -7617,7 +7538,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources_accesses',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '5',
@@ -7641,7 +7561,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'resources_accesses',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '6',
@@ -7732,7 +7651,6 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
@@ -7756,7 +7674,6 @@ return array (
         'name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'name',
           'ORDINAL_POSITION' => '2',
@@ -7780,7 +7697,6 @@ return array (
         'description' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'description',
           'ORDINAL_POSITION' => '3',
@@ -7804,7 +7720,6 @@ return array (
         'scope' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'scope',
           'ORDINAL_POSITION' => '4',
@@ -7828,7 +7743,6 @@ return array (
         'company_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'company_id',
           'ORDINAL_POSITION' => '5',
@@ -7852,7 +7766,6 @@ return array (
         'apps_id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'apps_id',
           'ORDINAL_POSITION' => '6',
@@ -7876,7 +7789,6 @@ return array (
         'created_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'created_at',
           'ORDINAL_POSITION' => '7',
@@ -7900,7 +7812,6 @@ return array (
         'updated_at' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'updated_at',
           'ORDINAL_POSITION' => '8',
@@ -7924,7 +7835,6 @@ return array (
         'is_deleted' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles',
           'COLUMN_NAME' => 'is_deleted',
           'ORDINAL_POSITION' => '9',
@@ -7985,7 +7895,6 @@ return array (
         'roles_name' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles_inherits',
           'COLUMN_NAME' => 'roles_name',
           'ORDINAL_POSITION' => '1',
@@ -8009,7 +7918,6 @@ return array (
         'roles_inherit' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_SCHEMA' => 'gonano',
           'TABLE_NAME' => 'roles_inherits',
           'COLUMN_NAME' => 'roles_inherit',
           'ORDINAL_POSITION' => '2',
