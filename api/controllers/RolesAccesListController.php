@@ -118,9 +118,8 @@ class RolesAccesListController extends BaseController
      */
     public function getById($id) : Response
     {
-        //find the info
         $objectInfo = $this->model->findFirst([
-            'roles_name = ?0 AND is_deleted = 0 AND apps_id in (?1, ?2)',
+            'roles_id = ?0 AND is_deleted = 0 AND apps_id in (?1, ?2)',
             'bind' => [$id, $this->app->getId(), Apps::GEWAER_DEFAULT_APP_ID],
         ]);
 
@@ -134,7 +133,7 @@ class RolesAccesListController extends BaseController
         if ($objectInfo) {
             return $this->response($objectInfo);
         } else {
-            throw new Exception('Record not found');
+            throw new NotFoundHttpException('Record not found');
         }
     }
 
