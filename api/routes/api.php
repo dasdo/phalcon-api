@@ -59,7 +59,6 @@ $defaultCrudRoutes = [
     'companies',
     'languages',
     'AppsPlans' => 'apps-plans',
-    'roles',
     'RolesAccesList' => 'roles-acceslist',
     'UsersInvite' => 'users-invite',
     'EmailTemplates' => 'email-templates'
@@ -100,6 +99,11 @@ foreach ($defaultCrudRoutes as $key => $route) {
         'delete',
     ]);
 }
+
+$router->get('/roles', [
+    'Gewaer\Api\Controllers\RolesController',
+    'index',
+]);
 
 $router->post('/users', [
     'Gewaer\Api\Controllers\AuthController',
