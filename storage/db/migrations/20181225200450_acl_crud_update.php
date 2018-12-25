@@ -22,47 +22,6 @@ class AclCrudUpdate extends AbstractMigration
                 'precision' => '10',
                 'after' => 'roles_name',
             ])
-        ->changeColumn('resources_name', 'string', [
-                'null' => false,
-                'limit' => 32,
-                'collation' => 'utf8mb4_unicode_520_ci',
-                'encoding' => 'utf8mb4',
-                'after' => 'roles_id',
-            ])
-        ->changeColumn('access_name', 'string', [
-                'null' => false,
-                'limit' => 32,
-                'collation' => 'utf8mb4_unicode_520_ci',
-                'encoding' => 'utf8mb4',
-                'after' => 'resources_name',
-            ])
-        ->changeColumn('allowed', 'integer', [
-                'null' => false,
-                'limit' => MysqlAdapter::INT_REGULAR,
-                'precision' => '10',
-                'after' => 'access_name',
-            ])
-        ->changeColumn('apps_id', 'integer', [
-                'null' => false,
-                'limit' => MysqlAdapter::INT_REGULAR,
-                'precision' => '10',
-                'after' => 'allowed',
-            ])
-        ->changeColumn('created_at', 'datetime', [
-                'null' => false,
-                'after' => 'apps_id',
-            ])
-        ->changeColumn('updated_at', 'datetime', [
-                'null' => true,
-                'after' => 'created_at',
-            ])
-        ->changeColumn('is_deleted', 'integer', [
-                'null' => false,
-                'default' => '"0"',
-                'limit' => MysqlAdapter::INT_TINY,
-                'precision' => '3',
-                'after' => 'updated_at',
-            ])
             ->save();
 
         $this->table('resources_accesses', [
@@ -78,41 +37,6 @@ class AclCrudUpdate extends AbstractMigration
                 'null' => false,
                 'limit' => MysqlAdapter::INT_REGULAR,
                 'precision' => '10',
-            ])
-        ->changeColumn('resources_name', 'string', [
-                'null' => false,
-                'limit' => 32,
-                'collation' => 'utf8mb4_unicode_520_ci',
-                'encoding' => 'utf8mb4',
-                'after' => 'resources_id',
-            ])
-        ->changeColumn('access_name', 'string', [
-                'null' => false,
-                'limit' => 32,
-                'collation' => 'utf8mb4_unicode_520_ci',
-                'encoding' => 'utf8mb4',
-                'after' => 'resources_name',
-            ])
-        ->changeColumn('apps_id', 'integer', [
-                'null' => false,
-                'limit' => MysqlAdapter::INT_REGULAR,
-                'precision' => '10',
-                'after' => 'access_name',
-            ])
-        ->changeColumn('created_at', 'datetime', [
-                'null' => false,
-                'after' => 'apps_id',
-            ])
-        ->changeColumn('updated_at', 'datetime', [
-                'null' => true,
-                'after' => 'created_at',
-            ])
-        ->changeColumn('is_deleted', 'integer', [
-                'null' => false,
-                'default' => '"0"',
-                'limit' => MysqlAdapter::INT_TINY,
-                'precision' => '3',
-                'after' => 'updated_at',
             ])
             ->save();
 

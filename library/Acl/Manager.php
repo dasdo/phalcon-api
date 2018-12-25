@@ -444,6 +444,7 @@ class Manager extends Adapter
         foreach ($accessList as $accessName) {
             if (!$exists) {
                 $resourceAccesses = new ResourcesAccesses();
+                $resourceAccesses->beforeCreate(); //wtf?
                 $resourceAccesses->resources_name = $resourceName;
                 $resourceAccesses->access_name = $accessName;
                 $resourceAccesses->apps_id = $this->getApp()->getId();

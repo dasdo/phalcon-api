@@ -231,7 +231,7 @@ class Users extends \Baka\Auth\Models\Users
             $this->default_company = $company->getId();
 
             if (!$this->update()) {
-                throw new ServerErrorHttpException(current($this->getMessages()));
+                throw new ServerErrorHttpException((string) current($this->getMessages()));
             }
 
             $this->default_company_branch = $this->defaultCompany->branch->getId();
