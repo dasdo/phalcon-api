@@ -288,10 +288,10 @@ class Manager extends Adapter
     }
 
     /**
-     * {@inheritdoc}
+     * Get a resource by it name
      *
      * @param  string  $resourceName
-     * @return boolean
+     * @return ResourcesDB
      */
     protected function getResource(string $resourceName) : ResourcesDB
     {
@@ -308,10 +308,10 @@ class Manager extends Adapter
     }
 
     /**
-     * {@inheritdoc}
+     * Get a role by it name
      *
      * @param  string  $resourceName
-     * @return boolean
+     * @return RolesDB
      */
     protected function getRole(string $role) : RolesDB
     {
@@ -596,7 +596,6 @@ class Manager extends Adapter
             'LIMIT 1'
         ]);
 
-        
         // fetch one entry...
         $allowed = $this->connection->fetchOne($sql, Db::FETCH_NUM, [$roleObj->getId(), $resource, $access, $this->getApp()->getId(), $roleObj->getId()]);
 

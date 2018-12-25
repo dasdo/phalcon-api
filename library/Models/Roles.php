@@ -5,6 +5,7 @@ namespace Gewaer\Models;
 
 use Gewaer\Exception\ServerErrorHttpException;
 use Baka\Auth\Models\Companies as BakaCompanies;
+use Phalcon\Di;
 
 class Roles extends AbstractModel
 {
@@ -92,6 +93,20 @@ class Roles extends AbstractModel
     public function getSource(): string
     {
         return 'roles';
+    }
+
+    /**
+     * Get the entity by its name
+     *
+     * @param string $name
+     * @return void
+     */
+    public static function getByName(string $name)
+    {
+        return self::findFirst([
+            'conditions' => 'name = ?0 AND company_id = ?1 AND apps_id = ?2 AND is_delete = 0',
+            'bind' => [$name, Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId()]
+        ]);
     }
 
     /**

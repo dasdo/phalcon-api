@@ -70,6 +70,17 @@ class AccessList extends AbstractModel
     }
 
     /**
+     * Delete all the accest list records for this given role
+     *
+     * @param Roles $role
+     * @return void
+     */
+    public static function deleteAllByRole(Roles $role): bool
+    {
+        return (bool) self::find('roles_id = ' . $role->getId())->delete();
+    }
+
+    /**
      * Returns table name mapped in the model.
      *
      * @return string

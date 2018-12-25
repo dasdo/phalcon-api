@@ -6,6 +6,12 @@ namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\AccessList;
 use Phalcon\Http\Response;
+use Phalcon\Acl\Role;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\PresenceOf;
+use Gewaer\Models\Apps;
+use Gewaer\Exception\NotFoundHttpException;
+use Gewaer\Models\Roles;
 
 /**
  * Class RolesController
@@ -55,7 +61,7 @@ class RolesAccesListController extends BaseController
      * Add a new item
      *
      * @method POST
-     * @url /v1/business
+     * @url /v1/roles-acceslist
      *
      * @return Phalcon\Http\Response
      */
@@ -67,13 +73,36 @@ class RolesAccesListController extends BaseController
             $request = $this->request->getJsonRawBody(true);
         }
 
-        //try to save all the fields we allow
-        if ($this->model->save($request, $this->createFields)) {
-            return $this->response($this->model->toArray());
-        } else {
-            //if not thorw exception
-            throw new Exception($this->model->getMessages()[0]);
+        //Ok let validate user password
+        $validation = new Validation();
+        $validation->add('roles', new PresenceOf(['message' => _('Role information is required.')]));
+        $validation->add('access', new PresenceOf(['message' => _('Access list is required.')]));
+
+        //validate this form for password
+        $messages = $validation->validate($request);
+        if (count($messages)) {
+            foreach ($messages as $message) {
+                throw new ServerErrorHttpException((string)$message);
+            }
         }
+
+        //set the company and app
+        $this->acl->setCompany($this->userData->DefaultCompany);
+        $this->acl->setApp($this->app);
+
+        $scope = 1;
+        //create the role , the scope is level 1 , that means user
+        $this->acl->addRole(new Role($request['roles']['name'], $request['roles']['description']), $scope);
+
+        /**
+         * we always deny permision, by default the canvas set allow to all
+         * so we only have to take away permissions
+         */
+        foreach ($request['access'] as $access) {
+            $this->acl->deny($request['roles']['name'], $access['resources_name'], $access['access_name']);
+        }
+
+        return $this->response($request['roles']);
     }
 
     /**
@@ -82,7 +111,7 @@ class RolesAccesListController extends BaseController
      * @param mixed $id
      *
      * @method GET
-     * @url /v1/business/{id}
+     * @url /v1/roles-acceslist/{id}
      *
      * @return Phalcon\Http\Response
      */
@@ -90,8 +119,8 @@ class RolesAccesListController extends BaseController
     {
         //find the info
         $objectInfo = $this->model->findFirst([
-            'roles_name = ?0 AND is_deleted = 0',
-            'bind' => [$id],
+            'roles_name = ?0 AND is_deleted = 0 AND apps_id in (?1, ?2)',
+            'bind' => [$id, $this->app->getId(), Apps::GEWAER_DEFAULT_APP_ID],
         ]);
 
         //get relationship
@@ -112,35 +141,64 @@ class RolesAccesListController extends BaseController
      * Update a new Entry
      *
      * @method PUT
-     * @url /v1/business/{id}
+     * @url /v1/roles-acceslist/{id}
      *
      * @return Phalcon\Http\Response
      */
     public function edit($id) : Response
     {
-        if ($objectInfo = $this->model->findFirst($id)) {
-            $request = $this->request->getPut();
-
-            if (empty($request)) {
-                $request = $this->request->getJsonRawBody(true);
-            }
-            //update
-            if ($objectInfo->update($request, $this->updateFields)) {
-                return $this->response($objectInfo->toArray());
-            } else {
-                //didnt work
-                throw new Exception($objectInfo->getMessages()[0]);
-            }
-        } else {
-            throw new Exception('Record not found');
+        if (!$role = Roles::findFirst($id)) {
+            throw new NotFoundHttpException('Record not found');
         }
+
+        $request = $this->request->getPut();
+
+        if (empty($request)) {
+            $request = $this->request->getJsonRawBody(true);
+        }
+
+        //Ok let validate user password
+        $validation = new Validation();
+        $validation->add('roles', new PresenceOf(['message' => _('Role information is required.')]));
+        $validation->add('access', new PresenceOf(['message' => _('Access list is required.')]));
+
+        //validate this form for password
+        $messages = $validation->validate($request);
+        if (count($messages)) {
+            foreach ($messages as $message) {
+                throw new ServerErrorHttpException((string)$message);
+            }
+        }
+
+        //set the company and app
+        $this->acl->setCompany($this->userData->DefaultCompany);
+        $this->acl->setApp($this->app);
+
+        $role->name = $request['roles']['name'];
+        $role->description = $request['roles']['description'];
+        if (!$role->update()) {
+            throw new ServerErrorHttpException((string) current($role->getMessages()));
+        }
+
+        //delete the acces list before hand
+        AccessList::deleteAllByRole($role);
+
+        /**
+         * we always deny permision, by default the canvas set allow to all
+         * so we only have to take away permissions
+         */
+        foreach ($request['access'] as $access) {
+            $this->acl->deny($request['roles']['name'], $access['resources_name'], $access['access_name']);
+        }
+
+        return $this->response($role);
     }
 
     /**
      * delete a new Entry
      *
      * @method DELETE
-     * @url /v1/business/{id}
+     * @url /v1/roles-acceslist/{id}
      *
      * @return Phalcon\Http\Response
      */
@@ -155,7 +213,7 @@ class RolesAccesListController extends BaseController
 
             return $this->response(['Delete Successfully']);
         } else {
-            throw new Exception('Record not found');
+            throw new NotFoundHttpException('Record not found');
         }
     }
 }
