@@ -6,6 +6,9 @@ namespace Gewaer\Models;
 use Gewaer\Exception\ServerErrorHttpException;
 use Baka\Auth\Models\Companies as BakaCompanies;
 use Phalcon\Di;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\PresenceOf;
+use Phalcon\Validation\Validator\StringLength;
 
 class Roles extends AbstractModel
 {
@@ -83,6 +86,40 @@ class Roles extends AbstractModel
             'name',
             ['alias' => 'role']
         );
+    }
+
+    /**
+     * Validations and business logic
+     */
+    public function validation()
+    {
+        $validator = new Validation();
+
+        $validator->add(
+            'name',
+            new PresenceOf([
+                'field' => 'name',
+                'required' => true,
+            ])
+        );
+
+        $validator->add(
+            'description',
+            new PresenceOf([
+                'field' => 'description',
+                'required' => true,
+            ])
+        );
+
+        $validator->add(
+            'name',
+            new StringLength([
+                'max' => 32,
+                'messageMinimum' => _('Role Name. Maxium 32 characters.'),
+            ])
+        );
+
+        return $this->validate($validator);
     }
 
     /**

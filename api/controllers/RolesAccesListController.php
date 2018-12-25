@@ -11,6 +11,7 @@ use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Gewaer\Models\Apps;
 use Gewaer\Exception\NotFoundHttpException;
+use Gewaer\Exception\ServerErrorHttpException;
 use Gewaer\Models\Roles;
 
 /**
@@ -204,11 +205,14 @@ class RolesAccesListController extends BaseController
      */
     public function delete($id) : Response
     {
-        if ($objectInfo = $this->model->findFirst($id)) {
+        if ($role = Roles::findFirst($id)) {
             if ($this->softDelete == 1) {
-                $objectInfo->softDelete();
+                $role->softDelete();
             } else {
-                $objectInfo->delete();
+                //delete the acces list before hand
+                AccessList::deleteAllByRole($role);
+
+                $role->delete();
             }
 
             return $this->response(['Delete Successfully']);
