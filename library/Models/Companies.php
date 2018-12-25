@@ -99,6 +99,13 @@ class Companies extends \Baka\Auth\Models\Companies
             ['alias' => 'branches']
         );
 
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\UsersAssociatedCompany',
+            'company_id',
+            ['alias' => 'UsersAssociatedCompany']
+        );
+
         $this->hasOne(
             'id',
             'Gewaer\Models\CompanyBranches',
@@ -114,6 +121,18 @@ class Companies extends \Baka\Auth\Models\Companies
             'company_id',
             [
                 'alias' => 'app',
+                'params' => [
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId()
+                ]
+            ]
+        );
+
+        $this->hasOne(
+            'id',
+            'Gewaer\Models\UserCompanyApps',
+            'company_id',
+            [
+                'alias' => 'apps',
                 'params' => [
                     'conditions' => 'apps_id = ' . $this->di->getApp()->getId()
                 ]
@@ -173,6 +192,17 @@ class Companies extends \Baka\Auth\Models\Companies
     public function getSource() : string
     {
         return 'companies';
+    }
+
+    /**
+     * Confirm if a user belongs to this current company
+     *
+     * @param Users $user
+     * @return boolean
+     */
+    public function userAssociatedToCompany(Users $user): bool
+    {
+        return is_object($this->getUsersAssociatedCompany('users_id =' . $user->getId())) ? true : false;
     }
 
     /**

@@ -34,14 +34,14 @@ class UsersController extends \Baka\Auth\UsersController
      *
      * @var array
      */
-    protected $createFields = ['name', 'firstname', 'lastname', 'displayname', 'email', 'password', 'created_at', 'updated_at', 'default_company', 'family'];
+    protected $createFields = ['name', 'firstname', 'lastname', 'displayname', 'language', 'email', 'password', 'created_at', 'updated_at', 'default_company', 'family', 'cell_phone_number'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['name', 'firstname', 'lastname', 'displayname', 'email', 'password', 'created_at', 'updated_at', 'default_company'];
+    protected $updateFields = ['name', 'firstname', 'lastname', 'displayname', 'language', 'email', 'password', 'created_at', 'updated_at', 'default_company', 'cell_phone_number'];
 
     /**
      * set objects
@@ -136,7 +136,7 @@ class UsersController extends \Baka\Auth\UsersController
             }
 
             //update password
-            if (array_key_exists('new_password', $request) && !empty($request['new_password'])) {
+            if (array_key_exists('new_password', $request) && (!empty($request['new_password']) && !empty($request['password']))) {
                 //Ok let validate user password
                 $validation = new Validation();
                 $validation->add('new_password', new PresenceOf(['message' => 'The new_password is required.']));
@@ -151,15 +151,18 @@ class UsersController extends \Baka\Auth\UsersController
                 }
 
                 $user->updatePassword($request['current_password'], $request['new_password'], $request['confirm_new_password']);
+            } else {
+                //remove on any actino that doesnt involve password
                 unset($request['password']);
             }
 
-            //clean default company
+            //change my default company
             if (array_key_exists('default_company', $request)) {
-                //@todo check if I belong to this company
                 if ($company = Companies::findFirst($request['default_company'])) {
-                    $user->default_company = $company->getId();
-                    unset($request['default_company']);
+                    if ($company->userAssociatedToCompany($this->userData)) {
+                        $user->default_company = $company->getId();
+                        unset($request['default_company']);
+                    }
                 }
             }
 
