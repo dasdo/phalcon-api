@@ -57,6 +57,7 @@ $router->post('/users/{id}/devices', [
 $defaultCrudRoutes = [
     'users',
     'companies',
+    'CompaniesBranches' => 'companies-branches',
     'languages',
     'AppsPlans' => 'apps-plans',
     'RolesAccesList' => 'roles-acceslist',
