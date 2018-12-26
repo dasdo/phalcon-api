@@ -63,7 +63,7 @@ class SubscriptionPlanAcl extends AbstractMigration
 
         $table = $this->table('user_company_apps_activities', ['id' => false, 'primary_key' => ['company_id', 'company_branches_id', 'apps_id', 'key'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => 'what are the uses doing in the current app they are using?', 'row_format' => 'Dynamic']);
         $table->addColumn('company_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10])
-            ->addColumn('companies_branches', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'company_id'])
+            ->addColumn('company_branches_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'company_id'])
             ->addColumn('apps_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'company_branches_id'])
             ->addColumn('key', 'string', ['null' => false, 'limit' => 50, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'apps_id'])
             ->addColumn('value', 'string', ['null' => false, 'limit' => 255, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'key'])
