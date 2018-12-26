@@ -19,14 +19,14 @@ class CompaniesCustomFieldsController extends BaseController
      *
      * @var array
      */
-    protected $createFields = ['companies_id', 'custom_fields_id', 'value'];
+    protected $createFields = ['custom_fields_id', 'value'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['companies_id', 'custom_fields_id', 'value'];
+    protected $updateFields = ['custom_fields_id', 'value'];
 
     /**
      * set objects
@@ -36,5 +36,10 @@ class CompaniesCustomFieldsController extends BaseController
     public function onConstruct()
     {
         $this->model = new CompaniesCustomFields();
+        $this->model->companies_id = $this->userData->default_company;
+
+        $this->additionalSearchFields = [
+            ['companies_id', ':', $this->userData->default_company],
+        ];
     }
 }

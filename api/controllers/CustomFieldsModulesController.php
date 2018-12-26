@@ -8,6 +8,7 @@ use Gewaer\Models\CustomFieldsModules;
 use Gewaer\CustomFields\CustomFields;
 use Phalcon\Http\Response;
 use Gewaer\Exception\NotFoundHttpException;
+use Gewaer\Exception\PermissionException;
 
 /**
  * Class LanguagesController
@@ -24,14 +25,14 @@ class CustomFieldsModulesController extends BaseController
      *
      * @var array
      */
-    protected $createFields = ['apps_id', 'name'];
+    protected $createFields = ['name'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['apps_id', 'name'];
+    protected $updateFields = ['name'];
 
     /**
      * set objects
@@ -41,6 +42,11 @@ class CustomFieldsModulesController extends BaseController
     public function onConstruct()
     {
         $this->model = new CustomFieldsModules();
+        $this->model->apps_id = $this->app->getId();
+
+        if (!$this->userData->hasRole('Defaults.Admins')) {
+            throw new PermissionException('You dont have permission to run this action ');
+        }
     }
 
     /**
