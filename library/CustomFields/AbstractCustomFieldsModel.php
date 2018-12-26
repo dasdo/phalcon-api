@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Gewaer\CustomFields;
 
 use Gewaer\Models\CustomFieldsModules;
+use Exception;
 
 /**
  * Custom Fields Abstract Class
@@ -44,7 +45,7 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
                                           AND c.apps_id = ?
                                           AND c.custom_fields_modules_id = ?
                                           AND c.companies_id = ? 
-                                          AND l.companies_id = c.companies_id");
+                                          ");
 
         $result->execute($bind);
 
@@ -76,5 +77,65 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
             }
             return $allFields;
         }
+    }
+
+    /**
+    * Create new custom fields
+    *
+    * We never update any custom fields, we delete them and create them again, thats why we call cleanCustomFields before updates
+    *
+    * @return void
+    */
+    protected function saveCustomFields(): bool
+    {
+        //find the custom field module
+        if (!$module = CustomFieldsModules::findFirstByName($this->getSource())) {
+            return false;
+        }
+        //we need a new instane to avoid overwrite
+        $reflector = new \ReflectionClass($this);
+        $classNameWithNameSpace = $reflector->getNamespaceName() . '\\' . $reflector->getShortName() . 'CustomFields';
+
+        //if all is good now lets get the custom fields and save them
+        foreach ($this->customFields as $key => $value) {
+            //create a new obj per itration to se can save new info
+            $customModel = new $classNameWithNameSpace();
+
+            //validate the custome field by it model
+            $customField = CustomFields::findFirst([
+                'conditions' => 'name = ?0 AND custom_fields_modules_id = ?1 AND companies_id = ?2 AND apps_id = ?3',
+                'bind' => [$key, $module->id, $this->di->getUserData()->default_company, $this->di->getApp()->getId()]
+            ]);
+
+            if ($customField) {
+                //throw new Exception("this custom field doesnt exist");
+
+                $customModel->setCustomId($this->getId());
+                $customModel->custom_fields_id = $customField->id;
+                $customModel->value = $value;
+                $customModel->created_at = date('Y-m-d H:i:s');
+
+                if (!$customModel->save()) {
+                    throw new Exception('Custome ' . $key . ' - ' . current($customModel->getMessages()));
+                }
+            }
+        }
+
+        //clean
+        unset($this->customFields);
+
+        return true;
+    }
+
+    /**
+    * Before create
+    *
+    * @return void
+    */
+    public function beforeCreate()
+    {
+        $this->created_at = date('Y-m-d H:i:s');
+        $this->updated_at = null;
+        $this->is_deleted = 0;
     }
 }

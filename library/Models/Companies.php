@@ -258,13 +258,15 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
      */
     public function afterCreate()
     {
+        parent::afterCreate();
+
         //setup the user notificatoin setting
         $companySettings = new CompaniesSettings();
-        $companySettings->company_id = $this->getId();
+        $companySettings->companies_id = $this->getId();
         $companySettings->name = 'notifications';
         $companySettings->value = $this->user->email;
         if (!$companySettings->save()) {
-            throw new Exception(current($companySettings->getMessages()));
+            throw new Exception((string)current($companySettings->getMessages()));
         }
 
         //multi user asociation
@@ -275,7 +277,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $usersAssociatedCompany->user_active = 1;
         $usersAssociatedCompany->user_role = 'admin';
         if (!$usersAssociatedCompany->save()) {
-            throw new Exception(current($usersAssociatedCompany->getMessages()));
+            throw new Exception((string)current($usersAssociatedCompany->getMessages()));
         }
 
         //now thta we setup de company and associated with the user we need to setup this as its default company
@@ -286,7 +288,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             $userConfig->value = $this->getId();
 
             if (!$userConfig->save()) {
-                throw new Exception(current($userConfig->getMessages()));
+                throw new Exception((string)current($userConfig->getMessages()));
             }
         }
 
@@ -305,7 +307,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
 
         //look for the default plan for this app
         $companyApps = new UserCompanyApps();
-        $companyApps->company_id = $this->getId();
+        $companyApps->companies_id = $this->getId();
         $companyApps->apps_id = $this->di->getApp()->getId();
         $companyApps->subscriptions_id = 0;
 
