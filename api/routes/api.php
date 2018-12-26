@@ -153,4 +153,13 @@ $router->get('/users-invite/{hash}', [
     ]
 ]);
 
+//Custom Fields specific routes
+$router->get('/modules/{id}/custom-fields', [
+    'Gewaer\Api\Controllers\ModulesController',
+    'customFieldsByModulesId',
+    'options' => [
+        'jwt' => false,
+    ]
+]);
+
 $router->mount();

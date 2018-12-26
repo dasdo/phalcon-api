@@ -59,4 +59,24 @@ class ModulesCest
 
         $I->assertTrue($data['name'] == $updatedName);
     }
+
+    /**
+     * Fetch all custom fields of a module by its id
+     *
+     * @param ApiTester $I
+     * @return void
+     */
+    public function listCustomFieldsByModuleId(ApiTester $I): void
+    {
+        $userData = $I->apiLogin();
+
+        $I->haveHttpHeader('Authorization', $userData->token);
+        $I->sendGet("/v1/{$this->model}" . '/1/custom-fields');
+
+        $I->seeResponseIsSuccessful();
+        $response = $I->grabResponse();
+        $data = json_decode($response, true);
+
+        $I->assertNotEmpty($data, 'Response not empty');
+    }
 }
