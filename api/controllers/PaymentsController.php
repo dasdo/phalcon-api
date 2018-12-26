@@ -36,13 +36,12 @@ class PaymentsController extends BaseController
         if (empty($request)) {
             $request = $this->request->getJsonRawBody(true);
         }
-
         $value = ucwords(str_replace(['-', '_'], '', str_replace('.', '_', $request['type'])));
         $method = 'handle' . $value;
         if (method_exists($this, $method)) {
-            return $this->{$method}($payload);
+            return $this->{$method}($request);
         } else {
-            return $this->missingMethod();
+            return $this->response(['Missing Method to Handled']);
         }
     }
 
@@ -160,13 +159,38 @@ class PaymentsController extends BaseController
     }
 
     /**
-     * Handle calls to missing methods on the controller.
+     * Handle sucessfull payment
      *
-     * @param  array  $parameters
+     * @todo send email
+     * @param array $payload
      * @return Response
      */
-    public function missingMethod($parameters = [])
+    protected function handleChargeSucceeded(array $payload): Response
     {
-        return $this->response(['missingMethod to Handled']);
+        return $this->response(['Webhook Handled']);
+    }
+
+    /**
+     * Handle bad payment
+     *
+     * @todo send email
+     * @param array $payload
+     * @return Response
+     */
+    protected function handleChargeFailed(array $payload) : Response
+    {
+        return $this->response(['Webhook Handled']);
+    }
+
+    /**
+     * Handle looking for refund
+     *
+     * @todo send email
+     * @param array $payload
+     * @return Response
+     */
+    protected function handleChargeDisputeCreated(array $payload) : Response
+    {
+        return $this->response(['Webhook Handled']);
     }
 }

@@ -652,8 +652,8 @@ class Manager extends Adapter
         if ($resourceName !== '*' && $accessName !== '*') {
             $resource = $this->getResource($resourceName);
             $exists = ResourcesAccesses::count([
-                'resources_id = ?0 AND access_name = ?1 AND apps_id = ?2',
-                'bind' => [$resource->getId(), $accessName, $this->getApp()->getId()]
+                'resources_id = ?0 AND access_name = ?1 AND apps_id in (?2, ?3)',
+                'bind' => [$resource->getId(), $accessName, $this->getApp()->getId(), 0]
             ]);
 
             if (!$exists) {
