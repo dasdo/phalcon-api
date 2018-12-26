@@ -86,6 +86,18 @@ class InitGewaer extends AbstractSeed
                 'user_active' => 1,
                 'is_deleted' => 0
             ],
+            [
+                'email' => 'nobody@baka.io',
+                'password' => password_hash('bakatest123567', PASSWORD_DEFAULT),
+                'firstname' => 'Baka',
+                'lastname' => 'Idiot',
+                'default_company' => 1,
+                'default_company_branch' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'status' => 1,
+                'user_active' => 1,
+                'is_deleted' => 0
+            ]
         ];
 
         $table = $this->table('users');

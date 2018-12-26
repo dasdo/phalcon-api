@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace Gewaer\CustomFields;
-use Exception;
+
 use Gewaer\Models\Modules;
 
 abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomFields
@@ -29,8 +29,7 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
 
         $conditions = 'modules_id = ? ' . $fieldsIn;
 
-        $bind = [$this->getId(),$this->di->getApp()->getId(), $models->getId(), $this->di->getUserData()->default_company];
-
+        $bind = [$this->getId(), $this->di->getApp()->getId(), $models->getId(), $this->di->getUserData()->default_company];
 
         // $customFieldsValueTable = $this->getSource() . '_custom_fields';
         $customFieldsValueTable = $this->getSource() . '_custom_fields';

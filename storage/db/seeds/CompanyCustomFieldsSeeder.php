@@ -9,7 +9,7 @@ class CompanyCustomFieldsSeeder extends AbstractSeed
         $data = [
             [
                 'companies_id' => 1,
-                'custom_field_id' => 1,
+                'custom_fields_id' => 1,
                 'value' => 'example_value',
                 'created_at' => date('Y-m-d H:m:s'),
             ],
