@@ -20,13 +20,13 @@ class Roles extends AbstractModel
 
     /**
      *
-     * @var integer
+     * @var string
      */
     public $name;
 
     /**
      *
-     * @var integer
+     * @var string
      */
     public $description;
 

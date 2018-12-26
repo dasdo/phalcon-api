@@ -26,7 +26,7 @@ class AccessList extends AbstractModel
 
     /**
      *
-     * @var integer
+     * @var boolean
      */
     public $allowed;
 

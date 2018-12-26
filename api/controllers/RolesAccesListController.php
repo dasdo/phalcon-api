@@ -199,8 +199,8 @@ class RolesAccesListController extends BaseController
     /**
      * Copy a existen
      *
-     * @param [type] $id
-     * @return void
+     * @param int $id
+     * @return Response
      */
     public function copy($id) : Response
     {
