@@ -5,6 +5,10 @@ namespace Gewaer\CustomFields;
 
 use Gewaer\Models\Modules;
 
+/**
+ * Custom Fields Abstract Class
+ * @property \Phalcon\Di $di
+ */
 abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomFields
 {
     /**
@@ -13,14 +17,13 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
      * @param  array  $fields
      * @return \Phalcon\Mvc\Model
      */
-    public function getAllCustomFields(array $fields = [], int $company_id = 0)
+    public function getAllCustomFields(array $fields = [])
     {
         //We does it only find names in plural? We need to fix this or make a workaroun
         if (!$models = Modules::findFirstByName($this->getSource())) {
             return;
         }
 
-        $conditions = [];
         $fieldsIn = null;
 
         if (!empty($fields)) {
@@ -75,7 +78,7 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
             return;
         }
         $allFields = [];
-        if ($fields = \Incursio\Models\CustomFields::findByModulesId($module->id)->toArray()) {
+        if ($fields = \Gewaer\CustomFields\CustomFields::findByModulesId($module->id)->toArray()) {
             foreach ($fields as $field) {
                 array_push($allFields, $field['name']);
             }

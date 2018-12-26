@@ -7,11 +7,14 @@ namespace Gewaer\Api\Controllers;
 use Gewaer\Models\Modules;
 use Gewaer\CustomFields\CustomFields;
 use Phalcon\Http\Response;
+use Gewaer\Exception\NotFoundHttpException;
 
 /**
  * Class LanguagesController
  *
  * @package Gewaer\Api\Controllers
+ * @property Users $userData
+ * @property Apps $app
  *
  */
 class ModulesController extends BaseController

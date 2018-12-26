@@ -6,6 +6,7 @@ namespace Gewaer\Models;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Gewaer\Exception\ServerErrorHttpException;
+use Exception;
 
 /**
  * Class Companies
@@ -13,14 +14,16 @@ use Gewaer\Exception\ServerErrorHttpException;
  * @package Gewaer\Models
  *
  * @property Users $user
- * @property CompanyBranches $branch
- * @property CompanyBranches $branches
+ * @property CompaniesBranches $branch
+ * @property CompaniesBranches $branches
  * @property Config $config
  * @property UserCompanyApps $app
  * @property \Phalcon\Di $di
  */
 class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
 {
+    const DEFAULT_COMPANY = 'DefaulCompany';
+
     /**
      *
      * @var integer
@@ -288,9 +291,9 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         }
 
         /**
-         * @var CompanyBranches
+         * @var CompaniesBranches
          */
-        $branch = new CompanyBranches();
+        $branch = new CompaniesBranches();
         $branch->companies_id = $this->getId();
         $branch->users_id = $this->user->getId();
         $branch->name = 'Default';
