@@ -24,7 +24,7 @@ class CustomFieldsCest
             'companies_id' => 1,
             'apps_id' => 1,
             'name' => $testName,
-            'modules_id' => 1,
+            'custom_fields_modules_id' => 1,
             'fields_type_id' => 1
         ]);
 

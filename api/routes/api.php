@@ -63,7 +63,7 @@ $defaultCrudRoutes = [
     'UsersInvite' => 'users-invite',
     'EmailTemplates' => 'email-templates',
     'CompaniesCustomFields' => 'companies-custom-fields',
-    'modules',
+    'CustomFieldsModules' => 'custom-fields-modules',
     'CustomFields' => 'custom-fields'
 ];
 
@@ -167,8 +167,8 @@ $router->get('/users-invite/{hash}', [
 ]);
 
 //Custom Fields specific routes
-$router->get('/modules/{id}/custom-fields', [
-    'Gewaer\Api\Controllers\ModulesController',
+$router->get('/custom-fields-modules/{id}/fields', [
+    'Gewaer\Api\Controllers\CustomFieldsModulesController',
     'customFieldsByModulesId',
     'options' => [
         'jwt' => false,

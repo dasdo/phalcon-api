@@ -1,11 +1,11 @@
 <?php 
 
-class ModulesCest
+class CustomFieldsModulesCest
 {
     /**
      * Model
      */
-    protected $model = 'modules';
+    protected $model = 'custom-fields-modules';
 
     /**
      * Create a new Email Templates
@@ -71,7 +71,7 @@ class ModulesCest
         $userData = $I->apiLogin();
 
         $I->haveHttpHeader('Authorization', $userData->token);
-        $I->sendGet("/v1/{$this->model}" . '/1/custom-fields');
+        $I->sendGet("/v1/{$this->model}" . '/1/fields');
 
         $I->seeResponseIsSuccessful();
         $response = $I->grabResponse();

@@ -12,7 +12,7 @@ class CustomFieldsSeeder extends AbstractSeed
                 'companies_id' => 1,
                 'apps_id' => 1,
                 'name' => 'example_field',
-                'modules_id' => 1,
+                'custom_fields_modules_id' => 1,
                 'fields_type_id' => 1,
                 'created_at' => date('Y-m-d H:m:s'),
             ],

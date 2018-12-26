@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Api\Controllers;
 
-use Gewaer\Models\Modules;
+use Gewaer\Models\CustomFieldsModules;
 use Gewaer\CustomFields\CustomFields;
 use Phalcon\Http\Response;
 use Gewaer\Exception\NotFoundHttpException;
@@ -17,7 +17,7 @@ use Gewaer\Exception\NotFoundHttpException;
  * @property Apps $app
  *
  */
-class ModulesController extends BaseController
+class CustomFieldsModulesController extends BaseController
 {
     /*
      * fields we accept to create
@@ -40,7 +40,7 @@ class ModulesController extends BaseController
      */
     public function onConstruct()
     {
-        $this->model = new Modules();
+        $this->model = new CustomFieldsModules();
     }
 
     /**

@@ -2,7 +2,7 @@
 
 use Phinx\Seed\AbstractSeed;
 
-class ModulesSeeder extends AbstractSeed
+class CustomFieldsModulesSeeder extends AbstractSeed
 {
     public function run()
     {
@@ -19,7 +19,7 @@ class ModulesSeeder extends AbstractSeed
             ],
         ];
 
-        $posts = $this->table('modules');
+        $posts = $this->table('custom_fields_modules');
         $posts->insert($data)
               ->save();
     }

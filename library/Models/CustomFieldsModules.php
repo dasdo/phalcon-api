@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class Modules extends AbstractModel
+class CustomFieldsModules extends AbstractModel
 {
     /**
      *
@@ -46,19 +46,19 @@ class Modules extends AbstractModel
      */
     public function initialize()
     {
-        $this->setSource('modules');
+        $this->setSource('custom_fields_modules');
 
-        // $this->belongsTo(
-        //     'company_id',
-        //     'Gewaer\Models\Companies',
-        //     'id',
-        //     ['alias' => 'company']
-        // );
+        $this->belongsTo(
+            'companies_id',
+            'Gewaer\Models\Companies',
+            'id',
+            ['alias' => 'company']
+        );
 
         $this->hasMany(
             'id',
             'Gewaer\CustomFields\CustomFields',
-            'modules_id',
+            'custom_fields_modules_id',
             ['alias' => 'fields']
         );
 
@@ -77,6 +77,6 @@ class Modules extends AbstractModel
      */
     public function getSource(): string
     {
-        return 'modules';
+        return 'custom_fields_modules';
     }
 }

@@ -41,7 +41,7 @@ class CustomFields extends AbstractModel
      *
      * @var integer
      */
-    public $modules_id;
+    public $custom_fields_modules_id;
 
     /**
      *
@@ -75,8 +75,8 @@ class CustomFields extends AbstractModel
         $this->setSource('custom_fields');
 
         $this->belongsTo(
-            'modules_id',
-            'Gewaer\Models\Modules',
+            'custom_fields_modules_id',
+            'Gewaer\Models\CustomFieldsModules',
             'id',
             ['alias' => 'modules']
         );
