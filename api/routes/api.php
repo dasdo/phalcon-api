@@ -126,6 +126,14 @@ $router->post('/auth/forgot', [
     ]
 ]);
 
+$router->post('/roles-acceslist/{id}/copy', [
+    'Gewaer\Api\Controllers\RolesAccesListController',
+    'copy',
+    'options' => [
+        'jwt' => false,
+    ]
+]);
+
 $router->post('/auth/reset/{key}', [
     'Gewaer\Api\Controllers\AuthController',
     'reset',

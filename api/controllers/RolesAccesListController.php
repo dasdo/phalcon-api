@@ -23,6 +23,7 @@ use Baka\Http\QueryParser;
  * @property Users $userData
  * @property Request $request
  * @property Config $config
+ * @property \Gewaer\Acl\Manager  $acl
  * @property \Baka\Mail\Message $mail
  * @property Apps $app
  *
@@ -148,7 +149,7 @@ class RolesAccesListController extends BaseController
      */
     public function edit($id) : Response
     {
-        if (!$role = Roles::findFirst($id)) {
+        if (!$role = Roles::getById((int) $id)) {
             throw new NotFoundHttpException('Record not found');
         }
 
@@ -193,6 +194,21 @@ class RolesAccesListController extends BaseController
         }
 
         return $this->response($role);
+    }
+
+    /**
+     * Copy a existen
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function copy($id) : Response
+    {
+        if (!$role = Roles::getById((int) $id)) {
+            throw new NotFoundHttpException('Record not found');
+        }
+
+        return $this->response($role->copy());
     }
 
     /**
