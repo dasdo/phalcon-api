@@ -42,12 +42,12 @@ class GewearCanvasInit extends AbstractMigration
         }
         $table = $this->table('companies');
         $table->addIndex(['users_id'], ['name' => 'users_id', 'unique' => false])->save();
-        $table = $this->table('companies_settings', ['id' => false, 'primary_key' => ['company_id', 'name'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
+        $table = $this->table('companies_settings', ['id' => false, 'primary_key' => ['companies_id', 'name'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
         $table->addColumn('companies_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'comment' => 'tabla donde se guardan las configuraciones en key value de los diferentes modelos
 
 - general, zoho key, mandrill email settings
 - modulo leads, agent default, rotation default , etc'])
-            ->addColumn('name', 'string', ['null' => false, 'limit' => 45, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'company_id'])
+            ->addColumn('name', 'string', ['null' => false, 'limit' => 45, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'companies_id'])
             ->addColumn('value', 'text', ['null' => false, 'limit' => 65535, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'name'])
             ->addColumn('created_at', 'datetime', ['null' => true, 'after' => 'value'])
             ->addColumn('updated_at', 'datetime', ['null' => true, 'after' => 'created_at'])
@@ -65,7 +65,7 @@ class GewearCanvasInit extends AbstractMigration
             $table->removeIndexByName('index5')->save();
         }
         $table = $this->table('companies_settings');
-        $table->addIndex(['company_id', 'name'], ['name' => 'index5', 'unique' => false])->save();
+        $table->addIndex(['companies_id', 'name'], ['name' => 'index5', 'unique' => false])->save();
 
         $table = $this->table('session_keys', ['id' => false, 'primary_key' => ['sessions_id', 'users_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
         $table->addColumn('sessions_id', 'string', ['null' => false, 'limit' => 45, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4'])
@@ -146,14 +146,14 @@ class GewearCanvasInit extends AbstractMigration
         $table = $this->table('sources');
         $table->addIndex(['url'], ['name' => 'unq1', 'unique' => true])->save();
 
-        $table = $this->table('user_company_apps', ['id' => false, 'primary_key' => ['company_id', 'apps_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
-        $table->addColumn('company_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'comment' => 'las apps que tiene contraída o usando el usuario
+        $table = $this->table('user_company_apps', ['id' => false, 'primary_key' => ['companies_id', 'apps_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
+        $table->addColumn('companies_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'comment' => 'las apps que tiene contraída o usando el usuario
 
 - leads
 - agents
 - office
 - etc'])
-            ->addColumn('apps_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'company_id'])
+            ->addColumn('apps_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'companies_id'])
             ->save();
 
         $table = $this->table('user_config', ['id' => false, 'primary_key' => ['users_id', 'name'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
