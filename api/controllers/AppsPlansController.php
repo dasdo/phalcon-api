@@ -52,7 +52,7 @@ class AppsPlansController extends BaseController
     {
         $this->model = new AppsPlans();
         $this->additionalSearchFields = [
-            ['is_deleted', ':', 0],
+            ['is_deleted', ':', '0'],
             ['apps_id', ':', $this->app->getId()],
         ];
     }

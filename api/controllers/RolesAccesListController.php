@@ -55,8 +55,8 @@ class RolesAccesListController extends BaseController
 
         //get the list of roes for the systema + my company
         $this->additionalSearchFields = [
-            ['is_deleted', ':', 0],
-            ['apps_id', ':', $this->app->getId()],
+            ['is_deleted', ':', '0'],
+            ['apps_id', ':', '0|' . $this->app->getId()],
         ];
     }
 

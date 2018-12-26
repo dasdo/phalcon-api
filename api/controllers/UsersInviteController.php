@@ -52,6 +52,10 @@ class UsersInviteController extends BaseController
     public function onConstruct()
     {
         $this->model = new UsersInvite();
+        $this->additionalSearchFields = [
+            ['is_deleted', ':', '0'],
+            ['company_id', ':', $this->userData->default_company],
+        ];
     }
 
     /**
