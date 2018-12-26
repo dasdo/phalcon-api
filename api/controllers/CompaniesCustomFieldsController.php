@@ -10,6 +10,7 @@ use Gewaer\Models\CompaniesCustomFields;
  * Class LanguagesController
  *
  * @package Gewaer\Api\Controllers
+ * @property Users $userData
  *
  */
 class CompaniesCustomFieldsController extends BaseController
