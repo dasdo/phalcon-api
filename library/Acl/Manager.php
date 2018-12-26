@@ -13,8 +13,13 @@ use Phalcon\Acl\Role;
 use Phalcon\Acl\RoleInterface;
 use Gewaer\Models\Companies;
 use Gewaer\Models\Apps;
+use Gewaer\Models\Roles as RolesDB;
+use Gewaer\Models\AccessList as AccessListDB;
+use Gewaer\Models\Resources as ResourcesDB;
 use Phalcon\Acl\Adapter;
 use BadMethodCallException;
+use Gewaer\Exception\ModelException;
+use Gewaer\Models\ResourcesAccesses;
 
 /**
  * Class Manager
@@ -188,21 +193,33 @@ class Manager extends Adapter
             throw new Exception('Role must be either an string or implement RoleInterface');
         }
 
-        $exists = $this->connection->fetchOne(
-            "SELECT COUNT(*) FROM {$this->roles} WHERE name = ?",
-            null,
-            [$role->getName()]
-        );
+        $exists = RolesDB::count([
+            'conditions' => 'name = ?0 AND company_id = ?1 AND apps_id = ?2',
+            'bind' => [$role->getName(), $this->getCompany()->getId(), $this->getApp()->getId()]
+        ]);
 
-        if (!$exists[0]) {
-            $this->connection->execute(
-                "INSERT INTO {$this->roles} (name, description, company_id, apps_id, scope, created_at) VALUES (?, ?, ?, ?, ?, ?)",
-                [$role->getName(), $role->getDescription(), $this->getCompany()->getId(), $this->getApp()->getId(), $scope, date('Y-m-d H:i:s')]
-            );
-            $this->connection->execute(
-                "INSERT INTO {$this->accessList} (roles_name, resources_name, access_name, allowed, apps_id, created_at) VALUES (?, ?, ?, ?, ?, ?)",
-                [$role->getName(), '*', '*', $this->_defaultAccess, $this->getApp()->getId(), date('Y-m-d H:i:s')]
-            );
+        if (!$exists) {
+            $rolesDB = new RolesDB();
+            $rolesDB->name = $role->getName();
+            $rolesDB->description = $role->getDescription();
+            $rolesDB->company_id = $this->getCompany()->getId();
+            $rolesDB->apps_id = $this->getApp()->getId();
+            $rolesDB->scope = $scope;
+            if (!$rolesDB->save()) {
+                throw new ModelException((string) current($rolesDB->getMessages()));
+            }
+
+            $accessListDB = new AccessListDB();
+            $accessListDB->roles_name = $role->getName();
+            $accessListDB->roles_id = $rolesDB->getId();
+            $accessListDB->resources_name = '*';
+            $accessListDB->access_name = '*';
+            $accessListDB->allowed = $this->_defaultAccess;
+            $accessListDB->apps_id = $this->getApp()->getId();
+
+            if (!$accessListDB->save()) {
+                throw new ModelException((string)current($rolesDB->getMessages()));
+            }
         }
         if ($accessInherits) {
             return $this->addInherit($role->getName(), $accessInherits);
@@ -245,12 +262,12 @@ class Manager extends Adapter
      */
     public function isRole($roleName): bool
     {
-        $exists = $this->connection->fetchOne(
-            "SELECT COUNT(*) FROM {$this->roles} WHERE name = ?",
-            null,
-            [$roleName]
-        );
-        return (bool) $exists[0];
+        $exists = RolesDB::count([
+            'conditions' => 'name = ?0 AND apps_id = ?1 AND company_id in (?2, ?3)',
+            'bind' => [$roleName, $this->getApp()->getId(), $this->getCompany()->getId(), 0]
+        ]);
+
+        return (bool)$exists;
     }
 
     /**
@@ -261,12 +278,52 @@ class Manager extends Adapter
      */
     public function isResource($resourceName): bool
     {
-        $exists = $this->connection->fetchOne(
-            "SELECT COUNT(*) FROM {$this->resources} WHERE name = ?",
-            null,
-            [$resourceName]
-        );
-        return (bool) $exists[0];
+        $exists = ResourcesDB::count([
+            'conditions' => 'name = ?0 AND apps_id in (?1, ?2)',
+            'bind' => [$resourceName, $this->getApp()->getId(), 0]
+        ]);
+
+        return (bool) $exists;
+    }
+
+    /**
+     * Get a resource by it name
+     *
+     * @param  string  $resourceName
+     * @return ResourcesDB
+     */
+    protected function getResource(string $resourceName) : ResourcesDB
+    {
+        $resource = ResourcesDB::findFirst([
+            'conditions' => 'name = ?0 AND apps_id in (?1, ?2)',
+            'bind' => [$resourceName, $this->getApp()->getId(), 0]
+        ]);
+
+        if (!is_object($resource)) {
+            throw new ModelException(_('Resource ' . $resourceName . ' not found on this app ' . $this->getApp()->getId()));
+        }
+
+        return $resource;
+    }
+
+    /**
+     * Get a role by it name
+     *
+     * @param  string  $resourceName
+     * @return RolesDB
+     */
+    protected function getRole(string $role) : RolesDB
+    {
+        $role = RolesDB::findFirst([
+            'conditions' => 'name = ?0 AND apps_id = ?1 AND company_id in (?2, ?3)',
+            'bind' => [$role, $this->getApp()->getId(), $this->getCompany()->getId(), 0]
+        ]);
+
+        if (!is_object($role)) {
+            throw new ModelException(_('Roles ' . $role . ' not found on this app ' . $this->getApp()->getId() . ' AND Company' . $this->getCompany()->getId()));
+        }
+
+        return $role;
     }
 
     /**
@@ -341,17 +398,15 @@ class Manager extends Adapter
             $resource = new Resource($resource);
         }
 
-        $exists = $this->connection->fetchOne(
-            "SELECT COUNT(*) FROM {$this->resources} WHERE name = ?",
-            null,
-            [$resource->getName()]
-        );
+        if (!$this->isResource($resource->getName())) {
+            $resourceDB = new ResourcesDB();
+            $resourceDB->name = $resource->getName();
+            $resourceDB->description = $resource->getDescription();
+            $resourceDB->apps_id = $this->getApp()->getId();
 
-        if (!$exists[0]) {
-            $this->connection->execute(
-                "INSERT INTO {$this->resources} (name, description, apps_id, created_at) VALUES (?, ?, ?, ?)",
-                [$resource->getName(), $resource->getDescription(), $this->getApp()->getId(), date('Y-m-d H:i:s')]
-            );
+            if (!$resourceDB->save()) {
+                throw new ModelException((string)current($resourceDB->getMessages()));
+            }
         }
 
         if ($accessList) {
@@ -375,18 +430,29 @@ class Manager extends Adapter
             throw new Exception("Resource '{$resourceName}' does not exist in ACL");
         }
 
-        $sql = "SELECT COUNT(*) FROM {$this->resourcesAccesses} WHERE resources_name = ? AND access_name = ? AND apps_id = ?";
+        $resource = $this->getResource($resourceName);
+
         if (!is_array($accessList)) {
             $accessList = [$accessList];
         }
 
         foreach ($accessList as $accessName) {
-            $exists = $this->connection->fetchOne($sql, null, [$resourceName, $accessName, $this->getApp()->getId()]);
-            if (!$exists[0]) {
-                $this->connection->execute(
-                    'INSERT INTO ' . $this->resourcesAccesses . ' (resources_name, access_name, apps_id, created_at) VALUES (?, ?, ?, ?)',
-                    [$resourceName, $accessName, $this->getApp()->getId(), date('Y-m-d H:i:s')]
-                );
+            $exists = ResourcesAccesses::count([
+                'conditions' => 'resources_id = ?0 AND access_name = ?1 AND apps_id = ?2',
+                'bind' => [$resource->getId(), $accessName, $this->getApp()->getId()]
+            ]);
+
+            if (!$exists) {
+                $resourceAccesses = new ResourcesAccesses();
+                $resourceAccesses->beforeCreate(); //wtf?
+                $resourceAccesses->resources_name = $resourceName;
+                $resourceAccesses->access_name = $accessName;
+                $resourceAccesses->apps_id = $this->getApp()->getId();
+                $resourceAccesses->resources_id = $resource->getId();
+
+                if (!$resourceAccesses->save()) {
+                    throw new ModelException((string)current($resourceAccesses->getMessages()));
+                }
             }
         }
         return true;
@@ -400,9 +466,9 @@ class Manager extends Adapter
     public function getResources(): \Phalcon\Acl\ResourceInterface
     {
         $resources = [];
-        $sql = "SELECT * FROM {$this->resources}";
-        foreach ($this->connection->fetchAll($sql, Db::FETCH_ASSOC) as $row) {
-            $resources[] = new Resource($row['name'], $row['description']);
+
+        foreach (ResourcesDB::find() as $row) {
+            $resources[] = new Resource($row->name, $row->description);
         }
         return $resources;
     }
@@ -415,9 +481,9 @@ class Manager extends Adapter
     public function getRoles(): \Phalcon\Acl\RoleInterface
     {
         $roles = [];
-        $sql = "SELECT * FROM {$this->roles}";
-        foreach ($this->connection->fetchAll($sql, Db::FETCH_ASSOC) as $row) {
-            $roles[] = new Role($row['name'], $row['description']);
+
+        foreach (RolesDB::find() as $row) {
+            $roles[] = new Role($row->name, $row->description);
         }
         return $roles;
     }
@@ -505,15 +571,16 @@ class Manager extends Adapter
         $role = $this->setAppByRole($role);
         //resoure always overwrites the role app?
         $resource = $this->setAppByResource($resource);
+        $roleObj = $this->getRole(($role));
 
         $sql = implode(' ', [
             'SELECT ' . $this->connection->escapeIdentifier('allowed') . " FROM {$this->accessList} AS a",
             // role_name in:
-            'WHERE roles_name IN (',
+            'WHERE roles_id IN (',
                 // given 'role'-parameter
-            'SELECT ? ',
+            'SELECT roles_id ',
                 // inherited role_names
-            "UNION SELECT roles_inherit FROM {$this->rolesInherits} WHERE roles_name = ?",
+            "UNION SELECT roles_inherit FROM {$this->rolesInherits} WHERE roles_id = ?",
                 // or 'any'
             "UNION SELECT '*'",
             ')',
@@ -523,6 +590,7 @@ class Manager extends Adapter
             //"AND access_name IN (?, '*')", you need to specify * , we are forcing to check always for permisions
             'AND access_name IN (?)',
             'AND apps_id = ? ',
+            'AND roles_id = ? ',
             // order be the sum of bools for 'literals' before 'any'
             'ORDER BY ' . $this->connection->escapeIdentifier('allowed') . ' DESC',
             // get only one...
@@ -530,7 +598,7 @@ class Manager extends Adapter
         ]);
 
         // fetch one entry...
-        $allowed = $this->connection->fetchOne($sql, Db::FETCH_NUM, [$role, $role, $resource, $access, $this->getApp()->getId()]);
+        $allowed = $this->connection->fetchOne($sql, Db::FETCH_NUM, [$roleObj->getId(), $resource, $access, $this->getApp()->getId(), $roleObj->getId()]);
 
         if (is_array($allowed)) {
             return (bool) $allowed[0];
@@ -582,39 +650,59 @@ class Manager extends Adapter
          * Check if the access is valid in the resource unless wildcard
          */
         if ($resourceName !== '*' && $accessName !== '*') {
-            $sql = "SELECT COUNT(*) FROM {$this->resourcesAccesses} WHERE resources_name = ? AND access_name = ? and apps_id  = ?";
-            $exists = $this->connection->fetchOne($sql, null, [$resourceName, $accessName, $this->getApp()->getId()]);
-            if (!$exists[0]) {
+            $resource = $this->getResource($resourceName);
+            $exists = ResourcesAccesses::count([
+                'resources_id = ?0 AND access_name = ?1 AND apps_id in (?2, ?3)',
+                'bind' => [$resource->getId(), $accessName, $this->getApp()->getId(), 0]
+            ]);
+
+            if (!$exists) {
                 throw new Exception(
-                    "Access '{$accessName}' does not exist in resource '{$resourceName}' in ACL"
+                    "Access '{$accessName}' does not exist in resource '{$resourceName}' ({$resource->getId()}) in ACL"
                 );
             }
         }
         /**
          * Update the access in access_list
          */
-        $sql = "SELECT COUNT(*) FROM {$this->accessList} "
-            . ' WHERE roles_name = ? AND resources_name = ? AND access_name = ? AND apps_id = ?';
-        $exists = $this->connection->fetchOne($sql, null, [$roleName, $resourceName, $accessName, $this->getApp()->getId()]);
-        if (!$exists[0]) {
-            $sql = "INSERT INTO {$this->accessList} (roles_name, resources_name, access_name, allowed, apps_id, created_at) VALUES (?, ?, ?, ?, ?, ?)";
-            $params = [$roleName, $resourceName, $accessName, $action, $this->getApp()->getId(), date('Y-m-d H:i:s')];
+        $role = $this->getRole($roleName);
+        $exists = AccessListDB::count([
+            'conditions' => 'roles_id = ?0 and resources_name = ?1 AND access_name = ?2 AND apps_id = ?3',
+            'bind' => [$role->getId(), $resourceName, $accessName, $this->getApp()->getId()]
+        ]);
+
+        if (!$exists) {
+            $accessListDB = new AccessListDB();
+            $accessListDB->roles_id = $role->getId();
+            $accessListDB->roles_name = $roleName;
+            $accessListDB->resources_name = $resourceName;
+            $accessListDB->access_name = $accessName;
+            $accessListDB->allowed = $action;
+            $accessListDB->apps_id = $this->getApp()->getId();
+
+            if (!$accessListDB->save()) {
+                throw new ModelException((string)current($accessListDB->getMessages()));
+            }
+            // $sql = "INSERT INTO {$this->accessList} (roles_name, resources_name, access_name, allowed, apps_id, created_at) VALUES (?, ?, ?, ?, ?, ?)";
+           // $params = [$roleName, $resourceName, $accessName, $action, $this->getApp()->getId(), date('Y-m-d H:i:s')];
         } else {
             $sql = "UPDATE {$this->accessList} SET allowed = ? " .
-                'WHERE roles_name = ? AND resources_name = ? AND access_name = ? AND apps_id = ?';
-            $params = [$action, $roleName, $resourceName, $accessName, $this->getApp()->getId()];
+                'WHERE roles_id = ? AND resources_name = ? AND access_name = ? AND apps_id = ?';
+            $params = [$action, $role->getId(), $resourceName, $accessName, $this->getApp()->getId()];
+            $this->connection->execute($sql, $params);
         }
-        $this->connection->execute($sql, $params);
 
         /**
          * Update the access '*' in access_list
          */
-        $sql = "SELECT COUNT(*) FROM {$this->accessList} " .
-            'WHERE roles_name = ? AND resources_name = ? AND access_name = ? and apps_id = ?';
-        $exists = $this->connection->fetchOne($sql, null, [$roleName, $resourceName, '*', $this->getApp()->getId()]);
-        if (!$exists[0]) {
-            $sql = "INSERT INTO {$this->accessList} (roles_name, resources_name, access_name, allowed, apps_id, created_at) VALUES (?, ?, ?, ?, ? , ?)";
-            $this->connection->execute($sql, [$roleName, $resourceName, '*', $this->_defaultAccess, $this->getApp()->getId(), date('Y-m-d H:i:s')]);
+        $exists = AccessListDB::count([
+            'conditions' => 'roles_id = ?0 and resources_name = ?1 AND access_name = ?2 AND apps_id = ?3',
+            'bind' => [$role->getId(), $resourceName,  '*', $this->getApp()->getId()]
+        ]);
+
+        if (!$exists) {
+            $sql = "INSERT INTO {$this->accessList} (roles_name, roles_id, resources_name, access_name, allowed, apps_id, created_at) VALUES (?, ?, ?, ?, ?, ? , ?)";
+            $this->connection->execute($sql, [$roleName, $role->getId(), $resourceName, '*', $this->_defaultAccess, $this->getApp()->getId(), date('Y-m-d H:i:s')]);
         }
 
         return true;

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class AccessList extends AbstractModel
+class ResourcesAccesses extends AbstractModel
 {
     /**
      *
-     * @var string
+     * @var integer
      */
-    public $roles_name;
+    public $resources_id;
 
     /**
      *
@@ -26,21 +26,9 @@ class AccessList extends AbstractModel
 
     /**
      *
-     * @var boolean
-     */
-    public $allowed;
-
-    /**
-     *
      * @var integer
      */
     public $apps_id;
-
-    /**
-     *
-     * @var integer
-     */
-    public $roles_id;
 
     /**
      *
@@ -65,25 +53,14 @@ class AccessList extends AbstractModel
      */
     public function initialize()
     {
-        $this->setSource('access_list');
+        $this->setSource('resources_accesses');
 
         $this->belongsTo(
-            'roles_name',
-            'Gewaer\Models\Roles',
-            'name',
-            ['alias' => 'role']
+            'resources_id',
+            'Gewaer\Models\Resources',
+            'id',
+            ['alias' => 'resources']
         );
-    }
-
-    /**
-     * Delete all the accest list records for this given role
-     *
-     * @param Roles $role
-     * @return void
-     */
-    public static function deleteAllByRole(Roles $role): bool
-    {
-        return (bool) self::find('roles_id = ' . $role->getId())->delete();
     }
 
     /**
@@ -93,6 +70,6 @@ class AccessList extends AbstractModel
      */
     public function getSource(): string
     {
-        return 'access_list';
+        return 'resources_accesses';
     }
 }

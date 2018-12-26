@@ -63,6 +63,7 @@ class Apps extends \Baka\Auth\Models\Apps
      * Ecosystem default app
      * @var string
      */
+    const GEWAER_DEFAULT_APP_ID = 0;
     const GEWAER_DEFAULT_APP_NAME = 'Default';
 
     /**

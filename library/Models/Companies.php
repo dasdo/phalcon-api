@@ -53,6 +53,12 @@ class Companies extends \Baka\Auth\Models\Companies
 
     /**
      *
+     * @var integer
+     */
+    public $has_activities;
+
+    /**
+     *
      * @var string
      */
     public $created_at;
@@ -99,6 +105,13 @@ class Companies extends \Baka\Auth\Models\Companies
             ['alias' => 'branches']
         );
 
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\UsersAssociatedCompany',
+            'company_id',
+            ['alias' => 'UsersAssociatedCompany']
+        );
+
         $this->hasOne(
             'id',
             'Gewaer\Models\CompanyBranches',
@@ -122,12 +135,25 @@ class Companies extends \Baka\Auth\Models\Companies
 
         $this->hasOne(
             'id',
+            'Gewaer\Models\UserCompanyApps',
+            'company_id',
+            [
+                'alias' => 'apps',
+                'params' => [
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId()
+                ]
+            ]
+        );
+
+        $this->hasOne(
+            'id',
             'Gewaer\Models\Subscription',
             'company_id',
             [
                 'alias' => 'subscription',
                 'params' => [
-                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId() . ' AND ends_at is null'
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId() . ' AND ends_at is null AND is_deleted = 0 ',
+                    'order' => 'id DESC'
                 ]
             ]
         );
@@ -139,7 +165,8 @@ class Companies extends \Baka\Auth\Models\Companies
             [
                 'alias' => 'subscriptions',
                 'params' => [
-                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId()
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId() . ' AND is_deleted = 0',
+                    'order' => 'id DESC'
                 ]
             ]
         );
@@ -173,6 +200,17 @@ class Companies extends \Baka\Auth\Models\Companies
     public function getSource() : string
     {
         return 'companies';
+    }
+
+    /**
+     * Confirm if a user belongs to this current company
+     *
+     * @param Users $user
+     * @return boolean
+     */
+    public function userAssociatedToCompany(Users $user): bool
+    {
+        return is_object($this->getUsersAssociatedCompany('users_id =' . $user->getId())) ? true : false;
     }
 
     /**

@@ -24,14 +24,14 @@ class CompaniesController extends BaseController
      *
      * @var array
      */
-    protected $createFields = ['name', 'profile_image', 'website', 'users_id'];
+    protected $createFields = ['name', 'profile_image', 'website', 'users_id', 'address', 'zip', 'email', 'language', 'timezone'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['name', 'profile_image', 'website'];
+    protected $updateFields = ['name', 'profile_image', 'website', 'address', 'zip', 'email', 'language', 'timezone'];
 
     /**
      * set objects

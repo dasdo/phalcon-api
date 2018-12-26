@@ -59,7 +59,6 @@ $defaultCrudRoutes = [
     'companies',
     'languages',
     'AppsPlans' => 'apps-plans',
-    'roles',
     'RolesAccesList' => 'roles-acceslist',
     'UsersInvite' => 'users-invite',
     'EmailTemplates' => 'email-templates'
@@ -101,6 +100,11 @@ foreach ($defaultCrudRoutes as $key => $route) {
     ]);
 }
 
+$router->get('/roles', [
+    'Gewaer\Api\Controllers\RolesController',
+    'index',
+]);
+
 $router->post('/users', [
     'Gewaer\Api\Controllers\AuthController',
     'signup',
@@ -117,6 +121,14 @@ $router->put('/auth/logout', [
 $router->post('/auth/forgot', [
     'Gewaer\Api\Controllers\AuthController',
     'recover',
+    'options' => [
+        'jwt' => false,
+    ]
+]);
+
+$router->post('/roles-acceslist/{id}/copy', [
+    'Gewaer\Api\Controllers\RolesAccesListController',
+    'copy',
     'options' => [
         'jwt' => false,
     ]
@@ -141,6 +153,14 @@ $router->post('/users/invite', [
 $router->post('/user-invites/{hash}', [
     'Gewaer\Api\Controllers\UsersInviteController',
     'processUserInvite',
+    'options' => [
+        'jwt' => false,
+    ]
+]);
+
+$router->post('/webhook/payments', [
+    'Gewaer\Api\Controllers\PaymentsController',
+    'handleWebhook',
     'options' => [
         'jwt' => false,
     ]

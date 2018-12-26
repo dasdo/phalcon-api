@@ -44,7 +44,7 @@ class UserCompanyAppsActivities extends AbstractModel
 
     /**
      *
-     * @var integer
+     * @var string
      */
     public $value;
 

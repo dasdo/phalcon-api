@@ -52,6 +52,7 @@ class AuthCest
         $I->sendPOST(Data::$usersUrl, [
             'email' => $email,
             'password' => 'bakatest123567',
+            'verify_password' => 'bakatest123567',
             'firstname' => $userName,
             'lastname' => $userName,
             'displayname' => $userName,
