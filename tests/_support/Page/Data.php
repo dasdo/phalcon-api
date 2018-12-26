@@ -14,8 +14,8 @@ class Data
     public static function loginJson()
     {
         return [
-            'email' => 'max@mctekk.com',
-            'password' => 'nosenose',
+            'email' => 'test@baka.io',
+            'password' => 'bakatest123567',
         ];
     }
 }
