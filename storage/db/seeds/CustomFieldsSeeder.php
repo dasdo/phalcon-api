@@ -9,7 +9,7 @@ class CustomFieldsSeeder extends AbstractSeed
         $data = [
             [
                 'users_id' => 1,
-                'company_id' => 1,
+                'companies_id' => 1,
                 'apps_id' => 1,
                 'name' => 'example_field',
                 'modules_id' => 1,
