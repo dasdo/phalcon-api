@@ -5,7 +5,7 @@ namespace Gewaer\Models;
 
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
-use Gewaer\Exception\ModelException;
+use Gewaer\Exception\ServerErrorHttpException;
 
 /**
  * Class Companies
@@ -13,8 +13,10 @@ use Gewaer\Exception\ModelException;
  * @package Gewaer\Models
  *
  * @property Users $user
+ * @property CompanyBranches $branch
+ * @property CompanyBranches $branches
  * @property Config $config
- * @property Apps $app
+ * @property UserCompanyApps $app
  * @property \Phalcon\Di $di
  */
 class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
@@ -48,6 +50,12 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
      * @var integer
      */
     public $users_id;
+
+    /**
+     *
+     * @var integer
+     */
+    public $has_activities;
 
     /**
      *
@@ -112,6 +120,13 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             ['alias' => 'custom-fields']
         );
 
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\UsersAssociatedCompany',
+            'company_id',
+            ['alias' => 'UsersAssociatedCompany']
+        );
+
         $this->hasOne(
             'id',
             'Gewaer\Models\CompaniesBranches',
@@ -129,6 +144,44 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
                 'alias' => 'app',
                 'params' => [
                     'conditions' => 'apps_id = ' . $this->di->getApp()->getId()
+                ]
+            ]
+        );
+
+        $this->hasOne(
+            'id',
+            'Gewaer\Models\UserCompanyApps',
+            'company_id',
+            [
+                'alias' => 'apps',
+                'params' => [
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId()
+                ]
+            ]
+        );
+
+        $this->hasOne(
+            'id',
+            'Gewaer\Models\Subscription',
+            'company_id',
+            [
+                'alias' => 'subscription',
+                'params' => [
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId() . ' AND ends_at is null AND is_deleted = 0 ',
+                    'order' => 'id DESC'
+                ]
+            ]
+        );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\Subscription',
+            'company_id',
+            [
+                'alias' => 'subscriptions',
+                'params' => [
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId() . ' AND is_deleted = 0',
+                    'order' => 'id DESC'
                 ]
             ]
         );
@@ -185,6 +238,17 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     }
 
     /**
+     * Confirm if a user belongs to this current company
+     *
+     * @param Users $user
+     * @return boolean
+     */
+    public function userAssociatedToCompany(Users $user): bool
+    {
+        return is_object($this->getUsersAssociatedCompany('users_id =' . $user->getId())) ? true : false;
+    }
+
+    /**
      * After creating the company
      *
      * @return void
@@ -233,19 +297,14 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $branch->is_default = 1;
         $branch->description = '';
         if (!$branch->save()) {
-            throw new ModelException((string)current($branch->getMessages()));
-        }
-
-        //assign default branch to the user
-        if (empty($this->user->default_company_branch)) {
-            $this->user->default_company_branch = $branch->getId();
-            $this->user->update();
+            throw new ServerErrorHttpException((string)current($branch->getMessages()));
         }
 
         //look for the default plan for this app
         $companyApps = new UserCompanyApps();
         $companyApps->company_id = $this->getId();
         $companyApps->apps_id = $this->di->getApp()->getId();
+        $companyApps->subscriptions_id = 0;
 
         //we need to assign this company to a plan
         if (empty($this->appPlanId)) {
@@ -253,12 +312,11 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             $companyApps->stripe_id = $plan->stripe_id;
         }
 
-        $companyApps->subscriptions_id = 0;
         $companyApps->created_at = date('Y-m-d H:i:s');
         $companyApps->is_deleted = 0;
 
         if (!$companyApps->save()) {
-            throw new ModelException((string)current($companyApps->getMessages()));
+            throw new ServerErrorHttpException((string)current($companyApps->getMessages()));
         }
     }
 

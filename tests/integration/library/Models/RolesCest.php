@@ -8,6 +8,8 @@ use Gewaer\Providers\ConfigProvider;
 use Phalcon\Di\FactoryDefault;
 use Gewaer\Models\Roles;
 use Gewaer\Models\Companies;
+use Gewaer\Models\Users;
+use Page\Data;
 
 class RolesCest
 {
@@ -24,7 +26,7 @@ class RolesCest
         $provider = new ConfigProvider();
         $provider->register($diContainer);
 
-        $company = Companies::findFirst(1);
+        $company = Companies::findFirst(Users::findFirstByEmail(Data::loginJson()['email'])->default_company);
         $role = Roles::getByAppName('Default.Admins', $company);
 
         $I->assertTrue($role->name == 'Admins');

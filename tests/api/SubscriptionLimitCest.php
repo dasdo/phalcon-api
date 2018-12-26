@@ -6,7 +6,9 @@ use Phalcon\Security\Random;
 use Gewaer\Models\UserCompanyAppsActivities;
 use Gewaer\Models\AppsPlans;
 use ApiTester;
-use Gewaer\Exception\SubscriptionPlanLimitException;
+use Gewaer\Models\Companies;
+use Gewaer\Models\Users;
+use Exception;
 
 class SubscriptionLimitCest
 {
@@ -33,8 +35,21 @@ class SubscriptionLimitCest
         //set limit to 10 so we can fail
         $appPlanSettings = AppsPlans::findFirst(1)->set('users_total', 10);
 
+        $user = Users::findFirst($userData->id);
+        $company = Companies::findFirstByUsers_id($userData->id);
+        $userActivity = new UserCompanyAppsActivities();
+        $userActivity->company_id = $company->getId();
+        $userActivity->company_branches_id = $user->default_company_branch;
+        $userActivity->apps_id = 1; //default first app
+        $userActivity->key = 'users_total'; //default first app
+        $userActivity->value = 0; //default first app
+        $userActivity->save();
+
         //get current total user activity
-        $totalUserActivities = UserCompanyAppsActivities::get('users_total');
+        $preTotalUserActivities = UserCompanyAppsActivities::findFirst([
+            'conditions' => 'company_id = ?0 and key = ?1',
+            'bind' => [$company->getId(), 'users_total']
+        ]);
 
         $I->sendPost('/v1/users/invite', [
             'email' => $testEmail,
@@ -62,8 +77,13 @@ class SubscriptionLimitCest
         $response = $I->grabResponse();
         $dataInvite = json_decode($response, true);
 
+        $totalUserActivities = UserCompanyAppsActivities::findFirst([
+            'conditions' => 'company_id = ?0 and key = ?1',
+            'bind' => [$company->getId(), 'users_total']
+        ]);
+
         //now after inviting a new user the total users for this app company should have increased
-        $I->assertTrue(UserCompanyAppsActivities::get('users_total') > $totalUserActivities);
+        $I->assertTrue($totalUserActivities->value > $preTotalUserActivities->value);
     }
 
     /**
@@ -115,7 +135,7 @@ class SubscriptionLimitCest
             $I->seeResponseIsSuccessful();
             $response = $I->grabResponse();
             $dataInvite = json_decode($response, true);
-        } catch (SubscriptionPlanLimitException $e) {
+        } catch (Exception $e) {
             $reachLimit = true;
         }
 

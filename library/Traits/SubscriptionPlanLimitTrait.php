@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Gewaer\Traits;
 
@@ -15,6 +15,14 @@ use Phalcon\Di;
  * Trait ResponseTrait
  *
  * @package Gewaer\Traits
+ *
+ * @property Users $user
+ * @property AppsPlans $appPlan
+ * @property CompanyBranches $branches
+ * @property Companies $company
+ * @property UserCompanyApps $app
+ * @property \Phalcon\Di $di
+ *
  */
 trait SubscriptionPlanLimitTrait
 {
@@ -25,7 +33,8 @@ trait SubscriptionPlanLimitTrait
      */
     private function getSubcriptionPlanLimitModelKey() : string
     {
-        return strtolower((new ReflectionClass($this))->getShortName()) . '_total';
+        $key = $this->subscriptionPlanLimitKey ?? (new ReflectionClass($this))->getShortName();
+        return strtolower($key) . '_total';
     }
 
     /**
@@ -35,7 +44,7 @@ trait SubscriptionPlanLimitTrait
      */
     public function isAtLimit() : bool
     {
-        if (!is_object($this->di->getUserData) && !$this->di->getUserData()->isLoggedIn()) {
+        if (!Di::getDefault()->has('userData')) {
             return false;
         }
 
@@ -66,10 +75,10 @@ trait SubscriptionPlanLimitTrait
      */
     public function updateAppActivityLimit() : bool
     {
-        if (!is_object($this->di->getUserData) && !$this->di->getUserData()->isLoggedIn()) {
+        if (!Di::getDefault()->has('userData')) {
             return false;
         }
-        
+
         $companyAppActivityLimit = UserCompanyAppsActivities::findFirst([
             'conditions' => 'company_id = ?0 and apps_id = ?1 and key = ?2',
             'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId(), $this->getSubcriptionPlanLimitModelKey()]

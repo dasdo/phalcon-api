@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Gewaer\Api\Controllers;
 
@@ -10,6 +10,12 @@ use Gewaer\Models\EmailTemplates;
  * Class LanguagesController
  *
  * @package Gewaer\Api\Controllers
+ *
+ * @property Users $userData
+ * @property Request $request
+ * @property Config $config
+ * @property \Baka\Mail\Message $mail
+ * @property Apps $app
  *
  */
 class EmailTemplatesController extends BaseController

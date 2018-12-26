@@ -1,12 +1,14 @@
 <?php
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Gewaer\Models;
 
 use Gewaer\Traits\PermissionsTrait;
 use Gewaer\Traits\SubscriptionPlanLimitTrait;
 use Phalcon\Cashier\Billable;
-use Gewaer\Exception\UnprocessableEntityHttpException;
+use Gewaer\Exception\ServerErrorHttpException;
+use Exception;
+use Carbon\Carbon;
 
 /**
  * Class Users
@@ -87,6 +89,20 @@ class Users extends \Baka\Auth\Models\Users
                 ]
             ]
         );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\Subscription',
+            'user_id',
+            [
+                'alias' => 'allSubscriptions',
+                'params' => [
+                    'conditions' => 'apps_id = ?0',
+                    'bind' => [$this->di->getApp()->getId()],
+                    'order' => 'id DESC'
+                ]
+            ]
+        );
     }
 
     /**
@@ -110,13 +126,35 @@ class Users extends \Baka\Auth\Models\Users
     }
 
     /**
+     * A company owner is the first person that register this company
+     * This only ocurres when signing up the first time, after that all users invites
+     * come with a default_company id attached
+     *
+     * @return boolean
+     */
+    public function isOwner(): bool
+    {
+        return empty($this->default_company) ? true : false;
+    }
+
+    /**
+     * Does the user have a role assign to him?
+     *
+     * @return boolean
+     */
+    public function hasRole(): bool
+    {
+        return !empty($this->roles_id) ? true : false;
+    }
+
+    /**
      * Get all of the subscriptions for the user.
      */
     public function subscriptions()
     {
         $this->hasMany(
             'id',
-            Subscription::class,
+            'Gewaer\Models\Subscription',
             'user_id',
             [
                 'alias' => 'subscriptions',
@@ -127,7 +165,39 @@ class Users extends \Baka\Auth\Models\Users
                 ]
             ]
         );
+
         return $this->getRelated('subscriptions');
+    }
+
+    /**
+     * Strat a free trial
+     *
+     * @param Users $user
+     * @return Subscription
+     */
+    public function startFreeTrial() : Subscription
+    {
+        $defaultPlan = AppsPlans::getDefaultPlan();
+
+        $subscription = new Subscription();
+        $subscription->user_id = $this->getId();
+        $subscription->company_id = $this->default_company;
+        $subscription->apps_id = $this->di->getApp()->getId();
+        $subscription->apps_plans_id = $this->di->getApp()->default_apps_plan_id;
+        $subscription->name = $defaultPlan->name;
+        $subscription->stripe_id = $defaultPlan->stripe_id;
+        $subscription->stripe_plan = $defaultPlan->stripe_plan;
+        $subscription->quantity = 1;
+        $subscription->trial_ends_at = Carbon::now()->addDays($this->di->getApp()->plan->free_trial_dates)->toDateTimeString();
+
+        if (!$subscription->save()) {
+            throw new ServerErrorHttpException((string)current($this->getMessages()));
+        }
+
+        $this->trial_ends_at = $subscription->trial_ends_at;
+        $this->update();
+
+        return $subscription;
     }
 
     /**
@@ -139,12 +209,14 @@ class Users extends \Baka\Auth\Models\Users
     {
         parent::beforeCreate();
 
-        //confirm if the app reach its limit
-        
-        $this->isAtLimit();
-    
+        //this is only empty when creating a new user
+        if (!$this->isOwner()) {
+            //confirm if the app reach its limit
+            $this->isAtLimit();
+        }
+
         //Assign admin role to the system if we dont get a specify role
-        if (empty($this->roles_id)) {
+        if (!$this->hasRole()) {
             $role = Roles::findFirstByName('Admins');
             $this->roles_id = $role->getId();
         }
@@ -158,12 +230,15 @@ class Users extends \Baka\Auth\Models\Users
      */
     public function afterCreate()
     {
-        if (empty($this->default_company)) {
-            //create company
+        /**
+         * User signing up for a new app / plan
+         * How do we know? well he doesnt have a default_company
+         */
+        if ($this->isOwner()) {
             $company = new Companies();
             $company->name = $this->defaultCompanyName;
             $company->users_id = $this->getId();
-            
+
             if (!$company->save()) {
                 throw new Exception(current($company->getMessages()));
             }
@@ -171,9 +246,15 @@ class Users extends \Baka\Auth\Models\Users
             $this->default_company = $company->getId();
 
             if (!$this->update()) {
-                throw new Exception(current($this->getMessages()));
+                throw new ServerErrorHttpException((string) current($this->getMessages()));
             }
 
+            $this->default_company_branch = $this->defaultCompany->branch->getId();
+            $this->update();
+
+            //update default subscription free trial
+            $company->app->subscriptions_id = $this->startFreeTrial()->getId();
+            $company->update();
         } else {
             //we have the company id
             if (empty($this->default_company_branch)) {
@@ -190,7 +271,7 @@ class Users extends \Baka\Auth\Models\Users
         $newUserAssocCompany->user_role = $this->roles_id == 1 ? 'admins' : 'users';
 
         if (!$newUserAssocCompany->save()) {
-            throw new UnprocessableEntityHttpException((string)current($newUserAssocCompany->getMessages()));
+            throw new ServerErrorHttpException((string)current($newUserAssocCompany->getMessages()));
         }
 
         //Insert record into user_roles
@@ -201,10 +282,12 @@ class Users extends \Baka\Auth\Models\Users
         $userRole->company_id = $this->default_company;
 
         if (!$userRole->save()) {
-            throw new UnprocessableEntityHttpException((string)current($userRole->getMessages()));
+            throw new ServerErrorHttpException((string)current($userRole->getMessages()));
         }
 
-        //update model total activity
-        $this->updateAppActivityLimit();
+        //update user activity when its not a empty user
+        if (!$this->isOwner()) {
+            $this->updateAppActivityLimit();
+        }
     }
 }

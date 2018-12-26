@@ -14,7 +14,7 @@ class Data
     public static function loginJson()
     {
         return [
-            'email' => 'test@baka.io',
+            'email' => 'tes2t@baka.io',
             'password' => 'bakatest123567',
         ];
     }

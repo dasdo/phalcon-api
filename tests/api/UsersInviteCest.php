@@ -4,6 +4,7 @@ namespace Gewaer\Tests\api;
 
 use Phalcon\Security\Random;
 use ApiTester;
+use Gewaer\Models\AppsPlans;
 
 class UsersInviteCest
 {
@@ -19,6 +20,9 @@ class UsersInviteCest
         $userName = $random->base58();
 
         $testEmail = $userName . '@example.com';
+
+        //reset
+        AppsPlans::findFirst(1)->set('users_total', 10);
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/users/invite', [

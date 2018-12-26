@@ -70,8 +70,6 @@ class SystemModules extends AbstractModel
      */
     public function initialize()
     {
-        parent::initialize();
-
         $this->belongsTo(
             'company_id',
             'Gewaer\Models\Companies',

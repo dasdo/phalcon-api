@@ -10,6 +10,7 @@ use Gewaer\Mvc\Model\AbstractModel;
 use Phalcon\DI\FactoryDefault as PhDI;
 use Phalcon\Config as PhConfig;
 use Gewaer\Models\Users;
+use Page\Data;
 
 // here you can define custom actions
 // all public methods declared in helper class will be available in $I
@@ -39,7 +40,7 @@ class Integration extends Module
         $this->diContainer->set(
             'userData',
             function () {
-                return Users::findFirst();
+                return Users::findFirstByEmail(Data::loginJson()['email']);
             }
         );
 

@@ -7,6 +7,7 @@ use Page\Data;
 use function json_decode;
 use Exception;
 use Phalcon\Security\Random;
+use Gewaer\Models\Users;
 
 class AuthCest
 {
@@ -46,9 +47,12 @@ class AuthCest
         $random = new Random();
         $userName = $random->base58();
 
+        $email = !Users::findFirstByEmail('tes2t@baka.io') ? 'tes2t@baka.io' : $userName . '@baka.io';
+
         $I->sendPOST(Data::$usersUrl, [
-            'email' => 'tes2t@baka.io',
+            'email' => $email,
             'password' => 'bakatest123567',
+            'verify_password' => 'bakatest123567',
             'firstname' => $userName,
             'lastname' => $userName,
             'displayname' => $userName,

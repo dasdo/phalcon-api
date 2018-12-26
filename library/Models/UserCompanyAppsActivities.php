@@ -1,5 +1,5 @@
 <?php
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Gewaer\Models;
 
@@ -44,7 +44,7 @@ class UserCompanyAppsActivities extends AbstractModel
 
     /**
      *
-     * @var integer
+     * @var string
      */
     public $value;
 

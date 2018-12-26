@@ -1,12 +1,22 @@
 <?php
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-use Gewaer\Exception\ServerErrorHttpException;
 use Gewaer\Exception\ModelException;
 use Phalcon\Di;
 
+/**
+ * Class AppsPlans
+ *
+ * @package Gewaer\Models
+ *
+ * @property Users $user
+ * @property Config $config
+ * @property Apps $app
+ * @property Companies $defaultCompany
+ * @property \Phalcon\Di $di
+ */
 class AppsPlans extends AbstractModel
 {
     /**
@@ -152,7 +162,7 @@ class AppsPlans extends AbstractModel
      * @param string $key
      * @param string $value
      */
-    public function get(string $key) : string
+    public function get(string $key) : ?string
     {
         $setting = AppsPlansSettings::findFirst([
             'conditions' => 'apps_plans_id = ?0 and apps_id = ?1 and key = ?2',
@@ -160,10 +170,10 @@ class AppsPlans extends AbstractModel
         ]);
 
         if (is_object($setting)) {
-            return $setting->value;
+            return (string) $setting->value;
         }
 
-        throw new ServerErrorHttpException(_('No settings found with for ' . $key . ' at this app ' . $this->apps_id));
+        return null;
     }
 
     /**
@@ -193,5 +203,19 @@ class AppsPlans extends AbstractModel
         }
 
         return true;
+    }
+
+    /**
+     * After save
+     *
+     * @return void
+     */
+    public function afterSave()
+    {
+        //if we udpate the is_default for this plan we need to remove all others and update the main app
+        if ($this->is_default) {
+            $this->app->default_apps_plan_id = $this->getId();
+            $this->app->update();
+        }
     }
 }
