@@ -43,8 +43,8 @@ class EmailTemplatesController extends BaseController
     {
         $this->model = new EmailTemplates();
         $this->additionalSearchFields = [
-            ['is_deleted', ':', 0],
-            ['company_id', ':', '(0,' . $this->userData->default_company . ')'],
+            ['is_deleted', ':', '0'],
+            ['company_id', ':', '0|' . $this->userData->default_company],
         ];
     }
 }
