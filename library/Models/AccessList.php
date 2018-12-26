@@ -16,7 +16,7 @@ class AccessList extends AbstractModel
      *
      * @var string
      */
-    public $resource_name;
+    public $resources_name;
 
     /**
      *
@@ -35,6 +35,12 @@ class AccessList extends AbstractModel
      * @var integer
      */
     public $apps_id;
+
+    /**
+     *
+     * @var integer
+     */
+    public $roles_id;
 
     /**
      *

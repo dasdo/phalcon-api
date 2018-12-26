@@ -13,6 +13,7 @@ use Gewaer\Models\Apps;
 use Gewaer\Exception\NotFoundHttpException;
 use Gewaer\Exception\ServerErrorHttpException;
 use Gewaer\Models\Roles;
+use Baka\Http\QueryParser;
 
 /**
  * Class RolesController
@@ -64,7 +65,7 @@ class RolesAccesListController extends BaseController
      * @method POST
      * @url /v1/roles-acceslist
      *
-     * @return Phalcon\Http\Response
+     * @return Response
      */
     public function create() : Response
     {
@@ -114,7 +115,7 @@ class RolesAccesListController extends BaseController
      * @method GET
      * @url /v1/roles-acceslist/{id}
      *
-     * @return Phalcon\Http\Response
+     * @return Response
      */
     public function getById($id) : Response
     {
@@ -143,7 +144,7 @@ class RolesAccesListController extends BaseController
      * @method PUT
      * @url /v1/roles-acceslist/{id}
      *
-     * @return Phalcon\Http\Response
+     * @return Response
      */
     public function edit($id) : Response
     {
@@ -200,7 +201,7 @@ class RolesAccesListController extends BaseController
      * @method DELETE
      * @url /v1/roles-acceslist/{id}
      *
-     * @return Phalcon\Http\Response
+     * @return Response
      */
     public function delete($id) : Response
     {

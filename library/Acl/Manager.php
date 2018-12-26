@@ -215,7 +215,6 @@ class Manager extends Adapter
             $accessListDB->resources_name = '*';
             $accessListDB->access_name = '*';
             $accessListDB->allowed = $this->_defaultAccess;
-            $accessListDB->apps_id = $this->_defaultAccess;
             $accessListDB->apps_id = $this->getApp()->getId();
 
             if (!$accessListDB->save()) {
@@ -432,16 +431,17 @@ class Manager extends Adapter
         }
 
         $resource = $this->getResource($resourceName);
-        $exists = ResourcesAccesses::count([
-            'conditions' => 'resources_id = ?0 AND access_name = ?1 AND apps_id = ?2',
-            'bind' => [$resource->getId(), $accessName, $this->getApp()->getId()]
-        ]);
 
         if (!is_array($accessList)) {
             $accessList = [$accessList];
         }
 
         foreach ($accessList as $accessName) {
+            $exists = ResourcesAccesses::count([
+                'conditions' => 'resources_id = ?0 AND access_name = ?1 AND apps_id = ?2',
+                'bind' => [$resource->getId(), $accessName, $this->getApp()->getId()]
+            ]);
+
             if (!$exists) {
                 $resourceAccesses = new ResourcesAccesses();
                 $resourceAccesses->beforeCreate(); //wtf?
