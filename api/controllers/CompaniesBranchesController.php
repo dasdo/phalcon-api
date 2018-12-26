@@ -45,7 +45,6 @@ class CompaniesBranchesController extends BaseController
         $this->model->company_id = $this->userData->default_company;
 
         $this->additionalSearchFields = [
-            ['users_id', ':', $this->userData->getId()],
             ['company_id', ':', $this->userData->default_company],
         ];
     }
