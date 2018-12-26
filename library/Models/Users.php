@@ -89,6 +89,20 @@ class Users extends \Baka\Auth\Models\Users
                 ]
             ]
         );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\Subscription',
+            'user_id',
+            [
+                'alias' => 'allSubscriptions',
+                'params' => [
+                    'conditions' => 'apps_id = ?0',
+                    'bind' => [$this->di->getApp()->getId()],
+                    'order' => 'id DESC'
+                ]
+            ]
+        );
     }
 
     /**
@@ -140,7 +154,7 @@ class Users extends \Baka\Auth\Models\Users
     {
         $this->hasMany(
             'id',
-            Subscription::class,
+            'Gewaer\Models\Subscription',
             'user_id',
             [
                 'alias' => 'subscriptions',
@@ -151,6 +165,7 @@ class Users extends \Baka\Auth\Models\Users
                 ]
             ]
         );
+
         return $this->getRelated('subscriptions');
     }
 

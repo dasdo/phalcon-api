@@ -150,4 +150,12 @@ $router->post('/user-invites/{hash}', [
     ]
 ]);
 
+$router->post('/webhook/payments', [
+    'Gewaer\Api\Controllers\PaymentsController',
+    'handleWebhook',
+    'options' => [
+        'jwt' => false,
+    ]
+]);
+
 $router->mount();

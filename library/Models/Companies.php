@@ -53,6 +53,12 @@ class Companies extends \Baka\Auth\Models\Companies
 
     /**
      *
+     * @var integer
+     */
+    public $has_activities;
+
+    /**
+     *
      * @var string
      */
     public $created_at;
@@ -146,7 +152,8 @@ class Companies extends \Baka\Auth\Models\Companies
             [
                 'alias' => 'subscription',
                 'params' => [
-                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId() . ' AND ends_at is null'
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId() . ' AND ends_at is null AND is_deleted = 0 ',
+                    'order' => 'id DESC'
                 ]
             ]
         );
@@ -158,7 +165,8 @@ class Companies extends \Baka\Auth\Models\Companies
             [
                 'alias' => 'subscriptions',
                 'params' => [
-                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId()
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId() . ' AND is_deleted = 0',
+                    'order' => 'id DESC'
                 ]
             ]
         );
