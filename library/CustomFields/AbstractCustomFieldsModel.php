@@ -24,12 +24,6 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
             return;
         }
 
-        $fieldsIn = null;
-
-        if (!empty($fields)) {
-            $fieldsIn = " and name in ('" . implode("','", $fields) . ')';
-        }
-
         $bind = [$this->getId(), $this->di->getApp()->getId(), $models->getId(), $this->di->getUserData()->default_company];
 
         // $customFieldsValueTable = $this->getSource() . '_custom_fields';
