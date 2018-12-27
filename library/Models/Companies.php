@@ -340,7 +340,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         ]);
 
         //found it
-        if ($defaultCompany) {
+        if (is_object($defaultCompany)) {
             return self::findFirst($defaultCompany->value);
         }
 
@@ -350,7 +350,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             'bind' => [$user->getId(), 1],
         ]);
 
-        if ($defaultCompany) {
+        if (is_object($defaultCompany)) {
             return self::findFirst($defaultCompany->companies_id);
         }
 
