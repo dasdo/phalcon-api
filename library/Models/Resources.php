@@ -59,7 +59,12 @@ class Resources extends AbstractModel
             'id',
             'Gewaer\Models\ResourcesAccesses',
             'resources_id',
-            ['alias' => 'accesses']
+            [
+                'alias' => 'accesses',
+                'params' => [
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId()
+                ]
+            ]
         );
     }
 
