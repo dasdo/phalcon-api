@@ -83,7 +83,7 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
     *
     * We never update any custom fields, we delete them and create them again, thats why we call cleanCustomFields before updates
     *
-    * @return void
+    * @return bool
     */
     protected function saveCustomFields(): bool
     {

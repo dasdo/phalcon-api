@@ -11,7 +11,7 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
      *
      * @var integer
      */
-    public $company_id;
+    public $companies_id;
 
     /**
      *
@@ -57,7 +57,7 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
         parent::initialize();
 
         $this->belongsTo(
-            'company_id',
+            'companies_id',
             'Gewaer\Models\Companies',
             'id',
             ['alias' => 'company']
@@ -91,7 +91,7 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
     public static function getCurrentApp(): UserCompanyApps
     {
         return self::findFirst([
-            'conditions' => 'company_id = ?0 and apps_id = ?1',
+            'conditions' => 'companies_id = ?0 and apps_id = ?1',
             'bind' => [Di::getDefault()->getUserData()->defaultCompany->getId(), Di::getDefault()->getApp()->getId()]
         ]);
     }

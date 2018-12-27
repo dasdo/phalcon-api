@@ -7,7 +7,7 @@ namespace Gewaer\Api\Controllers;
 use Phalcon\Http\Response;
 use Gewaer\Exception\UnprocessableEntityHttpException;
 use Baka\Http\QueryParser;
-use Gewaer\Models\CompanyBranches;
+use Gewaer\Models\CompaniesBranches;
 
 /**
  * Class CompaniesController
@@ -40,7 +40,7 @@ class CompaniesBranchesController extends BaseController
      */
     public function onConstruct()
     {
-        $this->model = new CompanyBranches();
+        $this->model = new CompaniesBranches();
         $this->model->users_id = $this->userData->getId();
         $this->model->company_id = $this->userData->default_company;
 
