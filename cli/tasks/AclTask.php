@@ -15,11 +15,30 @@ class AclTask extends PhTask
 {
     /**
      * Create the default roles of the system
+     * 
+     * @return void
      */
     public function mainAction()
     {
-        $this->acl->addRole('Default.Administrator');
+        $this->acl->addRole('Default.Admins');
         $this->acl->addRole('Default.Agents');
         $this->acl->addRole('Default.Users');
+
+        $this->acl->addResource('Default.Users', ['list', 'create', 'edit', 'delete']);
+        $this->acl->allow('Admins', 'Default.Users', ['list', 'create']);
+        $this->acl->deny('Admins', 'Default.Users', ['edit', 'delete']);
+    }
+
+    /**
+     * Default roles for the crm system
+     *
+     * @return void
+     */
+    public function crmAction()
+    {
+        $this->acl->addRole('CRM.Users');
+        $this->acl->addResource('CRM.Users', ['list', 'create', 'edit', 'delete']);
+        $this->acl->allow('Users', 'CRM.Users', ['list', 'create']);
+        $this->acl->deny('Users', 'CRM.Users', ['edit', 'delete']);
     }
 }

@@ -132,7 +132,7 @@ class Users extends \Baka\Auth\Models\Users
      *
      * @return boolean
      */
-    public function isOwner(): bool
+    public function isFirstSignup(): bool
     {
         return empty($this->default_company) ? true : false;
     }
@@ -210,7 +210,7 @@ class Users extends \Baka\Auth\Models\Users
         parent::beforeCreate();
 
         //this is only empty when creating a new user
-        if (!$this->isOwner()) {
+        if (!$this->isFirstSignup()) {
             //confirm if the app reach its limit
             $this->isAtLimit();
         }
@@ -230,11 +230,14 @@ class Users extends \Baka\Auth\Models\Users
      */
     public function afterCreate()
     {
+        //need to run it here, since we overwirte the default_company id and null this function objective
+        $isFirstSignup = $this->isFirstSignup();
+
         /**
          * User signing up for a new app / plan
          * How do we know? well he doesnt have a default_company
          */
-        if ($this->isOwner()) {
+        if ($isFirstSignup) {
             $company = new Companies();
             $company->name = $this->defaultCompanyName;
             $company->users_id = $this->getId();
@@ -286,7 +289,7 @@ class Users extends \Baka\Auth\Models\Users
         }
 
         //update user activity when its not a empty user
-        if (!$this->isOwner()) {
+        if (!$isFirstSignup) {
             $this->updateAppActivityLimit();
         }
     }

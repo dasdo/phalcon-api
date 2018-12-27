@@ -57,9 +57,11 @@ $router->post('/users/{id}/devices', [
 $defaultCrudRoutes = [
     'users',
     'companies',
+    'CompaniesBranches' => 'companies-branches',
     'languages',
     'AppsPlans' => 'apps-plans',
     'RolesAccesList' => 'roles-acceslist',
+    'PermissionsResources' => 'permissions-resources',
     'UsersInvite' => 'users-invite',
     'EmailTemplates' => 'email-templates',
     'CompaniesCustomFields' => 'companies-custom-fields',

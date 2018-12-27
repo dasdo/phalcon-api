@@ -37,7 +37,7 @@ class LanguagesController extends BaseController
     {
         $this->model = new Languages();
         $this->additionalSearchFields = [
-            ['is_deleted', ':', 0],
+            ['is_deleted', ':', '0'],
         ];
     }
 }
