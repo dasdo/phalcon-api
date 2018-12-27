@@ -37,7 +37,7 @@ class Subscription extends PhalconSubscription
      *
      * @var integer
      */
-    public $company_id;
+    public $companies_id;
 
     /**
      *
@@ -103,7 +103,7 @@ class Subscription extends PhalconSubscription
         $this->belongsTo('user_id', 'Gewaer\Models\Users', 'id', ['alias' => 'user']);
 
         $this->belongsTo(
-            'company_id',
+            'companies_id',
             'Gewaer\Models\Companies',
             'id',
             ['alias' => 'company']
@@ -132,7 +132,7 @@ class Subscription extends PhalconSubscription
     public static function getActiveForThisApp() : Subscription
     {
         $subscription = self::findFirst([
-            'conditions' => 'company_id = ?0 and apps_id = ?1 and is_deleted  = 0',
+            'conditions' => 'companies_id = ?0 and apps_id = ?1 and is_deleted  = 0',
             'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId()]
         ]);
 

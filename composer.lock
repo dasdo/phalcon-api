@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bakaphp/cashier.git",
-                "reference": "67c12cdeacccca5cd0559925950c57bfefcf0306"
+                "reference": "1530be6d1da643f6201570149c2ebce753044374"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bakaphp/cashier/zipball/67c12cdeacccca5cd0559925950c57bfefcf0306",
-                "reference": "67c12cdeacccca5cd0559925950c57bfefcf0306",
+                "url": "https://api.github.com/repos/bakaphp/cashier/zipball/1530be6d1da643f6201570149c2ebce753044374",
+                "reference": "1530be6d1da643f6201570149c2ebce753044374",
                 "shasum": ""
             },
             "require": {
@@ -107,7 +107,7 @@
                 "phalcon",
                 "stripe"
             ],
-            "time": "2018-12-11T05:24:03+00:00"
+            "time": "2018-12-27T18:52:46+00:00"
         },
         {
             "name": "baka/database",

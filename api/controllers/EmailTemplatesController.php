@@ -25,14 +25,14 @@ class EmailTemplatesController extends BaseController
      *
      * @var array
      */
-    protected $createFields = ['users_id', 'company_id', 'app_id', 'name', 'template'];
+    protected $createFields = ['users_id', 'companies_id', 'app_id', 'name', 'template'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['users_id', 'company_id', 'app_id', 'name', 'template'];
+    protected $updateFields = ['users_id', 'companies_id', 'app_id', 'name', 'template'];
 
     /**
      * set objects
@@ -44,7 +44,7 @@ class EmailTemplatesController extends BaseController
         $this->model = new EmailTemplates();
         $this->additionalSearchFields = [
             ['is_deleted', ':', '0'],
-            ['company_id', ':', '0|' . $this->userData->default_company],
+            ['companies_id', ':', '0|' . $this->userData->default_company],
         ];
     }
 }

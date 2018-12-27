@@ -22,7 +22,7 @@ class UserCompanyAppsActivities extends AbstractModel
      *
      * @var integer
      */
-    public $company_id;
+    public $companies_id;
 
     /**
      *
@@ -72,7 +72,7 @@ class UserCompanyAppsActivities extends AbstractModel
     public function initialize()
     {
         $this->belongsTo(
-            'company_id',
+            'companies_id',
             'Gewaer\Models\Companies',
             'id',
             ['alias' => 'company']
@@ -114,7 +114,7 @@ class UserCompanyAppsActivities extends AbstractModel
     public static function get(string $key) : string
     {
         $setting = self::findFirst([
-            'conditions' => 'company_id = ?0 and apps_id = ?1 and key = ?2',
+            'conditions' => 'companies_id = ?0 and apps_id = ?1 and key = ?2',
             'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId(), $key]
         ]);
 
@@ -134,13 +134,13 @@ class UserCompanyAppsActivities extends AbstractModel
     public static function set(string $key, $value) : bool
     {
         $activity = self::findFirst([
-            'conditions' => 'company_id = ?0 and apps_id = ?1 and key = ?2',
+            'conditions' => 'companies_id = ?0 and apps_id = ?1 and key = ?2',
             'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId(), $key]
         ]);
 
         if (!is_object($activity)) {
             $activity = new self();
-            $activity->company_id = Di::getDefault()->getUserData()->default_company;
+            $activity->companies_id = Di::getDefault()->getUserData()->default_company;
             $activity->company_branches_id = Di::getDefault()->getUserData()->default_company_branch;
             $activity->apps_id = Di::getDefault()->getApp()->getId();
             $activity->key = $key;

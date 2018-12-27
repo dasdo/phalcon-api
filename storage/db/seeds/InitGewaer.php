@@ -36,6 +36,11 @@ class InitGewaer extends AbstractSeed
                 'users_id' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'is_deleted' => 0
+            ], [
+                'name' => 'CRM',
+                'users_id' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'is_deleted' => 0
             ],
         ];
 
@@ -43,6 +48,22 @@ class InitGewaer extends AbstractSeed
         $table->insert($data)->save();
 
         $this->execute('update companies set id = 0 where id = 1');
+        $this->execute('update companies set id = 1 where id = 2');
+
+        //add default companies
+        $data = [
+            [
+                'name' => 'Default',
+                'users_id' => 1,
+                'companies_id' => 1,
+                'is_default' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'is_deleted' => 0
+            ]
+        ];
+
+        $table = $this->table('companies_branches');
+        $table->insert($data)->save();
 
         //add source
         $data = [
@@ -80,12 +101,13 @@ class InitGewaer extends AbstractSeed
                 'firstname' => 'Baka',
                 'lastname' => 'Idiot',
                 'default_company' => 1,
+                'displayname' => 'nobody',
                 'default_company_branch' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'status' => 1,
                 'user_active' => 1,
                 'is_deleted' => 0
-            ],
+            ]
         ];
 
         $table = $this->table('users');
@@ -97,7 +119,7 @@ class InitGewaer extends AbstractSeed
                 'name' => 'Admins',
                 'description' => 'System Administrator',
                 'scope' => 0,
-                'company_id' => 0,
+                'companies_id' => 0,
                 'apps_id' => 0,
                 'created_at' => date('Y-m-d H:i:s'),
                 'is_deleted' => 0
@@ -105,7 +127,7 @@ class InitGewaer extends AbstractSeed
                 'name' => 'Users',
                 'description' => 'Normal Users can (CRUD)',
                 'scope' => 0,
-                'company_id' => 0,
+                'companies_id' => 0,
                 'apps_id' => 0,
                 'created_at' => date('Y-m-d H:i:s'),
                 'is_deleted' => 0
@@ -113,7 +135,7 @@ class InitGewaer extends AbstractSeed
                 'name' => 'Agents',
                 'description' => 'Agents Users can (CRU)',
                 'scope' => 0,
-                'company_id' => 0,
+                'companies_id' => 0,
                 'apps_id' => 0,
                 'created_at' => date('Y-m-d H:i:s'),
                 'is_deleted' => 0

@@ -3,23 +3,15 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-use Gewaer\Traits\SubscriptionPlanLimitTrait;
+use Gewaer\Models\AbstractModel;
 
-class UsersInvite extends AbstractModel
+class CompaniesCustomFields extends AbstractModel
 {
-    use SubscriptionPlanLimitTrait;
-
     /**
      *
      * @var integer
      */
     public $id;
-
-    /**
-     *
-     * @var string
-     */
-    public $invite_hash;
 
     /**
      *
@@ -31,19 +23,13 @@ class UsersInvite extends AbstractModel
      *
      * @var integer
      */
-    public $role_id;
-
-    /**
-     *
-     * @var integer
-     */
-    public $app_id;
+    public $custom_fields_id;
 
     /**
      *
      * @var string
      */
-    public $email;
+    public $value;
 
     /**
      *
@@ -64,16 +50,11 @@ class UsersInvite extends AbstractModel
     public $updated_at;
 
     /**
-     * Subscription plan key
-     */
-    protected $subscriptionPlanLimitKey = 'users';
-
-    /**
      * Initialize method for model.
      */
     public function initialize()
     {
-        $this->setSource('users_invite');
+        $this->setSource('companies_custom_fields');
 
         $this->belongsTo(
             'companies_id',
@@ -83,10 +64,10 @@ class UsersInvite extends AbstractModel
         );
 
         $this->belongsTo(
-            'apps_id',
-            'Gewaer\Models\Apps',
+            'custom_fields_id',
+            'Gewaer\CustomFields\CustomFields',
             'id',
-            ['alias' => 'app']
+            ['alias' => 'fields']
         );
     }
 
@@ -97,17 +78,16 @@ class UsersInvite extends AbstractModel
      */
     public function getSource(): string
     {
-        return 'users_invite';
+        return 'companies_custom_fields';
     }
 
     /**
-     * What to do after the creation of a new users
-     *  - Assign default role
+     * Set the custom primary field id
      *
-     * @return void
+     * @param int $id
      */
-    public function afterCreate()
+    public function setCustomId(int $id)
     {
-        $this->updateAppActivityLimit();
+        $this->companies_id = $id;
     }
 }

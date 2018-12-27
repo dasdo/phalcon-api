@@ -27,7 +27,7 @@ class UserRoles extends AbstractModel
      *
      * @var integer
      */
-    public $company_id;
+    public $companies_id;
 
     /**
      *
@@ -76,7 +76,7 @@ class UserRoles extends AbstractModel
         );
 
         $this->belongsTo(
-            'company_id',
+            'companies_id',
             'Gewaer\Models\Companies',
             'id',
             ['alias' => 'company']

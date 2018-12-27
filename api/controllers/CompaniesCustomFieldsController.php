@@ -4,30 +4,30 @@ declare(strict_types=1);
 
 namespace Gewaer\Api\Controllers;
 
-use Gewaer\Models\Roles;
+use Gewaer\Models\CompaniesCustomFields;
 
 /**
- * Class RolesController
+ * Class LanguagesController
  *
  * @package Gewaer\Api\Controllers
- *
  * @property Users $userData
+ *
  */
-class RolesController extends BaseController
+class CompaniesCustomFieldsController extends BaseController
 {
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $createFields = [];
+    protected $createFields = ['custom_fields_id', 'value'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = [];
+    protected $updateFields = ['custom_fields_id', 'value'];
 
     /**
      * set objects
@@ -36,12 +36,11 @@ class RolesController extends BaseController
      */
     public function onConstruct()
     {
-        $this->model = new Roles();
+        $this->model = new CompaniesCustomFields();
+        $this->model->companies_id = $this->userData->default_company;
 
-        //get the list of roes for the systema + my company
         $this->additionalSearchFields = [
-            ['is_deleted', ':', '0'],
-            ['companies_id', ':', '0|' . $this->userData->default_company],
+            ['companies_id', ':', $this->userData->default_company],
         ];
     }
 }

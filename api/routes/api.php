@@ -64,7 +64,10 @@ $defaultCrudRoutes = [
     'PermissionsResources' => 'permissions-resources',
     'PermissionsResourcesAccess' => 'permissions-resources-access',
     'UsersInvite' => 'users-invite',
-    'EmailTemplates' => 'email-templates'
+    'EmailTemplates' => 'email-templates',
+    'CompaniesCustomFields' => 'companies-custom-fields',
+    'CustomFieldsModules' => 'custom-fields-modules',
+    'CustomFields' => 'custom-fields'
 ];
 
 foreach ($defaultCrudRoutes as $key => $route) {
@@ -147,15 +150,29 @@ $router->post('/auth/reset/{key}', [
 
 $router->post('/users/invite', [
     'Gewaer\Api\Controllers\UsersInviteController',
-    'insertInvite',
+    'insertInvite'
+]);
+
+$router->post('/users-invite/{hash}', [
+    'Gewaer\Api\Controllers\UsersInviteController',
+    'processUserInvite',
     'options' => [
         'jwt' => false,
     ]
 ]);
 
-$router->post('/user-invites/{hash}', [
+$router->get('/users-invite/{hash}', [
     'Gewaer\Api\Controllers\UsersInviteController',
-    'processUserInvite',
+    'getByHash',
+    'options' => [
+        'jwt' => false,
+    ]
+]);
+
+//Custom Fields specific routes
+$router->get('/custom-fields-modules/{id}/fields', [
+    'Gewaer\Api\Controllers\CustomFieldsModulesController',
+    'customFieldsByModulesId',
     'options' => [
         'jwt' => false,
     ]

@@ -1,11 +1,11 @@
 <?php 
 
-class EmailTemplatesCest
+class CustomFieldsModulesCest
 {
     /**
      * Model
      */
-    protected $model = 'email-templates';
+    protected $model = 'custom-fields-modules';
 
     /**
      * Create a new Email Templates
@@ -13,18 +13,15 @@ class EmailTemplatesCest
      * @param ApiTester $I
      * @return void
      */
-    public function insertTemplate(ApiTester $I) : void
+    public function insertModule(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
         $testName = 'test_' . time();
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/' . $this->model, [
-            'users_id' => 3,
-            'companies_id' => 3,
-            'app_id' => 1,
-            'name' => $testName,
-            'template' => 'Hello!!! This is a test email template',
+            'apps_id' => 1,
+            'name' => $testName
         ]);
 
         $I->seeResponseIsSuccessful();
@@ -40,10 +37,10 @@ class EmailTemplatesCest
      * @param ApiTester $I
      * @return void
      */
-    public function updateTemplate(ApiTester $I) : void
+    public function updateModule(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
-        $updatedName = 'Updated Test Name 2';
+        $updatedName = 'Updated Name';
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendGet("/v1/{$this->model}");
@@ -53,13 +50,33 @@ class EmailTemplatesCest
         $data = json_decode($response, true);
 
         $I->sendPUT('/v1/' . $this->model . '/' . $data[count($data) - 1]['id'], [
-            'template' => $updatedName
+            'name' => $updatedName
         ]);
 
         $I->seeResponseIsSuccessful();
         $response = $I->grabResponse();
         $data = json_decode($response, true);
 
-        $I->assertTrue($data['template'] == $updatedName);
+        $I->assertTrue($data['name'] == $updatedName);
+    }
+
+    /**
+     * Fetch all custom fields of a module by its id
+     *
+     * @param ApiTester $I
+     * @return void
+     */
+    public function listCustomFieldsByModuleId(ApiTester $I): void
+    {
+        $userData = $I->apiLogin();
+
+        $I->haveHttpHeader('Authorization', $userData->token);
+        $I->sendGet("/v1/{$this->model}" . '/1/fields');
+
+        $I->seeResponseIsSuccessful();
+        $response = $I->grabResponse();
+        $data = json_decode($response, true);
+
+        $I->assertNotEmpty($data, 'Response not empty');
     }
 }

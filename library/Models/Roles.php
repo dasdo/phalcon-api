@@ -4,11 +4,15 @@ declare(strict_types=1);
 namespace Gewaer\Models;
 
 use Gewaer\Exception\ServerErrorHttpException;
+use Gewaer\Models\Companies;
 use Baka\Auth\Models\Companies as BakaCompanies;
 use Phalcon\Di;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\StringLength;
+
+
+
 
 class Roles extends AbstractModel
 {
@@ -40,7 +44,7 @@ class Roles extends AbstractModel
      *
      * @var integer
      */
-    public $company_id;
+    public $companies_id;
 
     /**
      *
@@ -141,7 +145,7 @@ class Roles extends AbstractModel
     public static function getByName(string $name)
     {
         return self::findFirst([
-            'conditions' => 'name = ?0 AND company_id = ?1 AND apps_id = ?2 AND is_deleted = 0',
+            'conditions' => 'name = ?0 AND companies_id = ?1 AND apps_id = ?2 AND is_deleted = 0',
             'bind' => [$name, Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId()]
         ]);
     }
@@ -155,7 +159,7 @@ class Roles extends AbstractModel
     public static function getById(int $id)
     {
         return self::findFirst([
-            'conditions' => 'id = ?0 AND company_id in (?1, ?2) AND apps_id in (?3, ?4) AND is_deleted = 0',
+            'conditions' => 'id = ?0 AND companies_id in (?1, ?2) AND apps_id in (?3, ?4) AND is_deleted = 0',
             'bind' => [$id, Di::getDefault()->getUserData()->default_company, Apps::GEWAER_DEFAULT_APP_ID, Di::getDefault()->getApp()->getId(), Apps::GEWAER_DEFAULT_APP_ID]
         ]);
     }
@@ -166,7 +170,7 @@ class Roles extends AbstractModel
      * @param string $role
      * @return Roles
      */
-    public static function getByAppName(string $role, BakaCompanies $company): Roles
+    public static function getByAppName(string $role, Companies $company): Roles
     {
         //echeck if we have a dot , taht means we are sending the specific app to use
         if (strpos($role, '.') === false) {
@@ -183,7 +187,7 @@ class Roles extends AbstractModel
         }
 
         return self::findFirst([
-            'conditions' => 'apps_id in (?0, ?1) AND company_id in (?2 , ?3)',
+            'conditions' => 'apps_id in (?0, ?1) AND companies_id in (?2 , ?3)',
             'bind' => [$app->getId(), self::DEFAULT_ACL_APP_ID, $company->getId(), self::DEFAULT_ACL_COMPANY_ID]
         ]);
     }
@@ -201,7 +205,7 @@ class Roles extends AbstractModel
         $this->name .= 'Copie';
         $this->scope = 1;
         $this->id = null;
-        $this->company_id = $this->di->getUserData()->default_company;
+        $this->companies_id = $this->di->getUserData()->default_company;
         $this->apps_id = $this->di->getApp()->getId();
         $this->save();
 

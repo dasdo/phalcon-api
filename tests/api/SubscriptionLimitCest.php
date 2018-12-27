@@ -38,7 +38,7 @@ class SubscriptionLimitCest
         $user = Users::findFirst($userData->id);
         $company = Companies::findFirstByUsers_id($userData->id);
         $userActivity = new UserCompanyAppsActivities();
-        $userActivity->company_id = $company->getId();
+        $userActivity->companies_id = $company->getId();
         $userActivity->company_branches_id = $user->default_company_branch;
         $userActivity->apps_id = 1; //default first app
         $userActivity->key = 'users_total'; //default first app
@@ -47,7 +47,7 @@ class SubscriptionLimitCest
 
         //get current total user activity
         $preTotalUserActivities = UserCompanyAppsActivities::findFirst([
-            'conditions' => 'company_id = ?0 and key = ?1',
+            'conditions' => 'companies_id = ?0 and key = ?1',
             'bind' => [$company->getId(), 'users_total']
         ]);
 
@@ -65,7 +65,7 @@ class SubscriptionLimitCest
 
         $hash = $data['invite_hash'];
 
-        $I->sendPost('/v1/user-invites/' . $hash, [
+        $I->sendPost('/v1/users-invite/' . $hash, [
             'firstname' => 'testFirstsName',
             'lastname' => 'testLastName',
             'displayname' => $userName,
@@ -78,7 +78,7 @@ class SubscriptionLimitCest
         $dataInvite = json_decode($response, true);
 
         $totalUserActivities = UserCompanyAppsActivities::findFirst([
-            'conditions' => 'company_id = ?0 and key = ?1',
+            'conditions' => 'companies_id = ?0 and key = ?1',
             'bind' => [$company->getId(), 'users_total']
         ]);
 

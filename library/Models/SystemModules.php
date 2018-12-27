@@ -71,7 +71,7 @@ class SystemModules extends AbstractModel
     public function initialize()
     {
         $this->belongsTo(
-            'company_id',
+            'companies_id',
             'Gewaer\Models\Companies',
             'id',
             ['alias' => 'company']

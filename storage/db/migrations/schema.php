@@ -740,11 +740,11 @@ return array (
       ),
       'columns' => 
       array (
-        'company_id' => 
+        'companies_id' => 
         array (
           'TABLE_CATALOG' => 'def',
           'TABLE_NAME' => 'company_settings',
-          'COLUMN_NAME' => 'company_id',
+          'COLUMN_NAME' => 'companies_id',
           'ORDINAL_POSITION' => '1',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'NO',
@@ -928,7 +928,7 @@ return array (
             'Non_unique' => '1',
             'Key_name' => 'index5',
             'Seq_in_index' => '1',
-            'Column_name' => 'company_id',
+            'Column_name' => 'companies_id',
             'Collation' => 'A',
             'Sub_part' => NULL,
             'Packed' => NULL,
@@ -1874,11 +1874,11 @@ return array (
       ),
       'columns' => 
       array (
-        'company_id' => 
+        'companies_id' => 
         array (
           'TABLE_CATALOG' => 'def',
           'TABLE_NAME' => 'user_company_apps',
-          'COLUMN_NAME' => 'company_id',
+          'COLUMN_NAME' => 'companies_id',
           'ORDINAL_POSITION' => '1',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'NO',
@@ -2046,7 +2046,7 @@ return array (
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
-            'Column_name' => 'company_id',
+            'Column_name' => 'companies_id',
             'Collation' => 'A',
             'Sub_part' => NULL,
             'Packed' => NULL,
@@ -3757,11 +3757,11 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'company_id' => 
+        'companies_id' => 
         array (
           'TABLE_CATALOG' => 'def',
           'TABLE_NAME' => 'users_associated_company',
-          'COLUMN_NAME' => 'company_id',
+          'COLUMN_NAME' => 'companies_id',
           'ORDINAL_POSITION' => '2',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'NO',
@@ -3875,7 +3875,7 @@ return array (
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '2',
-            'Column_name' => 'company_id',
+            'Column_name' => 'companies_id',
             'Collation' => 'A',
             'Sub_part' => NULL,
             'Packed' => NULL,
@@ -3908,7 +3908,7 @@ return array (
             'Non_unique' => '0',
             'Key_name' => 'users_id',
             'Seq_in_index' => '2',
-            'Column_name' => 'company_id',
+            'Column_name' => 'companies_id',
             'Collation' => 'A',
             'Sub_part' => NULL,
             'Packed' => NULL,
@@ -4294,11 +4294,11 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'company_id' => 
+        'companies_id' => 
         array (
           'TABLE_CATALOG' => 'def',
           'TABLE_NAME' => 'subscriptions',
-          'COLUMN_NAME' => 'company_id',
+          'COLUMN_NAME' => 'companies_id',
           'ORDINAL_POSITION' => '3',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'NO',
@@ -5250,11 +5250,11 @@ return array (
       ),
       'foreign_keys' => NULL,
     ),
-    'company_branches' => 
+    'companies_branches' => 
     array (
       'table' => 
       array (
-        'table_name' => 'company_branches',
+        'table_name' => 'companies_branches',
         'engine' => 'InnoDB',
         'table_comment' => '',
         'table_collation' => 'utf8_general_mysql500_ci',
@@ -5266,7 +5266,7 @@ return array (
         'id' => 
         array (
           'TABLE_CATALOG' => 'def',
-          'TABLE_NAME' => 'company_branches',
+          'TABLE_NAME' => 'companies_branches',
           'COLUMN_NAME' => 'id',
           'ORDINAL_POSITION' => '1',
           'COLUMN_DEFAULT' => NULL,
@@ -5286,11 +5286,11 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'company_id' => 
+        'companies_id' => 
         array (
           'TABLE_CATALOG' => 'def',
           'TABLE_NAME' => 'company_branches',
-          'COLUMN_NAME' => 'company_id',
+          'COLUMN_NAME' => 'companies_id',
           'ORDINAL_POSITION' => '2',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'YES',
@@ -5995,11 +5995,11 @@ return array (
       ),
       'columns' => 
       array (
-        'company_id' => 
+        'companies_id' => 
         array (
           'TABLE_CATALOG' => 'def',
           'TABLE_NAME' => 'user_company_apps_activities',
-          'COLUMN_NAME' => 'company_id',
+          'COLUMN_NAME' => 'companies_id',
           'ORDINAL_POSITION' => '1',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'NO',
@@ -6190,7 +6190,7 @@ return array (
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '1',
-            'Column_name' => 'company_id',
+            'Column_name' => 'companies_id',
             'Collation' => 'A',
             'Sub_part' => NULL,
             'Packed' => NULL,
@@ -6330,11 +6330,11 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'company_id' => 
+        'companies_id' => 
         array (
           'TABLE_CATALOG' => 'def',
           'TABLE_NAME' => 'user_roles',
-          'COLUMN_NAME' => 'company_id',
+          'COLUMN_NAME' => 'companies_id',
           'ORDINAL_POSITION' => '4',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'NO',
@@ -6463,7 +6463,7 @@ return array (
             'Non_unique' => '0',
             'Key_name' => 'PRIMARY',
             'Seq_in_index' => '3',
-            'Column_name' => 'company_id',
+            'Column_name' => 'companies_id',
             'Collation' => 'A',
             'Sub_part' => NULL,
             'Packed' => NULL,
@@ -6535,11 +6535,11 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'company_id' => 
+        'companies_id' => 
         array (
           'TABLE_CATALOG' => 'def',
           'TABLE_NAME' => 'email_templates',
-          'COLUMN_NAME' => 'company_id',
+          'COLUMN_NAME' => 'companies_id',
           'ORDINAL_POSITION' => '3',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'NO',
@@ -6725,7 +6725,7 @@ return array (
             'Non_unique' => '0',
             'Key_name' => 'company_id_app_id_name',
             'Seq_in_index' => '1',
-            'Column_name' => 'company_id',
+            'Column_name' => 'companies_id',
             'Collation' => 'A',
             'Sub_part' => NULL,
             'Packed' => NULL,
@@ -6827,11 +6827,11 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'company_id' => 
+        'companies_id' => 
         array (
           'TABLE_CATALOG' => 'def',
           'TABLE_NAME' => 'users_invite',
-          'COLUMN_NAME' => 'company_id',
+          'COLUMN_NAME' => 'companies_id',
           'ORDINAL_POSITION' => '3',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'NO',
@@ -7847,11 +7847,11 @@ return array (
           'COLUMN_COMMENT' => '',
           'GENERATION_EXPRESSION' => '',
         ),
-        'company_id' => 
+        'companies_id' => 
         array (
           'TABLE_CATALOG' => 'def',
           'TABLE_NAME' => 'roles',
-          'COLUMN_NAME' => 'company_id',
+          'COLUMN_NAME' => 'companies_id',
           'ORDINAL_POSITION' => '5',
           'COLUMN_DEFAULT' => NULL,
           'IS_NULLABLE' => 'NO',

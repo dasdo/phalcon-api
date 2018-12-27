@@ -1,14 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Gewaer\Models;
+namespace Gewaer\CustomFields;
 
-use Gewaer\Traits\SubscriptionPlanLimitTrait;
+use Gewaer\Models\AbstractModel;
 
-class UsersInvite extends AbstractModel
+class CustomFields extends AbstractModel
 {
-    use SubscriptionPlanLimitTrait;
-
     /**
      *
      * @var integer
@@ -17,9 +15,9 @@ class UsersInvite extends AbstractModel
 
     /**
      *
-     * @var string
+     * @var integer
      */
-    public $invite_hash;
+    public $users_id;
 
     /**
      *
@@ -31,19 +29,25 @@ class UsersInvite extends AbstractModel
      *
      * @var integer
      */
-    public $role_id;
-
-    /**
-     *
-     * @var integer
-     */
-    public $app_id;
+    public $apps_id;
 
     /**
      *
      * @var string
      */
-    public $email;
+    public $name;
+
+    /**
+     *
+     * @var integer
+     */
+    public $custom_fields_modules_id;
+
+    /**
+     *
+     * @var integer
+     */
+    public $fields_type_id;
 
     /**
      *
@@ -64,29 +68,31 @@ class UsersInvite extends AbstractModel
     public $updated_at;
 
     /**
-     * Subscription plan key
-     */
-    protected $subscriptionPlanLimitKey = 'users';
-
-    /**
      * Initialize method for model.
      */
     public function initialize()
     {
-        $this->setSource('users_invite');
+        $this->setSource('custom_fields');
 
         $this->belongsTo(
-            'companies_id',
-            'Gewaer\Models\Companies',
+            'custom_fields_modules_id',
+            'Gewaer\Models\CustomFieldsModules',
             'id',
-            ['alias' => 'company']
+            ['alias' => 'modules']
+        );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\CompanyCustomFields',
+            'custom_field_id',
+            ['alias' => 'company-fields']
         );
 
         $this->belongsTo(
-            'apps_id',
+            'companies_id',
             'Gewaer\Models\Apps',
             'id',
-            ['alias' => 'app']
+            ['alias' => 'companies']
         );
     }
 
@@ -97,17 +103,6 @@ class UsersInvite extends AbstractModel
      */
     public function getSource(): string
     {
-        return 'users_invite';
-    }
-
-    /**
-     * What to do after the creation of a new users
-     *  - Assign default role
-     *
-     * @return void
-     */
-    public function afterCreate()
-    {
-        $this->updateAppActivityLimit();
+        return 'custom_fields';
     }
 }

@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class CompanySettings extends \Baka\Auth\Models\CompanySettings
+class CompaniesSettings extends \Baka\Auth\Models\CompanySettings
 {
     /**
      *
      * @var integer
      */
-    public $company_id;
+    public $companies_id;
 
     /**
      *
@@ -49,13 +49,13 @@ class CompanySettings extends \Baka\Auth\Models\CompanySettings
         parent::initialize();
 
         $this->belongsTo(
-            'company_id',
+            'companies_id',
             'Gewaer\Models\Companies',
             'id',
             ['alias' => 'company']
         );
 
-        $this->setSource('company_settings');
+        $this->setSource('companies_settings');
     }
 
     /**
@@ -65,6 +65,6 @@ class CompanySettings extends \Baka\Auth\Models\CompanySettings
      */
     public function getSource(): string
     {
-        return 'company_settings';
+        return 'companies_settings';
     }
 }

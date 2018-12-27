@@ -12,7 +12,7 @@ use Phalcon\Validation\Validator\PresenceOf;
  * @package Gewaer\Models
  *
  */
-class CompanyBranches extends AbstractModel
+class CompaniesBranches extends AbstractModel
 {
     /**
      *
@@ -36,7 +36,7 @@ class CompanyBranches extends AbstractModel
      *
      * @var integer
      */
-    public $company_id;
+    public $companies_id;
 
     /**
      *
@@ -73,10 +73,10 @@ class CompanyBranches extends AbstractModel
      */
     public function initialize()
     {
-        $this->setSource('company_branches');
+        $this->setSource('companies_branches');
 
         $this->belongsTo(
-            'company_id',
+            'companies_id',
             'Gewaer\Models\Companies',
             'id',
             ['alias' => 'company']
@@ -117,6 +117,6 @@ class CompanyBranches extends AbstractModel
      */
     public function getSource() : string
     {
-        return 'company_branches';
+        return 'companies_branches';
     }
 }

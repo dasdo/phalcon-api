@@ -3,44 +3,50 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class UsersAssociatedCompany extends \Baka\Auth\Models\UsersAssociatedCompany
+class CustomFieldsModules extends AbstractModel
 {
     /**
      *
      * @var integer
      */
-    public $users_id;
+    public $id;
 
     /**
      *
      * @var integer
      */
-    public $companies_id;
+    public $apps_id;
 
     /**
      *
      * @var string
      */
-    public $identify_id;
+    public $name;
 
     /**
      *
      * @var integer
      */
-    public $user_active;
+    public $is_deleted;
 
     /**
      *
      * @var string
      */
-    public $user_role;
+    public $created_at;
+
+    /**
+     *
+     * @var string
+     */
+    public $updated_at;
 
     /**
      * Initialize method for model.
      */
     public function initialize()
     {
-        parent::initialize();
+        $this->setSource('custom_fields_modules');
 
         $this->belongsTo(
             'companies_id',
@@ -49,7 +55,19 @@ class UsersAssociatedCompany extends \Baka\Auth\Models\UsersAssociatedCompany
             ['alias' => 'company']
         );
 
-        $this->setSource('users_associated_company');
+        $this->hasMany(
+            'id',
+            'Gewaer\CustomFields\CustomFields',
+            'custom_fields_modules_id',
+            ['alias' => 'fields']
+        );
+
+        // $this->belongsTo(
+        //     'apps_id',
+        //     'Gewaer\Models\Apps',
+        //     'id',
+        //     ['alias' => 'app']
+        // );
     }
 
     /**
@@ -59,6 +77,6 @@ class UsersAssociatedCompany extends \Baka\Auth\Models\UsersAssociatedCompany
      */
     public function getSource(): string
     {
-        return 'users_associated_company';
+        return 'custom_fields_modules';
     }
 }

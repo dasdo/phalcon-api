@@ -9,14 +9,14 @@ class UserInvitesSeeder extends AbstractSeed
         $data = [
             [
                 'users_id' => 1,
-                'company_id' => 0,
+                'companies_id' => 0,
                 'app_id' => 0,
                 'name' => 'users-invite',
                 'template' => '{link}',
                 'created_at' => date('Y-m-d H:i:s'),
             ], [
                 'users_id' => 1,
-                'company_id' => 0,
+                'companies_id' => 0,
                 'app_id' => 0,
                 'name' => 'users-registration',
                 'template' => '{link}',
