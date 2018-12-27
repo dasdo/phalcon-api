@@ -44,8 +44,7 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
                                           AND l.{$this->getSource()}_id = ?
                                           AND c.apps_id = ?
                                           AND c.custom_fields_modules_id = ?
-                                          AND c.companies_id = ? 
-                                          ");
+                                          AND c.companies_id = ? ");
 
         $result->execute($bind);
 
@@ -108,8 +107,6 @@ abstract class AbstractCustomFieldsModel extends \Baka\Database\ModelCustomField
             ]);
 
             if ($customField) {
-                //throw new Exception("this custom field doesnt exist");
-
                 $customModel->setCustomId($this->getId());
                 $customModel->custom_fields_id = $customField->id;
                 $customModel->value = $value;

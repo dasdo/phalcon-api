@@ -60,4 +60,35 @@ class CompaniesCustomFieldsCest
 
         $I->assertTrue($data['value'] == $updatedValue);
     }
+
+    public function confirmCustomField(ApiTester $I): void
+    {
+        //Create a new company with a custom field
+        $userData = $I->apiLogin();
+        $testCompany = 'test_company' . time();
+
+        $I->haveHttpHeader('Authorization', $userData->token);
+        $I->sendPost('/v1/' . 'companies', [
+            'name' => $testCompany,
+            'website' => 'example.com',
+            'example_custom_field' => 'example_custom_value'
+        ]);
+
+        $I->seeResponseIsSuccessful();
+        $response = $I->grabResponse();
+        $data = json_decode($response, true);
+
+        $customfield = 'example_custom_field';
+
+        // Confirm newly created custom field
+        echo '/v1/custom-fields' . '?q=(name:' . $customfield . ')';
+        $I->sendGet('/v1/custom-fields' . '?q=(name:' . $customfield . ')');
+
+        $I->seeResponseIsSuccessful();
+        $response = $I->grabResponse();
+        $customFieldData = json_decode($response, true);
+
+        $I->assertTrue(isset($data['example_custom_field']));
+        $I->assertTrue($customfield == $customFieldData[0]['name']);
+    }
 }
