@@ -6,6 +6,7 @@ namespace Gewaer\Api\Controllers;
 
 use Gewaer\Exception\UnprocessableEntityHttpException;
 use Phalcon\Http\Response;
+use Baka\Http\QueryParser;
 
 /**
  * Class BaseController
@@ -16,6 +17,11 @@ use Phalcon\Http\Response;
  */
 abstract class BaseCustomFieldsController extends \Baka\Http\Rest\CrudCustomFieldsController
 {
+    /**
+     * Custom Model
+     */
+    protected $customModel;
+
     /**
      * Get Uer
      *
