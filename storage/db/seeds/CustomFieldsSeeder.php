@@ -17,8 +17,8 @@ class CustomFieldsSeeder extends AbstractSeed
                 'created_at' => date('Y-m-d H:m:s'),
             ],
             [
-                'users_id' => 1,
-                'companies_id' => 1,
+                'users_id' => 2,
+                'companies_id' => 3,
                 'apps_id' => 1,
                 'name' => 'example_custom_field',
                 'custom_fields_modules_id' => 1,

@@ -98,14 +98,14 @@ class PlansSubscriptions extends AbstractMigration
         $this->table('users')->changeColumn('is_deleted', 'integer', ['null' => false, 'default' => '0', 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'updated_at'])->update();
         $table->save();
 
-        $this->table('users_associated_company')->changeColumn('identify_id', 'string', ['null' => true, 'limit' => 45, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'company_id'])->update();
+        $this->table('users_associated_company')->changeColumn('identify_id', 'string', ['null' => true, 'limit' => 45, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'companies_id'])->update();
         $this->table('users_associated_company')->changeColumn('user_role', 'string', ['null' => true, 'limit' => 45, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'user_active'])->update();
 
         $table = $this->table('subscriptions', ['id' => false, 'primary_key' => ['id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Dynamic']);
         $table->addColumn('id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'identity' => 'enable'])
             ->addColumn('user_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'id'])
-            ->addColumn('company_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'user_id'])
-            ->addColumn('apps_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'company_id'])
+            ->addColumn('companies_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'user_id'])
+            ->addColumn('apps_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'companies_id'])
             ->addColumn('name', 'string', ['null' => false, 'limit' => 250, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'apps_id'])
             ->addColumn('stripe_id', 'string', ['null' => false, 'limit' => 250, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'name'])
             ->addColumn('stripe_plan', 'string', ['null' => false, 'limit' => 250, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'stripe_id'])
@@ -164,7 +164,7 @@ class PlansSubscriptions extends AbstractMigration
         $table = $this->table('companies_branches', ['id' => false, 'primary_key' => ['id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Dynamic']);
         $table->addColumn('id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'identity' => 'enable'])
             ->addColumn('companies_id', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'id'])
-            ->addColumn('users_id', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'company_id'])
+            ->addColumn('users_id', 'integer', ['null' => true, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'companies_id'])
             ->addColumn('name', 'string', ['null' => true, 'limit' => 255, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'users_id'])
             ->addColumn('description', 'string', ['null' => true, 'limit' => 255, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'name'])
             ->addColumn('created_at', 'datetime', ['null' => false, 'after' => 'description'])
@@ -212,7 +212,7 @@ class PlansSubscriptions extends AbstractMigration
         $table = $this->table('sources', ['id' => false, 'primary_key' => ['id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
         $table->save();
 
-        $table = $this->table('user_company_apps', ['id' => false, 'primary_key' => ['company_id', 'apps_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
+        $table = $this->table('user_company_apps', ['id' => false, 'primary_key' => ['companies_id', 'apps_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
         $table->save();
         $table = $this->table('user_config', ['id' => false, 'primary_key' => ['users_id', 'name'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
         $table->save();
@@ -220,11 +220,11 @@ class PlansSubscriptions extends AbstractMigration
         $table->save();
         $table = $this->table('users', ['id' => false, 'primary_key' => ['id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
         $table->save();
-        $table = $this->table('users_associated_company', ['id' => false, 'primary_key' => ['users_id', 'company_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
+        $table = $this->table('users_associated_company', ['id' => false, 'primary_key' => ['users_id', 'companies_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
         $table->save();
         $table = $this->table('banlist', ['id' => false, 'primary_key' => ['id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
         $table->save();
-        $table = $this->table('user_roles', ['id' => false, 'primary_key' => ['users_id', 'apps_id', 'company_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Dynamic']);
+        $table = $this->table('user_roles', ['id' => false, 'primary_key' => ['users_id', 'apps_id', 'companies_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Dynamic']);
         $table->save();
         $table = $this->table('access_list', ['id' => false, 'primary_key' => ['roles_name', 'resources_name', 'access_name', 'apps_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Dynamic']);
         $table->save();

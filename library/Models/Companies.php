@@ -126,7 +126,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $this->hasMany(
             'id',
             'Gewaer\Models\UsersAssociatedCompany',
-            'company_id',
+            'companies_id',
             ['alias' => 'UsersAssociatedCompany']
         );
 
@@ -154,7 +154,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $this->hasOne(
             'id',
             'Gewaer\Models\UserCompanyApps',
-            'company_id',
+            'companies_id',
             [
                 'alias' => 'apps',
                 'params' => [
@@ -166,7 +166,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $this->hasOne(
             'id',
             'Gewaer\Models\Subscription',
-            'company_id',
+            'companies_id',
             [
                 'alias' => 'subscription',
                 'params' => [
@@ -179,7 +179,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $this->hasMany(
             'id',
             'Gewaer\Models\Subscription',
-            'company_id',
+            'companies_id',
             [
                 'alias' => 'subscriptions',
                 'params' => [
@@ -272,7 +272,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         //multi user asociation
         $usersAssociatedCompany = new UsersAssociatedCompany();
         $usersAssociatedCompany->users_id = $this->user->getId();
-        $usersAssociatedCompany->company_id = $this->getId();
+        $usersAssociatedCompany->companies_id = $this->getId();
         $usersAssociatedCompany->identify_id = $this->user->getId();
         $usersAssociatedCompany->user_active = 1;
         $usersAssociatedCompany->user_role = 'admin';
@@ -351,7 +351,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         ]);
 
         if ($defaultCompany) {
-            return self::findFirst($defaultCompany->company_id);
+            return self::findFirst($defaultCompany->companies_id);
         }
 
         throw new Exception(_("User doesn't have an active company"));

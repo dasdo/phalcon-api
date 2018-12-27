@@ -25,7 +25,7 @@ class UsersInvite extends AbstractModel
      *
      * @var integer
      */
-    public $company_id;
+    public $companies_id;
 
     /**
      *
@@ -76,7 +76,7 @@ class UsersInvite extends AbstractModel
         $this->setSource('users_invite');
 
         $this->belongsTo(
-            'company_id',
+            'companies_id',
             'Gewaer\Models\Companies',
             'id',
             ['alias' => 'company']

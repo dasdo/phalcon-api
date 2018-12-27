@@ -21,7 +21,7 @@ class CompaniesCustomFieldsCest
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/' . $this->model, [
             'companies_id' => 3,
-            'custom_fields_id' => 1,
+            'custom_fields_id' => 2,
             'value' => $testValue
         ]);
 
@@ -81,7 +81,6 @@ class CompaniesCustomFieldsCest
         $customfield = 'example_custom_field';
 
         // Confirm newly created custom field
-        echo '/v1/custom-fields' . '?q=(name:' . $customfield . ')';
         $I->sendGet('/v1/custom-fields' . '?q=(name:' . $customfield . ')');
 
         $I->seeResponseIsSuccessful();

@@ -21,7 +21,7 @@ class EmailTemplatesCest
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/' . $this->model, [
             'users_id' => 3,
-            'company_id' => 3,
+            'companies_id' => 3,
             'app_id' => 1,
             'name' => $testName,
             'template' => 'Hello!!! This is a test email template',

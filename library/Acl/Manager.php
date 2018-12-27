@@ -194,7 +194,7 @@ class Manager extends Adapter
         }
 
         $exists = RolesDB::count([
-            'conditions' => 'name = ?0 AND company_id = ?1 AND apps_id = ?2',
+            'conditions' => 'name = ?0 AND companies_id = ?1 AND apps_id = ?2',
             'bind' => [$role->getName(), $this->getCompany()->getId(), $this->getApp()->getId()]
         ]);
 
@@ -202,7 +202,7 @@ class Manager extends Adapter
             $rolesDB = new RolesDB();
             $rolesDB->name = $role->getName();
             $rolesDB->description = $role->getDescription();
-            $rolesDB->company_id = $this->getCompany()->getId();
+            $rolesDB->companies_id = $this->getCompany()->getId();
             $rolesDB->apps_id = $this->getApp()->getId();
             $rolesDB->scope = $scope;
             if (!$rolesDB->save()) {
@@ -263,7 +263,7 @@ class Manager extends Adapter
     public function isRole($roleName): bool
     {
         $exists = RolesDB::count([
-            'conditions' => 'name = ?0 AND apps_id = ?1 AND company_id in (?2, ?3)',
+            'conditions' => 'name = ?0 AND apps_id = ?1 AND companies_id in (?2, ?3)',
             'bind' => [$roleName, $this->getApp()->getId(), $this->getCompany()->getId(), 0]
         ]);
 
@@ -315,7 +315,7 @@ class Manager extends Adapter
     protected function getRole(string $role) : RolesDB
     {
         $role = RolesDB::findFirst([
-            'conditions' => 'name = ?0 AND apps_id = ?1 AND company_id in (?2, ?3)',
+            'conditions' => 'name = ?0 AND apps_id = ?1 AND companies_id in (?2, ?3)',
             'bind' => [$role, $this->getApp()->getId(), $this->getCompany()->getId(), 0]
         ]);
 

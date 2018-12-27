@@ -32,7 +32,7 @@ trait PermissionsTrait
         }
 
         $userRole = UserRoles::findFirst([
-            'conditions' => 'users_id = ?0 and roles_id = ?1 and apps_id = ?2 and company_id = ?3',
+            'conditions' => 'users_id = ?0 and roles_id = ?1 and apps_id = ?2 and companies_id = ?3',
             'bind' => [$this->getId(), $role->getId(), $role->apps_id, $this->default_company]
         ]);
 
@@ -41,7 +41,7 @@ trait PermissionsTrait
             $userRole->users_id = $this->getId();
             $userRole->roles_id = $role->getId();
             $userRole->apps_id = $role->apps_id;
-            $userRole->company_id = $this->default_company;
+            $userRole->companies_id = $this->default_company;
             if (!$userRole->save()) {
                 throw new ModelException((string) current($userRole->getMessages()));
             }
@@ -66,7 +66,7 @@ trait PermissionsTrait
         }
 
         $userRole = UserRoles::findFirst([
-            'conditions' => 'users_id = ?0 and roles_id = ?1 and apps_id = ?2 and company_id = ?3',
+            'conditions' => 'users_id = ?0 and roles_id = ?1 and apps_id = ?2 and companies_id = ?3',
             'bind' => [$this->getId(), $role->getId(), $role->apps_id, $this->default_company]
         ]);
 
@@ -92,7 +92,7 @@ trait PermissionsTrait
         }
 
         $userRole = UserRoles::findFirst([
-            'conditions' => 'users_id = ?0 and roles_id = ?1 and (apps_id = ?2 or apps_id = ?4) and company_id = ?3',
+            'conditions' => 'users_id = ?0 and roles_id = ?1 and (apps_id = ?2 or apps_id = ?4) and companies_id = ?3',
             'bind' => [$this->getId(), $role->getId(), $role->apps_id, $this->default_company, $this->di->getApp()->getId()]
         ]);
 

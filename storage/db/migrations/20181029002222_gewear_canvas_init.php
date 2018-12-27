@@ -233,10 +233,10 @@ class GewearCanvasInit extends AbstractMigration
             ->addColumn('is_deleted', 'boolean', ['null' => true, 'default' => '0', 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'status'])
             ->save();
 
-        $table = $this->table('users_associated_company', ['id' => false, 'primary_key' => ['users_id', 'company_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
+        $table = $this->table('users_associated_company', ['id' => false, 'primary_key' => ['users_id', 'companies_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'comment' => '', 'row_format' => 'Compact']);
         $table->addColumn('users_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10])
-            ->addColumn('company_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'users_id'])
-            ->addColumn('identify_id', 'string', ['null' => true, 'limit' => 45, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'company_id'])
+            ->addColumn('companies_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'users_id'])
+            ->addColumn('identify_id', 'string', ['null' => true, 'limit' => 45, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'companies_id'])
             ->addColumn('user_active', 'boolean', ['null' => false, 'default' => '1', 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'identify_id'])
             ->addColumn('user_role', 'string', ['null' => true, 'limit' => 45, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'user_active'])
             ->save();
@@ -246,13 +246,13 @@ class GewearCanvasInit extends AbstractMigration
             $table->removeIndexByName('users_id')->save();
         }
         $table = $this->table('users_associated_company');
-        $table->addIndex(['users_id', 'company_id'], ['name' => 'users_id', 'unique' => true])->save();
+        $table->addIndex(['users_id', 'companies_id'], ['name' => 'users_id', 'unique' => true])->save();
         $table = $this->table('users_associated_company');
         if ($table->hasIndex('users_id_2')) {
             $table->removeIndexByName('users_id_2')->save();
         }
         $table = $this->table('users_associated_company');
-        $table->addIndex(['users_id', 'company_id'], ['name' => 'users_id_2', 'unique' => false])->save();
+        $table->addIndex(['users_id', 'companies_id'], ['name' => 'users_id_2', 'unique' => false])->save();
         $table = $this->table('banlist', ['id' => false, 'primary_key' => ['id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8_bin', 'comment' => '', 'row_format' => 'Compact']);
         $table->addColumn('id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_MEDIUM, 'precision' => 7, 'signed' => false, 'identity' => 'enable'])
             ->addColumn('users_id', 'integer', ['null' => false, 'default' => '0', 'limit' => MysqlAdapter::INT_BIG, 'precision' => 19, 'after' => 'id'])

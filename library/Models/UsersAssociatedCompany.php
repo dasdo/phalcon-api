@@ -15,7 +15,7 @@ class UsersAssociatedCompany extends \Baka\Auth\Models\UsersAssociatedCompany
      *
      * @var integer
      */
-    public $company_id;
+    public $companies_id;
 
     /**
      *
@@ -43,7 +43,7 @@ class UsersAssociatedCompany extends \Baka\Auth\Models\UsersAssociatedCompany
         parent::initialize();
 
         $this->belongsTo(
-            'company_id',
+            'companies_id',
             'Gewaer\Models\Companies',
             'id',
             ['alias' => 'company']

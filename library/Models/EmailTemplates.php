@@ -27,7 +27,7 @@ class EmailTemplates extends AbstractModel
      *
      * @var string
      */
-    public $company_id;
+    public $companies_id;
 
     /**
      *
@@ -77,7 +77,7 @@ class EmailTemplates extends AbstractModel
     public function initialize()
     {
         $this->belongsTo(
-            'company_id',
+            'companies_id',
             'Gewaer\Models\Companies',
             'id',
             ['alias' => 'company']
@@ -118,7 +118,7 @@ class EmailTemplates extends AbstractModel
     public static function getByName(string $name): EmailTemplates
     {
         $emailTemplate = self::findFirst([
-            'conditions' => 'company_id in (?0, 0) and app_id in (?1, 0) and name = ?2 and is_deleted = 0',
+            'conditions' => 'companies_id in (?0, 0) and app_id in (?1, 0) and name = ?2 and is_deleted = 0',
             'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getConfig()->app->id, $name]
         ]);
 

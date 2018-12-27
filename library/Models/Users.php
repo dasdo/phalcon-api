@@ -9,6 +9,11 @@ use Phalcon\Cashier\Billable;
 use Gewaer\Exception\ServerErrorHttpException;
 use Exception;
 use Carbon\Carbon;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Email;
+use Phalcon\Validation\Validator\PresenceOf;
+use Phalcon\Validation\Validator\Regex;
+use Phalcon\Validation\Validator\Uniqueness;
 
 /**
  * Class Users
@@ -106,6 +111,49 @@ class Users extends \Baka\Auth\Models\Users
     }
 
     /**
+     * Validations and business logic
+     */
+    public function validation()
+    {
+        $validator = new Validation();
+        $validator->add(
+            'email',
+            new Email([
+                'field' => 'email',
+                'required' => true,
+            ])
+        );
+
+        $validator->add(
+            'displayname',
+            new PresenceOf([
+                'field' => 'displayname',
+                'required' => true,
+            ])
+        );
+
+        $validator->add(
+            'displayname',
+            new Regex([
+                'field' => 'displayname',
+                'message' => _('Please use alphanumerics only.'),
+                'pattern' => '/^[A-Za-z0-9_-]{1,32}$/',
+            ])
+        );
+
+        // Unique values
+        $validator->add(
+            'email',
+            new Uniqueness([
+                'field' => 'email',
+                'message' => _('This email already has an account.'),
+            ])
+        );
+
+        return $this->validate($validator);
+    }
+
+    /**
      * Returns table name mapped in the model.
      *
      * @return string
@@ -159,7 +207,7 @@ class Users extends \Baka\Auth\Models\Users
             [
                 'alias' => 'subscriptions',
                 'params' => [
-                    'conditions' => 'apps_id = ?0 and company_id = ?1',
+                    'conditions' => 'apps_id = ?0 and companies_id = ?1',
                     'bind' => [$this->di->getApp()->getId(), $this->default_company],
                     'order' => 'id DESC'
                 ]
@@ -181,7 +229,7 @@ class Users extends \Baka\Auth\Models\Users
 
         $subscription = new Subscription();
         $subscription->user_id = $this->getId();
-        $subscription->company_id = $this->default_company;
+        $subscription->companies_id = $this->default_company;
         $subscription->apps_id = $this->di->getApp()->getId();
         $subscription->apps_plans_id = $this->di->getApp()->default_apps_plan_id;
         $subscription->name = $defaultPlan->name;
@@ -268,7 +316,7 @@ class Users extends \Baka\Auth\Models\Users
         //Create new company associated company
         $newUserAssocCompany = new UsersAssociatedCompany();
         $newUserAssocCompany->users_id = $this->id;
-        $newUserAssocCompany->company_id = $this->default_company;
+        $newUserAssocCompany->companies_id = $this->default_company;
         $newUserAssocCompany->identify_id = 1;
         $newUserAssocCompany->user_active = 1;
         $newUserAssocCompany->user_role = $this->roles_id == 1 ? 'admins' : 'users';
@@ -282,7 +330,7 @@ class Users extends \Baka\Auth\Models\Users
         $userRole->users_id = $this->id;
         $userRole->roles_id = $this->roles_id;
         $userRole->apps_id = $this->di->getApp()->getId();
-        $userRole->company_id = $this->default_company;
+        $userRole->companies_id = $this->default_company;
 
         if (!$userRole->save()) {
             throw new ServerErrorHttpException((string)current($userRole->getMessages()));

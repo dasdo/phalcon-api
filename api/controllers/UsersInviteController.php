@@ -35,14 +35,14 @@ class UsersInviteController extends BaseController
      *
      * @var array
      */
-    protected $createFields = ['invite_hash', 'company_id', 'role_id', 'app_id', 'email'];
+    protected $createFields = ['invite_hash', 'companies_id', 'role_id', 'app_id', 'email'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['invite_hash', 'company_id', 'role_id', 'app_id', 'email'];
+    protected $updateFields = ['invite_hash', 'companies_id', 'role_id', 'app_id', 'email'];
 
     /**
      * set objects
@@ -54,7 +54,7 @@ class UsersInviteController extends BaseController
         $this->model = new UsersInvite();
         $this->additionalSearchFields = [
             ['is_deleted', ':', '0'],
-            ['company_id', ':', $this->userData->default_company],
+            ['companies_id', ':', $this->userData->default_company],
         ];
     }
 
@@ -100,7 +100,7 @@ class UsersInviteController extends BaseController
 
         //Save data to users_invite table and generate a hash for the invite
         $userInvite = $this->model;
-        $userInvite->company_id = $this->userData->default_company;
+        $userInvite->companies_id = $this->userData->default_company;
         $userInvite->app_id = $this->app->getId();
         $userInvite->role_id = Roles::getByAppName($request['role'],$this->userData->defaultCompany)->getId();
         $userInvite->email = $request['email'];
@@ -182,7 +182,7 @@ class UsersInviteController extends BaseController
         $newUser->user_active = 1;
         $newUser->roles_id = $usersInvite->role_id;
         $newUser->created_at = date('Y-m-d H:m:s');
-        $newUser->default_company = $usersInvite->company_id;
+        $newUser->default_company = $usersInvite->companies_id;
         $newUser->default_company_branch = $usersInvite->company->branch->getId();
 
         try {
