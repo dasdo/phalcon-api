@@ -142,7 +142,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $this->hasOne(
             'id',
             'Gewaer\Models\UserCompanyApps',
-            'company_id',
+            'companies_id',
             [
                 'alias' => 'app',
                 'params' => [
