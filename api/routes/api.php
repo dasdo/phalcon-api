@@ -62,6 +62,7 @@ $defaultCrudRoutes = [
     'AppsPlans' => 'apps-plans',
     'RolesAccesList' => 'roles-acceslist',
     'PermissionsResources' => 'permissions-resources',
+    'PermissionsResourcesAccess' => 'permissions-resources-access',
     'UsersInvite' => 'users-invite',
     'EmailTemplates' => 'email-templates'
 ];
