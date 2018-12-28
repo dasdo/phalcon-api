@@ -92,7 +92,8 @@ switch ($action) {
                 }
             } catch (Throwable $e) {
                 //Server errores FATAL
-                $identifier = $SRequest->getServerAddress();
+
+//                $identifier = $SRequest->getServerAddress();
 
                 $httpCode = (method_exists($e, 'getHttpCode')) ? $e->getHttpCode() : 400;
                 $httpMessage = (method_exists($e, 'getHttpMessage')) ? $e->getHttpMessage() : 'Bad Request';
@@ -108,7 +109,7 @@ switch ($action) {
                 $SResponse->setJsonContent([
                     'errors' => [
                         'type' => $httpMessage,
-                        'identifier' => $identifier,
+                       // 'identifier' => $identifier,
                         'message' => $e->getMessage(),
                         'trace' => $e->getTraceAsString(),
                         'data' => $data,
