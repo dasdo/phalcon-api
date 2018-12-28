@@ -25,7 +25,7 @@ trait ResponseTrait
      */
     protected function halt(Micro $api, int $status, string $message)
     {
-        $apiResponse = new Response();
+        $apiResponse = $api->response;
 
         $apiResponse
             ->setPayloadError($message)
