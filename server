@@ -82,26 +82,46 @@ switch ($action) {
                 $SResponse = $bootstrap->getContainer()->get('response');
                 $SResponse->init($response);
                 $SRequest->init($request);
+                if ($request->server['request_method'] != 'OPTIONS') {
+                    $bootstrap->run();
+                } else {
+                    $SResponse->setStatusCode(200);
+                    $bootstrap->getContainer()->reset();
 
-                $bootstrap->run();
+                    $SResponse->setJsonContent('')->send();
+                }
             } catch (Throwable $e) {
                 //Server errores FATAL
-                $error = [
-                    'message' => $e->getMessage(),
-                    'trace' => $e->getTrace(),
-                ];
+                $identifier = $SRequest->getServerAddress();
 
+                $httpCode = (method_exists($e, 'getHttpCode')) ? $e->getHttpCode() : 400;
+                $httpMessage = (method_exists($e, 'getHttpMessage')) ? $e->getHttpMessage() : 'Bad Request';
+                $data = (method_exists($e, 'getData')) ? $e->getData() : [];
                 //if we get a exception before response
                 if (!is_object($SResponse)) {
                     $SResponse = new SwooleResponse();
                     $SResponse->init($response);
                 }
-                //$di->getLog()->addError($e->getMessage(), $e->getTrace());
+                $SResponse->setHeader('Access-Control-Allow-Origin', '*'); //@todo check why this fails on nginx
+                $SResponse->setStatusCode($httpCode, $httpMessage);
+                $SResponse->setContentType('application/json');
+                $SResponse->setJsonContent([
+                    'errors' => [
+                        'type' => $httpMessage,
+                        'identifier' => $identifier,
+                        'message' => $e->getMessage(),
+                        'trace' => $e->getTraceAsString(),
+                        'data' => $data,
+                    ],
+                ]);
 
-                $SResponse->setStatusCode(500);
-                $SResponse->setJsonContent($error)->send();
+                //$di->getLog()->addError($e->getMessage(), $e->getTrace());
+                print_r($error);
+
+                $SResponse->send();
             }
         });
+
         echo 'swoole http server start.' . PHP_EOL;
         $http->start();
         break;

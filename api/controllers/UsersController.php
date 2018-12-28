@@ -136,7 +136,7 @@ class UsersController extends \Baka\Auth\UsersController
             }
 
             //update password
-            if (array_key_exists('new_password', $request) && (!empty($request['new_password']) && !empty($request['password']))) {
+            if (array_key_exists('new_password', $request) && (!empty($request['new_password']) && !empty($request['current_password']))) {
                 //Ok let validate user password
                 $validation = new Validation();
                 $validation->add('new_password', new PresenceOf(['message' => 'The new_password is required.']));
@@ -247,5 +247,31 @@ class UsersController extends \Baka\Auth\UsersController
             'msg' => $msg,
             'user' => $this->userData
         ]);
+    }
+
+    /*
+     * Set JSON response for AJAX, API request
+     *
+     * @param mixed $content
+     * @param integer $statusCode
+     * @param string $statusMessage
+     *
+     * @return \Phalcon\Http\Response
+     */
+    public function response($content, int $statusCode = 200, string $statusMessage = 'OK') : Response
+    {
+        $response = [
+            'statusCode' => $statusCode,
+            'statusMessage' => $statusMessage,
+            'content' => $content,
+        ];
+
+        // Create a response since it's an ajax
+        $response = $this->response;
+        $response->setStatusCode($statusCode, $statusMessage);
+        //$response->setContentType('application/vnd.api+json', 'UTF-8');
+        $response->setJsonContent($content);
+
+        return $response;
     }
 }

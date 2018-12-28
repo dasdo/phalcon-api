@@ -19,6 +19,7 @@ use Phalcon\Text;
 use swoole_http_request;
 use Exception;
 use Phalcon\Di\FactoryDefault;
+use function Gewaer\Core\isJson;
 
 class SwooleRequest implements RequestInterface, InjectionAwareInterface
 {
@@ -117,7 +118,11 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
         $put = $this->_putCache;
 
         if (empty($put)) {
-            parse_str($this->getRawBody(), $put);
+            if (!isJson($this->getRawBody())) {
+                parse_str($this->getRawBody(), $put);
+            } else {
+                $put = $this->getJsonRawBody(true);
+            }
             $this->_putCache = $put;
         }
 
@@ -344,7 +349,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      */
     public function getURI()
     {
-        $requestURI = $this->getServer('REQUEST_URI') == $this->getQuery('_url') ? $this->getServer('REQUEST_URI') : $this->getQuery('_url');
+        $requestURI = $this->getServer('request_uri'); //$this->getServer('REQUEST_URI') == $this->getQuery('_url') ? $this->getServer('REQUEST_URI') : $this->getQuery('_url');
         if ($requestURI) {
             return $requestURI;
         }

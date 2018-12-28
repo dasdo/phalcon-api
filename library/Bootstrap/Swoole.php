@@ -40,11 +40,10 @@ class Swoole extends AbstractBootstrap
             //ignore token validation if disable
             $config['ignoreUri'] = ['regex: *'];
         }
-
         //JWT Validation
         new AuthMicro($this->application, $config);
 
-        return $this->application->handle($this->container->getRequest()->get('_url', null, '/'));
+        return $this->application->handle($this->container->getRequest()->getServer('request_uri', null, '/'));
     }
 
     /**
