@@ -28,9 +28,7 @@ class AutoloaderCest
 
         $I->assertEquals('true', getenv('APP_DEBUG'));
         $I->assertEquals('development', getenv('APP_ENV'));
-        $I->assertEquals('http://api.baka.io', getenv('APP_URL'));
         $I->assertEquals('/', getenv('APP_BASE_URI'));
-        $I->assertEquals('team@baka.io', getenv('APP_SUPPORT_EMAIL'));
         $I->assertEquals('UTC', getenv('APP_TIMEZONE'));
         $I->assertEquals('api_cache_', getenv('CACHE_PREFIX'));
         $I->assertEquals(86400, getenv('CACHE_LIFETIME'));

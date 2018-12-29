@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\CompaniesCustomFields;
+use Phalcon\Http\Response;
 
 /**
  * Class LanguagesController

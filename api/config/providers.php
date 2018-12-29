@@ -18,6 +18,7 @@ use Gewaer\Providers\RedisProvider;
 use Gewaer\Providers\RequestProvider;
 use Gewaer\Providers\AclProvider;
 use Gewaer\Providers\AppProvider;
+use Gewaer\Providers\ResponseProvider;
 
 return [
     ConfigProvider::class,
@@ -32,7 +33,7 @@ return [
     QueueProvider::class,
     MailProvider::class,
     RedisProvider::class,
-    RedisProvider::class,
     AclProvider::class,
     AppProvider::class,
+    ResponseProvider::class,
 ];
