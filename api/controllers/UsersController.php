@@ -135,6 +135,10 @@ class UsersController extends \Baka\Auth\UsersController
                 $request = $this->request->getJsonRawBody(true);
             }
 
+            if (empty($request)) {
+                throw new BadRequestHttpException(_('No data to update this account with '));
+            }
+
             //update password
             if (array_key_exists('new_password', $request) && (!empty($request['new_password']) && !empty($request['current_password']))) {
                 //Ok let validate user password

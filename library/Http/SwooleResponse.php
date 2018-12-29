@@ -18,6 +18,12 @@ class SwooleResponse extends Response
 {
     protected $response;
 
+    /**
+     * Set the swoole response object
+     *
+     * @param swoole_http_response $response
+     * @return void
+     */
     public function init(swoole_http_response $response)
     {
         $this->response = $response;
@@ -26,6 +32,11 @@ class SwooleResponse extends Response
         $this->setStatusCode(200);
     }
 
+    /**
+     * Send the response
+     *
+     * @return PhResponse
+     */
     public function send(): PhResponse
     {
         if ($this->_sent) {
@@ -33,10 +44,15 @@ class SwooleResponse extends Response
         }
 
         $this->_sent = true;
-        // 处理Headers
+        // get phalcon headers
         $headers = $this->getHeaders();
+
         foreach ($headers->toArray() as $key => $val) {
-            $this->response->header($key, $val);
+            //if the key has spaces this breaks postman, so we remove this headers
+            //example: HTTP/1.1 200 OK || HTTP/1.1 401 Unauthorized
+            if (!preg_match('/\s/', $key)) {
+                $this->response->header($key, $val);
+            }
         }
 
         /** @var Cookies $cookies */
@@ -56,7 +72,7 @@ class SwooleResponse extends Response
             }
         }
 
-        // 处理
+        //set swoole response
         $this->response->status($this->getStatusCode());
         $this->response->end($this->_content);
 

@@ -1,12 +1,7 @@
 #!/usr/bin/env php
 <?php
-// +----------------------------------------------------------------------
-// | server.php [ WE CAN DO IT JUST THINK IT ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2016-2017 limingxinleo All rights reserved.
-// +----------------------------------------------------------------------
-// | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
-// +----------------------------------------------------------------------
+
+// Copied from <https://github.com/limingxinleo>
 
 define('ROOT_PATH', __DIR__);
 define('APP_PATH', ROOT_PATH);
@@ -16,6 +11,7 @@ define('ENGINE', 'SWOOLE');
 use Phalcon\Di\FactoryDefault;
 use Gewaer\Bootstrap\Swoole;
 use Gewaer\Http\SwooleResponse;
+use Gewaer\Exception\ServerErrorHttpException;
 
 $script = $argv[0];
 if (empty($argv[1])) {
@@ -25,16 +21,16 @@ if (empty($argv[1])) {
 
 $action = $argv[1];
 
-/** @var FactoryDefault $di */
-            //composer autoload
+//auto load
 require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * Get config service for use in inline setup below
  */
-
 $pidDir = ROOT_PATH;
 $logDir = ROOT_PATH . '/logs';
+
+//move to config
 $host = '0.0.0.0';
 $port = 8081;
 
@@ -59,6 +55,10 @@ switch ($action) {
     // no break
     case 'start':
         $http = new swoole_http_server($host, $port);
+
+        /**
+         * @todo move to .env or another config file
+         */
         $http->set([
             'dispatch_mode' => 2,
             'worker_num' => 10,
@@ -75,6 +75,13 @@ switch ($action) {
         });
         $http->on('request', function ($request, $response) {
             try {
+                //OPTION Request
+                if ($request->server['request_method'] == 'OPTIONS') {
+                    $response->status(200);
+                    $response->end();
+                    return;
+                };
+
                 $bootstrap = new Swoole();
                 $bootstrap->setup();
 
@@ -82,22 +89,16 @@ switch ($action) {
                 $SResponse = $bootstrap->getContainer()->get('response');
                 $SResponse->init($response);
                 $SRequest->init($request);
-                if ($request->server['request_method'] != 'OPTIONS') {
-                    $bootstrap->run();
-                } else {
-                    $SResponse->setStatusCode(200);
-                    $bootstrap->getContainer()->reset();
 
-                    $SResponse->setJsonContent('')->send();
-                }
+                $bootstrap->run();
+                return ;
             } catch (Throwable $e) {
                 //Server errores FATAL
-
-//                $identifier = $SRequest->getServerAddress();
 
                 $httpCode = (method_exists($e, 'getHttpCode')) ? $e->getHttpCode() : 400;
                 $httpMessage = (method_exists($e, 'getHttpMessage')) ? $e->getHttpMessage() : 'Bad Request';
                 $data = (method_exists($e, 'getData')) ? $e->getData() : [];
+
                 //if we get a exception before response
                 if (!is_object($SResponse)) {
                     $SResponse = new SwooleResponse();
@@ -109,15 +110,15 @@ switch ($action) {
                 $SResponse->setJsonContent([
                     'errors' => [
                         'type' => $httpMessage,
-                       // 'identifier' => $identifier,
                         'message' => $e->getMessage(),
                         'trace' => $e->getTraceAsString(),
                         'data' => $data,
                     ],
                 ]);
 
-                //$di->getLog()->addError($e->getMessage(), $e->getTrace());
-                print_r($error);
+                if ($e instanceof ServerErrorHttpException && getenv('PRODUCTION')) {
+                    $bootstrap->getContainer()->getLog()->error($e->getTraceAsString());
+                }
 
                 $SResponse->send();
             }
