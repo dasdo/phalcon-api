@@ -6,6 +6,7 @@ namespace Gewaer\Traits;
 
 use Gewaer\Http\Response;
 use Phalcon\Mvc\Micro;
+use function Gewaer\Core\isSwooleServer;
 
 /**
  * Trait ResponseTrait
@@ -25,7 +26,7 @@ trait ResponseTrait
      */
     protected function halt(Micro $api, int $status, string $message)
     {
-        $apiResponse = $api->response;
+        $apiResponse = !isSwooleServer() ? new Response() : $this->response;
 
         $apiResponse
             ->setPayloadError($message)

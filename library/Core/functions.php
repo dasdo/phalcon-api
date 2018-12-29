@@ -92,3 +92,15 @@ if (true !== function_exists('Gewaer\Core\isJson')) {
         return (bool ) (json_last_error() == JSON_ERROR_NONE);
     }
 }
+
+if (true !== function_exists('Gewaer\Core\isSwooleServer')) {
+    /**
+     * Are we running a Swoole Server for this app?
+     *
+     * @return boolean
+     */
+    function isSwooleServer(): bool
+    {
+        return defined('ENGINE') && ENGINE === 'SWOOLE' ? true : false;
+    }
+}

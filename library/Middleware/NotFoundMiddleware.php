@@ -9,6 +9,7 @@ use Gewaer\Traits\ResponseTrait;
 use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\Micro\MiddlewareInterface;
 use Phalcon\Mvc\User\Plugin;
+use function Gewaer\Core\isSwooleServer;
 
 /**
  * Class NotFoundMiddleware
@@ -27,7 +28,7 @@ class NotFoundMiddleware extends Plugin implements MiddlewareInterface
      */
     public function beforeNotFound()
     {
-        $apiResponse = $this->response;
+        $apiResponse = !isSwooleServer() ? new Response() : $this->response;
         $this->halt(
             $this->application,
             Response::NOT_FOUND,

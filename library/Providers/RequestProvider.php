@@ -8,6 +8,7 @@ use Gewaer\Http\Request;
 use Gewaer\Http\SwooleRequest;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\DiInterface;
+use function Gewaer\Core\isSwooleServer;
 
 class RequestProvider implements ServiceProviderInterface
 {
@@ -16,7 +17,7 @@ class RequestProvider implements ServiceProviderInterface
      */
     public function register(DiInterface $container)
     {
-        if (defined('ENGINE') && ENGINE === 'SWOOLE') {
+        if (isSwooleServer()) {
             $container->setShared('request', new SwooleRequest());
         } else {
             $container->setShared('request', new Request());
