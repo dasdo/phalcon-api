@@ -35,6 +35,8 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
 
     protected $_files;
 
+    protected $_rawBody;
+
     protected $headers;
 
     protected $server;
@@ -208,7 +210,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
 
         $contentType = $this->getContentType();
         if (!empty($contentType)) {
-            return memstr($contentType, 'application/soap+xml');
+            return (bool) strpos($contentType, 'application/soap+xml') !== false;
         }
 
         return false;
@@ -290,7 +292,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
              * Cleanup. Force lowercase as per RFC 952/2181
              */
             $host = strtolower(trim($host));
-            if (memstr(host, ':')) {
+            if (strpos($host, ':') !== false) {
                 $host = preg_replace('/:[[:digit:]]+$/', '', $host);
             }
 
@@ -331,7 +333,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
          */
         $host = $this->getServer('HTTP_HOST');
         if ($host) {
-            if (memstr($host, ':')) {
+            if (strpos($host, ':') !== false) {
                 $pos = strrpos($host, ':');
 
                 if (false !== $pos) {
@@ -429,7 +431,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
 
         if (is_string($methods)) {
             if ($strict && !$this->isValidHttpMethod($methods)) {
-                throw new Exception('Invalid HTTP method: ' . methods);
+                throw new Exception('Invalid HTTP method: ' . $methods);
             }
             return $methods == $httpMethod;
         }
@@ -548,7 +550,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
             }
         }
 
-        return numberFiles;
+        return $numberFiles;
     }
 
     public function getUploadedFiles($onlySuccessful = false)
@@ -647,7 +649,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
             }
         }
 
-        return files;
+        return $files;
     }
 
     public function getServers()

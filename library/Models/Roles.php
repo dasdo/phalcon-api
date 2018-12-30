@@ -275,7 +275,7 @@ class Roles extends AbstractModel
     {
         $role = self::findFirstByName($roleName);
 
-        if (!is_ojbject($role)) {
+        if (!is_object($role)) {
             throw new ModelException("Role '{$roleName}' does not exist in the role list");
         }
 
