@@ -477,7 +477,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
              * Get the server name from $_SERVER["SERVER_NAME"]
              */
             $host = $this->getServer('SERVER_NAME');
-            if (!host) {
+            if (!$host) {
                 /**
                  * Get the server address from $_SERVER["SERVER_ADDR"]
                  */
@@ -1247,6 +1247,8 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     protected function resolveAuthorizationHeaders()
     {
         $headers = [];
+        $hasEventsManager = false;
+        $eventsManager = null;
 
         $dependencyInjector = $this->getDI();
         if ($dependencyInjector instanceof DiInterface) {
