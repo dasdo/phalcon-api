@@ -36,7 +36,7 @@ trait PermissionsTrait
             'bind' => [$this->getId(), $role->getId(), $role->apps_id, $this->default_company]
         ]);
 
-        if (!$userRole) {
+        if (!is_object($userRole)) {
             $userRole = new UserRoles();
             $userRole->users_id = $this->getId();
             $userRole->roles_id = $role->getId();
@@ -87,7 +87,7 @@ trait PermissionsTrait
     {
         $role = Roles::getByAppName($role, $this->defaultCompany);
 
-        if (!$role) {
+        if (!is_object($role)) {
             throw new ServerErrorHttpException('Role not found in DB');
         }
 
