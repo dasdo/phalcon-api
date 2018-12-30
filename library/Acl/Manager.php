@@ -515,13 +515,13 @@ class Manager extends Adapter
         $allowed = $this->connection->fetchOne($sql, Db::FETCH_NUM, [$roleObj->getId(), $resource, $access, $this->getApp()->getId(), $roleObj->getId()]);
 
         if (is_array($allowed)) {
-            return (bool)$allowed[0];
+            return (bool) $allowed[0];
         }
 
         /**
          * Return the default access action
          */
-        return (bool)$this->_defaultAccess;
+        return (bool) $this->_defaultAccess;
     }
 
     /**

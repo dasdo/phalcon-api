@@ -24,7 +24,7 @@ class RolesInherits extends AbstractModel
     {
         $this->setSource('roles_inherits');
 
-        $this->belonsTo(
+        $this->belongsTo(
             'roles_id',
             'Gewaer\Models\Roles',
             'id',

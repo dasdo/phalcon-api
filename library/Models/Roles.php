@@ -11,6 +11,14 @@ use Phalcon\Validation\Validator\StringLength;
 use Phalcon\Acl\Role as AclRole;
 use Gewaer\Exception\ModelException;
 
+/**
+ * Class Roles
+ *
+ * @package Gewaer\Models
+ *
+ * @property AccesList $accesList
+ * @property \Phalcon\Di $di
+ */
 class Roles extends AbstractModel
 {
     /**
@@ -155,7 +163,7 @@ class Roles extends AbstractModel
      * @param string $roleName
      * @return boolean
      */
-    public function isRole(string $roleName) : bool
+    public static function isRole(string $roleName) : bool
     {
         return (bool) self::count([
             'conditions' => 'name = ?0 AND apps_id = ?1 AND companies_id in (?2, ?3)',
@@ -167,7 +175,7 @@ class Roles extends AbstractModel
      * Get the entity by its name
      *
      * @param string $name
-     * @return void
+     * @return Roles
      */
     public static function getByName(string $name): Roles
     {
@@ -187,9 +195,9 @@ class Roles extends AbstractModel
      * Get the entity by its name
      *
      * @param string $name
-     * @return void
+     * @return Roles
      */
-    public static function getById(int $id)
+    public static function getById(int $id): Roles
     {
         return self::findFirst([
             'conditions' => 'id = ?0 AND companies_id in (?1, ?2) AND apps_id in (?3, ?4) AND is_deleted = 0',
@@ -228,7 +236,7 @@ class Roles extends AbstractModel
     /**
      * Duplicate a role with it access list
      *
-     * @return bool
+     * @return Roles
      */
     public function copy(): Roles
     {
@@ -265,10 +273,10 @@ class Roles extends AbstractModel
      */
     public static function addInherit(string $roleName, string $roleToInherit) : bool
     {
-        $role = RolesDB::findFirstByName($roleName);
+        $role = self::findFirstByName($roleName);
 
-        if (!$is_ojbject($role)) {
-            throw new Exception("Role '{$roleName}' does not exist in the role list");
+        if (!is_ojbject($role)) {
+            throw new ModelException("Role '{$roleName}' does not exist in the role list");
         }
 
         $inheritExist = RolesInherits::count([
@@ -279,7 +287,7 @@ class Roles extends AbstractModel
         if (!$inheritExist) {
             $rolesInHerits = new RolesInherits();
             $rolesInHerits->roles_id = $role->getId();
-            $rolesInHerits->roles_inherit = $roleToInherit;
+            $rolesInHerits->roles_inherit = (int) $roleToInherit;
 
             if (!$rolesInHerits->save()) {
                 throw new ModelException((string) current($rolesInHerits->getMessages()));

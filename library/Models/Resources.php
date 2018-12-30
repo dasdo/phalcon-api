@@ -7,6 +7,13 @@ namespace Gewaer\Models;
 use Phalcon\Di;
 use Gewaer\Exception\ModelException;
 
+/**
+ * Class Resources
+ *
+ * @package Gewaer\Models
+ *
+ * @property \Phalcon\Di $di
+ */
 class Resources extends AbstractModel
 {
     /**
@@ -89,7 +96,7 @@ class Resources extends AbstractModel
      * Get a resource by it name
      *
      * @param  string  $resourceName
-     * @return ResourcesDB
+     * @return Resources
      */
     public static function getByName(string $resourceName) : Resources
     {
