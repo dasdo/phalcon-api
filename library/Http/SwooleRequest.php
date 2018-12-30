@@ -149,7 +149,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      * @param string $defaultValue
      * @param boolean $notAllowEmpty
      * @param boolean $noRecursive
-     * @return void
+     * @return array|string
      */
     public function get($name = null, $filters = null, $defaultValue = null, $notAllowEmpty = false, $noRecursive = false)
     {
@@ -165,7 +165,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      * @param string $defaultValue
      * @param boolean $notAllowEmpty
      * @param boolean $noRecursive
-     * @return void
+     * @return array|string
      */
     public function getPost($name = null, $filters = null, $defaultValue = null, $notAllowEmpty = false, $noRecursive = false)
     {
@@ -181,7 +181,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      * @param string $defaultValue
      * @param boolean $notAllowEmpty
      * @param boolean $noRecursive
-     * @return void
+     * @return array|string
      */
     public function getQuery($name = null, $filters = null, $defaultValue = null, $notAllowEmpty = false, $noRecursive = false)
     {
@@ -193,7 +193,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      * Get _SERVER
      *
      * @param string $name
-     * @return void
+     * @return string|null
      */
     public function getServer($name)
     {
@@ -213,7 +213,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      * @param string $defaultValue
      * @param boolean $notAllowEmpty
      * @param boolean $noRecursive
-     * @return void
+     * @return array|string
      */
     public function getPut($name = null, $filters = null, $defaultValue = null, $notAllowEmpty = false, $noRecursive = false)
     {
@@ -312,7 +312,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      * Get Header
      *
      * @param string $name
-     * @return string
+     * @return string|void
      */
     public function getHeader($header)
     {
@@ -417,7 +417,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      * Get json
      *
      * @param boolean $associative
-     * @return void
+     * @return void|string
      */
     public function getJsonRawBody($associative = false)
     {
@@ -432,7 +432,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get servers addres
      *
-     * @return void
+     * @return string
      */
     public function getServerAddress()
     {
@@ -447,7 +447,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get server name
      *
-     * @return void
+     * @return string
      */
     public function getServerName()
     {
@@ -462,7 +462,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get https hosts
      *
-     * @return void
+     * @return string
      */
     public function getHttpHost()
     {
@@ -527,7 +527,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get port
      *
-     * @return void
+     * @return int
      */
     public function getPort()
     {
@@ -566,7 +566,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      * Get client ip
      *
      * @param boolean $trustForwardedHeader
-     * @return void
+     * @return string|boolean
      */
     public function getClientAddress($trustForwardedHeader = true)
     {
@@ -602,7 +602,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get method
      *
-     * @return void
+     * @return string
      */
     public function getMethod()
     {
@@ -633,7 +633,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get user agent
      *
-     * @return void
+     * @return string|void
      */
     public function getUserAgent()
     {
@@ -783,7 +783,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      * Has uploaded files?
      *
      * @param boolean $onlySuccessful
-     * @return boolean
+     * @return string
      */
     public function hasFiles($onlySuccessful = false)
     {
@@ -839,7 +839,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      * Get the uploaded files
      *
      * @param boolean $onlySuccessful
-     * @return void
+     * @return array
      */
     public function getUploadedFiles($onlySuccessful = false)
     {
@@ -887,7 +887,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      * Get the files
      *
      * @param string $key
-     * @return void
+     * @return string|void
      */
     public function getFile($key)
     {
@@ -949,7 +949,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the servers
      *
-     * @return void
+     * @return string
      */
     public function getServers()
     {
@@ -959,7 +959,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the headers
      *
-     * @return void
+     * @return array
      */
     public function getHeaders()
     {
@@ -995,7 +995,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the httpd reference
      *
-     * @return void
+     * @return string|void
      */
     public function getHTTPReferer()
     {
@@ -1046,7 +1046,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the content
      *
-     * @return void
+     * @return string
      */
     public function getBestAccept()
     {
@@ -1056,7 +1056,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the content
      *
-     * @return void
+     * @return string
      */
     public function getClientCharsets()
     {
@@ -1066,7 +1066,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the content
      *
-     * @return void
+     * @return string
      */
     public function getBestCharset()
     {
@@ -1076,7 +1076,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the content
      *
-     * @return void
+     * @return string
      */
     public function getLanguages()
     {
@@ -1086,7 +1086,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the content
      *
-     * @return void
+     * @return string
      */
     public function getBestLanguage()
     {
@@ -1096,7 +1096,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the basic httpd auth
      *
-     * @return void
+     * @return array|void
      */
     public function getBasicAuth()
     {
@@ -1113,7 +1113,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the server digest
      *
-     * @return void
+     * @return array
      */
     public function getDigestAuth()
     {
@@ -1287,7 +1287,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
      * Resolve the PHP_AUTH_USER
      *
      * @param array $headers
-     * @return array
+     * @return void
      */
     protected function resolveAuthHeaderPhp(array &$headers): void
     {
