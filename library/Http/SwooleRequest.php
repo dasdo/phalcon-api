@@ -499,7 +499,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
              * the digits '0' through '9', and the hyphen ('-') as per RFC 952/2181
              */
             if ('' !== preg_replace("/[a-z0-9-]+\.?/", '', $host)) {
-                throw new \UnexpectedValueException('Invalid host ' . host);
+                throw new \UnexpectedValueException('Invalid host ' . $host);
             }
         }
 
