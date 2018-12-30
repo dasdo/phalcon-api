@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
+use Phalcon\Di;
+use Gewaer\Exception\ModelException;
+
 class AccessList extends AbstractModel
 {
     /**
@@ -26,7 +29,7 @@ class AccessList extends AbstractModel
 
     /**
      *
-     * @var boolean
+     * @var integer
      */
     public $allowed;
 
@@ -94,5 +97,43 @@ class AccessList extends AbstractModel
     public function getSource(): string
     {
         return 'access_list';
+    }
+
+    /**
+     * Given the resource and access check if exist
+     *
+     * @param Roles $role
+     * @param string $resourceName
+     * @param string $accessName
+     * @return integer
+     */
+    public static function exist(Roles $role, string $resourceName, string $accessName): int
+    {
+        return self::count([
+            'conditions' => 'roles_id = ?0 and resources_name = ?1 AND access_name = ?2 AND apps_id = ?3',
+            'bind' => [$role->getId(), $resourceName, $accessName, Di::getDefault()->getAcl()->getApp()->getId()]
+        ]);
+    }
+
+    /**
+     * Given the resource and access check if exist
+     *
+     * @param Roles $role
+     * @param string $resourceName
+     * @param string $accessName
+     * @return integer
+     */
+    public static function getBy(Roles $role, string $resourceName, string $accessName) : AccessList
+    {
+        $access = self::findFirst([
+            'conditions' => 'roles_id = ?0 and resources_name = ?1 AND access_name = ?2 AND apps_id = ?3',
+            'bind' => [$role->getId(), $resourceName, $accessName, Di::getDefault()->getAcl()->getApp()->getId()]
+        ]);
+
+        if (!is_object($access)) {
+            throw new ModelException(_('Access for role ' . $role->name . ' with resource ' . $resourceName . '-' . $accessName . ' not found on this app ' . Di::getDefault()->getAcl()->getApp()->getId() . ' AND Company' . Di::getDefault()->getAcl()->getCompany()->getId()));
+        }
+
+        return $access;
     }
 }

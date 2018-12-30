@@ -15,7 +15,7 @@ class AclTask extends PhTask
 {
     /**
      * Create the default roles of the system
-     * 
+     *
      * @return void
      */
     public function mainAction()

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
+use Phalcon\Di;
+use Gewaer\Exception\ModelException;
+
 class ResourcesAccesses extends AbstractModel
 {
     /**
@@ -71,5 +74,20 @@ class ResourcesAccesses extends AbstractModel
     public function getSource(): string
     {
         return 'resources_accesses';
+    }
+
+    /**
+     * Check if it exist
+     *
+     * @param Resources $resouce
+     * @param string $accessName
+     * @return integer
+     */
+    public static function exist(Resources $resource, string $accessName) : int
+    {
+        return self::count([
+            'conditions' => 'resources_id = ?0 AND access_name = ?1 AND apps_id = ?2',
+            'bind' => [$resource->getId(), $accessName, Di::getDefault()->getAcl()->getApp()->getId()]
+        ]);
     }
 }

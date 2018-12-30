@@ -96,21 +96,7 @@ class Manager extends Adapter
      */
     public function __construct(array $options)
     {
-        if (!isset($options['db']) || !$options['db'] instanceof DbAdapter) {
-            throw new Exception(
-                'Parameter "db" is required and it must be an instance of Phalcon\Acl\AdapterInterface'
-            );
-        }
-
         $this->connection = $options['db'];
-
-        foreach (['roles', 'resources', 'resourcesAccesses', 'accessList', 'rolesInherits'] as $table) {
-            if (!isset($options[$table]) || empty($options[$table]) || !is_string($options[$table])) {
-                throw new Exception("Parameter '{$table}' is required and it must be a non empty string");
-            }
-
-            $this->{$table} = $this->connection->escapeIdentifier($options[$table]);
-        }
     }
 
     /**
@@ -119,7 +105,7 @@ class Manager extends Adapter
      * @param Companies $company
      * @return void
      */
-    public function setCompany(Companies $company): void
+    public function setCompany(Companies $company) : void
     {
         $this->company = $company;
     }
@@ -130,7 +116,7 @@ class Manager extends Adapter
      * @param Apps $app
      * @return void
      */
-    public function setApp(Apps $app): void
+    public function setApp(Apps $app) : void
     {
         $this->app = $app;
     }
@@ -140,7 +126,7 @@ class Manager extends Adapter
      *
      * @return void
      */
-    public function getApp(): Apps
+    public function getApp() : Apps
     {
         if (!is_object($this->app)) {
             $this->app = new Apps();
@@ -182,31 +168,27 @@ class Manager extends Adapter
      * @return boolean
      * @throws \Phalcon\Acl\Exception
      */
-    public function addRole($role, $scope = 0, $accessInherits = null): bool
+    public function addRole($role, $scope = 0, $accessInherits = null) : bool
     {
         if (is_string($role)) {
             $role = $this->setAppByRole($role);
 
             $role = new Role($role, ucwords($role) . ' Role');
         }
+
         if (!$role instanceof RoleInterface) {
             throw new Exception('Role must be either an string or implement RoleInterface');
         }
 
-        $exists = RolesDB::count([
-            'conditions' => 'name = ?0 AND companies_id = ?1 AND apps_id = ?2',
-            'bind' => [$role->getName(), $this->getCompany()->getId(), $this->getApp()->getId()]
-        ]);
-
-        if (!$exists) {
+        if (!RolesDB::exist($role)) {
             $rolesDB = new RolesDB();
             $rolesDB->name = $role->getName();
-            $rolesDB->description = $role->getDescription();
+            $rolesDB->description = $role->getDescription() ?? $role->getName();
             $rolesDB->companies_id = $this->getCompany()->getId();
             $rolesDB->apps_id = $this->getApp()->getId();
             $rolesDB->scope = $scope;
             if (!$rolesDB->save()) {
-                throw new ModelException((string) current($rolesDB->getMessages()));
+                throw new ModelException((string)current($rolesDB->getMessages()));
             }
 
             $accessListDB = new AccessListDB();
@@ -221,10 +203,34 @@ class Manager extends Adapter
                 throw new ModelException((string)current($rolesDB->getMessages()));
             }
         }
+
         if ($accessInherits) {
             return $this->addInherit($role->getName(), $accessInherits);
         }
+
         return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param  string  $roleName
+     * @return boolean
+     */
+    public function isRole($roleName) : bool
+    {
+        return RolesDB::isRole($roleName);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param  string  $resourceName
+     * @return boolean
+     */
+    public function isResource($resourceName) : bool
+    {
+        return ResourcesDB::isResource($resourceName);
     }
 
     /**
@@ -234,96 +240,9 @@ class Manager extends Adapter
      * @param  string $roleToInherit
      * @throws \Phalcon\Acl\Exception
      */
-    public function addInherit($roleName, $roleToInherit): bool
+    public function addInherit($roleName, $roleToInherit) : bool
     {
-        $sql = "SELECT COUNT(*) FROM {$this->roles} WHERE name = ?";
-        $exists = $this->connection->fetchOne($sql, null, [$roleName]);
-        if (!$exists[0]) {
-            throw new Exception("Role '{$roleName}' does not exist in the role list");
-        }
-        $exists = $this->connection->fetchOne(
-            "SELECT COUNT(*) FROM {$this->rolesInherits} WHERE roles_name = ? AND roles_inherit = ?",
-            null,
-            [$roleName, $roleToInherit]
-        );
-        if (!$exists[0]) {
-            $this->connection->execute(
-                "INSERT INTO {$this->rolesInherits} VALUES (?, ?)",
-                [$roleName, $roleToInherit]
-            );
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @param  string  $roleName
-     * @return boolean
-     */
-    public function isRole($roleName): bool
-    {
-        $exists = RolesDB::count([
-            'conditions' => 'name = ?0 AND apps_id = ?1 AND companies_id in (?2, ?3)',
-            'bind' => [$roleName, $this->getApp()->getId(), $this->getCompany()->getId(), 0]
-        ]);
-
-        return (bool)$exists;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @param  string  $resourceName
-     * @return boolean
-     */
-    public function isResource($resourceName): bool
-    {
-        $exists = ResourcesDB::count([
-            'conditions' => 'name = ?0 AND apps_id in (?1, ?2)',
-            'bind' => [$resourceName, $this->getApp()->getId(), 0]
-        ]);
-
-        return (bool) $exists;
-    }
-
-    /**
-     * Get a resource by it name
-     *
-     * @param  string  $resourceName
-     * @return ResourcesDB
-     */
-    protected function getResource(string $resourceName) : ResourcesDB
-    {
-        $resource = ResourcesDB::findFirst([
-            'conditions' => 'name = ?0 AND apps_id in (?1, ?2)',
-            'bind' => [$resourceName, $this->getApp()->getId(), 0]
-        ]);
-
-        if (!is_object($resource)) {
-            throw new ModelException(_('Resource ' . $resourceName . ' not found on this app ' . $this->getApp()->getId()));
-        }
-
-        return $resource;
-    }
-
-    /**
-     * Get a role by it name
-     *
-     * @param  string  $resourceName
-     * @return RolesDB
-     */
-    protected function getRole(string $role) : RolesDB
-    {
-        $role = RolesDB::findFirst([
-            'conditions' => 'name = ?0 AND apps_id = ?1 AND companies_id in (?2, ?3)',
-            'bind' => [$role, $this->getApp()->getId(), $this->getCompany()->getId(), 0]
-        ]);
-
-        if (!is_object($role)) {
-            throw new ModelException(_('Roles ' . $role . ' not found on this app ' . $this->getApp()->getId() . ' AND Company' . $this->getCompany()->getId()));
-        }
-
-        return $role;
+        return RolesDB::addInherit($roleName, $roleToInherit);
     }
 
     /**
@@ -332,7 +251,7 @@ class Manager extends Adapter
      * @param string $resource
      * @return void
      */
-    protected function setAppByResource(string $resource): string
+    protected function setAppByResource(string $resource) : string
     {
         //echeck if we have a dot , taht means we are sending the specific app to use
         if (strpos($resource, '.') !== false) {
@@ -389,7 +308,7 @@ class Manager extends Adapter
      * @param  array|string                 $accessList
      * @return boolean
      */
-    public function addResource($resource, $accessList = null): bool
+    public function addResource($resource, $accessList = null) : bool
     {
         if (!is_object($resource)) {
             //echeck if we have a dot , taht means we are sending the specific app to use
@@ -398,7 +317,7 @@ class Manager extends Adapter
             $resource = new Resource($resource);
         }
 
-        if (!$this->isResource($resource->getName())) {
+        if (!ResourcesDB::isResource($resource->getName())) {
             $resourceDB = new ResourcesDB();
             $resourceDB->name = $resource->getName();
             $resourceDB->description = $resource->getDescription();
@@ -424,25 +343,20 @@ class Manager extends Adapter
      * @return boolean
      * @throws \Phalcon\Acl\Exception
      */
-    public function addResourceAccess($resourceName, $accessList): bool
+    public function addResourceAccess($resourceName, $accessList) : bool
     {
-        if (!$this->isResource($resourceName)) {
+        if (!ResourcesDB::isResource($resourceName)) {
             throw new Exception("Resource '{$resourceName}' does not exist in ACL");
         }
 
-        $resource = $this->getResource($resourceName);
+        $resource = ResourcesDB::getByName($resourceName);
 
         if (!is_array($accessList)) {
             $accessList = [$accessList];
         }
 
         foreach ($accessList as $accessName) {
-            $exists = ResourcesAccesses::count([
-                'conditions' => 'resources_id = ?0 AND access_name = ?1 AND apps_id = ?2',
-                'bind' => [$resource->getId(), $accessName, $this->getApp()->getId()]
-            ]);
-
-            if (!$exists) {
+            if (!ResourcesAccesses::exist($resource, $accessName)) {
                 $resourceAccesses = new ResourcesAccesses();
                 $resourceAccesses->beforeCreate(); //wtf?
                 $resourceAccesses->resources_name = $resourceName;
@@ -463,7 +377,7 @@ class Manager extends Adapter
      *
      * @return \Phalcon\Acl\Resource[]
      */
-    public function getResources(): \Phalcon\Acl\ResourceInterface
+    public function getResources() : \Phalcon\Acl\ResourceInterface
     {
         $resources = [];
 
@@ -478,7 +392,7 @@ class Manager extends Adapter
      *
      * @return RoleInterface[]
      */
-    public function getRoles(): \Phalcon\Acl\RoleInterface
+    public function getRoles() : \Phalcon\Acl\RoleInterface
     {
         $roles = [];
 
@@ -566,21 +480,21 @@ class Manager extends Adapter
      * @param array  $parameters
      * @return bool
      */
-    public function isAllowed($role, $resource, $access, array $parameters = null): bool
+    public function isAllowed($role, $resource, $access, array $parameters = null) : bool
     {
         $role = $this->setAppByRole($role);
         //resoure always overwrites the role app?
         $resource = $this->setAppByResource($resource);
-        $roleObj = $this->getRole(($role));
+        $roleObj = RolesDB::getByName(($role));
 
         $sql = implode(' ', [
-            'SELECT ' . $this->connection->escapeIdentifier('allowed') . " FROM {$this->accessList} AS a",
+            'SELECT ' . $this->connection->escapeIdentifier('allowed') . ' FROM access_list AS a',
             // role_name in:
             'WHERE roles_id IN (',
                 // given 'role'-parameter
             'SELECT roles_id ',
                 // inherited role_names
-            "UNION SELECT roles_inherit FROM {$this->rolesInherits} WHERE roles_id = ?",
+            'UNION SELECT roles_inherit FROM roles_inherits WHERE roles_id = ?',
                 // or 'any'
             "UNION SELECT '*'",
             ')',
@@ -601,13 +515,13 @@ class Manager extends Adapter
         $allowed = $this->connection->fetchOne($sql, Db::FETCH_NUM, [$roleObj->getId(), $resource, $access, $this->getApp()->getId(), $roleObj->getId()]);
 
         if (is_array($allowed)) {
-            return (bool) $allowed[0];
+            return (bool)$allowed[0];
         }
 
         /**
          * Return the default access action
          */
-        return (bool) $this->_defaultAccess;
+        return (bool)$this->_defaultAccess;
     }
 
     /**
@@ -616,7 +530,7 @@ class Manager extends Adapter
      *
      * @return int
      */
-    public function getNoArgumentsDefaultAction(): int
+    public function getNoArgumentsDefaultAction() : int
     {
         return $this->noArgumentsDefaultAction;
     }
@@ -650,28 +564,21 @@ class Manager extends Adapter
          * Check if the access is valid in the resource unless wildcard
          */
         if ($resourceName !== '*' && $accessName !== '*') {
-            $resource = $this->getResource($resourceName);
-            $exists = ResourcesAccesses::count([
-                'resources_id = ?0 AND access_name = ?1 AND apps_id in (?2, ?3)',
-                'bind' => [$resource->getId(), $accessName, $this->getApp()->getId(), 0]
-            ]);
+            $resource = ResourcesDB::getByName($resourceName);
 
-            if (!$exists) {
+            if (!ResourcesAccesses::exist($resource, $accessName)) {
                 throw new Exception(
                     "Access '{$accessName}' does not exist in resource '{$resourceName}' ({$resource->getId()}) in ACL"
                 );
             }
         }
+
         /**
          * Update the access in access_list
          */
-        $role = $this->getRole($roleName);
-        $exists = AccessListDB::count([
-            'conditions' => 'roles_id = ?0 and resources_name = ?1 AND access_name = ?2 AND apps_id = ?3',
-            'bind' => [$role->getId(), $resourceName, $accessName, $this->getApp()->getId()]
-        ]);
+        $role = RolesDB::getByName($roleName);
 
-        if (!$exists) {
+        if (!AccessListDB::exist($role, $resourceName, $accessName)) {
             $accessListDB = new AccessListDB();
             $accessListDB->roles_id = $role->getId();
             $accessListDB->roles_name = $roleName;
@@ -683,26 +590,27 @@ class Manager extends Adapter
             if (!$accessListDB->save()) {
                 throw new ModelException((string)current($accessListDB->getMessages()));
             }
-            // $sql = "INSERT INTO {$this->accessList} (roles_name, resources_name, access_name, allowed, apps_id, created_at) VALUES (?, ?, ?, ?, ?, ?)";
-           // $params = [$roleName, $resourceName, $accessName, $action, $this->getApp()->getId(), date('Y-m-d H:i:s')];
         } else {
-            $sql = "UPDATE {$this->accessList} SET allowed = ? " .
-                'WHERE roles_id = ? AND resources_name = ? AND access_name = ? AND apps_id = ?';
-            $params = [$action, $role->getId(), $resourceName, $accessName, $this->getApp()->getId()];
-            $this->connection->execute($sql, $params);
+            $accessListDB = accessListDB::getBy($role, $resourceName, $accessName);
+            $accessListDB->allowed = $action;
+            $accessListDB->update();
         }
 
         /**
          * Update the access '*' in access_list
          */
-        $exists = AccessListDB::count([
-            'conditions' => 'roles_id = ?0 and resources_name = ?1 AND access_name = ?2 AND apps_id = ?3',
-            'bind' => [$role->getId(), $resourceName,  '*', $this->getApp()->getId()]
-        ]);
+        if (!AccessListDB::exist($role, $resourceName, '*')) {
+            $accessListDB = new AccessListDB();
+            $accessListDB->roles_id = $role->getId();
+            $accessListDB->roles_name = $roleName;
+            $accessListDB->resources_name = $resourceName;
+            $accessListDB->access_name = '*';
+            $accessListDB->allowed = $this->_defaultAccess;
+            $accessListDB->apps_id = $this->getApp()->getId();
 
-        if (!$exists) {
-            $sql = "INSERT INTO {$this->accessList} (roles_name, roles_id, resources_name, access_name, allowed, apps_id, created_at) VALUES (?, ?, ?, ?, ?, ? , ?)";
-            $this->connection->execute($sql, [$roleName, $role->getId(), $resourceName, '*', $this->_defaultAccess, $this->getApp()->getId(), date('Y-m-d H:i:s')]);
+            if (!$accessListDB->save()) {
+                throw new ModelException((string)current($accessListDB->getMessages()));
+            }
         }
 
         return true;
@@ -719,7 +627,7 @@ class Manager extends Adapter
      */
     protected function allowOrDeny($roleName, $resourceName, $access, $action)
     {
-        if (!$this->isRole($roleName)) {
+        if (!RolesDB::isRole($roleName)) {
             throw new Exception("Role '{$roleName}' does not exist in the list");
         }
         if (!is_array($access)) {
