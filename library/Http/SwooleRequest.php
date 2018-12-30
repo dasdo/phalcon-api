@@ -860,7 +860,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
                     );
 
                     foreach ($smoothInput as $file) {
-                        if ($onlySuccessful == false || $file['error'] == UPLOAD_ERR_OK) {
+                        if ($onlySuccessful === false || $file['error'] == UPLOAD_ERR_OK) {
                             $dataFile = [
                                 'name' => $file['name'],
                                 'type' => $file['type'],
@@ -873,7 +873,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
                         }
                     }
                 } else {
-                    if ($onlySuccessful == false || $input['error'] == UPLOAD_ERR_OK) {
+                    if ($onlySuccessful === false || $input['error'] == UPLOAD_ERR_OK) {
                         $files[] = new File($input, $prefix);
                     }
                 }
@@ -949,7 +949,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the servers
      *
-     * @return string
+     * @return array
      */
     public function getServers()
     {
@@ -1009,6 +1009,8 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
 
     /**
      * Process a request header and return the one with best quality
+     * 
+     * @return string
      */
     protected function _getBestQuality($qualityParts, $name)
     {
@@ -1036,7 +1038,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the content
      *
-     * @return void
+     * @return array
      */
     public function getAcceptableContent()
     {
@@ -1056,7 +1058,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the content
      *
-     * @return string
+     * @return array
      */
     public function getClientCharsets()
     {
@@ -1076,7 +1078,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the content
      *
-     * @return string
+     * @return array
      */
     public function getLanguages()
     {
@@ -1086,7 +1088,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the content
      *
-     * @return string
+     * @return array
      */
     public function getBestLanguage()
     {
@@ -1209,6 +1211,8 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
 
     /**
      * Process a request header and return an array of values with their qualities
+     * 
+     * @return array
      */
     protected function _getQualityHeader($serverIndex, $name)
     {
@@ -1243,7 +1247,6 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     protected function resolveAuthorizationHeaders()
     {
         $headers = [];
-        $authHeader = null;
 
         $dependencyInjector = $this->getDI();
         if ($dependencyInjector instanceof DiInterface) {
