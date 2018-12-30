@@ -1088,7 +1088,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
     /**
      * Get the content
      *
-     * @return array
+     * @return string
      */
     public function getBestLanguage()
     {
