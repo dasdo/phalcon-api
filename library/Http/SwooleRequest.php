@@ -375,7 +375,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
 
     /**
      * is Soap
-     * 
+     *
      * @return boolean
      */
     public function isSoapRequested()
@@ -385,7 +385,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
 
     /**
      * is HTTPS
-     * 
+     *
      * @return boolean
      */
     public function isSecure()
@@ -395,7 +395,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
 
     /**
      * is HTTPS
-     * 
+     *
      * @return boolean
      */
     public function isSecureRequest()
@@ -405,7 +405,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
 
     /**
      * get RAW
-     * 
+     *
      * @return string
      */
     public function getRawBody()
@@ -1009,7 +1009,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
 
     /**
      * Process a request header and return the one with best quality
-     * 
+     *
      * @return string
      */
     protected function _getBestQuality($qualityParts, $name)
@@ -1211,7 +1211,7 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
 
     /**
      * Process a request header and return an array of values with their qualities
-     * 
+     *
      * @return array
      */
     protected function _getQualityHeader($serverIndex, $name)
