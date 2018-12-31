@@ -24,7 +24,7 @@ class SwooleResponse extends Response
      * @param swoole_http_response $response
      * @return void
      */
-    public function init(swoole_http_response $response)
+    public function init(swoole_http_response $response): void
     {
         $this->response = $response;
         $this->_sent = false;

@@ -4,16 +4,21 @@ declare(strict_types=1);
 namespace Gewaer\Models;
 
 use Gewaer\Exception\ServerErrorHttpException;
-use Gewaer\Models\Companies;
-use Baka\Auth\Models\Companies as BakaCompanies;
 use Phalcon\Di;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\StringLength;
+use Phalcon\Acl\Role as AclRole;
+use Gewaer\Exception\ModelException;
 
-
-
-
+/**
+ * Class Roles
+ *
+ * @package Gewaer\Models
+ *
+ * @property AccesList $accesList
+ * @property \Phalcon\Di $di
+ */
 class Roles extends AbstractModel
 {
     /**
@@ -137,16 +142,32 @@ class Roles extends AbstractModel
     }
 
     /**
-     * Get the entity by its name
+     * Check if the role existe in the db
      *
-     * @param string $name
-     * @return void
+     * @param AclRole $role
+     * @return int
      */
-    public static function getByName(string $name)
+    public static function exist(AclRole $role): int
     {
-        return self::findFirst([
-            'conditions' => 'name = ?0 AND companies_id = ?1 AND apps_id = ?2 AND is_deleted = 0',
-            'bind' => [$name, Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId()]
+        return self::count([
+            'conditions' => 'name = ?0 AND companies_id = ?1 AND apps_id = ?2',
+            'bind' => [$role->getName(), Di::getDefault()->getAcl()->getCompany()->getId(), Di::getDefault()->getAcl()->getApp()->getId()]
+        ]);
+    }
+
+    /**
+     * check if this string is already a role
+     * whats the diff with exist or why not merge them? exist uses the alc object and only check
+     * with your current app, this also check with de defautl company ap
+     *
+     * @param string $roleName
+     * @return boolean
+     */
+    public static function isRole(string $roleName) : bool
+    {
+        return (bool) self::count([
+            'conditions' => 'name = ?0 AND apps_id = ?1 AND companies_id in (?2, ?3)',
+            'bind' => [$roleName, Di::getDefault()->getAcl()->getApp()->getId(), Di::getDefault()->getAcl()->getCompany()->getId(), Apps::GEWAER_DEFAULT_APP_ID]
         ]);
     }
 
@@ -154,9 +175,29 @@ class Roles extends AbstractModel
      * Get the entity by its name
      *
      * @param string $name
-     * @return void
+     * @return Roles
      */
-    public static function getById(int $id)
+    public static function getByName(string $name): Roles
+    {
+        $role = self::findFirst([
+            'conditions' => 'name = ?0 AND apps_id = ?1 AND companies_id in (?2, ?3) AND is_deleted = 0',
+            'bind' => [$name, Di::getDefault()->getAcl()->getApp()->getId(), Di::getDefault()->getAcl()->getCompany()->getId(), Apps::GEWAER_DEFAULT_APP_ID]
+        ]);
+
+        if (!is_object($role)) {
+            throw new ModelException(_('Roles ' . $role . ' not found on this app ' . Di::getDefault()->getAcl()->getApp()->getId() . ' AND Company' . Di::getDefault()->getAcl()->getCompany()->getId()));
+        }
+
+        return $role;
+    }
+
+    /**
+     * Get the entity by its name
+     *
+     * @param string $name
+     * @return Roles
+     */
+    public static function getById(int $id): Roles
     {
         return self::findFirst([
             'conditions' => 'id = ?0 AND companies_id in (?1, ?2) AND apps_id in (?3, ?4) AND is_deleted = 0',
@@ -195,7 +236,7 @@ class Roles extends AbstractModel
     /**
      * Duplicate a role with it access list
      *
-     * @return bool
+     * @return Roles
      */
     public function copy(): Roles
     {
@@ -221,5 +262,40 @@ class Roles extends AbstractModel
         }
 
         return $this;
+    }
+
+    /**
+     * Add inherit to a given role
+     *
+     * @param string $roleName
+     * @param string $roleToInherit
+     * @return boolean
+     */
+    public static function addInherit(string $roleName, string $roleToInherit) : bool
+    {
+        $role = self::findFirstByName($roleName);
+
+        if (!is_object($role)) {
+            throw new ModelException("Role '{$roleName}' does not exist in the role list");
+        }
+
+        $inheritExist = RolesInherits::count([
+            'conditions' => 'roles_name = ?0 and roles_inherit = ?1',
+            'bind' => [$role->name, $roleToInherit]
+        ]);
+
+        if (!$inheritExist) {
+            $rolesInHerits = new RolesInherits();
+            $rolesInHerits->roles_id = $role->getId();
+            $rolesInHerits->roles_inherit = (int) $roleToInherit;
+
+            if (!$rolesInHerits->save()) {
+                throw new ModelException((string) current($rolesInHerits->getMessages()));
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }

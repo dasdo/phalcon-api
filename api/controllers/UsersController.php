@@ -190,13 +190,13 @@ class UsersController extends \Baka\Auth\UsersController
      * @method PUT
      * @return Response
      */
-    public function updateNotifications($id) : Response
+    public function updateNotifications(int $id) : Response
     {
         //get the notification array
         //delete the current ones
         //iterate and save into users
 
-        return $this->response(['OK']);
+        return $this->response(['OK' => $id]);
     }
 
     /**
@@ -212,6 +212,7 @@ class UsersController extends \Baka\Auth\UsersController
         $validation = new Validation();
         $validation->add('app', new PresenceOf(['message' => _('App name is required.')]));
         $validation->add('deviceId', new PresenceOf(['message' => _('device ID is required.')]));
+        $msg = null;
 
         //validate this form for password
         $messages = $validation->validate($this->request->getPost());
@@ -226,7 +227,12 @@ class UsersController extends \Baka\Auth\UsersController
 
         //get the app source
         if ($source = Sources::getByTitle($app)) {
-            if (!$userSource = UserLinkedSources::findFirst(['conditions' => 'users_id = ?0 and source_users_id_text =?1', 'bind' => [$this->userData->getId(), $deviceId]])) {
+            $userSource = UserLinkedSources::findFirst([
+                'conditions' => 'users_id = ?0 and source_users_id_text = ?1',
+                'bind' => [$this->userData->getId(), $deviceId]
+            ]);
+
+            if (!is_object($userSource)) {
                 $userSource = new UserLinkedSources();
                 $userSource->users_id = $this->userData->getId();
                 $userSource->source_id = $source->getId();
@@ -235,7 +241,7 @@ class UsersController extends \Baka\Auth\UsersController
                 $userSource->source_username = $this->userData->displayname . ' ' . $app;
 
                 if (!$userSource->save()) {
-                    throw new UnprocessableEntityHttpException((string)current($userSource->getMessages()));
+                    throw new UnprocessableEntityHttpException((string) current($userSource->getMessages()));
                 }
 
                 $msg = 'User Device Associated';

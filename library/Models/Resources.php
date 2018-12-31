@@ -4,6 +4,16 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
+use Phalcon\Di;
+use Gewaer\Exception\ModelException;
+
+/**
+ * Class Resources
+ *
+ * @package Gewaer\Models
+ *
+ * @property \Phalcon\Di $di
+ */
 class Resources extends AbstractModel
 {
     /**
@@ -66,6 +76,40 @@ class Resources extends AbstractModel
                 ]
             ]
         );
+    }
+
+    /**
+     * is this name a resource?
+     *
+     * @param string $resourceName
+     * @return boolean
+     */
+    public static function isResource(string $resourceName) : bool
+    {
+        return (bool) self::count([
+            'conditions' => 'name = ?0 AND apps_id in (?1, ?2)',
+            'bind' => [$resourceName, Di::getDefault()->getApp()->getId(), Apps::GEWAER_DEFAULT_APP_ID]
+        ]);
+    }
+
+    /**
+     * Get a resource by it name
+     *
+     * @param  string  $resourceName
+     * @return Resources
+     */
+    public static function getByName(string $resourceName) : Resources
+    {
+        $resource = self::findFirst([
+            'conditions' => 'name = ?0 AND apps_id in (?1, ?2)',
+            'bind' => [$resourceName, Di::getDefault()->getApp()->getId(), Apps::GEWAER_DEFAULT_APP_ID]
+        ]);
+
+        if (!is_object($resource)) {
+            throw new ModelException(_('Resource ' . $resourceName . ' not found on this app ' . Di::getDefault()->getApp()->getId()));
+        }
+
+        return $resource;
     }
 
     /**

@@ -14,7 +14,7 @@ class AclProvider implements ServiceProviderInterface
      */
     public function register(DiInterface $container)
     {
-        $config = $container->getShared('config');
+        //$config = $container->getShared('config');
         $db = $container->getShared('db');
 
         $container->setShared(
