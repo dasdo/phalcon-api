@@ -43,8 +43,9 @@ class CompaniesController extends BaseCustomFieldsController
 
         $this->model->users_id = $this->userData->getId();
 
+        //my list of avaiable companies
         $this->additionalSearchFields = [
-            ['users_id', ':', $this->userData->getId()],
+            ['id', ':', implode('|', $this->userData->getAssociatedCompanies())],
         ];
     }
 }

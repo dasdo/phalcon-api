@@ -166,7 +166,7 @@ class Roles extends AbstractModel
     public static function isRole(string $roleName) : bool
     {
         return (bool) self::count([
-            'conditions' => 'name = ?0 AND apps_id = ?1 AND companies_id in (?2, ?3)',
+            'conditions' => 'name = ?0 AND apps_id in (?1, ?3) AND companies_id in (?2, ?3)',
             'bind' => [$roleName, Di::getDefault()->getAcl()->getApp()->getId(), Di::getDefault()->getAcl()->getCompany()->getId(), Apps::GEWAER_DEFAULT_APP_ID]
         ]);
     }
@@ -201,7 +201,7 @@ class Roles extends AbstractModel
     {
         return self::findFirst([
             'conditions' => 'id = ?0 AND companies_id in (?1, ?2) AND apps_id in (?3, ?4) AND is_deleted = 0',
-            'bind' => [$id, Di::getDefault()->getUserData()->default_company, Apps::GEWAER_DEFAULT_APP_ID, Di::getDefault()->getApp()->getId(), Apps::GEWAER_DEFAULT_APP_ID]
+            'bind' => [$id, Di::getDefault()->getUserData()->currentCompanyId(), Apps::GEWAER_DEFAULT_APP_ID, Di::getDefault()->getApp()->getId(), Apps::GEWAER_DEFAULT_APP_ID]
         ]);
     }
 
@@ -246,7 +246,7 @@ class Roles extends AbstractModel
         $this->name .= 'Copie';
         $this->scope = 1;
         $this->id = null;
-        $this->companies_id = $this->di->getUserData()->default_company;
+        $this->companies_id = $this->di->getUserData()->currentCompanyId();
         $this->apps_id = $this->di->getApp()->getId();
         $this->save();
 

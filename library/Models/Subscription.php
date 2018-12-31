@@ -133,11 +133,11 @@ class Subscription extends PhalconSubscription
     {
         $subscription = self::findFirst([
             'conditions' => 'companies_id = ?0 and apps_id = ?1 and is_deleted  = 0',
-            'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId()]
+            'bind' => [Di::getDefault()->getUserData()->currentCompanyId(), Di::getDefault()->getApp()->getId()]
         ]);
 
         if (!is_object($subscription)) {
-            throw new ServerErrorHttpException(_('No active subscription for this app ' . Di::getDefault()->getApp()->getId() . ' at the company ' . Di::getDefault()->getUserData()->default_company));
+            throw new ServerErrorHttpException(_('No active subscription for this app ' . Di::getDefault()->getApp()->getId() . ' at the company ' . Di::getDefault()->getUserData()->currentCompanyId()));
         }
 
         return $subscription;

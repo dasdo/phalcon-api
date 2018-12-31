@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\CompaniesCustomFields;
-use Phalcon\Http\Response;
 
 /**
  * Class LanguagesController
@@ -38,10 +37,10 @@ class CompaniesCustomFieldsController extends BaseController
     public function onConstruct()
     {
         $this->model = new CompaniesCustomFields();
-        $this->model->companies_id = $this->userData->default_company;
+        $this->model->companies_id = $this->userData->currentCompanyId();
 
         $this->additionalSearchFields = [
-            ['companies_id', ':', $this->userData->default_company],
+            ['companies_id', ':', $this->userData->currentCompanyId()],
         ];
     }
 }

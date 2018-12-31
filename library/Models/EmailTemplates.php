@@ -119,7 +119,7 @@ class EmailTemplates extends AbstractModel
     {
         $emailTemplate = self::findFirst([
             'conditions' => 'companies_id in (?0, 0) and app_id in (?1, 0) and name = ?2 and is_deleted = 0',
-            'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getConfig()->app->id, $name]
+            'bind' => [Di::getDefault()->getUserData()->currentCompanyId(), Di::getDefault()->getConfig()->app->id, $name]
         ]);
 
         if (!is_object($emailTemplate)) {

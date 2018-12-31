@@ -92,7 +92,7 @@ class UserCompanyApps extends \Baka\Auth\Models\UserCompanyApps
     {
         return self::findFirst([
             'conditions' => 'companies_id = ?0 and apps_id = ?1',
-            'bind' => [Di::getDefault()->getUserData()->defaultCompany->getId(), Di::getDefault()->getApp()->getId()]
+            'bind' => [Di::getDefault()->getUserData()->currentCompanyId(), Di::getDefault()->getApp()->getId()]
         ]);
     }
 }

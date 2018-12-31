@@ -60,7 +60,7 @@ class UsersController extends \Baka\Auth\UsersController
         } else {
             //admin get all the users for this company
             $this->additionalSearchFields = [
-                ['default_company', ':', $this->userData->default_company],
+                ['default_company', ':', $this->userData->currentCompanyId()],
             ];
         }
     }

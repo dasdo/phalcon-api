@@ -64,6 +64,7 @@ class Users extends \Baka\Auth\Models\Users
         $this->hasMany('id', 'Gewaer\Models\UserLinkedSources', 'users_id', ['alias' => 'sources']);
         $this->hasMany('id', 'Baka\Auth\Models\UsersAssociatedCompany', 'users_id', ['alias' => 'companies']);
         $this->hasOne('default_company', 'Gewaer\Models\Companies', 'id', ['alias' => 'defaultCompany']);
+        $this->hasOne('default_company', 'Gewaer\Models\Companies', 'id', ['alias' => 'currentCompany']);
 
         $this->hasOne(
             'id',
@@ -106,6 +107,15 @@ class Users extends \Baka\Auth\Models\Users
                     'bind' => [$this->di->getApp()->getId()],
                     'order' => 'id DESC'
                 ]
+            ]
+        );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\UsersAssociatedCompany',
+            'users_id',
+            [
+                'alias' => 'companies',
             ]
         );
     }
@@ -268,6 +278,40 @@ class Users extends \Baka\Auth\Models\Users
             $role = Roles::findFirstByName('Admins');
             $this->roles_id = $role->getId();
         }
+    }
+
+    /**
+     * Get an array of the associates companies Ids
+     *
+     * @return array
+     */
+    public function getAssociatedCompanies(): array
+    {
+        return array_map(function ($company) {
+            return $company['companies_id'];
+        }, $this->getCompanies(['columns' => 'companies_id'])->toArray());
+    }
+
+    /**
+     * What the current company the users is logged in with
+     * in this current session?
+     *
+     * @return integer
+     */
+    public function currentCompanyId(): int
+    {
+        return (int) $this->default_company;
+    }
+
+    /**
+     * What the current company brach the users is logged in with
+     * in this current session?
+     *
+     * @return integer
+     */
+    public function currentCompanyBranchId(): int
+    {
+        return (int) $this->default_company_branch;
     }
 
     /**

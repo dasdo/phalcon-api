@@ -155,16 +155,16 @@
         },
         {
             "name": "baka/http",
-            "version": "v0.1.3",
+            "version": "v0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bakaphp/http.git",
-                "reference": "10267ab652e796c683854895d6180d4652e106c8"
+                "reference": "bef8885bccb1f4bd4d4c9118dad04261f16530e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bakaphp/http/zipball/10267ab652e796c683854895d6180d4652e106c8",
-                "reference": "10267ab652e796c683854895d6180d4652e106c8",
+                "url": "https://api.github.com/repos/bakaphp/http/zipball/bef8885bccb1f4bd4d4c9118dad04261f16530e3",
+                "reference": "bef8885bccb1f4bd4d4c9118dad04261f16530e3",
                 "shasum": ""
             },
             "require": {
@@ -197,7 +197,7 @@
                 }
             ],
             "description": "Baka Http component",
-            "time": "2018-12-29T21:39:07+00:00"
+            "time": "2018-12-31T04:15:37+00:00"
         },
         {
             "name": "baka/mail",

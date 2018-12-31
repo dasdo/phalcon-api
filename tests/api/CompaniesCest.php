@@ -34,6 +34,33 @@ class CompaniesCest extends BakaRestTest
     }
 
     /**
+     * Get
+     *
+     * @param ApiTester $I
+     * @return void
+     */
+    public function getById(ApiTester $I) : void
+    {
+        $userData = $I->apiLogin();
+
+        $I->haveHttpHeader('Authorization', $userData->token);
+        $I->sendGet("/v1/{$this->model}");
+
+        $I->seeResponseIsSuccessful();
+        $response = $I->grabResponse();
+        $data = json_decode($response, true);
+
+        $I->sendGet("/v1/{$this->model}/" . $data[0]['id'] . '?relationships=branches');
+
+        $I->seeResponseIsSuccessful();
+        $response = $I->grabResponse();
+        $data = json_decode($response, true);
+
+        $I->assertTrue(isset($data['branches']));
+        $I->assertTrue(isset($data['id']));
+    }
+
+    /**
      * update
      *
      * @param ApiTester $I
