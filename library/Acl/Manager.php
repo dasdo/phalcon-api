@@ -576,6 +576,7 @@ class Manager extends Adapter
         /**
          * Update the access in access_list
          */
+       
         $role = RolesDB::getByName($roleName);
 
         if (!AccessListDB::exist($role, $resourceName, $accessName)) {

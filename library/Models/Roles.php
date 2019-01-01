@@ -180,12 +180,12 @@ class Roles extends AbstractModel
     public static function getByName(string $name): Roles
     {
         $role = self::findFirst([
-            'conditions' => 'name = ?0 AND apps_id = ?1 AND companies_id in (?2, ?3) AND is_deleted = 0',
+            'conditions' => 'name = ?0 AND apps_id in (?1, ?3) AND companies_id in (?2, ?3) AND is_deleted = 0',
             'bind' => [$name, Di::getDefault()->getAcl()->getApp()->getId(), Di::getDefault()->getAcl()->getCompany()->getId(), Apps::GEWAER_DEFAULT_APP_ID]
         ]);
 
         if (!is_object($role)) {
-            throw new ModelException(_('Roles ' . $role . ' not found on this app ' . Di::getDefault()->getAcl()->getApp()->getId() . ' AND Company' . Di::getDefault()->getAcl()->getCompany()->getId()));
+            throw new ModelException(_('Roles ' . $name . ' not found on this app ' . Di::getDefault()->getAcl()->getApp()->getId() . ' AND Company' . Di::getDefault()->getAcl()->getCompany()->getId()));
         }
 
         return $role;
@@ -297,5 +297,21 @@ class Roles extends AbstractModel
         }
 
         return false;
+    }
+
+    /**
+     * After update
+     *
+     * @return void
+     */
+    public function afterUpdate()
+    {
+        //if we deleted the role
+        if ($this->is_deleted) {
+            //delete
+            foreach ($this->accesList as $access) {
+                $access->softDelete();
+            }
+        }
     }
 }
