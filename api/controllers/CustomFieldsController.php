@@ -39,12 +39,12 @@ class CustomFieldsController extends BaseController
     {
         $this->model = new CustomFields();
         $this->model->users_id = $this->userData->getId();
-        $this->model->companies_id = $this->userData->default_company;
+        $this->model->companies_id = $this->userData->currentCompanyId();
         $this->model->apps_id = $this->app->getId();
 
         $this->additionalSearchFields = [
             ['apps_id', ':', $this->app->getId()],
-            ['companies_id', ':', $this->userData->default_company],
+            ['companies_id', ':', $this->userData->currentCompanyId()],
         ];
     }
 }

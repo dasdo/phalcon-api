@@ -99,7 +99,7 @@ class AppsPlansController extends BaseController
 
         $userSubscription = Subscription::findFirst([
             'conditions' => 'user_id = ?0 and companies_id = ?1 and apps_id = ?2 and is_deleted  = 0',
-            'bind' => [$this->userData->getId(), $this->userData->default_company, $this->app->getId()]
+            'bind' => [$this->userData->getId(), $this->userData->currentCompanyId(), $this->app->getId()]
         ]);
 
         if (is_object($userSubscription)) {
@@ -171,7 +171,7 @@ class AppsPlansController extends BaseController
 
         $userSubscription = Subscription::findFirst([
             'conditions' => 'user_id = ?0 and companies_id = ?1 and apps_id = ?2 and is_deleted  = 0',
-            'bind' => [$this->userData->getId(), $this->userData->default_company, $this->app->getId()]
+            'bind' => [$this->userData->getId(), $this->userData->currentCompanyId(), $this->app->getId()]
         ]);
 
         if (!is_object($userSubscription)) {
@@ -236,7 +236,7 @@ class AppsPlansController extends BaseController
 
         $userSubscription = Subscription::findFirst([
             'conditions' => 'user_id = ?0 and companies_id = ?1 and apps_id = ?2 and is_deleted  = 0',
-            'bind' => [$this->userData->getId(), $this->userData->default_company, $this->app->getId()]
+            'bind' => [$this->userData->getId(), $this->userData->currentCompanyId(), $this->app->getId()]
         ]);
 
         if (!is_object($userSubscription)) {

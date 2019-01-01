@@ -81,7 +81,7 @@ trait SubscriptionPlanLimitTrait
 
         $companyAppActivityLimit = UserCompanyAppsActivities::findFirst([
             'conditions' => 'companies_id = ?0 and apps_id = ?1 and key = ?2',
-            'bind' => [Di::getDefault()->getUserData()->default_company, Di::getDefault()->getApp()->getId(), $this->getSubcriptionPlanLimitModelKey()]
+            'bind' => [Di::getDefault()->getUserData()->currentCompanyId(), Di::getDefault()->getApp()->getId(), $this->getSubcriptionPlanLimitModelKey()]
         ]);
 
         if (is_object($companyAppActivityLimit)) {

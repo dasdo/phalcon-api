@@ -42,10 +42,10 @@ class CompaniesBranchesController extends BaseController
     {
         $this->model = new CompaniesBranches();
         $this->model->users_id = $this->userData->getId();
-        $this->model->companies_id = $this->userData->default_company;
+        $this->model->companies_id = $this->userData->currentCompanyId();
 
         $this->additionalSearchFields = [
-            ['companies_id', ':', $this->userData->default_company],
+            ['companies_id', ':', $this->userData->currentCompanyId()],
         ];
     }
 
@@ -64,7 +64,7 @@ class CompaniesBranchesController extends BaseController
         //find the info
         $company = $this->model->findFirst([
             'id = ?0 AND is_deleted = 0 and companies_id = ?1',
-            'bind' => [$id, $this->userData->default_company],
+            'bind' => [$id, $this->userData->currentCompanyId()],
         ]);
 
         //get relationship
@@ -122,7 +122,7 @@ class CompaniesBranchesController extends BaseController
     {
         $company = $this->model->findFirst([
             'id = ?0 AND is_deleted = 0 and companies_id = ?1',
-            'bind' => [$id, $this->userData->default_company],
+            'bind' => [$id, $this->userData->currentCompanyId()],
         ]);
 
         if ($company) {

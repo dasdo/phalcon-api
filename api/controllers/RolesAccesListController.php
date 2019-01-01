@@ -182,9 +182,6 @@ class RolesAccesListController extends BaseController
             throw new ServerErrorHttpException((string) current($role->getMessages()));
         }
 
-        //delete the acces list before hand
-        AccessList::deleteAllByRole($role);
-
         /**
          * we always deny permision, by default the canvas set allow to all
          * so we only have to take away permissions
@@ -225,9 +222,7 @@ class RolesAccesListController extends BaseController
             if ($this->softDelete == 1) {
                 $role->softDelete();
             } else {
-                //delete the acces list before hand
-                AccessList::deleteAllByRole($role);
-
+              
                 $role->delete();
             }
 
