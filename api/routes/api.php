@@ -184,4 +184,13 @@ $router->post('/webhook/payments', [
     ]
 ]);
 
+// Email Template Copy
+$router->post('/email-templates/{id}/copy', [
+    'Gewaer\Api\Controllers\EmailTemplatesController',
+    'copy',
+    'options' => [
+        'jwt' => false,
+    ]
+]);
+
 $router->mount();

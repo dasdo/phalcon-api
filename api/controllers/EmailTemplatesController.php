@@ -57,10 +57,10 @@ class EmailTemplatesController extends BaseController
      *
      * @method POST
      * @url /v1/data
-     *
+     * @param integer $id
      * @return \Phalcon\Http\Response
      */
-    public function create(): Response
+    public function copy(int $id): Response
     {
         $request = $this->request->getPost();
 
@@ -69,10 +69,7 @@ class EmailTemplatesController extends BaseController
         }
 
         //Find email template based on the basic parameters
-        $existingEmailTemplate = $this->model::findFirst([
-            'conditions' => 'users_id = ?0 and companies_id = ?1 and apps_id = ?2 and name = ?3 and is_deleted = 0',
-            'bind' => [$this->userData->getId(), $this->userData->default_company, $this->app->getId(), $request['name']]
-        ]);
+        $existingEmailTemplate = $this->model::findFirst($id);
 
         if (!is_object($existingEmailTemplate)) {
             throw new NotFoundHttpException('Email Template not found');

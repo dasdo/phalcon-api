@@ -19,7 +19,7 @@ class EmailTemplatesCest
         $testName = 'users-invite';
 
         $I->haveHttpHeader('Authorization', $userData->token);
-        $I->sendPost('/v1/' . $this->model, [
+        $I->sendPost('/v1/' . $this->model . '/3/copy', [
             'name' => $testName,
         ]);
 
