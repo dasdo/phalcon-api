@@ -222,7 +222,6 @@ class RolesAccesListController extends BaseController
             if ($this->softDelete == 1) {
                 $role->softDelete();
             } else {
-              
                 $role->delete();
             }
 
