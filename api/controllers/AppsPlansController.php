@@ -80,7 +80,7 @@ class AppsPlansController extends BaseController
         $messages = $validation->validate($this->request->getPost());
         if (count($messages)) {
             foreach ($messages as $message) {
-                throw new UnprocessableEntityHttpException($message);
+                throw new UnprocessableEntityHttpException((string) $message);
             }
         }
 
