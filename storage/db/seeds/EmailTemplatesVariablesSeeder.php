@@ -13,6 +13,7 @@ class EmailTemplatesVariablesSeeder extends AbstractSeed
                 'apps_id' => 0,
                 'system_modules_id' => 1,
                 'email_templates_id' => 1,
+                'name' => '{{example}}',
                 'value' => 'example_content',
                 'created_at' => date('Y-m-d H:i:s'),
             ]

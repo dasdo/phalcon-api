@@ -52,6 +52,12 @@ class EmailTemplatesVariables extends AbstractModel
 
     /**
      *
+     * @var string
+     */
+    public $name;
+
+    /**
+     *
      * @var integer
      */
     public $value;
