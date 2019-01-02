@@ -24,14 +24,14 @@ class EmailTemplatesVariablesController extends BaseController
      *
      * @var array
      */
-    protected $createFields = ['companies_id', 'apps_id', 'system_modules_id', 'users_id', 'email_templates_id', 'name', 'value'];
+    protected $createFields = ['companies_id', 'apps_id', 'system_modules_id', 'users_id', 'name', 'value'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['companies_id', 'apps_id', 'system_modules_id', 'users_id', 'email_templates_id', 'name', 'value'];
+    protected $updateFields = ['companies_id', 'apps_id', 'system_modules_id', 'users_id', 'name', 'value'];
 
     /**
      * set objects

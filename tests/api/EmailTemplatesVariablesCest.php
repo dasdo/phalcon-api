@@ -27,7 +27,6 @@ class EmailTemplatesVariablesCest
             'apps_id' => 1,
             'system_modules_id' => 1,
             'users_id' => 2,
-            'email_templates_id' => 1,
             'name' => $testName,
             'value' => $testName,
         ]);

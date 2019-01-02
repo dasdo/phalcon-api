@@ -46,12 +46,6 @@ class EmailTemplatesVariables extends AbstractModel
 
     /**
      *
-     * @var integer
-     */
-    public $email_templates_id;
-
-    /**
-     *
      * @var string
      */
     public $name;
@@ -85,13 +79,6 @@ class EmailTemplatesVariables extends AbstractModel
      */
     public function initialize()
     {
-        $this->hasMany(
-            'id',
-            'Gewaer\Models\EmailTemplatesVariables',
-            'system_modules_id',
-            ['alias' => 'template-variables']
-        );
-
         $this->belongsTo(
             'companies_id',
             'Gewaer\Models\Companies',

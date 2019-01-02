@@ -70,6 +70,13 @@ class SystemModules extends AbstractModel
      */
     public function initialize()
     {
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\EmailTemplatesVariables',
+            'system_modules_id',
+            ['alias' => 'template-variables']
+        );
+
         $this->belongsTo(
             'companies_id',
             'Gewaer\Models\Companies',
