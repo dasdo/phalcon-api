@@ -10,14 +10,14 @@ class UserInvitesSeeder extends AbstractSeed
             [
                 'users_id' => 1,
                 'companies_id' => 0,
-                'app_id' => 0,
+                'apps_id' => 0,
                 'name' => 'users-invite',
                 'template' => '{link}',
                 'created_at' => date('Y-m-d H:i:s'),
             ], [
                 'users_id' => 1,
                 'companies_id' => 0,
-                'app_id' => 0,
+                'apps_id' => 0,
                 'name' => 'users-registration',
                 'template' => '{link}',
                 'created_at' => date('Y-m-d H:i:s'),

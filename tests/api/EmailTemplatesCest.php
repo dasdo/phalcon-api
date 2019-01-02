@@ -22,7 +22,7 @@ class EmailTemplatesCest
         $I->sendPost('/v1/' . $this->model, [
             'users_id' => 3,
             'companies_id' => 3,
-            'app_id' => 1,
+            'apps_id' => 1,
             'name' => $testName,
             'template' => 'Hello!!! This is a test email template',
         ]);
