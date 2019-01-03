@@ -70,8 +70,8 @@ class EmailTemplatesController extends BaseController
 
         //Find email template based on the basic parameters
         $existingEmailTemplate = $this->model::findFirst([
-            'conditions' => 'id = ?0 and is_deleted = 0',
-            'bind' => [$id]
+            'conditions' => 'id = ?0 and companies_id = ?1 and apps_id = ?2 and is_deleted = 0',
+            'bind' => [$id, $this->userData->default_company, $this->app->getId()]
         ]);
 
         if (!is_object($existingEmailTemplate)) {
