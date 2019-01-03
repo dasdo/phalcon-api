@@ -15,7 +15,6 @@ use Gewaer\Exception\NotFoundHttpException;
 use Gewaer\Exception\ServerErrorHttpException;
 use Phalcon\Http\Response;
 use Gewaer\Models\EmailTemplates;
-use Gewaer\Models\Roles;
 use Exception;
 
 /**
@@ -88,7 +87,7 @@ class UsersInviteController extends BaseController
 
         $validation = new Validation();
         $validation->add('email', new PresenceOf(['message' => _('The email is required.')]));
-        $validation->add('role', new PresenceOf(['message' => _('The role is required.')]));
+        $validation->add('role_id', new PresenceOf(['message' => _('The role is required.')]));
 
         //validate this form for password
         $messages = $validation->validate($this->request->getPost());
@@ -102,7 +101,7 @@ class UsersInviteController extends BaseController
         $userInvite = $this->model;
         $userInvite->companies_id = $this->userData->default_company;
         $userInvite->app_id = $this->app->getId();
-        $userInvite->role_id = Roles::getByAppName($this->app->name . '.' . $request['role'], $this->userData->defaultCompany)->getId();
+        $userInvite->role_id = $request['role_id'];
         $userInvite->email = $request['email'];
         $userInvite->invite_hash = $random->base58();
         $userInvite->created_at = date('Y-m-d H:m:s');

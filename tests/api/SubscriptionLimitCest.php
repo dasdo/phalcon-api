@@ -53,7 +53,7 @@ class SubscriptionLimitCest
 
         $I->sendPost('/v1/users/invite', [
             'email' => $testEmail,
-            'role' => 'Canvas.Admins',
+            'role_id' => 1,
             'dont_send' => 1
         ]);
 
@@ -110,7 +110,7 @@ class SubscriptionLimitCest
 
         $I->sendPost('/v1/users/invite', [
             'email' => $testEmail,
-            'role' => 'Canvas.Admins',
+            'role_id' => 1,
             'dont_send' => 1
         ]);
 
