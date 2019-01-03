@@ -67,7 +67,8 @@ $defaultCrudRoutes = [
     'EmailTemplates' => 'email-templates',
     'CompaniesCustomFields' => 'companies-custom-fields',
     'CustomFieldsModules' => 'custom-fields-modules',
-    'CustomFields' => 'custom-fields'
+    'CustomFields' => 'custom-fields',
+    'EmailTemplatesVariables' => 'templates-variables',
 ];
 
 foreach ($defaultCrudRoutes as $key => $route) {
@@ -178,6 +179,15 @@ $router->get('/custom-fields-modules/{id}/fields', [
 $router->post('/webhook/payments', [
     'Gewaer\Api\Controllers\PaymentsController',
     'handleWebhook',
+    'options' => [
+        'jwt' => false,
+    ]
+]);
+
+// Email Template Copy
+$router->post('/email-templates/{id}/copy', [
+    'Gewaer\Api\Controllers\EmailTemplatesController',
+    'copy',
     'options' => [
         'jwt' => false,
     ]

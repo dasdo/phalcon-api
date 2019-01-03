@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\EmailTemplates;
+use Gewaer\Exception\NotFoundHttpException;
+use Gewaer\Exception\UnprocessableEntityHttpException;
+use Phalcon\Security\Random;
+use Phalcon\Http\Response;
 
 /**
  * Class LanguagesController
@@ -25,14 +29,14 @@ class EmailTemplatesController extends BaseController
      *
      * @var array
      */
-    protected $createFields = ['users_id', 'companies_id', 'app_id', 'name', 'template'];
+    protected $createFields = ['users_id', 'companies_id', 'apps_id', 'name', 'template'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['users_id', 'companies_id', 'app_id', 'name', 'template'];
+    protected $updateFields = ['users_id', 'companies_id', 'apps_id', 'name', 'template'];
 
     /**
      * set objects
@@ -46,5 +50,49 @@ class EmailTemplatesController extends BaseController
             ['is_deleted', ':', '0'],
             ['companies_id', ':', '0|' . $this->userData->currentCompanyId()],
         ];
+    }
+
+    /**
+     * Add a new by copying a specific email template based on
+     *
+     * @method POST
+     * @url /v1/data
+     * @param integer $id
+     * @return \Phalcon\Http\Response
+     */
+    public function copy(int $id): Response
+    {
+        $request = $this->request->getPost();
+
+        if (empty($request)) {
+            $request = $this->request->getJsonRawBody(true);
+        }
+
+        //Find email template based on the basic parameters
+        $existingEmailTemplate = $this->model::findFirst([
+            'conditions' => 'id = ?0 and companies_id = ?1 and apps_id = ?2 and is_deleted = 0',
+            'bind' => [$id, $this->userData->default_company, $this->app->getId()]
+        ]);
+
+        if (!is_object($existingEmailTemplate)) {
+            throw new NotFoundHttpException('Email Template not found');
+        }
+
+        $random = new Random();
+        $randomInstance = $random->base58();
+
+        $request['users_id'] = $existingEmailTemplate->users_id;
+        $request['companies_id'] = $existingEmailTemplate->companies_id;
+        $request['apps_id'] = $existingEmailTemplate->apps_id;
+        $request['name'] = $existingEmailTemplate->name . '-' . $randomInstance;
+        $request['template'] = $existingEmailTemplate->template;
+
+        //try to save all the fields we allow
+        if ($this->model->save($request, $this->createFields)) {
+            return $this->response($this->model->toArray());
+        } else {
+            //if not thorw exception
+            throw new UnprocessableEntityHttpException((string) current($this->model->getMessages()));
+        }
     }
 }

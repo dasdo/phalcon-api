@@ -1,26 +1,34 @@
 <?php 
 
-class EmailTemplatesCest
+use Phalcon\Security\Random;
+
+class EmailTemplatesVariablesCest
 {
     /**
      * Model
      */
-    protected $model = 'email-templates';
+    protected $model = 'templates-variables';
 
     /**
-     * Create a new Email Templates
+     * Create a new Email Templates Variable
      *
      * @param ApiTester $I
      * @return void
      */
-    public function insertTemplate(ApiTester $I) : void
+    public function insertTemplateVariable(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
-        $testName = 'users-invite';
+        $random = new Random();
+        $testName = 'test' . $random->base58();
 
         $I->haveHttpHeader('Authorization', $userData->token);
-        $I->sendPost('/v1/' . $this->model . '/3/copy', [
+        $I->sendPost('/v1/' . $this->model, [
+            'companies_id' => 3,
+            'apps_id' => 1,
+            'system_modules_id' => 1,
+            'users_id' => 2,
             'name' => $testName,
+            'value' => $testName,
         ]);
 
         $I->seeResponseIsSuccessful();
@@ -30,19 +38,19 @@ class EmailTemplatesCest
         //Lets extract the main name of the created instance
         $baseName = substr($data['name'], 0, 12);
 
-        $I->assertTrue($baseName == $testName);
+        $I->assertTrue($data['name'] == $testName);
     }
 
     /**
-     * update a Email Template
+     * update a Email Templates Variable
      *
      * @param ApiTester $I
      * @return void
      */
-    public function updateTemplate(ApiTester $I) : void
+    public function updateTemplateVariable(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
-        $updatedName = 'Updated Test Name 2';
+        $updatedName = 'Updated Test Value 2';
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendGet("/v1/{$this->model}");
@@ -52,13 +60,13 @@ class EmailTemplatesCest
         $data = json_decode($response, true);
 
         $I->sendPUT('/v1/' . $this->model . '/' . $data[count($data) - 1]['id'], [
-            'template' => $updatedName
+            'value' => $updatedName
         ]);
 
         $I->seeResponseIsSuccessful();
         $response = $I->grabResponse();
         $data = json_decode($response, true);
 
-        $I->assertTrue($data['template'] == $updatedName);
+        $I->assertTrue($data['value'] == $updatedName);
     }
 }

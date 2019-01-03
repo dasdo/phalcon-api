@@ -78,6 +78,6 @@ class SubscriptionPlanAcl extends AbstractMigration
         }
 
         $table = $this->table('email_templates');
-        $table->addIndex(['companies_id', 'app_id', 'name'], ['name' => 'company_id_app_id_name', 'unique' => true])->save();
+        $table->addIndex(['companies_id', 'apps_id', 'name'], ['name' => 'company_id_app_id_name', 'unique' => true])->save();
     }
 }

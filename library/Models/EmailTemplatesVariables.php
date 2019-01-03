@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-use Gewaer\Exception\UnprocessableEntityHttpException;
-use Phalcon\Di;
-
 /**
  * Classs for Email Templates
  * @property Users $userData
@@ -15,7 +12,7 @@ use Phalcon\Di;
  * @property \Phalcon\DI $di
  *
  */
-class EmailTemplates extends AbstractModel
+class EmailTemplatesVariables extends AbstractModel
 {
     /**
      *
@@ -33,11 +30,23 @@ class EmailTemplates extends AbstractModel
      *
      * @var integer
      */
-    public $app_id;
+    public $apps_id;
 
     /**
      *
      * @var integer
+     */
+    public $system_modules_id;
+
+    /**
+     *
+     * @var string
+     */
+    public $users_id;
+
+    /**
+     *
+     * @var string
      */
     public $name;
 
@@ -45,13 +54,7 @@ class EmailTemplates extends AbstractModel
      *
      * @var integer
      */
-    public $template;
-
-    /**
-     *
-     * @var string
-     */
-    public $users_id;
+    public $value;
 
     /**
      *
@@ -97,7 +100,14 @@ class EmailTemplates extends AbstractModel
             ['alias' => 'user']
         );
 
-        $this->setSource('email_templates');
+        $this->belongsTo(
+            'system_modules_id',
+            'Gewaer\Models\SystemModules',
+            'id',
+            ['alias' => 'system-modules']
+        );
+
+        $this->setSource('email_templates_variables');
     }
 
     /**
@@ -107,25 +117,6 @@ class EmailTemplates extends AbstractModel
      */
     public function getSource(): string
     {
-        return 'email_templates';
-    }
-
-    /**
-     * Retrieve email template by name
-     * @param $name
-     * @return EmailTemplates
-     */
-    public static function getByName(string $name): EmailTemplates
-    {
-        $emailTemplate = self::findFirst([
-            'conditions' => 'companies_id in (?0, 0) and apps_id in (?1, 0) and name = ?2 and is_deleted = 0',
-            'bind' => [Di::getDefault()->getUserData()->currentCompanyId(), Di::getDefault()->getConfig()->app->id, $name]
-        ]);
-
-        if (!is_object($emailTemplate)) {
-            throw new UnprocessableEntityHttpException(_('No template ' . $name . ' found for this app ' . Di::getDefault()->getApp()->name));
-        }
-
-        return $emailTemplate;
+        return 'email_templates_variables';
     }
 }
