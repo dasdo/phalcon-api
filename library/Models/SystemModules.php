@@ -77,6 +77,13 @@ class SystemModules extends AbstractModel
             ['alias' => 'template-variables']
         );
 
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\Webhooks',
+            'system_modules_id',
+            ['alias' => 'webhooks']
+        );
+
         $this->belongsTo(
             'companies_id',
             'Gewaer\Models\Companies',

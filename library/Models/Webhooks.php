@@ -71,6 +71,27 @@ class Webhooks extends AbstractModel
     public function initialize()
     {
         $this->setSource('webhooks');
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\UserWebhooks',
+            'webhooks_id',
+            ['alias' => 'user-webhooks']
+        );
+
+        $this->belongsTo(
+            'system_modules_id',
+            'Gewaer\Models\SystemModules',
+            'id',
+            ['alias' => 'modules']
+        );
+
+        $this->belongsTo(
+            'apps_id',
+            'Gewaer\Models\Apps',
+            'id',
+            ['alias' => 'apps']
+        );
     }
 
     /**

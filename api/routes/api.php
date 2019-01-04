@@ -69,6 +69,8 @@ $defaultCrudRoutes = [
     'CustomFieldsModules' => 'custom-fields-modules',
     'CustomFields' => 'custom-fields',
     'EmailTemplatesVariables' => 'templates-variables',
+    'webhooks',
+    'UserWebhooks' => 'user-webhooks'
 ];
 
 foreach ($defaultCrudRoutes as $key => $route) {

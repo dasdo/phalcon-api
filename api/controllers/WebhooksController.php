@@ -43,7 +43,7 @@ class WebhooksController extends BaseController
         $this->model = new Webhooks();
         $this->additionalSearchFields = [
             ['is_deleted', ':', '0'],
-            ['apps_id', ':', $this->$this->app->getId()],
+            ['apps_id', ':', $this->app->getId()],
         ];
     }
 }

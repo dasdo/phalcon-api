@@ -118,6 +118,13 @@ class Users extends \Baka\Auth\Models\Users
                 'alias' => 'companies',
             ]
         );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\UserWebhooks',
+            'users_id',
+            ['alias' => 'user-webhooks']
+        );
     }
 
     /**
