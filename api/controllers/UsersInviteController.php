@@ -116,7 +116,7 @@ class UsersInviteController extends BaseController
 
         // Lets send the mail
 
-        $invitationUrl = $this->config->app->frontEndUrl . '/users/signup?hash=' . $userInvite->invite_hash;
+        $invitationUrl = $this->config->app->frontEndUrl . '/users/invites/' . $userInvite->invite_hash;
 
         if (!defined('API_TESTS')) {
             $subject = _('You have been invited!');
