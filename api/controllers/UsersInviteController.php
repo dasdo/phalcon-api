@@ -15,7 +15,6 @@ use Gewaer\Exception\UnprocessableEntityHttpException;
 use Gewaer\Exception\NotFoundHttpException;
 use Gewaer\Exception\ServerErrorHttpException;
 use Phalcon\Http\Response;
-use Gewaer\Models\EmailTemplates;
 use Exception;
 
 /**
@@ -110,9 +109,6 @@ class UsersInviteController extends BaseController
         if (!$userInvite->save()) {
             throw new UnprocessableEntityHttpException((string) current($userInvite->getMessages()));
         }
-
-        //Fetch email template of user
-        $emailTemplate = EmailTemplates::getByName('users-invite');
 
         // Lets send the mail
 
