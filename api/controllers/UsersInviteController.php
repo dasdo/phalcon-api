@@ -116,15 +116,14 @@ class UsersInviteController extends BaseController
 
         // Lets send the mail
 
-        $invitationUrl = $this->config->app->frontEndUrl . 'user-invite/' . $userInvite->invite_hash;
+        $invitationUrl = $this->config->app->frontEndUrl . '/users/signup?hash=' . $userInvite->invite_hash;
 
         if (!defined('API_TESTS')) {
             $subject = _('You have been invited!');
             $this->mail
             ->to($userInvite->email)
             ->subject($subject)
-            ->params($invitationUrl)
-            ->content($emailTemplate->template)
+            ->content($invitationUrl)
             ->sendNow();
         }
 
@@ -190,6 +189,10 @@ class UsersInviteController extends BaseController
 
             //signup
             $newUser->signup();
+            if (!defined('API_TESTS')) {
+                $usersInvite->is_deleted = 1;
+                $usersInvite->update();
+            }
 
             $this->db->commit();
         } catch (Exception $e) {
