@@ -24,14 +24,14 @@ class WebhooksController extends BaseController
      *
      * @var array
      */
-    protected $createFields = ['system_modules_id', 'apps_id', 'name', 'description', 'action', 'format'];
+    protected $createFields = ['system_modules_id', 'name', 'description', 'action', 'format'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['system_modules_id', 'apps_id', 'name', 'description', 'action', 'format'];
+    protected $updateFields = ['system_modules_id', 'name', 'description', 'action', 'format'];
 
     /**
      * set objects
@@ -41,6 +41,7 @@ class WebhooksController extends BaseController
     public function onConstruct()
     {
         $this->model = new Webhooks();
+        $this->model->apps_id = $this->app->getId();
         $this->additionalSearchFields = [
             ['is_deleted', ':', '0'],
             ['apps_id', ':', $this->app->getId()],

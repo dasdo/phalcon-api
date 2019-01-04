@@ -24,14 +24,14 @@ class UserWebhooksController extends BaseController
      *
      * @var array
      */
-    protected $createFields = ['webhooks_id', 'apps_id', 'users_id', 'companies_id', 'url', 'method', 'format'];
+    protected $createFields = ['webhooks_id', 'url', 'method', 'format'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['webhooks_id', 'apps_id', 'users_id', 'companies_id', 'url', 'method', 'format'];
+    protected $updateFields = ['webhooks_id', 'url', 'method', 'format'];
 
     /**
      * set objects
@@ -41,6 +41,9 @@ class UserWebhooksController extends BaseController
     public function onConstruct()
     {
         $this->model = new UserWebhooks();
+        $this->model->users_id = $this->userData->getId();
+        $this->model->companies_id = $this->userData->currentCompanyId();
+        $this->model->apps_id = $this->app->getId();
         $this->additionalSearchFields = [
             ['is_deleted', ':', '0'],
             ['apps_id', ':', $this->app->getId()],
