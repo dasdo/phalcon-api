@@ -6,6 +6,7 @@ namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\UsersInvite;
 use Gewaer\Models\Users;
+use Gewaer\Models\Roles;
 use Phalcon\Security\Random;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
@@ -101,7 +102,7 @@ class UsersInviteController extends BaseController
         $userInvite = $this->model;
         $userInvite->companies_id = $this->userData->default_company;
         $userInvite->app_id = $this->app->getId();
-        $userInvite->role_id = $request['role_id'];
+        $userInvite->role_id = Roles::getById((int)$request['role_id']);
         $userInvite->email = $request['email'];
         $userInvite->invite_hash = $random->base58();
         $userInvite->created_at = date('Y-m-d H:m:s');
