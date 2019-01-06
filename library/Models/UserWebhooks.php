@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class SystemModules extends AbstractModel
+class UserWebhooks extends AbstractModel
 {
     /**
      *
@@ -15,19 +15,7 @@ class SystemModules extends AbstractModel
      *
      * @var integer
      */
-    public $name;
-
-    /**
-     *
-     * @var integer
-     */
-    public $slug;
-
-    /**
-     *
-     * @var string
-     */
-    public $model_name;
+    public $webhooks_id;
 
     /**
      *
@@ -39,13 +27,37 @@ class SystemModules extends AbstractModel
      *
      * @var integer
      */
-    public $parents_id;
+    public $users_id;
 
     /**
      *
      * @var integer
      */
-    public $menu_order;
+    public $companies_id;
+
+    /**
+     *
+     * @var string
+     */
+    public $url;
+
+    /**
+     *
+     * @var string
+     */
+    public $method;
+
+    /**
+     *
+     * @var string
+     */
+    public $format;
+
+    /**
+     *
+     * @var integer
+     */
+    public $is_deleted;
 
     /**
      *
@@ -60,52 +72,39 @@ class SystemModules extends AbstractModel
     public $updated_at;
 
     /**
-     *
-     * @var integer
-     */
-    public $is_deleted;
-
-    /**
      * Initialize method for model.
      */
     public function initialize()
     {
-        $this->hasMany(
+        $this->setSource('user_webhooks');
+
+        $this->belongsTo(
+            'webhooks_id',
+            'Gewaer\Models\Webhooks',
             'id',
-            'Gewaer\Models\EmailTemplatesVariables',
-            'system_modules_id',
-            ['alias' => 'template-variables']
+            ['alias' => 'webhooks']
         );
 
-        $this->hasMany(
+        $this->belongsTo(
+            'users_id',
+            'Gewaer\Models\Users',
             'id',
-            'Gewaer\Models\Webhooks',
-            'system_modules_id',
-            ['alias' => 'webhooks']
+            ['alias' => 'users']
         );
 
         $this->belongsTo(
             'companies_id',
             'Gewaer\Models\Companies',
             'id',
-            ['alias' => 'company']
+            ['alias' => 'companies']
         );
 
         $this->belongsTo(
             'apps_id',
             'Gewaer\Models\Apps',
             'id',
-            ['alias' => 'app']
+            ['alias' => 'apps']
         );
-
-        $this->belongsTo(
-            'company_branches_id',
-            'Gewaer\Models\CompanyBranches',
-            'id',
-            ['alias' => 'companyBranch']
-        );
-
-        $this->setSource('user_company_apps_activities');
     }
 
     /**
@@ -115,6 +114,6 @@ class SystemModules extends AbstractModel
      */
     public function getSource(): string
     {
-        return 'user_company_apps_activities';
+        return 'user_webhooks';
     }
 }

@@ -188,6 +188,13 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
                 ]
             ]
         );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\UserWebhooks',
+            'companies_id',
+            ['alias' => 'user-webhooks']
+        );
     }
 
     /**

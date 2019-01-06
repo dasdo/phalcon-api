@@ -69,6 +69,8 @@ $defaultCrudRoutes = [
     'CustomFieldsModules' => 'custom-fields-modules',
     'CustomFields' => 'custom-fields',
     'EmailTemplatesVariables' => 'templates-variables',
+    'webhooks',
+    'UserWebhooks' => 'user-webhooks'
 ];
 
 foreach ($defaultCrudRoutes as $key => $route) {
@@ -159,7 +161,7 @@ $router->post('/users-invite/{hash}', [
     ]
 ]);
 
-$router->get('/users-invite/{hash}', [
+$router->get('/users-invite/{hash}/validate', [
     'Gewaer\Api\Controllers\UsersInviteController',
     'getByHash',
     'options' => [

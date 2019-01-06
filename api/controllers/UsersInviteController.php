@@ -6,6 +6,7 @@ namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\UsersInvite;
 use Gewaer\Models\Users;
+use Gewaer\Models\Roles;
 use Phalcon\Security\Random;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
@@ -14,7 +15,6 @@ use Gewaer\Exception\UnprocessableEntityHttpException;
 use Gewaer\Exception\NotFoundHttpException;
 use Gewaer\Exception\ServerErrorHttpException;
 use Phalcon\Http\Response;
-use Gewaer\Models\EmailTemplates;
 use Exception;
 
 /**
@@ -101,7 +101,7 @@ class UsersInviteController extends BaseController
         $userInvite = $this->model;
         $userInvite->companies_id = $this->userData->default_company;
         $userInvite->app_id = $this->app->getId();
-        $userInvite->role_id = $request['role_id'];
+        $userInvite->role_id = Roles::getById((int)$request['role_id']);
         $userInvite->email = $request['email'];
         $userInvite->invite_hash = $random->base58();
         $userInvite->created_at = date('Y-m-d H:m:s');
@@ -110,20 +110,16 @@ class UsersInviteController extends BaseController
             throw new UnprocessableEntityHttpException((string) current($userInvite->getMessages()));
         }
 
-        //Fetch email template of user
-        $emailTemplate = EmailTemplates::getByName('users-invite');
-
         // Lets send the mail
 
-        $invitationUrl = $this->config->app->frontEndUrl . 'user-invite/' . $userInvite->invite_hash;
+        $invitationUrl = $this->config->app->frontEndUrl . '/users/invites/' . $userInvite->invite_hash;
 
         if (!defined('API_TESTS')) {
             $subject = _('You have been invited!');
             $this->mail
             ->to($userInvite->email)
             ->subject($subject)
-            ->params($invitationUrl)
-            ->content($emailTemplate->template)
+            ->content($invitationUrl)
             ->sendNow();
         }
 
@@ -189,6 +185,10 @@ class UsersInviteController extends BaseController
 
             //signup
             $newUser->signup();
+            if (!defined('API_TESTS')) {
+                $usersInvite->is_deleted = 1;
+                $usersInvite->update();
+            }
 
             $this->db->commit();
         } catch (Exception $e) {

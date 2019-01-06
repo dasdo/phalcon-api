@@ -85,7 +85,7 @@ class UsersInviteCest
         $hash = $data['invite_hash'];
 
         //Lets get the recently created users invite
-        $I->sendGet('/v1/users-invite/' . $hash);
+        $I->sendGet('/v1/users-invite/' . $hash . '/validate');
 
         $I->seeResponseIsSuccessful();
         $response = $I->grabResponse();
