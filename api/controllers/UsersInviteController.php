@@ -16,6 +16,7 @@ use Gewaer\Exception\NotFoundHttpException;
 use Gewaer\Exception\ServerErrorHttpException;
 use Phalcon\Http\Response;
 use Exception;
+use Baka\Auth\Models\Sessions;
 
 /**
  * Class LanguagesController
@@ -24,6 +25,7 @@ use Exception;
  * @property Config $config
  * @property Apps $app
  * @property Mail $mail
+ * @property Auth $auth
  * @package Gewaer\Api\Controllers
  *
  */
@@ -185,16 +187,48 @@ class UsersInviteController extends BaseController
 
             //signup
             $newUser->signup();
-            if (!defined('API_TESTS')) {
-                $usersInvite->is_deleted = 1;
-                $usersInvite->update();
-            }
 
             $this->db->commit();
         } catch (Exception $e) {
             $this->db->rollback();
 
             throw new UnprocessableEntityHttpException($e->getMessage());
+        }
+
+        //Lets login the new user
+        $userIp = !defined('API_TESTS') ? $this->request->getClientAddress() : '127.0.0.1';
+
+        $random = new \Phalcon\Security\Random();
+
+        $password = ltrim(trim($request['password']));
+
+        $userData = Users::login($newUser->email, $password, 1, 0, $userIp);
+
+        $sessionId = $random->uuid();
+
+        //save in user logs
+        $payload = [
+            'sessionId' => $sessionId,
+            'email' => $userData->getEmail(),
+            'iat' => time(),
+        ];
+
+        $token = $this->auth->make($payload);
+
+        //start session
+        $session = new Sessions();
+        $session->start($userData, $sessionId, $token, $userIp, 1);
+
+        if (!defined('API_TESTS')) {
+            $usersInvite->is_deleted = 1;
+            $usersInvite->update();
+
+            return $this->response([
+                'token' => $token,
+                'time' => date('Y-m-d H:i:s'),
+                'expires' => date('Y-m-d H:i:s', time() + $this->config->jwt->payload->exp),
+                'id' => $userData->getId(),
+            ]);
         }
 
         return $this->response($newUser);
