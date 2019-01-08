@@ -94,6 +94,20 @@ class CustomFields extends AbstractModel
             'id',
             ['alias' => 'companies']
         );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\CustomFieldsSettings',
+            'custom_fields_id',
+            ['alias' => 'fields-settings']
+        );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\CustomFieldsValues',
+            'custom_fields_id',
+            ['alias' => 'fields-values']
+        );
     }
 
     /**

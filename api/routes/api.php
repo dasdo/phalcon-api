@@ -155,18 +155,12 @@ $router->post('/users/invite', [
 
 $router->post('/users-invite/{hash}', [
     'Gewaer\Api\Controllers\UsersInviteController',
-    'processUserInvite',
-    'options' => [
-        'jwt' => false,
-    ]
+    'processUserInvite'
 ]);
 
 $router->get('/users-invite/{hash}/validate', [
     'Gewaer\Api\Controllers\UsersInviteController',
-    'getByHash',
-    'options' => [
-        'jwt' => false,
-    ]
+    'getByHash'
 ]);
 
 //Custom Fields specific routes
