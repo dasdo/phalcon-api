@@ -25,6 +25,7 @@ use Baka\Auth\Models\Sessions;
  * @property Config $config
  * @property Apps $app
  * @property Mail $mail
+ * @property Auth $auth
  * @package Gewaer\Api\Controllers
  *
  */
