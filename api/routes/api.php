@@ -158,7 +158,7 @@ $router->post('/users-invite/{hash}', [
     'processUserInvite'
 ]);
 
-$router->get('/users-invite/{hash}/validate', [
+$router->get('/users-invite/validate/{hash}', [
     'Gewaer\Api\Controllers\UsersInviteController',
     'getByHash'
 ]);
