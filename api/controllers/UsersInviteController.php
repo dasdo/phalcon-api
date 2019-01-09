@@ -133,7 +133,7 @@ class UsersInviteController extends BaseController
         $invitationUrl = $this->config->app->frontEndUrl . '/users/invites/' . $userInvite->invite_hash;
 
         if (is_object($userExists)) {
-            $invitationUrl = $this->config->app->frontEndUrl . '/users/invites/' . $userInvite->invite_hash . '/confirm';
+            $invitationUrl = $this->config->app->frontEndUrl . '/users/link/' . $userInvite->invite_hash;
         }
 
         // Lets send the mail
@@ -238,11 +238,30 @@ class UsersInviteController extends BaseController
         }
 
         //Lets login the new user
+        $authInfo = $this->loginInvitedUser($usersInvite->email, $password);
+
+        if (!defined('API_TESTS')) {
+            $usersInvite->is_deleted = 1;
+            $usersInvite->update();
+
+            return $this->response($authInfo);
+        }
+
+        return $this->response($newUser);
+    }
+
+    /**
+     * Login invited user
+     * @param string
+     * @return array
+     */
+    public function loginInvitedUser(string $email, string $password): array
+    {
         $userIp = !defined('API_TESTS') ? $this->request->getClientAddress() : '127.0.0.1';
 
         $random = new \Phalcon\Security\Random();
 
-        $userData = Users::login($usersInvite->email, $password, 1, 0, $userIp);
+        $userData = Users::login($email, $password, 1, 0, $userIp);
 
         $sessionId = $random->uuid();
 
@@ -259,18 +278,11 @@ class UsersInviteController extends BaseController
         $session = new Sessions();
         $session->start($userData, $sessionId, $token, $userIp, 1);
 
-        if (!defined('API_TESTS')) {
-            $usersInvite->is_deleted = 1;
-            $usersInvite->update();
-
-            return $this->response([
-                'token' => $token,
-                'time' => date('Y-m-d H:i:s'),
-                'expires' => date('Y-m-d H:i:s', time() + $this->config->jwt->payload->exp),
-                'id' => $userData->getId(),
-            ]);
-        }
-
-        return $this->response($newUser);
+        return [
+            'token' => $token,
+            'time' => date('Y-m-d H:i:s'),
+            'expires' => date('Y-m-d H:i:s', time() + $this->config->jwt->payload->exp),
+            'id' => $userData->getId(),
+        ];
     }
 }
