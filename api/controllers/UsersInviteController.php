@@ -6,6 +6,7 @@ namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\UsersInvite;
 use Gewaer\Models\Users;
+use Gewaer\Models\UsersAssociatedCompany;
 use Gewaer\Models\Roles;
 use Phalcon\Security\Random;
 use Phalcon\Validation;
@@ -17,6 +18,7 @@ use Gewaer\Exception\ServerErrorHttpException;
 use Phalcon\Http\Response;
 use Exception;
 use Baka\Auth\Models\Sessions;
+use Gewaer\Exception\ModelException;
 
 /**
  * Class LanguagesController
@@ -99,11 +101,21 @@ class UsersInviteController extends BaseController
             }
         }
 
+        //Check if user was already was invited to current company and return message
+        $invitedUser = $this->model::findFirst([
+            'conditions' => 'email = ?0 and companies_id = ?1 and role_id = ?2',
+            'bind' => [$request['email'], $this->userData->default_company, $request['role_id']]
+        ]);
+
+        if (is_object($invitedUser)) {
+            throw new ModelException('User already invited to this company and added with this role');
+        }
+
         //Save data to users_invite table and generate a hash for the invite
         $userInvite = $this->model;
         $userInvite->companies_id = $this->userData->default_company;
         $userInvite->app_id = $this->app->getId();
-        $userInvite->role_id = Roles::getById((int)$request['role_id']);
+        $userInvite->role_id = Roles::getById((int)$request['role_id'])->id;
         $userInvite->email = $request['email'];
         $userInvite->invite_hash = $random->base58();
         $userInvite->created_at = date('Y-m-d H:m:s');
@@ -135,6 +147,7 @@ class UsersInviteController extends BaseController
     public function processUserInvite(string $hash): Response
     {
         $request = $this->request->getPost();
+        $password = ltrim(trim($request['password']));
 
         if (empty($request)) {
             $request = $this->request->getJsonRawBody(true);
@@ -170,29 +183,48 @@ class UsersInviteController extends BaseController
             throw new NotFoundHttpException('Users Invite not found');
         }
 
-        $newUser = new Users();
-        $newUser->firstname = $request['firstname'];
-        $newUser->lastname = $request['lastname'];
-        $newUser->displayname = $request['displayname'];
-        $newUser->password = ltrim(trim($request['password']));
-        $newUser->email = $usersInvite->email;
-        $newUser->user_active = 1;
-        $newUser->roles_id = $usersInvite->role_id;
-        $newUser->created_at = date('Y-m-d H:m:s');
-        $newUser->default_company = $usersInvite->companies_id;
-        $newUser->default_company_branch = $usersInvite->company->branch->getId();
+        //Check if user already exists
+        $userExists = Users::findFirst([
+            'conditions' => 'email = ?0 and is_deleted = 0',
+            'bind' => [$usersInvite->email]
+        ]);
 
-        try {
-            $this->db->begin();
+        if (is_object($userExists)) {
+            $newUser = new UsersAssociatedCompany;
+            $newUser->users_id = $userExists->id;
+            $newUser->companies_id = $userExists->default_company;
+            $newUser->identify_id = $userExists->roles_id;
+            $newUser->user_active = 1;
+            $newUser->user_role = Roles::getById((int)$userExists->roles_id)->name;
 
-            //signup
-            $newUser->signup();
+            if (!$newUser->save()) {
+                throw new UnprocessableEntityHttpException((string) current($newUser->getMessages()));
+            }
+        } else {
+            $newUser = new Users();
+            $newUser->firstname = $request['firstname'];
+            $newUser->lastname = $request['lastname'];
+            $newUser->displayname = $request['displayname'];
+            $newUser->password = $password;
+            $newUser->email = $usersInvite->email;
+            $newUser->user_active = 1;
+            $newUser->roles_id = $usersInvite->role_id;
+            $newUser->created_at = date('Y-m-d H:m:s');
+            $newUser->default_company = $usersInvite->companies_id;
+            $newUser->default_company_branch = $usersInvite->company->branch->getId();
 
-            $this->db->commit();
-        } catch (Exception $e) {
-            $this->db->rollback();
+            try {
+                $this->db->begin();
 
-            throw new UnprocessableEntityHttpException($e->getMessage());
+                //signup
+                $newUser->signup();
+
+                $this->db->commit();
+            } catch (Exception $e) {
+                $this->db->rollback();
+
+                throw new UnprocessableEntityHttpException($e->getMessage());
+            }
         }
 
         //Lets login the new user
@@ -200,9 +232,7 @@ class UsersInviteController extends BaseController
 
         $random = new \Phalcon\Security\Random();
 
-        $password = ltrim(trim($request['password']));
-
-        $userData = Users::login($newUser->email, $password, 1, 0, $userIp);
+        $userData = Users::login($usersInvite->email, $password, 1, 0, $userIp);
 
         $sessionId = $random->uuid();
 
