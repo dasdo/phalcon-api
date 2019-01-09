@@ -124,30 +124,36 @@ class UsersInviteController extends BaseController
             throw new UnprocessableEntityHttpException((string) current($userInvite->getMessages()));
         }
 
-        //Check whether user exists or not
+        $this->sendInviteEmail($request['email'], $userInvite->invite_hash);
+        return $this->response($userInvite);
+    }
+
+    /**
+     * Send users invite email
+     * @param string $email
+     * @return void
+     */
+    public function sendInviteEmail(string $email, string $hash): void
+    {
         $userExists = Users::findFirst([
             'conditions' => 'email = ?0 and is_deleted = 0',
-            'bind' => [$request['email']]
+            'bind' => [$email]
         ]);
 
-        $invitationUrl = $this->config->app->frontEndUrl . '/users/invites/' . $userInvite->invite_hash;
+        $invitationUrl = $this->config->app->frontEndUrl . '/users/invites/' . $hash;
 
         if (is_object($userExists)) {
-            $invitationUrl = $this->config->app->frontEndUrl . '/users/link/' . $userInvite->invite_hash;
+            $invitationUrl = $this->config->app->frontEndUrl . '/users/link/' . $hash;
         }
-
-        // Lets send the mail
 
         if (!defined('API_TESTS')) {
             $subject = _('You have been invited!');
             $this->mail
-            ->to($userInvite->email)
+            ->to($email)
             ->subject($subject)
             ->content($invitationUrl)
             ->sendNow();
         }
-
-        return $this->response($userInvite);
     }
 
     /**
