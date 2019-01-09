@@ -9,7 +9,7 @@ use Gewaer\Models\AppsPlans;
 class UsersInviteCest
 {
     /**
-     * Get users invite by hash test
+     * Insert and process a user invite for a non-existent user
      * @param ApiTester
      * @return void
      */
@@ -52,6 +52,22 @@ class UsersInviteCest
         $dataInvite = json_decode($response, true);
 
         $I->assertTrue($dataInvite['email'] == $testEmail);
+
+        //Reinsert the new user to test invitation of an existing user
+
+        $I->sendPost('/v1/users-invite/' . $hash, [
+            'firstname' => 'testFirstsName',
+            'lastname' => 'testLastName',
+            'displayname' => $userName,
+            'password' => 'testpassword',
+            'user_active' => 1
+        ]);
+
+        $I->seeResponseIsSuccessful();
+        $response = $I->grabResponse();
+        $dataExitingUser = json_decode($response, true);
+
+        $I->assertTrue($dataExitingUser['users_id'] == $dataInvite['id']);
     }
 
     /**
