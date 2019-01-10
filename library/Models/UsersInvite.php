@@ -79,14 +79,14 @@ class UsersInvite extends AbstractModel
             'companies_id',
             'Gewaer\Models\Companies',
             'id',
-            ['alias' => 'company']
+            ['alias' => 'companies']
         );
 
         $this->belongsTo(
             'apps_id',
             'Gewaer\Models\Apps',
             'id',
-            ['alias' => 'app']
+            ['alias' => 'apps']
         );
     }
 
