@@ -37,6 +37,24 @@ return [
             ]
         ]
     ],
+    'filesystem' => [
+        //temp directoy where we will upload our files before moving them to the final location
+        'uploadDirectoy' => envValue('LOCAL_UPLOAD_DIR_TEMP'),
+        'local' => [
+            'path' => envValue('LOCAL_UPLOAD_DIR'),
+        ],
+        's3' => [
+            'info' => [
+                'credentials' => [
+                    'key' => getenv('S3_PUBLIC_KEY'),
+                    'secret' => getenv('S3_SECRET_KEY'),
+                ],
+                'region' => getenv('S3_REGION'),
+                'version' => getenv('S3_VERSION'),
+            ],
+            'bucket' => getenv('S3_BUCKET'),
+        ],
+    ],
     'cache' => [
         'data' => [
             'front' => [
