@@ -207,7 +207,7 @@ class UsersInviteController extends BaseController
 
         if (is_object($userExists)) {
             $newUser = new UsersAssociatedCompany;
-            $newUser->users_id = $userExists->id;
+            $newUser->users_id = (int)$userExists->id;
             $newUser->companies_id = $userExists->default_company;
             $newUser->identify_id = $userExists->roles_id;
             $newUser->user_active = 1;
