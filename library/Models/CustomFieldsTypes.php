@@ -58,7 +58,7 @@ class CustomFieldsTypes extends AbstractModel
             'id',
             'Gewaer\Models\CustomFieldsTypesSettings',
             'custom_fields_types_id',
-            ['alias' => 'types-settings']
+            ['alias' => 'typesSetting']
         );
     }
 

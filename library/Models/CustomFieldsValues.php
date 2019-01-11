@@ -64,7 +64,7 @@ class CustomFieldsValues extends AbstractModel
             'custom_fields_id',
             'Gewaer\Models\CustomFields',
             'id',
-            ['alias' => 'fields']
+            ['alias' => 'field']
         );
     }
 
