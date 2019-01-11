@@ -115,6 +115,6 @@ class SystemModules extends AbstractModel
      */
     public function getSource(): string
     {
-        return 'user_company_apps_activities';
+        return 'system_modules';
     }
 }
