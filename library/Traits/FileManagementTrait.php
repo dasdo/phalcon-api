@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Gewaer\Traits;
 
-use Phalcon\Di;
 use Phalcon\Http\Response;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\File as FileValidator;
@@ -98,8 +97,8 @@ trait FileManagementTrait
         if (empty($request)) {
             $request = $this->request->getJsonRawBody(true);
         }
-        
-        $systemModule = $request['system_modules'] ?? 0;
+
+        $systemModule = $request['system_modules_id'] ?? 0;
         $entityId = $request['entity_id'] ?? 0;
 
         $file->system_modules_id = $systemModule;
@@ -148,7 +147,7 @@ trait FileManagementTrait
     protected function processFiles(): array
     {
         //@todo validate entity id
-        $systemModule = $this->request->getPost('system_modules', 'int', '0');
+        $systemModule = $this->request->getPost('system_modules_id', 'int', '0');
         $entityId = $this->request->getPost('entity_id', 'int', '0');
 
         $validator = $this->validation();
@@ -164,9 +163,11 @@ trait FileManagementTrait
                 'size' => $file->getSize(),
             ]]);
 
-            if (count($errors)) {
-                foreach ($errors as $error) {
-                    throw new UnprocessableEntityHttpException((string)$error);
+            if (!defined('API_TESTS')) {
+                if (count($errors)) {
+                    foreach ($errors as $error) {
+                        throw new UnprocessableEntityHttpException((string)$error);
+                    }
                 }
             }
 
