@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class SystemModules extends AbstractModel
+class FileSystem extends AbstractModel
 {
     /**
      *
@@ -15,19 +15,7 @@ class SystemModules extends AbstractModel
      *
      * @var integer
      */
-    public $name;
-
-    /**
-     *
-     * @var integer
-     */
-    public $slug;
-
-    /**
-     *
-     * @var string
-     */
-    public $model_name;
+    public $companies_id;
 
     /**
      *
@@ -39,13 +27,43 @@ class SystemModules extends AbstractModel
      *
      * @var integer
      */
-    public $parents_id;
+    public $users_id;
 
     /**
      *
      * @var integer
      */
-    public $menu_order;
+    public $system_modules_id;
+
+    /**
+     *
+     * @var integer
+     */
+    public $entity_id;
+
+    /**
+     *
+     * @var string
+     */
+    public $name;
+
+    /**
+     *
+     * @var string
+     */
+    public $path;
+
+    /**
+     *
+     * @var string
+     */
+    public $url;
+
+    /**
+     *
+     * @var string
+     */
+    public $size;
 
     /**
      *
@@ -61,7 +79,7 @@ class SystemModules extends AbstractModel
 
     /**
      *
-     * @var integer
+     * @var int
      */
     public $is_deleted;
 
@@ -70,18 +88,20 @@ class SystemModules extends AbstractModel
      */
     public function initialize()
     {
-        $this->hasMany(
+        $this->setSource('filesystem');
+
+        $this->belongsTo(
+            'apps_id',
+            'Gewaer\Models\Apps',
             'id',
-            'Gewaer\Models\EmailTemplatesVariables',
-            'system_modules_id',
-            ['alias' => 'templateVariable']
+            ['alias' => 'app']
         );
 
-        $this->hasMany(
+        $this->belongsTo(
+            'users_id',
+            'Gewaer\Models\Users',
             'id',
-            'Gewaer\Models\Webhooks',
-            'system_modules_id',
-            ['alias' => 'webhook']
+            ['alias' => 'user']
         );
 
         $this->belongsTo(
@@ -92,20 +112,11 @@ class SystemModules extends AbstractModel
         );
 
         $this->belongsTo(
-            'apps_id',
-            'Gewaer\Models\Apps',
+            'system_modules_id',
+            'Gewaer\Models\SystemModules',
             'id',
-            ['alias' => 'app']
+            ['alias' => 'systemModules']
         );
-
-        $this->belongsTo(
-            'company_branches_id',
-            'Gewaer\Models\CompanyBranches',
-            'id',
-            ['alias' => 'companyBranch']
-        );
-
-        $this->setSource('user_company_apps_activities');
     }
 
     /**
@@ -113,8 +124,8 @@ class SystemModules extends AbstractModel
      *
      * @return string
      */
-    public function getSource(): string
+    public function getSource() : string
     {
-        return 'system_modules';
+        return 'filesystem';
     }
 }

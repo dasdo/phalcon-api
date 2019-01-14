@@ -70,6 +70,7 @@ $defaultCrudRoutes = [
     'CustomFields' => 'custom-fields',
     'EmailTemplatesVariables' => 'templates-variables',
     'webhooks',
+    'filesystem',
     'UserWebhooks' => 'user-webhooks'
 ];
 
