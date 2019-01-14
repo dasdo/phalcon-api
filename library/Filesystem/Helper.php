@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Gewaer\Filesystem;
 
 use Phalcon\Http\Request\File;
+use Exception;
 
 class Helper
 {

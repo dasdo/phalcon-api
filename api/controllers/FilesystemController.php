@@ -12,6 +12,11 @@ use Gewaer\Traits\FileManagementTrait;
  *
  * @package Gewaer\Api\Controllers
  *
+ * @property Users $userData
+ * @property Request $request
+ * @property Config $config
+ * @property \Baka\Mail\Message $mail
+ * @property Apps $app
  */
 class FilesystemController extends BaseController
 {
