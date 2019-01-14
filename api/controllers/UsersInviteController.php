@@ -116,17 +116,11 @@ class UsersInviteController extends BaseController
             throw new ModelException('User already invited to this company and added with this role');
         }
 
-        $role = Roles::getById((int)$request['role_id']);
-
-        if (!is_object($role)) {
-            throw new ModelException('Role does not exist');
-        }
-
         //Save data to users_invite table and generate a hash for the invite
         $userInvite = $this->model;
         $userInvite->companies_id = $this->userData->default_company;
         $userInvite->app_id = $this->app->getId();
-        $userInvite->role_id = $role->id;
+        $userInvite->role_id = Roles::existsById((int)$request['role_id'])->id;
         $userInvite->email = $request['email'];
         $userInvite->invite_hash = $random->base58();
         $userInvite->created_at = date('Y-m-d H:m:s');
@@ -222,8 +216,7 @@ class UsersInviteController extends BaseController
             $newUser->companies_id = (int)$usersInvite->companies_id;
             $newUser->identify_id = $usersInvite->role_id;
             $newUser->user_active = 1;
-            $newUser->user_role = Roles::getById((int)$userExists->roles_id)->name;
-
+            $newUser->user_role = Roles::existsById((int)$userExists->roles_id)->name;
             if (!$newUser->save()) {
                 throw new UnprocessableEntityHttpException((string) current($newUser->getMessages()));
             }
