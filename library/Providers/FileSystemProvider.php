@@ -26,7 +26,7 @@ class FileSystemProvider implements ServiceProviderInterface
                     $adapter = new Local($config->filesystem->local->path);
                 } else {
                     //s3
-                    $client = S3Client::factory($config->filesystem->s3->info->toArray());
+                    $client = new S3Client($config->filesystem->s3->info->toArray());
                     $adapter = new AwsS3Adapter($client, $config->filesystem->s3->bucket, null, ['ACL' => 'public-read']);
                 }
                 return new Filesystem($adapter);

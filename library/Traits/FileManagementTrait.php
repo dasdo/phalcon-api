@@ -145,7 +145,6 @@ trait FileManagementTrait
     /**
      * Upload the document and save them to the filesystem
      *
-     * @param object? $fileObject
      * @return array
      */
     protected function processFiles(): array

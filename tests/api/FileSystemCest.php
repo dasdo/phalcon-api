@@ -3,6 +3,7 @@
 namespace Gewaer\Tests\api;
 
 use ApiTester;
+use function Gewaer\Core\appPath;
 
 class FileSystemCest
 {
@@ -22,7 +23,10 @@ class FileSystemCest
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->haveHttpHeader('Content-Type', 'multipart/form-data');
 
-        $I->sendPost('/v1/' . $this->model, ['system_modules_id' => 1, 'entity_id' => 1], ['file' => '/app/tests/testfiles/test.png']);
+        //use the app path, path changes by container
+        $testFile = appPath() . '/tests/testfiles/test.png';
+
+        $I->sendPost('/v1/' . $this->model, ['system_modules_id' => 1, 'entity_id' => 0], ['file' => $testFile]);
 
         $I->seeResponseIsSuccessful();
         $response = $I->grabResponse();
@@ -50,7 +54,8 @@ class FileSystemCest
 
         $I->haveHttpHeader('Content-Type', 'multipart/form-data');
         $I->sendPUT('/v1/' . $this->model . '/' . $data[count($data) - 1]['id'], [
-            'system_modules_id' => 2
+            'system_modules_id' => 2,
+            'entity_id' => 12123
         ]);
 
         $I->seeResponseIsSuccessful();
@@ -58,5 +63,6 @@ class FileSystemCest
         $data = json_decode($response, true);
 
         $I->assertTrue($data['system_modules_id'] == 2);
+        $I->assertTrue($data['entity_id'] == 12123);
     }
 }
