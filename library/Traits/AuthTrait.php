@@ -13,10 +13,9 @@ use Baka\Auth\Models\Sessions;
  * @package Gewaer\Traits
  *
  * @property Users $user
- * @property AppsPlans $appPlan
- * @property CompanyBranches $branches
- * @property Companies $company
- * @property UserCompanyApps $app
+ * @property Config $config
+ * @property Request $request
+ * @property Auth $auth
  * @property \Phalcon\Di $di
  *
  */
