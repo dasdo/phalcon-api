@@ -17,8 +17,8 @@ use Gewaer\Exception\NotFoundHttpException;
 use Gewaer\Exception\ServerErrorHttpException;
 use Phalcon\Http\Response;
 use Exception;
-use Baka\Auth\Models\Sessions;
 use Gewaer\Exception\ModelException;
+use Gewaer\Traits\AuthTrait;
 
 /**
  * Class LanguagesController
@@ -33,6 +33,8 @@ use Gewaer\Exception\ModelException;
  */
 class UsersInviteController extends BaseController
 {
+    use AuthTrait;
+
     /*
      * fields we accept to create
      *
@@ -111,11 +113,17 @@ class UsersInviteController extends BaseController
             throw new ModelException('User already invited to this company and added with this role');
         }
 
+        $role = Roles::getById((int)$request['role_id']);
+
+        if (!is_object($role)) {
+            throw new ModelException('Role does not exist');
+        }
+
         //Save data to users_invite table and generate a hash for the invite
         $userInvite = $this->model;
         $userInvite->companies_id = $this->userData->default_company;
         $userInvite->app_id = $this->app->getId();
-        $userInvite->role_id = Roles::getById((int)$request['role_id'])->id;
+        $userInvite->role_id = $role->id;
         $userInvite->email = $request['email'];
         $userInvite->invite_hash = $random->base58();
         $userInvite->created_at = date('Y-m-d H:m:s');
@@ -133,7 +141,7 @@ class UsersInviteController extends BaseController
      * @param string $email
      * @return void
      */
-    public function sendInviteEmail(string $email, string $hash): void
+    private function sendInviteEmail(string $email, string $hash): void
     {
         $userExists = Users::findFirst([
             'conditions' => 'email = ?0 and is_deleted = 0',
@@ -208,8 +216,8 @@ class UsersInviteController extends BaseController
         if (is_object($userExists)) {
             $newUser = new UsersAssociatedCompany;
             $newUser->users_id = (int)$userExists->id;
-            $newUser->companies_id = (int)$userExists->default_company;
-            $newUser->identify_id = $userExists->roles_id;
+            $newUser->companies_id = (int)$usersInvite->companies_id;
+            $newUser->identify_id = $usersInvite->role_id;
             $newUser->user_active = 1;
             $newUser->user_role = Roles::getById((int)$userExists->roles_id)->name;
 
@@ -244,7 +252,7 @@ class UsersInviteController extends BaseController
         }
 
         //Lets login the new user
-        $authInfo = $this->loginInvitedUser($usersInvite->email, $password);
+        $authInfo = $this->loginUsers($usersInvite->email, $password);
 
         if (!defined('API_TESTS')) {
             $usersInvite->is_deleted = 1;
@@ -254,41 +262,5 @@ class UsersInviteController extends BaseController
         }
 
         return $this->response($newUser);
-    }
-
-    /**
-     * Login invited user
-     * @param string
-     * @return array
-     */
-    public function loginInvitedUser(string $email, string $password): array
-    {
-        $userIp = !defined('API_TESTS') ? $this->request->getClientAddress() : '127.0.0.1';
-
-        $random = new \Phalcon\Security\Random();
-
-        $userData = Users::login($email, $password, 1, 0, $userIp);
-
-        $sessionId = $random->uuid();
-
-        //save in user logs
-        $payload = [
-            'sessionId' => $sessionId,
-            'email' => $userData->getEmail(),
-            'iat' => time(),
-        ];
-
-        $token = $this->auth->make($payload);
-
-        //start session
-        $session = new Sessions();
-        $session->start($userData, $sessionId, $token, $userIp, 1);
-
-        return [
-            'token' => $token,
-            'time' => date('Y-m-d H:i:s'),
-            'expires' => date('Y-m-d H:i:s', time() + $this->config->jwt->payload->exp),
-            'id' => $userData->getId(),
-        ];
     }
 }
