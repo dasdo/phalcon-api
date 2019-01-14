@@ -28,6 +28,9 @@ use Gewaer\Traits\AuthTrait;
  * @property Apps $app
  * @property Mail $mail
  * @property Auth $auth
+ * @property Payload $payload
+ * @property Exp $exp
+ * @property JWT $jwt
  * @package Gewaer\Api\Controllers
  *
  */
