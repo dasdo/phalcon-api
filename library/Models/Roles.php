@@ -314,4 +314,20 @@ class Roles extends AbstractModel
             }
         }
     }
+
+    /**
+     * Check if role exists by its id
+     * @param integer $role_id
+     * @return Roles
+     */
+    public static function existsById(int $id): Roles
+    {
+        $role = self::getById($id);
+
+        if (!is_object($role)) {
+            throw new ModelException('Role does not exist');
+        }
+
+        return $role;
+    }
 }

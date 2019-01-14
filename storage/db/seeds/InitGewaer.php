@@ -176,6 +176,7 @@ class InitGewaer extends AbstractSeed
                 'stripe_id' => 'monthly-10-1',
                 'stripe_plan' => 'monthly-10-1',
                 'pricing' => 10,
+                'pricing_anual' => 100,
                 'currency_id' => 1,
                 'free_trial_dates' => 14,
                 'is_default' => 1
@@ -185,7 +186,8 @@ class InitGewaer extends AbstractSeed
                 'description' => 'monthly-10-2',
                 'stripe_id' => 'monthly-10-2',
                 'stripe_plan' => 'monthly-10-2',
-                'pricing' => 10,
+                'pricing' => 100,
+                'pricing_anual' => 1000,
                 'currency_id' => 1,
                 'free_trial_dates' => 14,
                 'is_default' => 0

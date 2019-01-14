@@ -76,21 +76,21 @@ class Webhooks extends AbstractModel
             'id',
             'Gewaer\Models\UserWebhooks',
             'webhooks_id',
-            ['alias' => 'user-webhooks']
+            ['alias' => 'userWebhook']
         );
 
         $this->belongsTo(
             'system_modules_id',
             'Gewaer\Models\SystemModules',
             'id',
-            ['alias' => 'modules']
+            ['alias' => 'systemModule']
         );
 
         $this->belongsTo(
             'apps_id',
             'Gewaer\Models\Apps',
             'id',
-            ['alias' => 'apps']
+            ['alias' => 'app']
         );
     }
 

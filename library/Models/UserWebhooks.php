@@ -82,28 +82,28 @@ class UserWebhooks extends AbstractModel
             'webhooks_id',
             'Gewaer\Models\Webhooks',
             'id',
-            ['alias' => 'webhooks']
+            ['alias' => 'webhook']
         );
 
         $this->belongsTo(
             'users_id',
             'Gewaer\Models\Users',
             'id',
-            ['alias' => 'users']
+            ['alias' => 'user']
         );
 
         $this->belongsTo(
             'companies_id',
             'Gewaer\Models\Companies',
             'id',
-            ['alias' => 'companies']
+            ['alias' => 'company']
         );
 
         $this->belongsTo(
             'apps_id',
             'Gewaer\Models\Apps',
             'id',
-            ['alias' => 'apps']
+            ['alias' => 'app']
         );
     }
 

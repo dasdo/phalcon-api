@@ -104,7 +104,7 @@ class EmailTemplatesVariables extends AbstractModel
             'system_modules_id',
             'Gewaer\Models\SystemModules',
             'id',
-            ['alias' => 'system-modules']
+            ['alias' => 'systemModule']
         );
 
         $this->setSource('email_templates_variables');

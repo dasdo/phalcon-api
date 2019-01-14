@@ -74,14 +74,14 @@ class SystemModules extends AbstractModel
             'id',
             'Gewaer\Models\EmailTemplatesVariables',
             'system_modules_id',
-            ['alias' => 'template-variables']
+            ['alias' => 'templateVariable']
         );
 
         $this->hasMany(
             'id',
             'Gewaer\Models\Webhooks',
             'system_modules_id',
-            ['alias' => 'webhooks']
+            ['alias' => 'webhook']
         );
 
         $this->belongsTo(
