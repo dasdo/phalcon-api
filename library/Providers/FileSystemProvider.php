@@ -7,6 +7,7 @@ use Phalcon\DiInterface;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
+use Aws\S3\S3Client;
 
 class FileSystemProvider implements ServiceProviderInterface
 {

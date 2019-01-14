@@ -120,6 +120,10 @@ trait FileManagementTrait
     {
         $validator = new Validation();
 
+        /**
+         * @todo add validation for other file types, but we need to
+         * look for a scalable way
+         */
         $uploadConfig = [
             'maxSize' => '10M',
             'messageSize' => ':field exceeds the max filesize (:max)',
