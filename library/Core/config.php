@@ -39,9 +39,9 @@ return [
     ],
     'filesystem' => [
         //temp directoy where we will upload our files before moving them to the final location
-        'uploadDirectoy' => envValue('LOCAL_UPLOAD_DIR_TEMP'),
+        'uploadDirectoy' => appPath(envValue('LOCAL_UPLOAD_DIR_TEMP')),
         'local' => [
-            'path' => envValue('LOCAL_UPLOAD_DIR'),
+            'path' => appPath(envValue('LOCAL_UPLOAD_DIR')),
         ],
         's3' => [
             'info' => [
