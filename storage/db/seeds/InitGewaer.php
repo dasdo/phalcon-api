@@ -196,5 +196,29 @@ class InitGewaer extends AbstractSeed
 
         $table = $this->table('apps_plans');
         $table->insert($data)->save();
+
+        $data = [
+            ['id' => 1,
+                'name' => 'Companies',
+                'slug' => 'example_slug',
+                'model_name' => 'Gewaer\Models\Companies',
+                'apps_id' => 1,
+                'parents_id' => 0,
+                'menu_order' => null,
+                'created_at' => date('Y-m-d H:i:s')
+            ], [
+                'id' => 2,
+                'name' => 'Users',
+                'slug' => 'example_slug',
+                'model_name' => 'Gewaer\Models\Users',
+                'apps_id' => 1,
+                'parents_id' => 0,
+                'menu_order' => null,
+                'created_at' => date('Y-m-d H:i:s')
+            ]
+        ];
+
+        $table = $this->table('system_modules');
+        $table->insert($data)->save();
     }
 }
