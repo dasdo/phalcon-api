@@ -123,7 +123,14 @@ class Users extends \Baka\Auth\Models\Users
             'id',
             'Gewaer\Models\UserWebhooks',
             'users_id',
-            ['alias' => 'user-webhooks']
+            ['alias' => 'userWebhook']
+        );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\FileSystem',
+            'users_id',
+            ['alias' => 'filesystem']
         );
     }
 
