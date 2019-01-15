@@ -71,7 +71,8 @@ $defaultCrudRoutes = [
     'EmailTemplatesVariables' => 'templates-variables',
     'webhooks',
     'filesystem',
-    'UserWebhooks' => 'user-webhooks'
+    'UserWebhooks' => 'user-webhooks',
+    'roles'
 ];
 
 foreach ($defaultCrudRoutes as $key => $route) {
@@ -109,11 +110,6 @@ foreach ($defaultCrudRoutes as $key => $route) {
         'delete',
     ]);
 }
-
-$router->get('/roles', [
-    'Gewaer\Api\Controllers\RolesController',
-    'index',
-]);
 
 $router->post('/users', [
     'Gewaer\Api\Controllers\AuthController',
