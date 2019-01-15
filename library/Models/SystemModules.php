@@ -125,11 +125,11 @@ class SystemModules extends AbstractModel
      * @param string $model_name
      * @return SystemModules
      */
-    public static function getSystemModuleByModelName(string $model_name):SystemModules
+    public static function getSystemModuleByModelName(string $modelName):SystemModules
     {
         return SystemModules::findFirst([
             'conditions' => 'model_name = ?0 and apps_id = ?1',
-            'bind' => [$model_name, Di::getDefault()->getApp()->getId()]
+            'bind' => [$modelName, Di::getDefault()->getApp()->getId()]
         ]);
     }
 }
