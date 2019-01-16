@@ -32,12 +32,54 @@ class Users extends \Baka\Auth\Models\Users
     use Billable;
     use SubscriptionPlanLimitTrait;
 
+    /**
+     * Default Company Branch
+     *
+     * @var integer
+     */
     public $default_company_branch;
+
+    /**
+     * Roles id
+     *
+     * @var integer
+     */
     public $roles_id;
+
+    /**
+     * Stripe id
+     *
+     * @var integer
+     */
     public $stripe_id;
+
+    /**
+     * Card last four numbers
+     *
+     * @var integer
+     */
     public $card_last_four;
+
+    /**
+     * Card Brand
+     *
+     * @var integer
+     */
     public $card_brand;
+
+    /**
+     * Trial end date
+     *
+     * @var string
+     */
     public $trial_ends_at;
+
+    /**
+     * Currency id
+     *
+     * @var integer
+     */
+    public $currency_id;
 
     /**
      * Provide the app plan id
