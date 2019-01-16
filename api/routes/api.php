@@ -72,7 +72,9 @@ $defaultCrudRoutes = [
     'webhooks',
     'filesystem',
     'UserWebhooks' => 'user-webhooks',
-    'roles'
+    'roles',
+    'locales',
+    'currencies'
 ];
 
 foreach ($defaultCrudRoutes as $key => $route) {
