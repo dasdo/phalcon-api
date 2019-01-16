@@ -16,16 +16,5 @@ class UserSettingsSeeder extends AbstractSeed
         $posts = $this->table('locales');
         $posts->insert($data)
               ->save();
-
-        $data = [
-                [
-                    'name' => 'US Dollars',
-                    'created_at' => date('Y-m-d H:m:s'),
-                ]
-            ];
-
-        $posts = $this->table('currencies');
-        $posts->insert($data)
-                  ->save();
     }
 }

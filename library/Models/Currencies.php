@@ -15,13 +15,25 @@ class Currencies extends AbstractModel
      *
      * @var string
      */
-    public $name;
+    public $country;
 
     /**
      *
-     * @var integer
+     * @var string
      */
-    public $is_deleted;
+    public $currency;
+
+    /**
+     *
+     * @var string
+     */
+    public $code;
+
+    /**
+     *
+     * @var string
+     */
+    public $symbol;
 
     /**
      *
@@ -36,6 +48,12 @@ class Currencies extends AbstractModel
     public $updated_at;
 
     /**
+     *
+     * @var integer
+     */
+    public $is_deleted;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
@@ -48,7 +66,7 @@ class Currencies extends AbstractModel
      *
      * @return string
      */
-    public function getSource(): string
+    public function getSource() : string
     {
         return 'currencies';
     }

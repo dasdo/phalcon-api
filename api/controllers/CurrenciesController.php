@@ -19,14 +19,14 @@ class CurrenciesController extends BaseController
      *
      * @var array
      */
-    protected $createFields = ['name'];
+    protected $createFields = ['country', 'currency', 'code', 'symbol'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['name'];
+    protected $updateFields = ['country', 'currency', 'code', 'symbol'];
 
     /**
      * set objects
