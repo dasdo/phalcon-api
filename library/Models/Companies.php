@@ -86,6 +86,12 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     public $appPlanId = null;
 
     /**
+     *
+     * @var integer
+     */
+    public $currency_id;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()

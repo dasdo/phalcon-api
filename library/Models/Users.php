@@ -75,13 +75,6 @@ class Users extends \Baka\Auth\Models\Users
     public $trial_ends_at;
 
     /**
-     * Currency id
-     *
-     * @var integer
-     */
-    public $currency_id;
-
-    /**
      * Provide the app plan id
      * if the user is signing up a new company
      *
