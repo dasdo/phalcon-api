@@ -28,7 +28,6 @@ run.config:
     expose_php: 'Off'
     disable_functions:
 #      - exec
-      - shell_exec
       - system
 
     # Error reporting
