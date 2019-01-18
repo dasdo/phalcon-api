@@ -41,7 +41,7 @@ class FileSystemTask extends PhTask
                 $detachedImage->is_deleted = 1;
 
                 if ($detachedImage->update()) {
-                    $output = shell_exec(`rm $detachedImage->path`);
+                    shell_exec(`rm $detachedImage->path`);
                     echo 'Image with id ' . $detachedImage->id . " has been soft deleted \n";
                 }
             }
