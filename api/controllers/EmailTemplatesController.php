@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\EmailTemplates;
+use Gewaer\Models\Users;
 use Gewaer\Exception\NotFoundHttpException;
 use Gewaer\Exception\UnprocessableEntityHttpException;
 use Phalcon\Security\Random;
@@ -70,8 +71,8 @@ class EmailTemplatesController extends BaseController
 
         //Find email template based on the basic parameters
         $existingEmailTemplate = $this->model::findFirst([
-            'conditions' => 'id = ?0 and companies_id = ?1 and apps_id = ?2 and is_deleted = 0',
-            'bind' => [$id, $this->userData->default_company, $this->app->getId()]
+            'conditions' => 'id = ?0 and companies_id in (?1,?2) and apps_id in (?3,?4) and is_deleted = 0',
+            'bind' => [$id, $this->userData->default_company, 0, $this->app->getId(), 0]
         ]);
 
         if (!is_object($existingEmailTemplate)) {
@@ -82,8 +83,8 @@ class EmailTemplatesController extends BaseController
         $randomInstance = $random->base58();
 
         $request['users_id'] = $existingEmailTemplate->users_id;
-        $request['companies_id'] = $existingEmailTemplate->companies_id;
-        $request['apps_id'] = $existingEmailTemplate->apps_id;
+        $request['companies_id'] = $this->userData->currentCompanyId();
+        $request['apps_id'] = $this->app->getId();
         $request['name'] = $existingEmailTemplate->name . '-' . $randomInstance;
         $request['template'] = $existingEmailTemplate->template;
 
@@ -94,5 +95,37 @@ class EmailTemplatesController extends BaseController
             //if not thorw exception
             throw new UnprocessableEntityHttpException((string) current($this->model->getMessages()));
         }
+    }
+
+    /**
+     * Send test email to specific recipient
+     * @param string $email
+     * @return Response
+     */
+    public function sendTestEmail(): Response
+    {
+        $request = $this->request->getPost();
+
+        if (empty($request)) {
+            $request = $this->request->getJsonRawBody(true);
+        }
+
+        $userExists = Users::findFirst([
+                'conditions' => 'email = ?0 and is_deleted = 0',
+                'bind' => [$request['email']]
+            ]);
+
+        if (!is_object($userExists)) {
+            throw new NotFoundHttpException('Email recipient not found');
+        }
+
+        $subject = _('Test Email Template');
+        $this->mail
+                ->to((string)$userExists->email)
+                ->subject($subject)
+                ->content($request['template'])
+                ->sendNow();
+
+        return $this->response('Test email sent');
     }
 }

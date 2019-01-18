@@ -188,4 +188,12 @@ $router->post('/email-templates/{id}/copy', [
     ]
 ]);
 
+$router->post('/email-templates/test', [
+    'Gewaer\Api\Controllers\EmailTemplatesController',
+    'sendTestEmail',
+    'options' => [
+        'jwt' => false,
+    ]
+]);
+
 $router->mount();
