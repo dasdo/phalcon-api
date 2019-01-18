@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\EmailTemplates;
+use Gewaer\Models\Users;
 use Gewaer\Exception\NotFoundHttpException;
 use Gewaer\Exception\UnprocessableEntityHttpException;
 use Phalcon\Security\Random;
@@ -82,7 +83,7 @@ class EmailTemplatesController extends BaseController
         $randomInstance = $random->base58();
 
         $request['users_id'] = $existingEmailTemplate->users_id;
-        $request['companies_id'] = $this->userData->default_company;
+        $request['companies_id'] = $this->userData->currentCompanyId();
         $request['apps_id'] = $this->app->getId();
         $request['name'] = $existingEmailTemplate->name . '-' . $randomInstance;
         $request['template'] = $existingEmailTemplate->template;
@@ -93,6 +94,40 @@ class EmailTemplatesController extends BaseController
         } else {
             //if not thorw exception
             throw new UnprocessableEntityHttpException((string) current($this->model->getMessages()));
+        }
+    }
+
+    /**
+     * Send test email to specific recipient
+     * @param string $email
+     * @return Response
+     */
+    public function sendTestEmail(): Response
+    {
+        if ($this->request->isPost()) {
+            $request = $this->request->getPost();
+
+            if (empty($request)) {
+                $request = $this->request->getJsonRawBody(true);
+            }
+
+            $userExists = Users::findFirst([
+                'conditions' => 'email = ?0 and is_deleted = 0',
+                'bind' => [$request['email']]
+            ]);
+
+            if (!is_object($userExists)) {
+                throw new NotFoundHttpException('Email recipient not found');
+            }
+
+            $subject = _('Test Email Template');
+            $this->mail
+                ->to($userExists->email)
+                ->subject($subject)
+                ->content($request['template'])
+                ->sendNow();
+
+            return $this->response('Test email sent');
         }
     }
 }
