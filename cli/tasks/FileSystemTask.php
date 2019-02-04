@@ -11,6 +11,7 @@ use Gewaer\Models\FileSystem;
  * @package Gewaer\Cli\Tasks;
  *
  * @property \Gewaer\Acl\Manager $acl
+ * @property \Phalcon\Di $di
  */
 class FileSystemTask extends PhTask
 {
