@@ -72,7 +72,7 @@ class EmailTemplatesController extends BaseController
         //Find email template based on the basic parameters
         $existingEmailTemplate = $this->model::findFirst([
             'conditions' => 'id = ?0 and companies_id in (?1,?2) and apps_id in (?3,?4) and is_deleted = 0',
-            'bind' => [$id, $this->userData->default_company, 0, $this->app->getId(), 0]
+            'bind' => [$id, $this->userData->currentCompanyId(), 0, $this->app->getId(), 0]
         ]);
 
         if (!is_object($existingEmailTemplate)) {
@@ -110,21 +110,25 @@ class EmailTemplatesController extends BaseController
             $request = $this->request->getJsonRawBody(true);
         }
 
-        $userExists = Users::findFirst([
+        $emailRecipients = explode(',', $request['emails']);
+
+        foreach ($emailRecipients as $emailRecipient) {
+            $userExists = Users::findFirst([
                 'conditions' => 'email = ?0 and is_deleted = 0',
-                'bind' => [$request['email']]
+                'bind' => [$emailRecipient]
             ]);
 
-        if (!is_object($userExists)) {
-            throw new NotFoundHttpException('Email recipient not found');
-        }
+            if (!is_object($userExists)) {
+                throw new NotFoundHttpException('Email recipient not found');
+            }
 
-        $subject = _('Test Email Template');
-        $this->mail
+            $subject = _('Test Email Template');
+            $this->mail
                 ->to((string)$userExists->email)
                 ->subject($subject)
                 ->content($request['template'])
                 ->sendNow();
+        }
 
         return $this->response('Test email sent');
     }

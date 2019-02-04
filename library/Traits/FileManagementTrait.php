@@ -179,6 +179,17 @@ trait FileManagementTrait
 
             $this->di->get('filesystem', 'local')->writeStream($filePath, fopen($file->getTempName(), 'r'));
 
+            // if user already had an image upload, detach said image from the user first before. Find image depending on system_module_id
+            $existingImage = FileSystem::findFirst([
+                'conditions' => 'system_modules_id = ?0 and apps_id = ?1 and companies_id = ?2 and users_id = ?3 and is_deleted = 0',
+                'bind' => [$systemModule, $this->app->getId(), $this->userData->currentCompanyId(), $this->userData->getId()]
+            ]);
+
+            if (is_object($existingImage)) {
+                $existingImage->users_id = 0;
+                $existingImage->update();
+            }
+
             $fileSystem = new FileSystem();
             $fileSystem->name = $file->getName();
             $fileSystem->system_modules_id = $systemModule;
