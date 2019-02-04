@@ -31,25 +31,39 @@ class FileSystemTask extends PhTask
      */
     public function purgeImagesAction(array $params):void
     {
+        //Option to fully delete or softdelete an image
         $fullDelete = $params[0];
+
+        // Specify the filisystem from which to erase
+        $fileSystem = $params[1];
+
         $detachedImages = FileSystem::find([
             'conditions' => 'users_id = 0 and is_deleted = 0'
         ]);
 
         if ($fullDelete == 0 && is_object($detachedImages)) {
             foreach ($detachedImages as $detachedImage) {
+                //Get the file name
+                $filePathArray = explode('/', $detachedImage->path);
+                $fileName = end($filePathArray);
+
+                //Soft Delete file
                 $detachedImage->is_deleted = 1;
 
                 if ($detachedImage->update()) {
-                    shell_exec(`rm $detachedImage->path`);
+                    $this->di->get('filesystem', $fileSystem)->delete($fileName);
                     echo 'Image with id ' . $detachedImage->id . " has been soft deleted \n";
                 }
             }
         } else {
             foreach ($detachedImages as $detachedImage) {
+                //Get the file name
+                $filePathArray = explode('/', $detachedImage->path);
+                $fileName = end($filePathArray);
+
                 echo 'Image with id ' . $detachedImage->id . " has been fully deleted \n";
                 $detachedImage->delete();
-                shell_exec(`rm $detachedImage->path`);
+                $this->di->get('filesystem', $fileSystem)->delete($fileName);
             }
         }
     }

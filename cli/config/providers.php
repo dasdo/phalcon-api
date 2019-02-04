@@ -17,6 +17,7 @@ use Gewaer\Providers\RedisProvider;
 use Gewaer\Providers\PusherProvider;
 use Gewaer\Providers\AclProvider;
 use Gewaer\Providers\AppProvider;
+use Gewaer\Providers\FileSystemProvider;
 
 return [
     ConfigProvider::class,
@@ -32,4 +33,5 @@ return [
     PusherProvider::class,
     AclProvider::class,
     AppProvider::class,
+    FileSystemProvider::class,
 ];

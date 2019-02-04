@@ -27,8 +27,9 @@ run.config:
     # Security
     expose_php: 'Off'
     disable_functions:
-#      - exec
-      - system
+     - exec
+     - system
+     - shell_exec
 
     # Error reporting
     display_errors: 'stderr'
@@ -191,3 +192,12 @@ deploy.config:
     web.tdm:
       # Run migrations after deployment
       - /app/vendor/bin/phinx migrate
+
+worker.jobs:
+  start: start-jobs
+
+  cron:
+    - id: purge-detached-images
+      schedule: '0 0 * * *'
+      command: php cli/cli.php filesystem purgeimages 0 local
+
