@@ -51,6 +51,12 @@ $router->post('/users/{id}/devices', [
     'devices',
 ]);
 
+//detach mobile devices
+$router->post('/users/devices/{deviceId}/detach', [
+    'Gewaer\Api\Controllers\UsersController',
+    'detachDevice',
+]);
+
 /**
  * Need to understand if using this can be a performance disadvantage in the future
  */
