@@ -281,25 +281,30 @@ class UsersController extends \Baka\Auth\UsersController
         $app = $this->request->getPost('app', 'string');
 
         //Get Source
-        if ($source = Sources::getByTitle($app)) {
-            $userSource = UserLinkedSources::findFirst([
+
+        $source = Sources::getByTitle($app);
+
+        if (!is_object($source)) {
+            throw new NotFoundHttpException('Source not found');
+        }
+
+        $userSource = UserLinkedSources::findFirst([
                 'conditions' => 'users_id = ?0 and source_id = ?1 and source_users_id_text = ?2',
                 'bind' => [$this->userData->getId(), $source->getId(), $deviceId]
             ]);
 
-            //Check if User Linked Sources exists by users_id and source_users_id_text
-            if (!is_object($userSource)) {
-                throw new NotFoundHttpException('User Linked Source not found');
-            }
+        //Check if User Linked Sources exists by users_id and source_users_id_text
+        if (!is_object($userSource)) {
+            throw new NotFoundHttpException('User Linked Source not found');
+        }
 
-            if (!$userSource->delete()) {
-                throw new UnprocessableEntityHttpException((string) current($userSource->getMessages()));
-            }
+        if (!$userSource->delete()) {
+            throw new UnprocessableEntityHttpException((string) current($userSource->getMessages()));
+        }
 
-            return $this->response([
+        return $this->response([
                 'msg' => 'User Device detached',
                 'user' => $this->userData
             ]);
-        }
     }
 }
