@@ -132,7 +132,7 @@ class AppsPlanCest
             'type' => 'customer.subscription.trial_will_end',
             'data' => [
                 'object' => [
-                    'customer' => 'cus_ETq3Zj0KbykfIr',
+                    'customer' => $userData->stripe_id,
                     'trial_end' => 1549737947
                 ]
             ]
