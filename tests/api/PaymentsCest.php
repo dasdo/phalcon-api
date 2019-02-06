@@ -3,7 +3,6 @@
 namespace Gewaer\Tests\api;
 
 use ApiTester;
-use Phalcon\Security\Random;
 
 class PaymentsCest
 {
@@ -18,15 +17,13 @@ class PaymentsCest
     public function pendingPayment(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
-        $random = new Random();
-        $localeName = $random->base58();
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/' . 'webhook/' . $this->model, [
             'type' => 'charge.pending',
             'data' => [
                 'object' => [
-                    'customer' => 'cus_ETq3Zj0KbykfIr'
+                    'customer' => $userData->stripe_id
                 ]
             ]
         ]);
@@ -47,15 +44,13 @@ class PaymentsCest
     public function failedPayment(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
-        $random = new Random();
-        $localeName = $random->base58();
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/' . 'webhook/' . $this->model, [
             'type' => 'charge.failed',
             'data' => [
                 'object' => [
-                    'customer' => 'cus_ETq3Zj0KbykfIr'
+                    'customer' => $userData->stripe_id
                 ]
             ]
         ]);
@@ -76,15 +71,13 @@ class PaymentsCest
     public function SucceededPayment(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
-        $random = new Random();
-        $localeName = $random->base58();
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/' . 'webhook/' . $this->model, [
             'type' => 'charge.succeeded',
             'data' => [
                 'object' => [
-                    'customer' => 'cus_ETq3Zj0KbykfIr'
+                    'customer' => $userData->stripe_id
                 ]
             ]
         ]);

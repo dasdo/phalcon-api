@@ -52,7 +52,7 @@ $router->post('/users/{id}/devices', [
 ]);
 
 //detach mobile devices
-$router->post('/users/devices/{deviceId}/detach', [
+$router->post('/users/{id}/devices/{deviceId}/detach', [
     'Gewaer\Api\Controllers\UsersController',
     'detachDevice',
 ]);
