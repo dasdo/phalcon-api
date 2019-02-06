@@ -116,4 +116,32 @@ class AppsPlanCest
             $subscription->update();
         }
     }
+
+    /**
+     * Free Trial Ending Test
+     *
+     * @param ApiTester $I
+     * @return void
+     */
+    public function freeTrialEndingSubscription(ApiTester $I) : void
+    {
+        $userData = $I->apiLogin();
+
+        $I->haveHttpHeader('Authorization', $userData->token);
+        $I->sendPost('/v1/' . 'webhook/payments', [
+            'type' => 'customer.subscription.trial_will_end',
+            'data' => [
+                'object' => [
+                    'customer' => 'cus_ETq3Zj0KbykfIr',
+                    'trial_end' => 1549737947
+                ]
+            ]
+        ]);
+
+        $I->seeResponseIsSuccessful();
+        $response = $I->grabResponse();
+        $data = json_decode($response, true);
+
+        $I->assertTrue(current($data) == 'Webhook Handled');
+    }
 }

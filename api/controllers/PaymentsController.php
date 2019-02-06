@@ -9,6 +9,7 @@ use Gewaer\Models\Users;
 use Carbon\Carbon;
 use Gewaer\Exception\NotFoundHttpException;
 use Gewaer\Traits\EmailTrait;
+use Datetime;
 
 /**
  * Class PaymentsController
@@ -28,8 +29,10 @@ class PaymentsController extends BaseController
     public function handleWebhook(): Response
     {
         //we cant processs if we dont find the stripe header
-        if (!$this->request->hasHeader('Stripe-Signature')) {
-            throw new NotFoundHttpException('Route not found for this call');
+        if (!defined('API_TESTS')) {
+            if (!$this->request->hasHeader('Stripe-Signature')) {
+                throw new NotFoundHttpException('Route not found for this call');
+            }
         }
 
         $request = $this->request->getPost();
@@ -92,7 +95,9 @@ class PaymentsController extends BaseController
                         'content' => $content
                     ];
                     //We need to send a mail to the user
-                    EmailTrait::sendWebhookEmail($user->email, $template);
+                    if (!defined('API_TESTS')) {
+                        EmailTrait::sendWebhookEmail($user->email, $template);
+                    }
                 }
             }
         }
@@ -126,17 +131,23 @@ class PaymentsController extends BaseController
      */
     protected function handleCustomerSubscriptionTrialwillend(array $payload): Response
     {
+        $trialEndDate = new Datetime();
+        $trialEndDate->setTimestamp((int)$payload['data']['object']['trial_end']);
+        $formatedEndDate = $trialEndDate->format('Y-m-d H:i:s');
+
         $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
         if ($user) {
             $subject = "{$user->firstname} {$user->lastname} Free Trial Ending";
-            $content = "Dear user {$user->firstname} {$user->lastname}, your free trial is coming to an end.Please choose one of our available subscriptions. Thank you";
+            $content = "Dear user {$user->firstname} {$user->lastname}, your free trial is coming to an end on {$formatedEndDate}.Please choose one of our available subscriptions. Thank you";
 
             $template = [
                 'subject' => $subject,
                 'content' => $content
             ];
             //We need to send a mail to the user
-            EmailTrait::sendWebhookEmail($user->email, $template);
+            if (!defined('API_TESTS')) {
+                EmailTrait::sendWebhookEmail($user->email, $template);
+            }
         }
         return $this->response(['Webhook Handled']);
     }
@@ -211,7 +222,9 @@ class PaymentsController extends BaseController
                 'content' => $content
             ];
             //We need to send a mail to the user
-            EmailTrait::sendWebhookEmail($user->email, $template);
+            if (!defined('API_TESTS')) {
+                EmailTrait::sendWebhookEmail($user->email, $template);
+            }
         }
         return $this->response(['Webhook Handled']);
     }
@@ -235,7 +248,9 @@ class PaymentsController extends BaseController
                 'content' => $content
             ];
             //We need to send a mail to the user
-            EmailTrait::sendWebhookEmail($user->email, $template);
+            if (!defined('API_TESTS')) {
+                EmailTrait::sendWebhookEmail($user->email, $template);
+            }
         }
         return $this->response(['Webhook Handled']);
     }
@@ -271,7 +286,9 @@ class PaymentsController extends BaseController
                 'content' => $content
             ];
             //We need to send a mail to the user
-            EmailTrait::sendWebhookEmail($user->email, $template);
+            if (!defined('API_TESTS')) {
+                EmailTrait::sendWebhookEmail($user->email, $template);
+            }
         }
         return $this->response(['Webhook Handled']);
     }
