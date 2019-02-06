@@ -8,6 +8,7 @@ use Phalcon\Http\Response;
 use Gewaer\Models\Users;
 use Carbon\Carbon;
 use Gewaer\Exception\NotFoundHttpException;
+use Gewaer\Traits\EmailTrait;
 
 /**
  * Class PaymentsController
@@ -36,8 +37,8 @@ class PaymentsController extends BaseController
         if (empty($request)) {
             $request = $this->request->getJsonRawBody(true);
         }
-        $value = ucwords(str_replace(['-', '_'], '', str_replace('.', '_', $request['type'])));
-        $method = 'handle' . $value;
+        $type = str_replace('.', '', ucwords(str_replace('_', '', $request['type']), '.'));
+        $method = 'handle' . $type;
         if (method_exists($this, $method)) {
             return $this->{$method}($request);
         } else {
@@ -82,7 +83,17 @@ class PaymentsController extends BaseController
                         : Carbon::createFromTimestamp($data['current_period_end']);
                 }
 
-                $subscription->update();
+                if ($subscription->update()) {
+                    $subject = "{$user->firstname} {$user->lastname} Updated Subscription";
+                    $content = "Dear user {$user->firstname} {$user->lastname}, your subscription has been updated.";
+
+                    $template = [
+                        'subject' => $subject,
+                        'content' => $content
+                    ];
+                    //We need to send a mail to the user
+                    EmailTrait::sendWebhookEmail($user->email, $template);
+                }
             }
         }
         return $this->response(['Webhook Handled']);
@@ -103,6 +114,29 @@ class PaymentsController extends BaseController
             if (is_object($subscription)) {
                 $subscription->markAsCancelled();
             }
+        }
+        return $this->response(['Webhook Handled']);
+    }
+
+    /**
+     * Handle customer subscription free trial ending.
+     *
+     * @param  array $payload
+     * @return Response
+     */
+    protected function handleCustomerSubscriptionTrialwillend(array $payload): Response
+    {
+        $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
+        if ($user) {
+            $subject = "{$user->firstname} {$user->lastname} Free Trial Ending";
+            $content = "Dear user {$user->firstname} {$user->lastname}, your free trial is coming to an end.Please choose one of our available subscriptions. Thank you";
+
+            $template = [
+                'subject' => $subject,
+                'content' => $content
+            ];
+            //We need to send a mail to the user
+            EmailTrait::sendWebhookEmail($user->email, $template);
         }
         return $this->response(['Webhook Handled']);
     }
@@ -167,6 +201,18 @@ class PaymentsController extends BaseController
      */
     protected function handleChargeSucceeded(array $payload): Response
     {
+        $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
+        if ($user) {
+            $subject = "{$user->firstname} {$user->lastname} Successful Payment";
+            $content = "Dear user {$user->firstname} {$user->lastname}, your subscription payment of {$payload['data']['object']['amount']} was successful. Thank you";
+
+            $template = [
+                'subject' => $subject,
+                'content' => $content
+            ];
+            //We need to send a mail to the user
+            EmailTrait::sendWebhookEmail($user->email, $template);
+        }
         return $this->response(['Webhook Handled']);
     }
 
@@ -179,6 +225,18 @@ class PaymentsController extends BaseController
      */
     protected function handleChargeFailed(array $payload) : Response
     {
+        $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
+        if ($user) {
+            $subject = "{$user->firstname} {$user->lastname} Failed Payment";
+            $content = "Dear user {$user->firstname} {$user->lastname}, your subscription presents a failed payment of the amount of {$payload['data']['object']['amount']}. Please check card expiration date";
+
+            $template = [
+                'subject' => $subject,
+                'content' => $content
+            ];
+            //We need to send a mail to the user
+            EmailTrait::sendWebhookEmail($user->email, $template);
+        }
         return $this->response(['Webhook Handled']);
     }
 
@@ -191,6 +249,30 @@ class PaymentsController extends BaseController
      */
     protected function handleChargeDisputeCreated(array $payload) : Response
     {
+        return $this->response(['Webhook Handled']);
+    }
+
+    /**
+     * Handle pending payments
+     *
+     * @todo send email
+     * @param array $payload
+     * @return Response
+     */
+    protected function handleChargePending(array $payload) : Response
+    {
+        $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
+        if ($user) {
+            $subject = "{$user->firstname} {$user->lastname} Pending Payment";
+            $content = "Dear user {$user->firstname} {$user->lastname}, your subscription presents a pending payment of {$payload['data']['object']['amount']}";
+
+            $template = [
+                'subject' => $subject,
+                'content' => $content
+            ];
+            //We need to send a mail to the user
+            EmailTrait::sendWebhookEmail($user->email, $template);
+        }
         return $this->response(['Webhook Handled']);
     }
 }

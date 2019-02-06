@@ -298,7 +298,8 @@ class UsersController extends \Baka\Auth\UsersController
             throw new NotFoundHttpException('User Linked Source not found');
         }
 
-        if (!$userSource->delete()) {
+        $userSource->is_deleted = 1;
+        if (!$userSource->update()) {
             throw new UnprocessableEntityHttpException((string) current($userSource->getMessages()));
         }
 

@@ -36,6 +36,12 @@ class UserLinkedSources extends \Baka\Auth\Models\UserLinkedSources
     public $source_username;
 
     /**
+     *
+     * @var integer
+     */
+    public $is_deleted;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
