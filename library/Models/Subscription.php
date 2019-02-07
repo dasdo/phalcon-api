@@ -77,6 +77,24 @@ class Subscription extends PhalconSubscription
 
     /**
      *
+     * @var integer
+     */
+    public $trial_ends_days;
+
+    /**
+     *
+     * @var integer
+     */
+    public $is_freetrial;
+
+    /**
+     *
+     * @var integer
+     */
+    public $is_active;
+
+    /**
+     *
      * @var string
      */
     public $created_at;
