@@ -290,6 +290,7 @@ class Users extends \Baka\Auth\Models\Users
     public function startFreeTrial() : Subscription
     {
         $defaultPlan = AppsPlans::getDefaultPlan();
+        $trialEndsAt = Carbon::now()->addDays($this->di->getApp()->plan->free_trial_dates);
 
         $subscription = new Subscription();
         $subscription->user_id = $this->getId();
@@ -300,7 +301,10 @@ class Users extends \Baka\Auth\Models\Users
         $subscription->stripe_id = $defaultPlan->stripe_id;
         $subscription->stripe_plan = $defaultPlan->stripe_plan;
         $subscription->quantity = 1;
-        $subscription->trial_ends_at = Carbon::now()->addDays($this->di->getApp()->plan->free_trial_dates)->toDateTimeString();
+        $subscription->trial_ends_at = $trialEndsAt->toDateTimeString();
+        $subscription->trial_ends_days = $trialEndsAt->diffInDays(Carbon::now());
+        $subscription->is_freetrial = 1;
+        $subscription->is_active = 1;
 
         if (!$subscription->save()) {
             throw new ServerErrorHttpException((string)current($this->getMessages()));
