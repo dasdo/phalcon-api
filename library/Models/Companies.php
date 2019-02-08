@@ -7,6 +7,7 @@ use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Gewaer\Exception\ServerErrorHttpException;
 use Exception;
+use Carbon\Carbon;
 
 /**
  * Class Companies
@@ -342,6 +343,15 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             $companyApps->stripe_id = $plan->stripe_id;
         }
 
+        //If the newly created company is not the default then we create a new subscription with the same user
+        if ($this->userData->default_company != $this->getId()) {
+            $subscription = $this->startCompanySubscription();
+
+            if (!is_object($subscription)) {
+                throw new Exception('Subscription for new company could not be created');
+            }
+        }
+
         $companyApps->created_at = date('Y-m-d H:i:s');
         $companyApps->is_deleted = 0;
 
@@ -408,5 +418,39 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
                 $this->saveCustomFields();
             }
         }
+    }
+
+    /**
+     * Start a free trial for a new company
+     *
+     * @return Subscription
+     */
+    public function startCompanySubscription() : Subscription
+    {
+        $defaultPlan = AppsPlans::getDefaultPlan();
+        $trialEndsAt = Carbon::now()->addDays($this->di->getApp()->plan->free_trial_dates);
+
+        $subscription = new Subscription();
+        $subscription->user_id = $this->di->getUserData()->getId();
+        $subscription->companies_id = $this->getId();
+        $subscription->apps_id = $this->di->getApp()->getId();
+        $subscription->apps_plans_id = $this->di->getApp()->default_apps_plan_id;
+        $subscription->name = $defaultPlan->name;
+        $subscription->stripe_id = $defaultPlan->stripe_id;
+        $subscription->stripe_plan = $defaultPlan->stripe_plan;
+        $subscription->quantity = 1;
+        $subscription->trial_ends_at = $trialEndsAt->toDateTimeString();
+        $subscription->trial_ends_days = $trialEndsAt->diffInDays(Carbon::now());
+        $subscription->is_freetrial = 1;
+        $subscription->is_active = 1;
+
+        if (!$subscription->save()) {
+            throw new ServerErrorHttpException((string)current($this->getMessages()));
+        }
+
+        $this->trial_ends_at = $subscription->trial_ends_at;
+        $this->update();
+
+        return $subscription;
     }
 }
