@@ -15,6 +15,8 @@ use Carbon\Carbon;
  * @package Gewaer\Models
  *
  * @property Users $user
+ * @property Users $userData
+ * @property DefaultCompany $default_company
  * @property CompaniesBranches $branch
  * @property CompaniesBranches $branches
  * @property Config $config
@@ -448,7 +450,6 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             throw new ServerErrorHttpException((string)current($this->getMessages()));
         }
 
-        $this->trial_ends_at = $subscription->trial_ends_at;
         $this->update();
 
         return $subscription;
