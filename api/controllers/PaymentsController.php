@@ -16,6 +16,7 @@ use Datetime;
  * Class to handle payment webhook from our cashier library
  *
  * @package Gewaer\Api\Controllers
+ * @property Log $log
  *
  */
 class PaymentsController extends BaseController
@@ -68,8 +69,6 @@ class PaymentsController extends BaseController
     {
         $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
         if ($user) {
-            $data = $payload['data']['object'];
-
             $subject = "{$user->firstname} {$user->lastname} Updated Subscription";
             $content = "Dear user {$user->firstname} {$user->lastname}, your subscription has been updated.";
 
