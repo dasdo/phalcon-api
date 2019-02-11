@@ -264,7 +264,7 @@ class UsersController extends \Baka\Auth\UsersController
      * @param integer $deviceId User's devices id
      * @return Response
      */
-    public function detachDevice(int $deviceId): Response
+    public function detachDevice(int $id, int $deviceId): Response
     {
         //Validation
         $validation = new Validation();
@@ -289,7 +289,7 @@ class UsersController extends \Baka\Auth\UsersController
         }
 
         $userSource = UserLinkedSources::findFirst([
-                'conditions' => 'users_id = ?0 and source_id = ?1 and source_users_id_text = ?2',
+                'conditions' => 'users_id = ?0 and source_id = ?1 and source_users_id_text = ?2 and is_deleted = 0',
                 'bind' => [$this->userData->getId(), $source->getId(), $deviceId]
             ]);
 

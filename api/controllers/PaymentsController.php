@@ -6,7 +6,6 @@ namespace Gewaer\Api\Controllers;
 
 use Phalcon\Http\Response;
 use Gewaer\Models\Users;
-use Carbon\Carbon;
 use Gewaer\Exception\NotFoundHttpException;
 use Gewaer\Traits\EmailTrait;
 use Datetime;
@@ -21,6 +20,11 @@ use Datetime;
  */
 class PaymentsController extends BaseController
 {
+    /**
+     * Email Trait
+     */
+    use EmailTrait;
+
     /**
      * Handle stripe webhoook calls
      *
@@ -42,6 +46,11 @@ class PaymentsController extends BaseController
         }
         $type = str_replace('.', '', ucwords(str_replace('_', '', $request['type']), '.'));
         $method = 'handle' . $type;
+
+        $payloadContent = json_encode($request);
+        $this->log->info("Webhook Handler Method: {$method} \n");
+        $this->log->info("Payload: {$payloadContent} \n");
+
         if (method_exists($this, $method)) {
             return $this->{$method}($request);
         } else {
@@ -60,45 +69,17 @@ class PaymentsController extends BaseController
         $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
         if ($user) {
             $data = $payload['data']['object'];
-            //get the current subscription they are updating
-            $subscription = $user->getAllSubscriptions('stripe_id =' . $data['id']);
 
-            if (is_object($subscription)) {
-                // Quantity...
-                if (isset($data['quantity'])) {
-                    $subscription->quantity = $data['quantity'];
-                }
-                // Plan...
-                if (isset($data['plan']['id'])) {
-                    $subscription->stripe_plan = $data['plan']['id'];
-                }
-                // Trial ending date...
-                if (isset($data['trial_end'])) {
-                    $trial_ends = Carbon::createFromTimestamp($data['trial_end']);
-                    if (!$subscription->trial_ends_at || $subscription->trial_ends_at->ne($trial_ends)) {
-                        $subscription->trial_ends_at = $trial_ends;
-                    }
-                }
-                // Cancellation date...
-                if (isset($data['cancel_at_period_end']) && $data['cancel_at_period_end']) {
-                    $subscription->ends_at = $subscription->onTrial()
-                        ? $subscription->trial_ends_at
-                        : Carbon::createFromTimestamp($data['current_period_end']);
-                }
+            $subject = "{$user->firstname} {$user->lastname} Updated Subscription";
+            $content = "Dear user {$user->firstname} {$user->lastname}, your subscription has been updated.";
 
-                if ($subscription->update()) {
-                    $subject = "{$user->firstname} {$user->lastname} Updated Subscription";
-                    $content = "Dear user {$user->firstname} {$user->lastname}, your subscription has been updated.";
-
-                    $template = [
+            $template = [
                         'subject' => $subject,
                         'content' => $content
                     ];
-                    //We need to send a mail to the user
-                    if (!defined('API_TESTS')) {
-                        EmailTrait::sendWebhookEmail($user->email, $template);
-                    }
-                }
+            //We need to send a mail to the user
+            if (!defined('API_TESTS')) {
+                $this->sendWebhookEmail($user->email, $template);
             }
         }
         return $this->response(['Webhook Handled']);
@@ -146,7 +127,7 @@ class PaymentsController extends BaseController
             ];
             //We need to send a mail to the user
             if (!defined('API_TESTS')) {
-                EmailTrait::sendWebhookEmail($user->email, $template);
+                $this->sendWebhookEmail($user->email, $template);
             }
         }
         return $this->response(['Webhook Handled']);
@@ -223,7 +204,7 @@ class PaymentsController extends BaseController
             ];
             //We need to send a mail to the user
             if (!defined('API_TESTS')) {
-                EmailTrait::sendWebhookEmail($user->email, $template);
+                $this->sendWebhookEmail($user->email, $template);
             }
         }
         return $this->response(['Webhook Handled']);
@@ -249,7 +230,7 @@ class PaymentsController extends BaseController
             ];
             //We need to send a mail to the user
             if (!defined('API_TESTS')) {
-                EmailTrait::sendWebhookEmail($user->email, $template);
+                $this->sendWebhookEmail($user->email, $template);
             }
         }
         return $this->response(['Webhook Handled']);
@@ -287,7 +268,7 @@ class PaymentsController extends BaseController
             ];
             //We need to send a mail to the user
             if (!defined('API_TESTS')) {
-                EmailTrait::sendWebhookEmail($user->email, $template);
+                $this->sendWebhookEmail($user->email, $template);
             }
         }
         return $this->response(['Webhook Handled']);
