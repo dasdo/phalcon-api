@@ -102,10 +102,6 @@ class AppsPlansController extends BaseController
             'bind' => [$this->userData->getId(), $this->userData->currentCompanyId(), $this->app->getId()]
         ]);
 
-        if (is_object($userSubscription)) {
-            throw new NotFoundHttpException(_('You are already subscribed to this plan'));
-        }
-
         //we can only run stripe paymenta gateway if we have the key
         if (paymentGatewayIsActive()) {
             $card = StripeToken::create([
@@ -122,13 +118,21 @@ class AppsPlansController extends BaseController
             $this->db->begin();
 
             if ($appPlan->free_trial_dates == 0) {
-                $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->create($card);
+                $customer = $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->create($card);
             } else {
-                $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->trialDays($appPlan->free_trial_dates)->create($card);
+                $customer = $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->trialDays($appPlan->free_trial_dates)->create($card);
             }
 
             //update company app
             $companyApp = UserCompanyApps::getCurrentApp();
+
+            if ($userSubscription) {
+                $userSubscription->stripe_id = $customer->stripe_id;
+                if ($userSubscription->update()) {
+                    $this->db->rollback();
+                    throw new UnprocessableEntityHttpException((string)current($userSubscription->getMessages()));
+                }
+            }
 
             //update the company app to the new plan
             if (is_object($companyApp)) {
@@ -184,7 +188,6 @@ class AppsPlansController extends BaseController
 
         if ($subscription->onTrial()) {
             $subscription->name = $appPlan->name;
-            $subscription->stripe_id = $appPlan->stripe_id;
             $subscription->stripe_plan = $appPlan->stripe_plan;
         } else {
             $subscription->swap($stripeId);
