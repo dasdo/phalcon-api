@@ -127,7 +127,7 @@ class AppsPlansController extends BaseController
             $companyApp = UserCompanyApps::getCurrentApp();
 
             if ($userSubscription) {
-                $userSubscription->stripe_id = $customer->stripe_id;
+                $userSubscription->stripe_id = $customer->getActiveSubscriptionId();
                 if ($userSubscription->update()) {
                     $this->db->rollback();
                     throw new UnprocessableEntityHttpException((string)current($userSubscription->getMessages()));
