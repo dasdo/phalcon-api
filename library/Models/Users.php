@@ -86,7 +86,7 @@ class Users extends \Baka\Auth\Models\Users
      * Active subscription id
      * @var string
      */
-    public $activeSubscriptionId;
+    public $active_subscription_id;
 
     /**
      * Initialize method for model.
