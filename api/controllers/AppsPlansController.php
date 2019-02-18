@@ -118,17 +118,17 @@ class AppsPlansController extends BaseController
             $this->db->begin();
 
             if ($appPlan->free_trial_dates == 0) {
-                $customer = $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->create($card);
+                $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->create($card);
             } else {
-                $customer = $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->trialDays($appPlan->free_trial_dates)->create($card);
+                $this->userData->newSubscription($appPlan->name, $appPlan->stripe_id, $company, $this->app)->trialDays($appPlan->free_trial_dates)->create($card);
             }
 
             //update company app
             $companyApp = UserCompanyApps::getCurrentApp();
 
             if ($userSubscription) {
-                $userSubscription->stripe_id = $customer->getActiveSubscriptionId();
-                if ($userSubscription->update()) {
+                $userSubscription->stripe_id = $this->userData->activeSubscriptionId;
+                if (!$userSubscription->update()) {
                     $this->db->rollback();
                     throw new UnprocessableEntityHttpException((string)current($userSubscription->getMessages()));
                 }
