@@ -83,6 +83,12 @@ class Users extends \Baka\Auth\Models\Users
     public $appPlanId = null;
 
     /**
+     * Active subscription id.Not an actual table field, used temporarily
+     * @var string
+     */
+    public $active_subscription_id;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
