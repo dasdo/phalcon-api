@@ -66,7 +66,7 @@ class UsersInviteController extends BaseController
      * @param string $hash
      * @return Response
      */
-    public function getByHash(string $hash):Response
+    public function getByHash(string $hash): Response
     {
         $userInvite = $this->model::findFirst([
             'conditions' => 'invite_hash =  ?0 and is_deleted = 0',
