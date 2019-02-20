@@ -123,7 +123,19 @@ class Users extends \Baka\Auth\Models\Users
             'id',
             'Gewaer\Models\UserWebhooks',
             'users_id',
-            ['alias' => 'user-webhooks']
+            ['alias' => 'userWebhook']
+        );
+
+        $systemModule = SystemModules::getSystemModuleByModelName(self::class);
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\FileSystem',
+            'entity_id',
+            [
+                'alias' => 'filesystem',
+                'conditions' => 'system_modules_id = ?0',
+                'bind' => [$systemModule->getId()]
+            ]
         );
 
         $systemModule = SystemModules::findFirst([

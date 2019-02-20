@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
+use Phalcon\Di;
+
 class SystemModules extends AbstractModel
 {
     /**
@@ -116,5 +118,18 @@ class SystemModules extends AbstractModel
     public function getSource(): string
     {
         return 'system_modules';
+    }
+
+    /**
+     * Get System Module by its model_name
+     * @param string $model_name
+     * @return SystemModules
+     */
+    public static function getSystemModuleByModelName(string $modelName):SystemModules
+    {
+        return SystemModules::findFirst([
+            'conditions' => 'model_name = ?0 and apps_id = ?1',
+            'bind' => [$modelName, Di::getDefault()->getApp()->getId()]
+        ]);
     }
 }

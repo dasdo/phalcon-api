@@ -196,11 +196,16 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             ['alias' => 'user-webhooks']
         );
 
+        $systemModule = SystemModules::getSystemModuleByModelName(self::class);
         $this->hasMany(
             'id',
             'Gewaer\Models\FileSystem',
-            'companies_id',
-            ['alias' => 'filesystem']
+            'entity_id',
+            [
+                'alias' => 'filesystem',
+                'conditions' => 'system_modules_id = ?0',
+                'bind' => [$systemModule->getId()]
+            ]
         );
     }
 
