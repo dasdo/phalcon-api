@@ -201,3 +201,7 @@ worker.jobs:
       schedule: '0 0 * * *'
       command: php cli/cli.php filesystem purgeimages 0 local
 
+    - id: unset-trial-ends-at
+      schedule: '0 0 * * *'
+      command: php cli/cli.php trial unsettrialendsat
+
