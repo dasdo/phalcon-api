@@ -346,7 +346,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         }
 
         //If the newly created company is not the default then we create a new subscription with the same user
-        if ($this->di->getUserData()->default_company != $this->getId()) {
+        if ($this->userData->default_company != $this->getId()) {
             $subscription = $this->startCompanySubscription();
 
             if (!is_object($subscription)) {
