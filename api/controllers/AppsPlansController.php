@@ -285,8 +285,10 @@ class AppsPlansController extends BaseController
         $expYear = $this->request->getPost('exp_year');
         $cvc = $this->request->getPost('cvc');
 
+        $customerId = $this->userData->stripe_id;
+
         //Create a new card token
-        $card = StripeToken::create([
+        $token = StripeToken::create([
             'card' => [
                 'number' => $cardNumber,
                 'exp_month' => $expMonth,
@@ -297,6 +299,6 @@ class AppsPlansController extends BaseController
             'api_key' => $this->config->stripe->secret
         ])->id;
 
-        return $this->user->updatePaymentMethod($customerId, $token);
+        return $this->userData->updatePaymentMethod($customerId, $token);
     }
 }
