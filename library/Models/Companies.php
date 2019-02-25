@@ -450,6 +450,9 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             throw new ServerErrorHttpException((string)current($this->getMessages()));
         }
 
+        //Lets create a new default subscription without payment method
+        $this->user->newSubscription($defaultPlan->name, $defaultPlan->stripe_id, $this, $this->di->getApp())->trialDays($defaultPlan->free_trial_dates)->create();
+
         $this->update();
 
         return $subscription;
