@@ -206,7 +206,7 @@ $router->post('/apps-plans/{id}/method', [
     'Gewaer\Api\Controllers\AppsPlansController',
     'updatePaymentMethod',
     'options' => [
-        'jwt' => false,
+        'jwt' => true,
     ]
 ]);
 

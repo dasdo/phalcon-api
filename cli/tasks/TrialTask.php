@@ -16,7 +16,7 @@ class TrialTask extends PhTask
     public function unsetTrialEndsAtAction(): void
     {
         $subscriptions = Subscription::find([
-            'conditions' => 'is_deleted = 0'
+            'conditions' => 'is_deleted = 0 and is_active = 1'
         ]);
 
         foreach ($subscriptions as $subscription) {

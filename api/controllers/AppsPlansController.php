@@ -261,9 +261,10 @@ class AppsPlansController extends BaseController
 
     /**
      * Update payment method
+     * @param integer $id
      * @return Response
      */
-    public function updatePaymentMethod(): Response
+    public function updatePaymentMethod(int $id): Response
     {
         //Ok let validate user password
         $validation = new Validation();
