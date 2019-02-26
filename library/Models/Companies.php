@@ -451,9 +451,9 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         }
 
         //Lets create a new default subscription without payment method
-        if (!defined('API_TESTS')) {
-            $this->user->newSubscription($defaultPlan->name, $defaultPlan->stripe_id, $this, $this->di->getApp())->trialDays($defaultPlan->free_trial_dates)->create();
-        }
+        // if (!defined('API_TESTS')) {
+        $this->user->newSubscription($defaultPlan->name, $defaultPlan->stripe_id, $this, $this->di->getApp())->trialDays($defaultPlan->free_trial_dates)->create();
+        // }
         $this->update();
 
         return $subscription;
