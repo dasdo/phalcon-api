@@ -258,4 +258,48 @@ class AppsPlansController extends BaseController
 
         return $this->response($appPlan);
     }
+
+    /**
+     * Update payment method
+     * @param integer $id
+     * @return Response
+     */
+    public function updatePaymentMethod(int $id): Response
+    {
+        //Ok let validate user password
+        $validation = new Validation();
+        $validation->add('number', new PresenceOf(['message' => _('Credit Card Number is required.')]));
+        $validation->add('exp_month', new PresenceOf(['message' => _('Credit Card Number is required.')]));
+        $validation->add('exp_year', new PresenceOf(['message' => _('Credit Card Number is required.')]));
+        $validation->add('cvc', new PresenceOf(['message' => _('CVC is required.')]));
+
+        //validate this form for password
+        $messages = $validation->validate($this->request->getPost());
+        if (count($messages)) {
+            foreach ($messages as $message) {
+                throw new UnprocessableEntityHttpException((string) $message);
+            }
+        }
+
+        $cardNumber = $this->request->getPost('number');
+        $expMonth = $this->request->getPost('exp_month');
+        $expYear = $this->request->getPost('exp_year');
+        $cvc = $this->request->getPost('cvc');
+
+        $customerId = $this->userData->stripe_id;
+
+        //Create a new card token
+        $token = StripeToken::create([
+            'card' => [
+                'number' => $cardNumber,
+                'exp_month' => $expMonth,
+                'exp_year' => $expYear,
+                'cvc' => $cvc,
+            ],
+        ], [
+            'api_key' => $this->config->stripe->secret
+        ])->id;
+
+        return $this->userData->updatePaymentMethod($customerId, $token);
+    }
 }

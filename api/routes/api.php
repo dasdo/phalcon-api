@@ -202,4 +202,12 @@ $router->post('/email-templates/test', [
     ]
 ]);
 
+$router->post('/apps-plans/{id}/method', [
+    'Gewaer\Api\Controllers\AppsPlansController',
+    'updatePaymentMethod',
+    'options' => [
+        'jwt' => true,
+    ]
+]);
+
 $router->mount();
