@@ -8,6 +8,7 @@ use Phalcon\Validation\Validator\PresenceOf;
 use Gewaer\Exception\ServerErrorHttpException;
 use Exception;
 use Carbon\Carbon;
+use Gewaer\Traits\ModelSettingsTrait;
 
 /**
  * Class Companies
@@ -25,7 +26,10 @@ use Carbon\Carbon;
  */
 class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
 {
+    use ModelSettingsTrait;
+
     const DEFAULT_COMPANY = 'DefaulCompany';
+    const PAYMENT_GATEWAY_CUSTOMER_KEY = 'payment_gateway_customer_id';
 
     /**
      *
@@ -280,6 +284,16 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     }
 
     /**
+     * Get the stripe customer id from the
+     *
+     * @return ?string
+     */
+    public function getPaymentGatewayCustomerId(): ?string
+    {
+        return $this->getSettings(self::PAYMENT_GATEWAY_CUSTOMER_KEY);
+    }
+
+    /**
      * After creating the company
      *
      * @return void
@@ -289,13 +303,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         parent::afterCreate();
 
         //setup the user notificatoin setting
-        $companySettings = new CompaniesSettings();
-        $companySettings->companies_id = $this->getId();
-        $companySettings->name = 'notifications';
-        $companySettings->value = $this->user->email;
-        if (!$companySettings->save()) {
-            throw new Exception((string)current($companySettings->getMessages()));
-        }
+        $this->setSettings('notifications', $this->user->email);
 
         //multi user asociation
         $usersAssociatedCompany = new UsersAssociatedCompany();
@@ -346,12 +354,8 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         }
 
         //If the newly created company is not the default then we create a new subscription with the same user
-        if ($this->userData->default_company != $this->getId()) {
-            $subscription = $this->startCompanySubscription();
-
-            if (!is_object($subscription)) {
-                throw new Exception('Subscription for new company could not be created');
-            }
+        if ($this->di->getUserData()->default_company != $this->getId()) {
+            $this->setSettings(self::PAYMENT_GATEWAY_CUSTOMER_KEY, $this->startFreeTrial());
         }
 
         $companyApps->created_at = date('Y-m-d H:i:s');
@@ -425,9 +429,9 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     /**
      * Start a free trial for a new company
      *
-     * @return Subscription
+     * @return string //the customer id
      */
-    public function startCompanySubscription() : Subscription
+    public function startFreeTrial() : ?string
     {
         $defaultPlan = AppsPlans::getDefaultPlan();
         $trialEndsAt = Carbon::now()->addDays($this->di->getApp()->plan->free_trial_dates);
@@ -447,15 +451,16 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $subscription->is_active = 1;
 
         if (!$subscription->save()) {
-            throw new ServerErrorHttpException((string)current($this->getMessages()));
+            throw new ServerErrorHttpException((string) 'Subscription for new company couldnt be created ' . current($this->getMessages()));
         }
 
         //Lets create a new default subscription without payment method
         if (!defined('API_TESTS')) {
-            $this->user->newSubscription($defaultPlan->name, $defaultPlan->stripe_id, $this, $this->di->getApp())->trialDays($defaultPlan->free_trial_dates)->create();
+            $this->user->newSubscription($defaultPlan->name, $defaultPlan->stripe_id, $this, $this->di->getApp())
+                ->trialDays($defaultPlan->free_trial_dates)
+                ->create();
         }
-        $this->update();
 
-        return $subscription;
+        return $this->user->stripe_id;
     }
 }
