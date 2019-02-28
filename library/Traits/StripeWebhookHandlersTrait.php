@@ -6,6 +6,8 @@ namespace Gewaer\Traits;
 
 use Gewaer\Models\Users;
 use Phalcon\Http\Response;
+use Gewaer\Exception\NotFoundHttpException;
+use Phalcon\Di;
 
 /**
  * Trait WebhookHandlers
