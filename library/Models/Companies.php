@@ -436,29 +436,23 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $defaultPlan = AppsPlans::getDefaultPlan();
         $trialEndsAt = Carbon::now()->addDays($this->di->getApp()->plan->free_trial_dates);
 
-        $subscription = new Subscription();
-        $subscription->user_id = $this->di->getUserData()->getId();
-        $subscription->companies_id = $this->getId();
-        $subscription->apps_id = $this->di->getApp()->getId();
-        $subscription->apps_plans_id = $this->di->getApp()->default_apps_plan_id;
-        $subscription->name = $defaultPlan->name;
-        $subscription->stripe_id = $defaultPlan->stripe_id;
-        $subscription->stripe_plan = $defaultPlan->stripe_plan;
-        $subscription->quantity = 1;
-        $subscription->trial_ends_at = $trialEndsAt->toDateTimeString();
-        $subscription->trial_ends_days = $trialEndsAt->diffInDays(Carbon::now());
-        $subscription->is_freetrial = 1;
-        $subscription->is_active = 1;
-
-        if (!$subscription->save()) {
-            throw new ServerErrorHttpException((string) 'Subscription for new company couldnt be created ' . current($this->getMessages()));
-        }
-
         //Lets create a new default subscription without payment method
         if (!defined('API_TESTS')) {
+            //create the subscription
             $this->user->newSubscription($defaultPlan->name, $defaultPlan->stripe_id, $this, $this->di->getApp())
                 ->trialDays($defaultPlan->free_trial_dates)
                 ->create();
+
+            //ook for the subscription and update the missing info
+            $subscription = $this->subscription;
+            $subscription->apps_plans_id = $this->di->getApp()->default_apps_plan_id;
+            $subscription->trial_ends_days = $trialEndsAt->diffInDays(Carbon::now());
+            $subscription->is_freetrial = 1;
+            $subscription->is_active = 1;
+
+            if (!$subscription->save()) {
+                throw new ServerErrorHttpException((string)'Subscription for new company couldnt be created ' . current($this->getMessages()));
+            }
         }
 
         return $this->user->stripe_id;
