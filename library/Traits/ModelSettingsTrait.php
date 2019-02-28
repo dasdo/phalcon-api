@@ -27,7 +27,6 @@ trait ModelSettingsTrait
     /**
      * Set the setting model
      *
-     * @param AbstractModel $model
      * @return void
      */
     private function createSettingsModel(): void
