@@ -8,7 +8,6 @@ use Phalcon\Http\Response;
 use Gewaer\Models\Users;
 use Gewaer\Exception\NotFoundHttpException;
 use Gewaer\Traits\EmailTrait;
-use Datetime;
 
 /**
  * Class PaymentsController
@@ -69,16 +68,9 @@ class PaymentsController extends BaseController
     {
         $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
         if ($user) {
-            $subject = "{$user->firstname} {$user->lastname} Updated Subscription";
-            $content = "Dear user {$user->firstname} {$user->lastname}, your subscription has been updated.";
-
-            $template = [
-                        'subject' => $subject,
-                        'content' => $content
-                    ];
             //We need to send a mail to the user
             if (!defined('API_TESTS')) {
-                $this->sendWebhookEmail($user->email, $template);
+                $this->sendWebhookEmail($user, $payload);
             }
         }
         return $this->response(['Webhook Handled']);
@@ -111,22 +103,11 @@ class PaymentsController extends BaseController
      */
     protected function handleCustomerSubscriptionTrialwillend(array $payload): Response
     {
-        $trialEndDate = new Datetime();
-        $trialEndDate->setTimestamp((int)$payload['data']['object']['trial_end']);
-        $formatedEndDate = $trialEndDate->format('Y-m-d H:i:s');
-
         $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
         if ($user) {
-            $subject = "{$user->firstname} {$user->lastname} Free Trial Ending";
-            $content = "Dear user {$user->firstname} {$user->lastname}, your free trial is coming to an end on {$formatedEndDate}.Please choose one of our available subscriptions. Thank you";
-
-            $template = [
-                'subject' => $subject,
-                'content' => $content
-            ];
             //We need to send a mail to the user
             if (!defined('API_TESTS')) {
-                $this->sendWebhookEmail($user->email, $template);
+                $this->sendWebhookEmail($user, $payload);
             }
         }
         return $this->response(['Webhook Handled']);
@@ -194,16 +175,9 @@ class PaymentsController extends BaseController
     {
         $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
         if ($user) {
-            $subject = "{$user->firstname} {$user->lastname} Successful Payment";
-            $content = "Dear user {$user->firstname} {$user->lastname}, your subscription payment of {$payload['data']['object']['amount']} was successful. Thank you";
-
-            $template = [
-                'subject' => $subject,
-                'content' => $content
-            ];
             //We need to send a mail to the user
             if (!defined('API_TESTS')) {
-                $this->sendWebhookEmail($user->email, $template);
+                $this->sendWebhookEmail($user, $payload);
             }
         }
         return $this->response(['Webhook Handled']);
@@ -220,16 +194,9 @@ class PaymentsController extends BaseController
     {
         $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
         if ($user) {
-            $subject = "{$user->firstname} {$user->lastname} Failed Payment";
-            $content = "Dear user {$user->firstname} {$user->lastname}, your subscription presents a failed payment of the amount of {$payload['data']['object']['amount']}. Please check card expiration date";
-
-            $template = [
-                'subject' => $subject,
-                'content' => $content
-            ];
             //We need to send a mail to the user
             if (!defined('API_TESTS')) {
-                $this->sendWebhookEmail($user->email, $template);
+                $this->sendWebhookEmail($user, $payload);
             }
         }
         return $this->response(['Webhook Handled']);
@@ -258,16 +225,9 @@ class PaymentsController extends BaseController
     {
         $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
         if ($user) {
-            $subject = "{$user->firstname} {$user->lastname} Pending Payment";
-            $content = "Dear user {$user->firstname} {$user->lastname}, your subscription presents a pending payment of {$payload['data']['object']['amount']}";
-
-            $template = [
-                'subject' => $subject,
-                'content' => $content
-            ];
             //We need to send a mail to the user
             if (!defined('API_TESTS')) {
-                $this->sendWebhookEmail($user->email, $template);
+                $this->sendWebhookEmail($user, $payload);
             }
         }
         return $this->response(['Webhook Handled']);

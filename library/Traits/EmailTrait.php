@@ -24,14 +24,12 @@ trait EmailTrait
 {
     /**
      * Send webhook related emails to user
-     * @param string $email
-     * @param array $template
+     * @param Users $user
+     * @param array $payload
      * @return void
      */
-    public static function sendWebhookEmail(string $email, array $template): void
+    public static function sendWebhookEmail(Users $user, array $payload): void
     {
-        $subject = $template['subject'];
-        $content = $template['content'];
         Di::getDefault()->getMail()
             ->to($email)
             ->subject($subject)
