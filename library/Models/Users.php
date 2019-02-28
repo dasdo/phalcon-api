@@ -49,7 +49,7 @@ class Users extends \Baka\Auth\Models\Users
     /**
      * Stripe id
      *
-     * @var integer
+     * @var string
      */
     public $stripe_id;
 
@@ -408,12 +408,13 @@ class Users extends \Baka\Auth\Models\Users
                 throw new ServerErrorHttpException((string) current($this->getMessages()));
             }
 
+            $this->stripe_id = $company->getPaymentGatewayCustomerId();
             $this->default_company_branch = $this->defaultCompany->branch->getId();
             $this->update();
 
-            //update default subscription free trial
-            $company->app->subscriptions_id = $this->startFreeTrial()->getId();
-            $company->update();
+        //update default subscription free trial
+            //$company->app->subscriptions_id = $this->startFreeTrial()->getId();
+            //$company->update();
         } else {
             //we have the company id
             if (empty($this->default_company_branch)) {
@@ -427,7 +428,7 @@ class Users extends \Baka\Auth\Models\Users
         $newUserAssocCompany->companies_id = $this->default_company;
         $newUserAssocCompany->identify_id = 1;
         $newUserAssocCompany->user_active = 1;
-        $newUserAssocCompany->user_role = $this->roles_id == 1 ? 'admins' : 'users';
+        $newUserAssocCompany->user_role = $this->roles_id;
 
         if (!$newUserAssocCompany->save()) {
             throw new ServerErrorHttpException((string)current($newUserAssocCompany->getMessages()));
