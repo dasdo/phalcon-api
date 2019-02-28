@@ -34,10 +34,8 @@ trait StripeWebhookHandlersTrait
     public function handleWebhook(): Response
     {
         //we cant processs if we dont find the stripe header
-        if (!defined('API_TESTS')) {
-            if (!$this->request->hasHeader('Stripe-Signature')) {
-                throw new NotFoundHttpException('Route not found for this call');
-            }
+        if (!$this->request->hasHeader('Stripe-Signature')) {
+            throw new NotFoundHttpException('Route not found for this call');
         }
 
         $request = $this->request->getPost();
@@ -232,12 +230,12 @@ trait StripeWebhookHandlersTrait
      */
     public static function sendWebhookResponseEmail(Users $user, array $payload): void
     {
-        $subject = '';
-        $content = '';
-        Di::getDefault()->getMail()
-            ->to($user->email)
-            ->subject($subject)
-            ->content($content)
-            ->sendNow();
+        // $subject = '';
+        // $content = '';
+        // Di::getDefault()->getMail()
+        //     ->to($user->email)
+        //     ->subject($subject)
+        //     ->content($content)
+        //     ->sendNow();
     }
 }
