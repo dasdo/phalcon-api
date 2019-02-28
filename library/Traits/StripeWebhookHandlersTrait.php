@@ -20,6 +20,8 @@ use Phalcon\Di;
  * @property Companies $company
  * @property UserCompanyApps $app
  * @property \Phalcon\Di $di
+ * @property Subscriptions $subscriptions
+ * @property Email $email
  *
  */
 trait StripeWebhookHandlersTrait
