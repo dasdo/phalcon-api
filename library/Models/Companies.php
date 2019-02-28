@@ -345,7 +345,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $companyApps = new UserCompanyApps();
         $companyApps->companies_id = $this->getId();
         $companyApps->apps_id = $this->di->getApp()->getId();
-        $companyApps->subscriptions_id = 0;
+        //$companyApps->subscriptions_id = 0;
 
         //we need to assign this company to a plan
         if (empty($this->appPlanId)) {
@@ -358,6 +358,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             $this->setSettings(self::PAYMENT_GATEWAY_CUSTOMER_KEY, $this->startFreeTrial());
         }
 
+        $companyApps->subscriptions_id = $this->subscription->getId();
         $companyApps->created_at = date('Y-m-d H:i:s');
         $companyApps->is_deleted = 0;
 
