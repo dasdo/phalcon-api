@@ -127,9 +127,6 @@ class AppsPlanCest
     public function freeTrialEndingSubscription(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
-        $stripeSignature = 't=1492774577,
-        v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd,
-        v0=6ffbb59b2300aae63f272406069a9788598b792a944a07aba816edb039989a39';
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->haveHttpHeader('Stripe-Signature', PaymentsCest::getStripeSignature());
