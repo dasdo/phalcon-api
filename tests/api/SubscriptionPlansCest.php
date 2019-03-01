@@ -1,6 +1,7 @@
 <?php
 
 use Gewaer\Models\Subscription;
+use Gewaer\Tests\api\PaymentsCest;
 
 class AppsPlanCest
 {
@@ -128,6 +129,7 @@ class AppsPlanCest
         $userData = $I->apiLogin();
 
         $I->haveHttpHeader('Authorization', $userData->token);
+        $I->haveHttpHeader('Stripe-Signature', PaymentsCest::getStripeSignature());
         $I->sendPost('/v1/' . 'webhook/payments', [
             'type' => 'customer.subscription.trial_will_end',
             'data' => [

@@ -300,6 +300,11 @@ class AppsPlansController extends BaseController
             'api_key' => $this->config->stripe->secret
         ])->id;
 
-        return $this->userData->updatePaymentMethod($customerId, $token);
+        $updatedCustomer = $this->userData->updatePaymentMethod($customerId, $token);
+
+        if (is_object($updatedCustomer)) {
+            return $this->response($this->userData);
+        }
+        return $this->response('Card could not be updated');
     }
 }
