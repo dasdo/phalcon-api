@@ -9,6 +9,15 @@ class PaymentsCest
     protected $model = 'payments';
 
     /**
+     * Get Stripe Signature
+     * @return string
+     */
+    public function getStripeSignature(): string 
+    {
+        return 't=1492774577,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd,v0=6ffbb59b2300aae63f272406069a9788598b792a944a07aba816edb039989a39';
+    }
+
+    /**
      * Pending Payment
      *
      * @param ApiTester $I
@@ -17,12 +26,9 @@ class PaymentsCest
     public function pendingPayment(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
-        $stripeSignature = 't=1492774577,
-        v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd,
-        v0=6ffbb59b2300aae63f272406069a9788598b792a944a07aba816edb039989a39';
 
         $I->haveHttpHeader('Authorization', $userData->token);
-        $I->haveHttpHeader('Stripe-Signature', $stripeSignature);
+        $I->haveHttpHeader('Stripe-Signature', $this->getStripeSignature());
         $I->sendPost('/v1/' . 'webhook/' . $this->model, [
             'type' => 'charge.pending',
             'data' => [
@@ -48,12 +54,9 @@ class PaymentsCest
     public function failedPayment(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
-        $stripeSignature = 't=1492774577,
-        v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd,
-        v0=6ffbb59b2300aae63f272406069a9788598b792a944a07aba816edb039989a39';
 
         $I->haveHttpHeader('Authorization', $userData->token);
-        $I->haveHttpHeader('Stripe-Signature', $stripeSignature);
+        $I->haveHttpHeader('Stripe-Signature', $this->getStripeSignature());
         $I->sendPost('/v1/' . 'webhook/' . $this->model, [
             'type' => 'charge.failed',
             'data' => [
@@ -79,12 +82,9 @@ class PaymentsCest
     public function SucceededPayment(ApiTester $I) : void
     {
         $userData = $I->apiLogin();
-        $stripeSignature = 't=1492774577,
-        v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd,
-        v0=6ffbb59b2300aae63f272406069a9788598b792a944a07aba816edb039989a39';
 
         $I->haveHttpHeader('Authorization', $userData->token);
-        $I->haveHttpHeader('Stripe-Signature', $stripeSignature);
+        $I->haveHttpHeader('Stripe-Signature', $this->getStripeSignature());
         $I->sendPost('/v1/' . 'webhook/' . $this->model, [
             'type' => 'charge.succeeded',
             'data' => [
