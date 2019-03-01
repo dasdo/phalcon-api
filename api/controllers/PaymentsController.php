@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Gewaer\Api\Controllers;
 
-use Gewaer\Traits\StripeWebhookHandlersTrait;
+use Phalcon\Cashier\Traits\StripeWebhookHandlersTrait;
+use Phalcon\Http\Response;
+use Gewaer\Models\Users;
 
 /**
  * Class PaymentsController
@@ -17,6 +19,7 @@ use Gewaer\Traits\StripeWebhookHandlersTrait;
  */
 class PaymentsController extends BaseController
 {
+
     /**
      * Stripe Webhook Handlers
      */
