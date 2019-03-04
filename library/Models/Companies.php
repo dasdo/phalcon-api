@@ -99,6 +99,24 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     public $currency_id;
 
     /**
+     *
+     * @var string
+     */
+    public $language;
+
+    /**
+     *
+     * @var string
+     */
+    public $timezone;
+
+    /**
+     *
+     * @var string
+     */
+    public $currency;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()

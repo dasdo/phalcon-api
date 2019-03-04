@@ -8,6 +8,7 @@ use Gewaer\Models\Companies;
 use Gewaer\Models\CompaniesCustomFields;
 use Phalcon\Http\Response;
 use Gewaer\Exception\UnauthorizedHttpException;
+use Exception;
 
 /**
  * Class CompaniesController
