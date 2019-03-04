@@ -6,6 +6,8 @@ namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\Companies;
 use Gewaer\Models\CompaniesCustomFields;
+use Phalcon\Http\Response;
+use Gewaer\Exception\UnauthorizedHttpException;
 
 /**
  * Class CompaniesController
@@ -47,5 +49,74 @@ class CompaniesController extends BaseCustomFieldsController
         $this->additionalSearchFields = [
             ['id', ':', implode('|', $this->userData->getAssociatedCompanies())],
         ];
+    }
+
+    /**
+     * Update an item.
+     *
+     * @method PUT
+     * url /v1/companies/{id}
+     *
+     * @param mixed $id
+     *
+     * @return \Phalcon\Http\Response
+     * @throws \Exception
+     */
+    public function edit($id): Response
+    {
+        if ($company = $this->model->findFirst($id)) {
+            if (!$company->userAssociatedToCompany($this->userData) && !$this->userData->hasRole('Default.Admins')) {
+                throw new UnauthorizedHttpException(_('You dont have permission to update this company info'));
+            }
+
+            $data = $this->request->getPut();
+
+            if (empty($data)) {
+                throw new Exception('No valid data sent.');
+            }
+
+            //set the custom fields to update
+            $company->setCustomFields($data);
+
+            //update
+            if ($company->update($data, $this->updateFields)) {
+                return $this->getById($id);
+            } else {
+                //didnt work
+                throw new Exception($company->getMessages()[0]);
+            }
+        } else {
+            throw new Exception(_('Company doesnt exist'));
+        }
+    }
+
+    /**
+     * Delete an item.
+     *
+     * @method DELETE
+     * url /v1/companies/{id}
+     *
+     * @param mixed $id
+     *
+     * @return \Phalcon\Http\Response
+     * @throws \Exception
+     */
+    public function delete($id): Response
+    {
+        if ($company = $this->model->findFirst($id)) {
+            if (!$company->userAssociatedToCompany($this->userData) && !$this->userData->hasRole('Default.Admins')) {
+                throw new UnauthorizedHttpException(_('You dont have permission to delete this company'));
+            }
+
+            if ($company->delete() === false) {
+                foreach ($company->getMessages() as $message) {
+                    throw new Exception($message);
+                }
+            }
+
+            return $this->response(['Delete Successfully']);
+        } else {
+            throw new Exception(_('Company doesnt exist'));
+        }
     }
 }

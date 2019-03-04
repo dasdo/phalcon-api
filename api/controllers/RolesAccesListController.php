@@ -182,6 +182,9 @@ class RolesAccesListController extends BaseController
             throw new ServerErrorHttpException((string) current($role->getMessages()));
         }
 
+        //clean previous records
+        $role->accesList->delete();
+
         /**
          * we always deny permision, by default the canvas set allow to all
          * so we only have to take away permissions

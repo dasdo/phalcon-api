@@ -294,6 +294,21 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     }
 
     /**
+     * Before crate company
+     *
+     * @return void
+     */
+    public function beforeCreate()
+    {
+        /**
+         * @todo change this to get it from the app
+         */
+        $this->language = 'EN';
+        $this->timezone = 'America/New_York';
+        $this->currency = Currencies::findFirstByCode('USD')->getId();
+    }
+
+    /**
      * After creating the company
      *
      * @return void
