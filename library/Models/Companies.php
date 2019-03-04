@@ -161,6 +161,14 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             ['alias' => 'UsersAssociatedCompany']
         );
 
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\UsersAssociatedApps',
+            'companies_id',
+            ['alias' => 'UsersAssociatedApps']
+        );
+
+
         $this->hasOne(
             'id',
             'Gewaer\Models\CompaniesBranches',
@@ -359,6 +367,18 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             if (!$userConfig->save()) {
                 throw new Exception((string)current($userConfig->getMessages()));
             }
+        }
+
+        // New User Associated Apps
+        $usersAssociatedApp = new UsersAssociatedApps;
+        $usersAssociatedApp->users_id = $this->user->getId();
+        $usersAssociatedApp->companies_id = $this->getId();
+        $usersAssociatedApp->apps_id = $this->di->getApp()->getId();
+        $usersAssociatedApp->identify_id = $this->user->getId();
+        $usersAssociatedApp->user_active = 1;
+        $usersAssociatedApp->user_role = 'admin';
+        if (!$usersAssociatedApp->save()) {
+            throw new Exception((string)current($usersAssociatedApp->getMessages()));
         }
 
         /**

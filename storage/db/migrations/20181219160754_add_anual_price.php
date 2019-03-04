@@ -20,5 +20,14 @@ class AddAnualPrice extends AbstractMigration
             ->addColumn('updated_at', 'datetime', ['null' => true, 'after' => 'created_at'])
             ->addColumn('is_deleted', 'integer', ['null' => false, 'default' => '0', 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'updated_at'])
             ->create();
+
+        $table = $this->table('users_associated_apps', ['id' => false, 'primary_key' => ['users_id','apps_id','companies_id'], 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci', 'row_format' => 'Dynamic']);
+        $table->addColumn('users_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10])
+            ->addColumn('apps_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'users_id'])
+            ->addColumn('companies_id', 'integer', ['null' => false, 'limit' => MysqlAdapter::INT_REGULAR, 'precision' => 10, 'after' => 'apps_id'])
+            ->addColumn('identify_id', 'string', ['null' => true, 'limit' => 45, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'companies_id'])
+            ->addColumn('user_active', 'boolean', ['null' => false, 'default' => '1', 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'identify_id'])
+            ->addColumn('user_role', 'string', ['null' => true, 'limit' => 45, 'collation' => 'utf8mb4_unicode_ci', 'encoding' => 'utf8mb4', 'after' => 'user_active'])
+            ->save();
     }
 }
