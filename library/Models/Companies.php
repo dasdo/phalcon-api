@@ -300,12 +300,12 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
      */
     public function beforeCreate()
     {
-        /**
-         * @todo change this to get it from the app
-         */
-        $this->language = 'EN';
-        $this->timezone = 'America/New_York';
-        $this->currency = Currencies::findFirstByCode('USD')->getId();
+        parent::beforeCreate();
+
+       
+        $this->language = AppsSettings::getDefaultAppsSettingsByName('language');
+        $this->timezone = AppsSettings::getDefaultAppsSettingsByName('timezone');
+        $this->currency = Currencies::findFirstByCode(AppsSettings::getDefaultAppsSettingsByName('currency'))->getId();
     }
 
     /**

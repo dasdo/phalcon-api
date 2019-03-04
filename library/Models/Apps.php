@@ -95,6 +95,13 @@ class Apps extends \Baka\Auth\Models\Apps
             'apps_id',
             ['alias' => 'user-webhooks']
         );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\AppsSettings',
+            'apps_id',
+            ['alias' => 'settings']
+        );
     }
 
     /**
