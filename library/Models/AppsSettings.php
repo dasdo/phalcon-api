@@ -67,17 +67,4 @@ class AppsSettings extends AbstractModel
     {
         return 'apps_settings';
     }
-
-    /**
-     * Get default Apps Settings value by name
-     * @param $name
-     * @return string
-     */
-    public static function getDefaultAppsSettingsByName(string $name): string
-    {
-        return self::findFirst([
-            'conditions'=>'apps_id = ?0 and name = ?1 and is_deleted = 0',
-            'bind'=>[Apps::GEWAER_DEFAULT_APP_ID,$name]
-        ])->value;
-    }
 }
