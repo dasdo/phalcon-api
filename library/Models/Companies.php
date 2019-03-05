@@ -158,9 +158,9 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
 
         $this->hasMany(
             'id',
-            'Gewaer\Models\UsersAssociatedCompany',
+            'Gewaer\Models\UsersAssociatedCompanies',
             'companies_id',
-            ['alias' => 'UsersAssociatedCompany']
+            ['alias' => 'UsersAssociatedCompanies']
         );
 
         $this->hasMany(
@@ -358,8 +358,8 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             }
         }
 
-        $this->saveUsersAssociatedModels('company');
-        $this->saveUsersAssociatedModels('apps');
+        $this->associate($this->user, $this);
+        $this->di->getApp()->associate($this->user, $this);
 
         /**
          * @var CompaniesBranches
@@ -420,7 +420,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         }
 
         //second try
-        $defaultCompany = UsersAssociatedCompany::findFirst([
+        $defaultCompany = UsersAssociatedCompanies::findFirst([
             'conditions' => 'users_id = ?0 and user_active =?1',
             'bind' => [$user->getId(), 1],
         ]);

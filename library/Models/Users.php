@@ -153,7 +153,7 @@ class Users extends \Baka\Auth\Models\Users
 
         $this->hasMany(
             'id',
-            'Gewaer\Models\UsersAssociatedCompany',
+            'Gewaer\Models\UsersAssociatedCompanies',
             'users_id',
             [
                 'alias' => 'companies',
@@ -412,7 +412,7 @@ class Users extends \Baka\Auth\Models\Users
             $this->default_company_branch = $this->defaultCompany->branch->getId();
             $this->update();
 
-        //update default subscription free trial
+            //update default subscription free trial
             //$company->app->subscriptions_id = $this->startFreeTrial()->getId();
             //$company->update();
         } else {
@@ -423,7 +423,7 @@ class Users extends \Baka\Auth\Models\Users
         }
 
         //Create new company associated company
-        $newUserAssocCompany = new UsersAssociatedCompany();
+        $newUserAssocCompany = new UsersAssociatedCompanies();
         $newUserAssocCompany->users_id = $this->id;
         $newUserAssocCompany->companies_id = $this->default_company;
         $newUserAssocCompany->identify_id = 1;

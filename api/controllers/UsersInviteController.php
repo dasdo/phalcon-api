@@ -6,7 +6,7 @@ namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\UsersInvite;
 use Gewaer\Models\Users;
-use Gewaer\Models\UsersAssociatedCompany;
+use Gewaer\Models\UsersAssociatedCompanies;
 use Gewaer\Models\UsersAssociatedApps;
 use Gewaer\Models\Roles;
 use Phalcon\Security\Random;
@@ -212,7 +212,7 @@ class UsersInviteController extends BaseController
         ]);
 
         if (is_object($userExists)) {
-            $newUser = new UsersAssociatedCompany;
+            $newUser = new UsersAssociatedCompanies;
             $newUser->users_id = (int)$userExists->id;
             $newUser->companies_id = (int)$usersInvite->companies_id;
             $newUser->identify_id = $usersInvite->role_id;
