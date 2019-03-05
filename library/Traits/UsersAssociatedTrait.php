@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Gewaer\Traits;
 
+use Exception;
+
 /**
  * Trait ResponseTrait
  *
@@ -21,7 +23,7 @@ trait UsersAssociatedTrait
     /**
      * create new related User Associated instance dynamicly
      * @param string $model
-     * @return voic
+     * @return void
      * @todo Find a better way to handle namespaces for models
      */
     public function saveUsersAssociatedModels(string $model): void
