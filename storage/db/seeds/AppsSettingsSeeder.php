@@ -8,19 +8,19 @@ class AppsSettingsSeeder extends AbstractSeed
     {
         $data = [
             [
-                'apps_id' => 0,
+                'apps_id' => 1,
                 'name' => 'language',
                 'value' => 'EN',
                 'created_at' => date('Y-m-d H:m:s'),
             ],
             [
-                'apps_id' => 0,
+                'apps_id' => 1,
                 'name' => 'timezone',
                 'value' => 'America/New_York',
                 'created_at' => date('Y-m-d H:m:s'),
             ],
             [
-                'apps_id' => 0,
+                'apps_id' => 1,
                 'name' => 'currency',
                 'value' => 'USD',
                 'created_at' => date('Y-m-d H:m:s'),
