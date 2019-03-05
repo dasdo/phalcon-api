@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace Gewaer\Models;
+use Gewaer\Traits\ModelSettingsTrait;
 
 class Apps extends \Baka\Auth\Models\Apps
 {
@@ -65,6 +66,11 @@ class Apps extends \Baka\Auth\Models\Apps
      */
     const GEWAER_DEFAULT_APP_ID = 0;
     const GEWAER_DEFAULT_APP_NAME = 'Default';
+
+    /**
+     * Model Settings Trait
+     */
+    use ModelSettingsTrait;
 
     /**
      * Initialize method for model.

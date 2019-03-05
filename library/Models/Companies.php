@@ -9,7 +9,7 @@ use Gewaer\Exception\ServerErrorHttpException;
 use Exception;
 use Carbon\Carbon;
 use Gewaer\Traits\ModelSettingsTrait;
-use Gewaer\Traits\AppsSettingsTrait;
+use Gewaer\Models\AppsSettings;
 
 /**
  * Class Companies
@@ -28,7 +28,6 @@ use Gewaer\Traits\AppsSettingsTrait;
 class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
 {
     use ModelSettingsTrait;
-    use AppsSettingsTrait;
 
     const DEFAULT_COMPANY = 'DefaulCompany';
     const PAYMENT_GATEWAY_CUSTOMER_KEY = 'payment_gateway_customer_id';
@@ -330,10 +329,10 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     {
         parent::beforeCreate();
 
-       
-        $this->language = $this->getDefaultAppsSettingsByName('language');
-        $this->timezone = $this->getDefaultAppsSettingsByName('timezone');
-        $this->currency_id = Currencies::findFirstByCode($this->getDefaultAppsSettingsByName('currency'))->getId();
+
+        $this->language = $this->di->getApp()->getSettings('language');
+        $this->timezone = $this->di->getApp()->getSettings('timezone');
+        $this->currency_id = Currencies::findFirstByCode($this->di->getApp()->getSettings('currency'))->getId();
     }
 
     /**
