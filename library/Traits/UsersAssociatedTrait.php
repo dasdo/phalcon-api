@@ -19,6 +19,7 @@ use Exception;
  * @property Request $request
  * @property Auth $auth
  * @property \Phalcon\Di $di
+ * @property Roles $roles_id
  *
  */
 trait UsersAssociatedTrait

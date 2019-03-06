@@ -24,6 +24,7 @@ use Gewaer\Traits\UsersAssociatedTrait;
  * @property Config $config
  * @property UserCompanyApps $app
  * @property \Phalcon\Di $di
+ * @property Roles $roles_id
  */
 class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
 {
