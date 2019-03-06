@@ -47,9 +47,6 @@ class InitGewaer extends AbstractSeed
         $table = $this->table('companies');
         $table->insert($data)->save();
 
-        $this->execute('update companies set id = 0 where id = 1');
-        $this->execute('update companies set id = 1 where id = 2');
-
         //add default companies
         $data = [
             [
