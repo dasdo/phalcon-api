@@ -9,6 +9,7 @@ use Gewaer\Exception\ServerErrorHttpException;
 use Exception;
 use Carbon\Carbon;
 use Gewaer\Traits\ModelSettingsTrait;
+use Gewaer\Traits\UsersAssociatedTrait;
 
 /**
  * Class Companies
@@ -23,10 +24,12 @@ use Gewaer\Traits\ModelSettingsTrait;
  * @property Config $config
  * @property UserCompanyApps $app
  * @property \Phalcon\Di $di
+ * @property Roles $roles_id
  */
 class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
 {
     use ModelSettingsTrait;
+    use UsersAssociatedTrait;
 
     const DEFAULT_COMPANY = 'DefaulCompany';
     const PAYMENT_GATEWAY_CUSTOMER_KEY = 'payment_gateway_customer_id';
@@ -99,6 +102,24 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     public $currency_id;
 
     /**
+     *
+     * @var string
+     */
+    public $language;
+
+    /**
+     *
+     * @var string
+     */
+    public $timezone;
+
+    /**
+     *
+     * @var string
+     */
+    public $currency;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
@@ -138,9 +159,16 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
 
         $this->hasMany(
             'id',
-            'Gewaer\Models\UsersAssociatedCompany',
+            'Gewaer\Models\UsersAssociatedCompanies',
             'companies_id',
-            ['alias' => 'UsersAssociatedCompany']
+            ['alias' => 'UsersAssociatedCompanies']
+        );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\UsersAssociatedApps',
+            'companies_id',
+            ['alias' => 'UsersAssociatedApps']
         );
 
         $this->hasOne(
@@ -220,6 +248,17 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
                 'bind' => [$systemModule->getId()]
             ]
         );
+
+        $this->hasOne(
+            'id',
+            'Gewaer\Models\FileSystem',
+            'entity_id',
+            [
+                'alias' => 'logo',
+                'conditions' => "system_modules_id = ?0 and file_type in ('png','jpg','bmp','jpeg','webp')",
+                'bind' => [$systemModule->getId()]
+            ]
+        );
     }
 
     /**
@@ -280,7 +319,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
      */
     public function userAssociatedToCompany(Users $user): bool
     {
-        return is_object($this->getUsersAssociatedCompany('users_id =' . $user->getId())) ? true : false;
+        return is_object($this->getUsersAssociatedCompanies('users_id =' . $user->getId())) ? true : false;
     }
 
     /**
@@ -291,6 +330,20 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     public function getPaymentGatewayCustomerId(): ?string
     {
         return $this->getSettings(self::PAYMENT_GATEWAY_CUSTOMER_KEY);
+    }
+
+    /**
+     * Before crate company
+     *
+     * @return void
+     */
+    public function beforeCreate()
+    {
+        parent::beforeCreate();
+
+        $this->language = $this->di->getApp()->getSettings('language');
+        $this->timezone = $this->di->getApp()->getSettings('timezone');
+        $this->currency_id = Currencies::findFirstByCode($this->di->getApp()->getSettings('currency'))->getId();
     }
 
     /**
@@ -305,17 +358,6 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         //setup the user notificatoin setting
         $this->setSettings('notifications', $this->user->email);
 
-        //multi user asociation
-        $usersAssociatedCompany = new UsersAssociatedCompany();
-        $usersAssociatedCompany->users_id = $this->user->getId();
-        $usersAssociatedCompany->companies_id = $this->getId();
-        $usersAssociatedCompany->identify_id = $this->user->getId();
-        $usersAssociatedCompany->user_active = 1;
-        $usersAssociatedCompany->user_role = 'admin';
-        if (!$usersAssociatedCompany->save()) {
-            throw new Exception((string)current($usersAssociatedCompany->getMessages()));
-        }
-
         //now thta we setup de company and associated with the user we need to setup this as its default company
         if (!UserConfig::findFirst(['conditions' => 'users_id = ?0 and name = ?1', 'bind' => [$this->user->getId(), self::DEFAULT_COMPANY]])) {
             $userConfig = new UserConfig();
@@ -327,6 +369,9 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
                 throw new Exception((string)current($userConfig->getMessages()));
             }
         }
+
+        $this->associate($this->user, $this);
+        $this->di->getApp()->associate($this->user, $this);
 
         /**
          * @var CompaniesBranches
@@ -387,7 +432,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         }
 
         //second try
-        $defaultCompany = UsersAssociatedCompany::findFirst([
+        $defaultCompany = UsersAssociatedCompanies::findFirst([
             'conditions' => 'users_id = ?0 and user_active =?1',
             'bind' => [$user->getId(), 1],
         ]);

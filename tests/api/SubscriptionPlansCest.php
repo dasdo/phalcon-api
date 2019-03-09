@@ -25,10 +25,10 @@ class AppsPlanCest
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendPost('/v1/apps-plans', [
             'stripe_id' => 'monthly-10-1',
-            'exp_month' => '05',
-            'exp_year' => '2020',
-            'cvc' => '123',
-            'number' => '4242424242424242',
+            'card_exp_month' => '05',
+            'card_exp_year' => '2020',
+            'card_cvc' => '123',
+            'card_number' => '4242424242424242',
         ]);
 
         $I->seeResponseIsSuccessful();

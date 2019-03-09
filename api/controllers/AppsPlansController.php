@@ -71,10 +71,10 @@ class AppsPlansController extends BaseController
         //Ok let validate user password
         $validation = new Validation();
         $validation->add('stripe_id', new PresenceOf(['message' => _('The plan is required.')]));
-        $validation->add('number', new PresenceOf(['message' => _('Credit Card Number is required.')]));
-        $validation->add('exp_month', new PresenceOf(['message' => _('Credit Card Number is required.')]));
-        $validation->add('exp_year', new PresenceOf(['message' => _('Credit Card Number is required.')]));
-        $validation->add('cvc', new PresenceOf(['message' => _('CVC is required.')]));
+        $validation->add('card_number', new PresenceOf(['message' => _('Credit Card Number is required.')]));
+        $validation->add('card_exp_month', new PresenceOf(['message' => _('Credit Card expiration month is required.')]));
+        $validation->add('card_exp_year', new PresenceOf(['message' => _('Credit Card expiration year is required.')]));
+        $validation->add('card_cvc', new PresenceOf(['message' => _('CVC is required.')]));
 
         //validate this form for password
         $messages = $validation->validate($this->request->getPost());
@@ -86,10 +86,10 @@ class AppsPlansController extends BaseController
 
         $stripeId = $this->request->getPost('stripe_id');
         $company = $this->userData->defaultCompany;
-        $cardNumber = $this->request->getPost('number');
-        $expMonth = $this->request->getPost('exp_month');
-        $expYear = $this->request->getPost('exp_year');
-        $cvc = $this->request->getPost('cvc');
+        $cardNumber = $this->request->getPost('card_number');
+        $expMonth = $this->request->getPost('card_exp_month');
+        $expYear = $this->request->getPost('card_exp_year');
+        $cvc = $this->request->getPost('card_cvc');
 
         $appPlan = $this->model->findFirstByStripeId($stripeId);
 
@@ -268,23 +268,30 @@ class AppsPlansController extends BaseController
     {
         //Ok let validate user password
         $validation = new Validation();
-        $validation->add('number', new PresenceOf(['message' => _('Credit Card Number is required.')]));
-        $validation->add('exp_month', new PresenceOf(['message' => _('Credit Card Number is required.')]));
-        $validation->add('exp_year', new PresenceOf(['message' => _('Credit Card Number is required.')]));
-        $validation->add('cvc', new PresenceOf(['message' => _('CVC is required.')]));
+        $validation->add('card_number', new PresenceOf(['message' => _('Credit Card Number is required.')]));
+        $validation->add('card_exp_month', new PresenceOf(['message' => _('Credit Card expiration month is required.')]));
+        $validation->add('card_exp_year', new PresenceOf(['message' => _('Credit Card expiration year is required.')]));
+        $validation->add('card_cvc', new PresenceOf(['message' => _('CVC is required.')]));
 
         //validate this form for password
-        $messages = $validation->validate($this->request->getPost());
+        $messages = $validation->validate($this->request->getPut());
         if (count($messages)) {
             foreach ($messages as $message) {
                 throw new UnprocessableEntityHttpException((string) $message);
             }
         }
 
-        $cardNumber = $this->request->getPost('number');
-        $expMonth = $this->request->getPost('exp_month');
-        $expYear = $this->request->getPost('exp_year');
-        $cvc = $this->request->getPost('cvc');
+        $cardNumber = $this->request->getPut('card_number', 'string');
+        $expMonth = $this->request->getPut('card_exp_month', 'string');
+        $expYear = $this->request->getPut('card_exp_year', 'string');
+        $cvc = $this->request->getPut('card_cvc', 'string');
+        $address = $this->request->getPut('address', 'string');
+        $zipcode = $this->request->getPut('zipcode', 'string');
+
+        //update the default company info
+        $this->userData->defaultCompany->address = $address;
+        $this->userData->defaultCompany->zipcode = $zipcode;
+        $this->userData->defaultCompany->update();
 
         $customerId = $this->userData->stripe_id;
 

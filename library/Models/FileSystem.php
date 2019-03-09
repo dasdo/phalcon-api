@@ -69,6 +69,12 @@ class FileSystem extends AbstractModel
      *
      * @var string
      */
+    public $file_type;
+
+    /**
+     *
+     * @var string
+     */
     public $created_at;
 
     /**

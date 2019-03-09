@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
+use Gewaer\Traits\UsersAssociatedTrait;
+use Gewaer\Traits\ModelSettingsTrait;
+
 class Apps extends \Baka\Auth\Models\Apps
 {
     /**
@@ -67,6 +70,16 @@ class Apps extends \Baka\Auth\Models\Apps
     const GEWAER_DEFAULT_APP_NAME = 'Default';
 
     /**
+     * Users Associated Trait
+     */
+    use UsersAssociatedTrait;
+
+    /**
+     * Model Settings Trait
+     */
+    use ModelSettingsTrait;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
@@ -94,6 +107,13 @@ class Apps extends \Baka\Auth\Models\Apps
             'Gewaer\Models\UserWebhooks',
             'apps_id',
             ['alias' => 'user-webhooks']
+        );
+
+        $this->hasMany(
+            'id',
+            'Gewaer\Models\AppsSettings',
+            'apps_id',
+            ['alias' => 'settings']
         );
     }
 

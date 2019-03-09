@@ -6,7 +6,6 @@ namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\UsersInvite;
 use Gewaer\Models\Users;
-use Gewaer\Models\UsersAssociatedCompany;
 use Gewaer\Models\Roles;
 use Phalcon\Security\Random;
 use Phalcon\Validation;
@@ -211,15 +210,8 @@ class UsersInviteController extends BaseController
         ]);
 
         if (is_object($userExists)) {
-            $newUser = new UsersAssociatedCompany;
-            $newUser->users_id = (int)$userExists->id;
-            $newUser->companies_id = (int)$usersInvite->companies_id;
-            $newUser->identify_id = $usersInvite->role_id;
-            $newUser->user_active = 1;
-            $newUser->user_role = Roles::existsById((int)$userExists->roles_id)->name;
-            if (!$newUser->save()) {
-                throw new UnprocessableEntityHttpException((string) current($newUser->getMessages()));
-            }
+            $newUser = $this->userData->defaultCompany->associate($userExists, $this->userData->defaultCompany);
+            $this->app->associate($userExists, $this->userData->defaultCompany);
         } else {
             $newUser = new Users();
             $newUser->firstname = $request['firstname'];
