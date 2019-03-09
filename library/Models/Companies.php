@@ -300,6 +300,8 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
      */
     public function beforeCreate()
     {
+        parent::beforeCreate();
+
         /**
          * @todo change this to get it from the app
          */
