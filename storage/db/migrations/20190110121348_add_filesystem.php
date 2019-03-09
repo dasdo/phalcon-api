@@ -7,7 +7,7 @@ class AddFilesystem extends AbstractMigration
 {
     public function change()
     {
-        $this->table("filesystem", [
+        $this->table('filesystem', [
             'id' => false,
             'primary_key' => ['id'],
             'engine' => 'InnoDB',
@@ -86,9 +86,16 @@ class AddFilesystem extends AbstractMigration
                 'encoding' => 'utf8mb4',
                 'after' => 'url',
             ])
+            ->addColumn('file_type', 'string', [
+                'null' => false,
+                'limit' => 16,
+                'collation' => 'utf8mb4_unicode_ci',
+                'encoding' => 'utf8mb4',
+                'after' => 'size',
+            ])
             ->addColumn('created_at', 'datetime', [
                 'null' => false,
-                'after' => 'size',
+                'after' => 'file_type',
             ])
             ->addColumn('updated_at', 'datetime', [
                 'null' => true,

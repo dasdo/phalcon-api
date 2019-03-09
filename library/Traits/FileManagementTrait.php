@@ -199,6 +199,7 @@ trait FileManagementTrait
             $fileSystem->users_id = $this->userData->getId();
             $fileSystem->path = $compleFilePath;
             $fileSystem->url = $compleFilePath;
+            $fileSystem->file_type = $file->getExtension();
             $fileSystem->size = $file->getSize();
 
             if (!$fileSystem->save()) {

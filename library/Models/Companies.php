@@ -248,6 +248,17 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
                 'bind' => [$systemModule->getId()]
             ]
         );
+
+        $this->hasOne(
+            'id',
+            'Gewaer\Models\FileSystem',
+            'entity_id',
+            [
+                'alias' => 'logo',
+                'conditions' => "system_modules_id = ?0 and file_type in ('png','jpg','bmp','jpeg','webp')",
+                'bind' => [$systemModule->getId()]
+            ]
+        );
     }
 
     /**
