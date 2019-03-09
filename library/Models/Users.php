@@ -153,7 +153,7 @@ class Users extends \Baka\Auth\Models\Users
 
         $this->hasMany(
             'id',
-            'Gewaer\Models\UsersAssociatedCompany',
+            'Gewaer\Models\UsersAssociatedCompanies',
             'users_id',
             [
                 'alias' => 'companies',
@@ -175,6 +175,17 @@ class Users extends \Baka\Auth\Models\Users
             [
                 'alias' => 'filesystem',
                 'conditions' => 'system_modules_id = ?0',
+                'bind' => [$systemModule->getId()]
+            ]
+        );
+
+        $this->hasOne(
+            'id',
+            'Gewaer\Models\FileSystem',
+            'entity_id',
+            [
+                'alias' => 'logo',
+                'conditions' => "system_modules_id = ?0 and file_type in ('png','jpg','bmp','jpeg','webp')",
                 'bind' => [$systemModule->getId()]
             ]
         );
@@ -423,16 +434,7 @@ class Users extends \Baka\Auth\Models\Users
         }
 
         //Create new company associated company
-        $newUserAssocCompany = new UsersAssociatedCompany();
-        $newUserAssocCompany->users_id = $this->id;
-        $newUserAssocCompany->companies_id = $this->default_company;
-        $newUserAssocCompany->identify_id = 1;
-        $newUserAssocCompany->user_active = 1;
-        $newUserAssocCompany->user_role = $this->roles_id;
-
-        if (!$newUserAssocCompany->save()) {
-            throw new ServerErrorHttpException((string)current($newUserAssocCompany->getMessages()));
-        }
+        $this->defaultCompany->associate($this, $this->defaultCompany);
 
         //Insert record into user_roles
         $userRole = new UserRoles();

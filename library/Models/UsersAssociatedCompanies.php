@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-class UsersAssociatedCompany extends \Baka\Auth\Models\UsersAssociatedCompany
+class UsersAssociatedCompanies extends \Baka\Auth\Models\UsersAssociatedCompany
 {
     /**
      *

@@ -8,6 +8,8 @@ use Gewaer\Models\Companies;
 use Gewaer\Models\CompaniesCustomFields;
 use Phalcon\Http\Response;
 use Gewaer\Exception\UnauthorizedHttpException;
+use Exception;
+use Gewaer\Exception\UnprocessableEntityHttpException;
 
 /**
  * Class CompaniesController
@@ -72,7 +74,7 @@ class CompaniesController extends BaseCustomFieldsController
             $data = $this->request->getPut();
 
             if (empty($data)) {
-                throw new Exception('No valid data sent.');
+                throw new UnprocessableEntityHttpException('No valid data sent.');
             }
 
             //set the custom fields to update
@@ -83,10 +85,10 @@ class CompaniesController extends BaseCustomFieldsController
                 return $this->getById($id);
             } else {
                 //didnt work
-                throw new Exception($company->getMessages()[0]);
+                throw new UnprocessableEntityHttpException($company->getMessages()[0]);
             }
         } else {
-            throw new Exception(_('Company doesnt exist'));
+            throw new UnprocessableEntityHttpException(_('Company doesnt exist'));
         }
     }
 
@@ -110,13 +112,13 @@ class CompaniesController extends BaseCustomFieldsController
 
             if ($company->delete() === false) {
                 foreach ($company->getMessages() as $message) {
-                    throw new Exception($message);
+                    throw new UnprocessableEntityHttpException($message);
                 }
             }
 
             return $this->response(['Delete Successfully']);
         } else {
-            throw new Exception(_('Company doesnt exist'));
+            throw new UnprocessableEntityHttpException(_('Company doesnt exist'));
         }
     }
 }

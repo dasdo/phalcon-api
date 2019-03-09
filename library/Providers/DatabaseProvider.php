@@ -8,6 +8,8 @@ use function Gewaer\Core\envValue;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\DiInterface;
+use PDOException;
+use Gewaer\Exception\ServerErrorHttpException;
 
 class DatabaseProvider implements ServiceProviderInterface
 {
@@ -27,9 +29,14 @@ class DatabaseProvider implements ServiceProviderInterface
                     'charset' => 'utf8',
                 ];
 
-                $connection = new Mysql($options);
-                // Set everything to UTF8
-                $connection->execute('SET NAMES utf8mb4', []);
+                try {
+                    $connection = new Mysql($options);
+
+                    // Set everything to UTF8
+                    $connection->execute('SET NAMES utf8mb4', []);
+                } catch (PDOException $e) {
+                    throw new ServerErrorHttpException($e->getMessage());
+                }
 
                 return $connection;
             }
