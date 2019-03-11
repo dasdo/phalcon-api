@@ -266,21 +266,6 @@ class AppsPlansController extends BaseController
      */
     public function updatePaymentMethod(int $id): Response
     {
-        //Ok let validate user password
-        $validation = new Validation();
-        $validation->add('card_number', new PresenceOf(['message' => _('Credit Card Number is required.')]));
-        $validation->add('card_exp_month', new PresenceOf(['message' => _('Credit Card expiration month is required.')]));
-        $validation->add('card_exp_year', new PresenceOf(['message' => _('Credit Card expiration year is required.')]));
-        $validation->add('card_cvc', new PresenceOf(['message' => _('CVC is required.')]));
-
-        //validate this form for password
-        $messages = $validation->validate($this->request->getPut());
-        if (count($messages)) {
-            foreach ($messages as $message) {
-                throw new UnprocessableEntityHttpException((string) $message);
-            }
-        }
-
         $cardNumber = $this->request->getPut('card_number', 'string');
         $expMonth = $this->request->getPut('card_exp_month', 'string');
         $expYear = $this->request->getPut('card_exp_year', 'string');
@@ -296,7 +281,7 @@ class AppsPlansController extends BaseController
         $customerId = $this->userData->stripe_id;
 
         //Create a new card token
-        $token = StripeToken::create([
+        $newToken = StripeToken::create([
             'card' => [
                 'number' => $cardNumber,
                 'exp_month' => $expMonth,
@@ -306,6 +291,8 @@ class AppsPlansController extends BaseController
         ], [
             'api_key' => $this->config->stripe->secret
         ])->id;
+
+        $token = $this->request->hasPut('card_token') ? $this->request->getPut('card_token') : $newToken;
 
         $updatedCustomer = $this->userData->updatePaymentMethod($customerId, $token);
 
