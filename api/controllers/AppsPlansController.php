@@ -266,7 +266,7 @@ class AppsPlansController extends BaseController
      */
     public function updatePaymentMethod(int $id): Response
     {
-        if (!$this->request->hasPut('card_token')) {
+        if (empty($this->request->hasPut('card_token'))) {
             $validation = new Validation();
             $validation->add('card_number', new PresenceOf(['message' => _('Credit Card Number is required.')]));
             $validation->add('card_exp_month', new PresenceOf(['message' => _('Credit Card expiration month is required.')]));
