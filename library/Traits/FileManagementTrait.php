@@ -174,9 +174,18 @@ trait FileManagementTrait
                 }
             }
 
+            /**
+             * create directory
+             * @todo change this to be dynamic based on the app configuration , and default S3
+             */
+            $this->di->get('filesystem', 'local')->createDir($this->config->filesystem->local->path);
+
             $filePath = Helper::generateUniqueName($file, $this->config->filesystem->local->path);
             $compleFilePath = $this->config->filesystem->local->path . $filePath;
 
+            /**
+             * @todo change this to be dynamic based on the app configuration , and default S3
+             */
             $this->di->get('filesystem', 'local')->writeStream($filePath, fopen($file->getTempName(), 'r'));
 
             // if user already had an image upload, detach said image from the user first before. Find image depending on system_module_id
@@ -198,7 +207,7 @@ trait FileManagementTrait
             $fileSystem->apps_id = $this->app->getId();
             $fileSystem->users_id = $this->userData->getId();
             $fileSystem->path = $compleFilePath;
-            $fileSystem->url = $compleFilePath;
+            $fileSystem->url = $this->config->filesystem->cdn . $filePath;
             $fileSystem->file_type = $file->getExtension();
             $fileSystem->size = $file->getSize();
 
