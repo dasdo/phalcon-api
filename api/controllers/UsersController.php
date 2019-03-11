@@ -26,6 +26,7 @@ use Gewaer\Models\AccessList;
  * @property Users $userData
  * @property Request $request
  * @property Config $config
+ * @property Apps $app
  */
 class UsersController extends \Baka\Auth\UsersController
 {
@@ -307,5 +308,23 @@ class UsersController extends \Baka\Auth\UsersController
                 'msg' => 'User Device detached',
                 'user' => $this->userData
             ]);
+    }
+
+    /**
+     * Get current active device of user
+     * @return Response
+     */
+    public function getActiveDevices(): Response
+    {
+        $userSources = UserLinkedSources::find([
+                'conditions' => "users_id = ?0 and source_id in ('androipapp','iosapp') and is_deleted = 0",
+                'bind' => [$this->userData->getId()]
+            ]);
+
+        if (empty($userSources->toArray())) {
+            throw new NotFoundHttpException('User Linked Sources not found');
+        }
+
+        return $this->response($userSources);
     }
 }
