@@ -266,12 +266,42 @@ class AppsPlansController extends BaseController
      */
     public function updatePaymentMethod(int $id): Response
     {
-        $cardNumber = $this->request->getPut('card_number', 'string');
-        $expMonth = $this->request->getPut('card_exp_month', 'string');
-        $expYear = $this->request->getPut('card_exp_year', 'string');
-        $cvc = $this->request->getPut('card_cvc', 'string');
-        $address = $this->request->getPut('address', 'string');
-        $zipcode = $this->request->getPut('zipcode', 'string');
+        if (!$this->request->hasPut('card_token')) {
+            $validation = new Validation();
+            $validation->add('card_number', new PresenceOf(['message' => _('Credit Card Number is required.')]));
+            $validation->add('card_exp_month', new PresenceOf(['message' => _('Credit Card expiration month is required.')]));
+            $validation->add('card_exp_year', new PresenceOf(['message' => _('Credit Card expiration year is required.')]));
+            $validation->add('card_cvc', new PresenceOf(['message' => _('CVC is required.')]));
+
+            //validate this form for password
+            $messages = $validation->validate($this->request->getPut());
+            if (count($messages)) {
+                foreach ($messages as $message) {
+                    throw new UnprocessableEntityHttpException((string) $message);
+                }
+            }
+
+            $cardNumber = $this->request->getPut('card_number', 'string');
+            $expMonth = $this->request->getPut('card_exp_month', 'string');
+            $expYear = $this->request->getPut('card_exp_year', 'string');
+            $cvc = $this->request->getPut('card_cvc', 'string');
+            $address = $this->request->getPut('address', 'string');
+            $zipcode = $this->request->getPut('zipcode', 'string');
+
+            //Create a new card token
+            $token = StripeToken::create([
+            'card' => [
+                'number' => $cardNumber,
+                'exp_month' => $expMonth,
+                'exp_year' => $expYear,
+                'cvc' => $cvc,
+            ],
+            ], [
+                'api_key' => $this->config->stripe->secret
+            ])->id;
+        } else {
+            $token = $this->request->getPut('card_token');
+        }
 
         //update the default company info
         $this->userData->defaultCompany->address = $address;
@@ -279,20 +309,6 @@ class AppsPlansController extends BaseController
         $this->userData->defaultCompany->update();
 
         $customerId = $this->userData->stripe_id;
-
-        //Create a new card token
-        $newToken = StripeToken::create([
-            'card' => [
-                'number' => $cardNumber,
-                'exp_month' => $expMonth,
-                'exp_year' => $expYear,
-                'cvc' => $cvc,
-            ],
-        ], [
-            'api_key' => $this->config->stripe->secret
-        ])->id;
-
-        $token = $this->request->hasPut('card_token') ? $this->request->getPut('card_token') : $newToken;
 
         $updatedCustomer = $this->userData->updatePaymentMethod($customerId, $token);
 
