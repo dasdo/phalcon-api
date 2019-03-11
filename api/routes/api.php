@@ -57,9 +57,9 @@ $router->post('/users/{id}/devices/{deviceId}/detach', [
     'detachDevice',
 ]);
 
-$router->get('/users/{id}/devices', [
+$router->get('/devices', [
     'Gewaer\Api\Controllers\UsersController',
-    'getCurrentActiveDevice',
+    'getActiveDevices',
 ]);
 
 /**
