@@ -285,8 +285,6 @@ class AppsPlansController extends BaseController
             $expMonth = $this->request->getPut('card_exp_month', 'string');
             $expYear = $this->request->getPut('card_exp_year', 'string');
             $cvc = $this->request->getPut('card_cvc', 'string');
-            $address = $this->request->getPut('address', 'string');
-            $zipcode = $this->request->getPut('zipcode', 'string');
 
             //Create a new card token
             $token = StripeToken::create([
@@ -302,6 +300,9 @@ class AppsPlansController extends BaseController
         } else {
             $token = $this->request->getPut('card_token');
         }
+
+        $address = $this->request->getPut('address', 'string');
+        $zipcode = $this->request->getPut('zipcode', 'string');
 
         //update the default company info
         $this->userData->defaultCompany->address = $address;

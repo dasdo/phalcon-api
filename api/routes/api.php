@@ -57,6 +57,11 @@ $router->post('/users/{id}/devices/{deviceId}/detach', [
     'detachDevice',
 ]);
 
+$router->get('/users/{id}/devices', [
+    'Gewaer\Api\Controllers\UsersController',
+    'getCurrentActiveDevice',
+]);
+
 /**
  * Need to understand if using this can be a performance disadvantage in the future
  */

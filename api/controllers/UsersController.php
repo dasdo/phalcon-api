@@ -308,4 +308,22 @@ class UsersController extends \Baka\Auth\UsersController
                 'user' => $this->userData
             ]);
     }
+
+    /**
+     * Get current active device of user
+     * @return Response
+     */
+    public function getCurrentActiveDevice(): Response
+    {
+        $userSource = UserLinkedSources::findFirst([
+            'conditions' => 'users_id = ?0 and source_id = ?1 and source_users_id = ?2 and is_deleted = 0',
+            'bind' => [$this->userData->getId(), $this->app->getId(), $this->userData->getId()]
+        ]);
+
+        if (!is_object($userSource)) {
+            throw new NotFoundHttpException('User Linked Source not found');
+        }
+
+        return $this->response($userSource);
+    }
 }
