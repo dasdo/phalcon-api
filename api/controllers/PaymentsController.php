@@ -9,6 +9,7 @@ use Phalcon\Http\Response;
 use Gewaer\Models\Users;
 use Gewaer\Models\EmailTemplates;
 use Phalcon\Di;
+use Exception;
 
 /**
  * Class PaymentsController
