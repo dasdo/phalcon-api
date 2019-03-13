@@ -88,7 +88,6 @@ class PaymentsController extends BaseController
     /**
      * Handle sucessfull payment
      *
-     * @todo send email
      * @param array $payload
      * @return Response
      */
@@ -105,7 +104,6 @@ class PaymentsController extends BaseController
     /**
      * Handle bad payment
      *
-     * @todo send email
      * @param array $payload
      * @return Response
      */
@@ -122,7 +120,6 @@ class PaymentsController extends BaseController
     /**
      * Handle pending payments
      *
-     * @todo send email
      * @param array $payload
      * @return Response
      */
