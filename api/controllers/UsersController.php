@@ -317,7 +317,7 @@ class UsersController extends \Baka\Auth\UsersController
     public function getActiveDevices(): Response
     {
         $userSources = UserLinkedSources::find([
-                'conditions' => "users_id = ?0 and source_id in ('androipapp','iosapp') and is_deleted = 0",
+                'conditions' => 'users_id = ?0 and source_id in (2,3) and is_deleted = 0',
                 'bind' => [$this->userData->getId()]
             ]);
 
