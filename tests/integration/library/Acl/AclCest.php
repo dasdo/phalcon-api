@@ -48,14 +48,14 @@ class AclCest
     {
         $acl = $this->aclService();
 
-        $I->assertTrue($acl->addResource('Default.Users', ['list', 'create', 'edit', 'delete']));
+        $I->assertTrue($acl->addResource('Default.Users', ['read', 'list', 'create', 'edit', 'delete']));
     }
 
     public function checkAllowPermission(IntegrationTester $I)
     {
         $acl = $this->aclService();
 
-        $I->assertTrue($acl->allow('Admins', 'Default.Users', ['list', 'create']));
+        $I->assertTrue($acl->allow('Admins', 'Default.Users', ['read', 'list', 'create']));
     }
 
     public function checkDenyPermission(IntegrationTester $I)
@@ -69,7 +69,7 @@ class AclCest
     {
         $acl = $this->aclService();
 
-        $I->assertTrue($acl->isAllowed('Admins', 'Default.Users', 'list'));
+        $I->assertTrue($acl->isAllowed('Admins', 'Default.Users', 'read'));
     }
 
     public function checkIsDeniedPermission(IntegrationTester $I)

@@ -43,7 +43,10 @@ class AclMiddleware implements MiddlewareInterface
 
             switch (strtolower($request->getMethod())) {
                 case 'get':
-                    $action = 'read';
+                    $action = 'list';
+                    if (preg_match("/\/([0-9]+)(?=[^\/]*$)/", $request->getURI())) {
+                        $action = 'read';
+                    }
                     break;
                 case 'post':
                     $action = 'create';

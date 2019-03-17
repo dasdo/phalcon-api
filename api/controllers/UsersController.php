@@ -35,14 +35,14 @@ class UsersController extends \Baka\Auth\UsersController
      *
      * @var array
      */
-    protected $createFields = ['name', 'firstname', 'lastname', 'displayname', 'language', 'email', 'password', 'created_at', 'updated_at', 'default_company', 'family', 'cell_phone_number', 'country_id'];
+    protected $createFields = ['name', 'firstname', 'lastname', 'displayname', 'language', 'country_id', 'timezone', 'email', 'password', 'created_at', 'updated_at', 'default_company', 'family', 'cell_phone_number', 'country_id'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['name', 'firstname', 'lastname', 'displayname', 'language', 'email', 'password', 'created_at', 'updated_at', 'default_company', 'cell_phone_number', 'country_id'];
+    protected $updateFields = ['name', 'firstname', 'lastname', 'displayname', 'language', 'country_id', 'timezone', 'email', 'password', 'created_at', 'updated_at', 'default_company', 'cell_phone_number', 'country_id'];
 
     /**
      * set objects
