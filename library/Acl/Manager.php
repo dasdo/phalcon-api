@@ -130,7 +130,7 @@ class Manager extends Adapter
     {
         if (!is_object($this->app)) {
             $this->app = new Apps();
-            $this->app->id = 0;
+            $this->app->id = 1;
             $this->app->name = 'Canvas';
         }
 
@@ -146,7 +146,7 @@ class Manager extends Adapter
     {
         if (!is_object($this->company)) {
             $this->company = new Companies();
-            $this->company->id = 0;
+            $this->company->id = 1;
             $this->company->name = 'Canvas';
         }
 
@@ -576,7 +576,7 @@ class Manager extends Adapter
         /**
          * Update the access in access_list
          */
-       
+
         $role = RolesDB::getByName($roleName);
 
         if (!AccessListDB::exist($role, $resourceName, $accessName)) {

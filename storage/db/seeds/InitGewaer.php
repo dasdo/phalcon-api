@@ -26,9 +26,6 @@ class InitGewaer extends AbstractSeed
         $table = $this->table('apps');
         $table->insert($data)->save();
 
-        $this->execute('update apps set id = 0 where id = 1');
-        $this->execute('update apps set id = 1 where id = 2');
-
         //add default companies
         $data = [
             [
@@ -116,24 +113,24 @@ class InitGewaer extends AbstractSeed
                 'name' => 'Admins',
                 'description' => 'System Administrator',
                 'scope' => 0,
-                'companies_id' => 0,
-                'apps_id' => 0,
+                'companies_id' => 1,
+                'apps_id' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'is_deleted' => 0
             ], [
                 'name' => 'Users',
                 'description' => 'Normal Users can (CRUD)',
                 'scope' => 0,
-                'companies_id' => 0,
-                'apps_id' => 0,
+                'companies_id' => 1,
+                'apps_id' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'is_deleted' => 0
             ], [
                 'name' => 'Agents',
                 'description' => 'Agents Users can (CRU)',
                 'scope' => 0,
-                'companies_id' => 0,
-                'apps_id' => 0,
+                'companies_id' => 1,
+                'apps_id' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'is_deleted' => 0
             ]

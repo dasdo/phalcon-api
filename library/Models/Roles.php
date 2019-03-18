@@ -79,8 +79,8 @@ class Roles extends AbstractModel
      * Default ACL company
      *
      */
-    const DEFAULT_ACL_COMPANY_ID = 0;
-    const DEFAULT_ACL_APP_ID = 0;
+    const DEFAULT_ACL_COMPANY_ID = 1;
+    const DEFAULT_ACL_APP_ID = 1;
 
     /**
      * Initialize method for model.
