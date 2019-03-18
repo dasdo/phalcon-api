@@ -24,9 +24,9 @@ class AclTask extends PhTask
         $this->acl->addRole('Default.Agents');
         $this->acl->addRole('Default.Users');
 
-        $this->acl->addResource('Default.Users', ['read', 'list', 'create', 'edit', 'delete']);
+        $this->acl->addResource('Default.Users', ['read', 'list', 'create', 'update', 'delete']);
         $this->acl->allow('Admins', 'Default.Users', ['read', 'list', 'create']);
-        $this->acl->deny('Admins', 'Default.Users', ['edit', 'delete']);
+        $this->acl->deny('Admins', 'Default.Users', ['update', 'delete']);
     }
 
     /**
@@ -37,8 +37,8 @@ class AclTask extends PhTask
     public function crmAction()
     {
         $this->acl->addRole('CRM.Users');
-        $this->acl->addResource('CRM.Users', ['read', 'list', 'create', 'edit', 'delete']);
+        $this->acl->addResource('CRM.Users', ['read', 'list', 'create', 'update', 'delete']);
         $this->acl->allow('Users', 'CRM.Users', ['read', 'list', 'create']);
-        $this->acl->deny('Users', 'CRM.Users', ['edit', 'delete']);
+        $this->acl->deny('Users', 'CRM.Users', ['update', 'delete']);
     }
 }

@@ -32,7 +32,7 @@ class RolesCrudAccessListCest extends BakaRestTest
                     'resources_name' => 'Users',
                     'allowed' => 0,
                 ], [
-                    'access_name' => 'edit',
+                    'access_name' => 'update',
                     'resources_name' => 'Users',
                     'allowed' => 0,
                 ],
@@ -72,7 +72,7 @@ class RolesCrudAccessListCest extends BakaRestTest
                     'resources_name' => 'Users',
                     'allowed' => 0,
                 ], [
-                    'access_name' => 'edit',
+                    'access_name' => 'update',
                     'resources_name' => 'Users',
                     'allowed' => 0,
                 ],
