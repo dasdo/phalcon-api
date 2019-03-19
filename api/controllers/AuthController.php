@@ -50,7 +50,7 @@ class AuthController extends \Baka\Auth\AuthController
         $body = null;
         switch ($type) {
             case 'recover':
-                $recoveryLink = $this->config->app->frontEndUrl . '/user/reset/' . $user->user_activation_forgot;
+                $recoveryLink = $this->config->app->frontEndUrl . '/users/reset-password/' . $user->user_activation_forgot;
                 $subject = _('Password Recovery');
                 $body = sprintf(_('Click %shere%s to set a new password for your account.'), '<a href="' . $recoveryLink . '" target="_blank">', '</a>');
                 // send email to recover password
