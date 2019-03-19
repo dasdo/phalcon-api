@@ -116,5 +116,7 @@ class AclCest
         $userData = Users::findFirstByEmail(Data::loginJson()['email']);
 
         $I->assertTrue($userData->removeRole('Default.Admins'));
+
+        $I->assertTrue($userData->assignRole('Default.Admins'));
     }
 }

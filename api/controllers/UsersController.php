@@ -5,14 +5,11 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Gewaer\Models\Users;
-use Gewaer\Models\UserLinkedSources;
-use Baka\Auth\Models\Sources;
 use Gewaer\Models\Companies;
 use Phalcon\Http\Response;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Gewaer\Exception\BadRequestHttpException;
-use Gewaer\Exception\UnprocessableEntityHttpException;
 use Baka\Http\QueryParser;
 use Gewaer\Exception\ModelException;
 use Gewaer\Exception\NotFoundHttpException;
@@ -198,133 +195,5 @@ class UsersController extends \Baka\Auth\UsersController
         //iterate and save into users
 
         return $this->response(['OK' => $id]);
-    }
-
-    /**
-     * Associate a Device with the corrent loggedin user
-     *
-     * @url /users/{id}/device
-     * @method POST
-     * @return Response
-     */
-    public function devices() : Response
-    {
-        //Ok let validate user password
-        $validation = new Validation();
-        $validation->add('app', new PresenceOf(['message' => _('App name is required.')]));
-        $validation->add('deviceId', new PresenceOf(['message' => _('device ID is required.')]));
-        $msg = null;
-
-        //validate this form for password
-        $messages = $validation->validate($this->request->getPost());
-        if (count($messages)) {
-            foreach ($messages as $message) {
-                throw new BadRequestHttpException((string)$message);
-            }
-        }
-
-        $app = $this->request->getPost('app', 'string');
-        $deviceId = $this->request->getPost('deviceId', 'string');
-
-        //get the app source
-        if ($source = Sources::getByTitle($app)) {
-            $userSource = UserLinkedSources::findFirst([
-                'conditions' => 'users_id = ?0 and source_users_id_text = ?1',
-                'bind' => [$this->userData->getId(), $deviceId]
-            ]);
-
-            if (!is_object($userSource)) {
-                $userSource = new UserLinkedSources();
-                $userSource->users_id = $this->userData->getId();
-                $userSource->source_id = $source->getId();
-                $userSource->source_users_id = $this->userData->getId();
-                $userSource->source_users_id_text = $deviceId;
-                $userSource->source_username = $this->userData->displayname . ' ' . $app;
-
-                if (!$userSource->save()) {
-                    throw new UnprocessableEntityHttpException((string) current($userSource->getMessages()));
-                }
-
-                $msg = 'User Device Associated';
-            } else {
-                $msg = 'User Device Already Associated';
-            }
-        }
-
-        //clean password @todo move this to a better place
-        $this->userData->password = null;
-
-        return $this->response([
-            'msg' => $msg,
-            'user' => $this->userData
-        ]);
-    }
-
-    /**
-     * Detach user's devices
-     * @param integer $deviceId User's devices id
-     * @return Response
-     */
-    public function detachDevice(int $id, int $deviceId): Response
-    {
-        //Validation
-        $validation = new Validation();
-        $validation->add('app', new PresenceOf(['message' => _('App name is required.')]));
-
-        //validate this form for password
-        $messages = $validation->validate($this->request->getPost());
-        if (count($messages)) {
-            foreach ($messages as $message) {
-                throw new BadRequestHttpException((string)$message);
-            }
-        }
-
-        $app = $this->request->getPost('app', 'string');
-
-        //Get Source
-
-        $source = Sources::getByTitle($app);
-
-        if (!is_object($source)) {
-            throw new NotFoundHttpException('Source not found');
-        }
-
-        $userSource = UserLinkedSources::findFirst([
-                'conditions' => 'users_id = ?0 and source_id = ?1 and source_users_id_text = ?2 and is_deleted = 0',
-                'bind' => [$this->userData->getId(), $source->getId(), $deviceId]
-            ]);
-
-        //Check if User Linked Sources exists by users_id and source_users_id_text
-        if (!is_object($userSource)) {
-            throw new NotFoundHttpException('User Linked Source not found');
-        }
-
-        $userSource->is_deleted = 1;
-        if (!$userSource->update()) {
-            throw new UnprocessableEntityHttpException((string) current($userSource->getMessages()));
-        }
-
-        return $this->response([
-                'msg' => 'User Device detached',
-                'user' => $this->userData
-            ]);
-    }
-
-    /**
-     * Get current active device of user
-     * @return Response
-     */
-    public function getActiveDevices(): Response
-    {
-        $userSources = UserLinkedSources::find([
-                'conditions' => 'users_id = ?0 and source_id in (2,3) and is_deleted = 0',
-                'bind' => [$this->userData->getId()]
-            ]);
-
-        if (empty($userSources->toArray())) {
-            throw new NotFoundHttpException('User Linked Sources not found');
-        }
-
-        return $this->response($userSources);
     }
 }
