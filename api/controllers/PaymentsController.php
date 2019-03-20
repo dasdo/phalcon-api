@@ -193,10 +193,7 @@ class PaymentsController extends BaseController
         $chargeDate = date('Y-m-d H:i:s', $payload['data']['object']['created']);
 
         //Fetch current user subscription
-        $subscription = Subscription::findFirst([
-                'conditions' => 'user_id = ?0 and companies_id = ?1 and apps_id = ?2 and is_active = 1 and is_deleted = 0',
-                'bind' => [$user->id, $user->default_company, $this->app->getId()]
-            ]);
+        $subscription = Subscription::getByDefaultCompany($user);
 
         if (is_object($subscription)) {
             $subscription->paid = $payload['data']['object']['paid'] ? 1 : 0;

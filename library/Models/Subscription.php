@@ -160,4 +160,23 @@ class Subscription extends PhalconSubscription
 
         return $subscription;
     }
+
+    /**
+     * Get subscription by user's default company;
+     * @param Users $user
+     * @return Subscription
+     */
+    public static function getByDefaultCompany(Users $user): Subscription
+    {
+        $subscription = self::findFirst([
+            'conditions' => 'user_id = ?0 and companies_id = ?1 and apps_id = ?2 and is_deleted  = 0',
+            'bind' => [$user->id, $user->default_company, Di::getDefault()->getApp()->getId()]
+        ]);
+
+        if (!is_object($subscription)) {
+            throw new ServerErrorHttpException('No active subscription for default company');
+        }
+
+        return $subscription;
+    }
 }
