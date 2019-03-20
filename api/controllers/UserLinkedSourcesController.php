@@ -17,6 +17,7 @@ use Gewaer\Exception\UnprocessableEntityHttpException;
  * Class LanguagesController
  *
  * @package Gewaer\Api\Controllers
+ * @property UserData $userData
  *
  */
 class UserLinkedSourcesController extends BaseController

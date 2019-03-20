@@ -20,6 +20,7 @@ use Exception;
  *
  * @package Gewaer\Api\Controllers
  * @property Log $log
+ * @property App $app
  *
  */
 class PaymentsController extends BaseController
@@ -187,7 +188,7 @@ class PaymentsController extends BaseController
      * @param $payload
      * @return void
      */
-    public function updateSubscriptionPaymentStatus(Users $user, array $payload)
+    public function updateSubscriptionPaymentStatus(Users $user, array $payload): void
     {
         $chargeDate = date('Y-m-d H:i:s', $payload['data']['object']['created']);
 
