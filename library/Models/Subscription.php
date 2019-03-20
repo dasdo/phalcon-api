@@ -95,6 +95,18 @@ class Subscription extends PhalconSubscription
 
     /**
      *
+     * @var integer
+     */
+    public $paid;
+
+    /**
+     *
+     * @var string
+     */
+    public $charge_date;
+
+    /**
+     *
      * @var string
      */
     public $created_at;

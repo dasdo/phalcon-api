@@ -117,7 +117,7 @@ class PaymentsController extends BaseController
         $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
         if ($user) {
             //We need to send a mail to the user
-            $this->response($this->updateSubscriptionPaymentStatus($user, $payload));
+            $this->updateSubscriptionPaymentStatus($user, $payload);
             $this->sendWebhookResponseEmail($user, $payload, $method);
         }
         return $this->response(['Webhook Handled']);
