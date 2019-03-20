@@ -8,6 +8,8 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\Micro\MiddlewareInterface;
 use Gewaer\Exception\ServerErrorHttpException;
 use Gewaer\Exception\PermissionException;
+use Gewaer\Models\CompaniesSettings;
+use Phalcon\Di;
 
 /**
  * Class AclMiddleware
@@ -40,6 +42,16 @@ class AclMiddleware implements MiddlewareInterface
             // PUT -> update
             // DELETE -> delete
             // POST -> create
+
+            //Search current company's app setting with key paid to verify payment status for current company
+            $subscriptionPaid = CompaniesSettings::findFirst([
+                'conditions' => "companies_id = ?0 and name = 'paid' and is_deleted = 0",
+                'bind' => [Di::getDefault()->getUserData()->default_company]
+            ]);
+
+            if (!$subscriptionPaid->value) {
+                throw new ServerErrorHttpException('Subscription is not active.Please contact your admin');
+            }
 
             switch (strtolower($request->getMethod())) {
                 case 'get':
