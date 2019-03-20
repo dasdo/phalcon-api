@@ -100,7 +100,7 @@ class PaymentsController extends BaseController
         $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
         if ($user) {
             //Update current subscription's paid column to true and store date of payment
-            $this->response($this->updateSubscriptionPaymentStatus($user, $payload));
+            $this->updateSubscriptionPaymentStatus($user, $payload);
             $this->sendWebhookResponseEmail($user, $payload, $method);
         }
         return $this->response(['Webhook Handled']);
