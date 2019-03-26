@@ -182,7 +182,7 @@ class Subscription extends PhalconSubscription
     {
         $subscription = self::findFirst([
             'conditions' => 'user_id = ?0 and companies_id = ?1 and apps_id = ?2 and is_deleted  = 0',
-            'bind' => [$user->id, $user->default_company, Di::getDefault()->getApp()->getId()]
+            'bind' => [$user->getId(), $user->defaultCompany->getId(), Di::getDefault()->getApp()->getId()]
         ]);
 
         if (!is_object($subscription)) {
@@ -190,5 +190,23 @@ class Subscription extends PhalconSubscription
         }
 
         return $subscription;
+    }
+
+    /**
+     * Search current company's app setting with key paid to verify payment status for current company
+     * @return boolean
+     */
+    public static function getPaymentStatus(): boolean
+    {
+        $subscriptionPaid = CompaniesSettings::findFirst([
+            'conditions' => "companies_id = ?0 and name = 'paid' and is_deleted = 0",
+            'bind' => [Di::getDefault()->getUserData()->default_company]
+        ]);
+
+        if (!$subscriptionPaid->value) {
+            return false;
+        }
+
+        return true;
     }
 }
