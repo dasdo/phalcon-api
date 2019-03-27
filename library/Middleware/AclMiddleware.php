@@ -8,7 +8,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\Micro\MiddlewareInterface;
 use Gewaer\Exception\ServerErrorHttpException;
 use Gewaer\Exception\PermissionException;
-use Gewaer\Models\CompaniesSettings;
+use Gewaer\Models\Subscription;
 
 /**
  * Class AclMiddleware
@@ -42,7 +42,7 @@ class AclMiddleware implements MiddlewareInterface
             // DELETE -> delete
             // POST -> create
 
-            if (!CompaniesSettings::getPaymentStatus()) {
+            if (!Subscription::getPaymentStatus()) {
                 throw new ServerErrorHttpException('Subscription is not active.Please contact your admin');
             }
 
@@ -67,7 +67,6 @@ class AclMiddleware implements MiddlewareInterface
                     throw new ServerErrorHttpException('No Permission define for this action');
                 break;
             }
-
             //do you have permision
             if (!$userData->can($resource . '.' . $action)) {
                 throw new PermissionException('You dont have permission to run this action ' . $action . ' at ' . $resource);

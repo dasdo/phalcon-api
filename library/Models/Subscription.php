@@ -194,9 +194,9 @@ class Subscription extends PhalconSubscription
 
     /**
      * Search current company's app setting with key paid to verify payment status for current company
-     * @return boolean
+     * @return bool
      */
-    public static function getPaymentStatus(): boolean
+    public static function getPaymentStatus(): bool
     {
         $subscriptionPaid = CompaniesSettings::findFirst([
             'conditions' => "companies_id = ?0 and name = 'paid' and is_deleted = 0",
