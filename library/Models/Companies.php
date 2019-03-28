@@ -357,6 +357,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
 
         //setup the user notificatoin setting
         $this->setSettings('notifications', $this->user->email);
+        $this->setSettings('paid', '1');
 
         //now thta we setup de company and associated with the user we need to setup this as its default company
         if (!UserConfig::findFirst(['conditions' => 'users_id = ?0 and name = ?1', 'bind' => [$this->user->getId(), self::DEFAULT_COMPANY]])) {

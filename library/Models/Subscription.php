@@ -95,6 +95,18 @@ class Subscription extends PhalconSubscription
 
     /**
      *
+     * @var integer
+     */
+    public $paid;
+
+    /**
+     *
+     * @var string
+     */
+    public $charge_date;
+
+    /**
+     *
      * @var string
      */
     public $created_at;
@@ -159,5 +171,42 @@ class Subscription extends PhalconSubscription
         }
 
         return $subscription;
+    }
+
+    /**
+     * Get subscription by user's default company;
+     * @param Users $user
+     * @return Subscription
+     */
+    public static function getByDefaultCompany(Users $user): Subscription
+    {
+        $subscription = self::findFirst([
+            'conditions' => 'user_id = ?0 and companies_id = ?1 and apps_id = ?2 and is_deleted  = 0',
+            'bind' => [$user->getId(), $user->defaultCompany->getId(), Di::getDefault()->getApp()->getId()]
+        ]);
+
+        if (!is_object($subscription)) {
+            throw new ServerErrorHttpException('No active subscription for default company');
+        }
+
+        return $subscription;
+    }
+
+    /**
+     * Search current company's app setting with key paid to verify payment status for current company
+     * @return bool
+     */
+    public static function getPaymentStatus(): bool
+    {
+        $subscriptionPaid = CompaniesSettings::findFirst([
+            'conditions' => "companies_id = ?0 and name = 'paid' and is_deleted = 0",
+            'bind' => [Di::getDefault()->getUserData()->default_company]
+        ]);
+
+        if (!$subscriptionPaid->value) {
+            return false;
+        }
+
+        return true;
     }
 }

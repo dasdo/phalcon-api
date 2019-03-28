@@ -66,7 +66,7 @@ class Apps extends \Baka\Auth\Models\Apps
      * Ecosystem default app
      * @var string
      */
-    const GEWAER_DEFAULT_APP_ID = 0;
+    const GEWAER_DEFAULT_APP_ID = 1;
     const GEWAER_DEFAULT_APP_NAME = 'Default';
 
     /**
@@ -126,7 +126,7 @@ class Apps extends \Baka\Auth\Models\Apps
     public static function getACLApp(string $name): Apps
     {
         if (trim($name) == self::GEWAER_DEFAULT_APP_NAME) {
-            $app = self::findFirst(0);
+            $app = self::findFirst(1);
         } else {
             $app = self::findFirst(\Phalcon\DI::getDefault()->getConfig()->app->id);
         }

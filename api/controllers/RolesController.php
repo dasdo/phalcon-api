@@ -41,7 +41,7 @@ class RolesController extends BaseController
         //get the list of roes for the systema + my company
         $this->additionalSearchFields = [
             ['is_deleted', ':', '0'],
-            ['companies_id', ':', '0|' . $this->userData->currentCompanyId()],
+            ['companies_id', ':', '1|' . $this->userData->currentCompanyId()],
         ];
     }
 }

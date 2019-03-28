@@ -47,19 +47,14 @@ $router->post('/auth', [
 
 //asociate mobile devices
 $router->post('/users/{id}/devices', [
-    'Gewaer\Api\Controllers\UsersController',
+    'Gewaer\Api\Controllers\UserLinkedSourcesController',
     'devices',
 ]);
 
 //detach mobile devices
-$router->post('/users/{id}/devices/{deviceId}/detach', [
-    'Gewaer\Api\Controllers\UsersController',
+$router->delete('/users/{id}/devices/{deviceId}/detach', [
+    'Gewaer\Api\Controllers\UserLinkedSourcesController',
     'detachDevice',
-]);
-
-$router->get('/devices', [
-    'Gewaer\Api\Controllers\UsersController',
-    'getActiveDevices',
 ]);
 
 /**
@@ -85,7 +80,8 @@ $defaultCrudRoutes = [
     'UserWebhooks' => 'user-webhooks',
     'roles',
     'locales',
-    'currencies'
+    'currencies',
+    'UserLinkedSources' => 'devices'
 ];
 
 foreach ($defaultCrudRoutes as $key => $route) {
@@ -165,12 +161,18 @@ $router->post('/users/invite', [
 
 $router->post('/users-invite/{hash}', [
     'Gewaer\Api\Controllers\UsersInviteController',
-    'processUserInvite'
+    'processUserInvite',
+    'options' => [
+        'jwt' => false,
+    ]
 ]);
 
 $router->get('/users-invite/validate/{hash}', [
     'Gewaer\Api\Controllers\UsersInviteController',
-    'getByHash'
+    'getByHash',
+    'options' => [
+        'jwt' => false,
+    ]
 ]);
 
 //Custom Fields specific routes

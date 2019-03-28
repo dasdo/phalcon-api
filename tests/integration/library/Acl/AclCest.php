@@ -48,7 +48,7 @@ class AclCest
     {
         $acl = $this->aclService();
 
-        $I->assertTrue($acl->addResource('Default.Users', ['read', 'list', 'create', 'edit', 'delete']));
+        $I->assertTrue($acl->addResource('Default.Users', ['read', 'list', 'create', 'update', 'delete']));
     }
 
     public function checkAllowPermission(IntegrationTester $I)
@@ -62,7 +62,7 @@ class AclCest
     {
         $acl = $this->aclService();
 
-        $I->assertTrue($acl->deny('Admins', 'Default.Users', ['edit', 'delete']));
+        $I->assertTrue($acl->deny('Admins', 'Default.Users', ['update', 'delete']));
     }
 
     public function checkIsAllowPermission(IntegrationTester $I)
@@ -76,7 +76,7 @@ class AclCest
     {
         $acl = $this->aclService();
 
-        $I->assertTrue(!$acl->isAllowed('Admins', 'Default.Users', 'edit'));
+        $I->assertTrue(!$acl->isAllowed('Admins', 'Default.Users', 'update'));
     }
 
     public function checkSetAppByRole(IntegrationTester $I)
@@ -116,5 +116,7 @@ class AclCest
         $userData = Users::findFirstByEmail(Data::loginJson()['email']);
 
         $I->assertTrue($userData->removeRole('Default.Admins'));
+
+        $I->assertTrue($userData->assignRole('Default.Admins'));
     }
 }

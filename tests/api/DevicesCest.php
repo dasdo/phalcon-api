@@ -71,7 +71,7 @@ class DevicesCest
         $userData = $I->apiLogin();
 
         $I->haveHttpHeader('Authorization', $userData->token);
-        $I->sendPost('/v1/' . "users/2/devices/{$this->deviceId}/detach", [
+        $I->sendDelete('/v1/' . "users/2/devices/{$this->deviceId}/detach", [
             'app' => 'baka'
         ]);
 

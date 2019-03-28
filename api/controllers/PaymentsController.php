@@ -8,6 +8,8 @@ use Phalcon\Cashier\Traits\StripeWebhookHandlersTrait;
 use Phalcon\Http\Response;
 use Gewaer\Models\Users;
 use Gewaer\Models\EmailTemplates;
+use Gewaer\Models\Subscription;
+use Gewaer\Models\CompaniesSettings;
 use Phalcon\Di;
 use Exception;
 
@@ -18,6 +20,7 @@ use Exception;
  *
  * @package Gewaer\Api\Controllers
  * @property Log $log
+ * @property App $app
  *
  */
 class PaymentsController extends BaseController
@@ -96,7 +99,8 @@ class PaymentsController extends BaseController
     {
         $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
         if ($user) {
-            //We need to send a mail to the user
+            //Update current subscription's paid column to true and store date of payment
+            $this->updateSubscriptionPaymentStatus($user, $payload);
             $this->sendWebhookResponseEmail($user, $payload, $method);
         }
         return $this->response(['Webhook Handled']);
@@ -113,6 +117,7 @@ class PaymentsController extends BaseController
         $user = Users::findFirstByStripeId($payload['data']['object']['customer']);
         if ($user) {
             //We need to send a mail to the user
+            $this->updateSubscriptionPaymentStatus($user, $payload);
             $this->sendWebhookResponseEmail($user, $payload, $method);
         }
         return $this->response(['Webhook Handled']);
@@ -175,5 +180,43 @@ class PaymentsController extends BaseController
             ->subject('Canvas Payments and Subscriptions')
             ->content($emailTemplate->template)
             ->sendNow();
+    }
+
+    /**
+     * Updates subscription payment status depending on charge event
+     * @param $user
+     * @param $payload
+     * @return void
+     */
+    public function updateSubscriptionPaymentStatus(Users $user, array $payload): void
+    {
+        $chargeDate = date('Y-m-d H:i:s', $payload['data']['object']['created']);
+
+        //Fetch current user subscription
+        $subscription = Subscription::getByDefaultCompany($user);
+
+        if (is_object($subscription)) {
+            $subscription->paid = $payload['data']['object']['paid'] ? 1 : 0;
+            $subscription->charge_date = $chargeDate;
+
+            if ($subscription->paid) {
+                $subscription->is_freetrial = 0;
+                $subscription->trial_ends_days = 0;
+            }
+
+            if ($subscription->update()) {
+                //Update companies setting
+                $paidSetting = CompaniesSettings::findFirst([
+                    'conditions' => "companies_id = ?0 and name = 'paid' and is_deleted = 0",
+                    'bind' => [$user->default_company]
+                ]);
+
+                $paidSetting->value = (string)$subscription->paid;
+                $paidSetting->update();
+            }
+            $this->log->info("User with id: {$user->id} charged status was {$payload['data']['object']['paid']} \n");
+        }
+
+        $this->log->error("Subscription not found\n");
     }
 }

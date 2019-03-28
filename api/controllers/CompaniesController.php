@@ -8,7 +8,6 @@ use Gewaer\Models\Companies;
 use Gewaer\Models\CompaniesCustomFields;
 use Phalcon\Http\Response;
 use Gewaer\Exception\UnauthorizedHttpException;
-use Exception;
 use Gewaer\Exception\UnprocessableEntityHttpException;
 
 /**
@@ -26,14 +25,14 @@ class CompaniesController extends BaseCustomFieldsController
      *
      * @var array
      */
-    protected $createFields = ['name', 'profile_image', 'website', 'users_id', 'address', 'zip', 'email', 'language', 'timezone', 'currency_id'];
+    protected $createFields = ['name', 'profile_image', 'website', 'users_id', 'address', 'zipcode', 'email', 'language', 'timezone', 'currency_id'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['name', 'profile_image', 'website', 'address', 'zip', 'email', 'language', 'timezone', 'currency_id'];
+    protected $updateFields = ['name', 'profile_image', 'website', 'address', 'zipcode', 'email', 'language', 'timezone', 'currency_id'];
 
     /**
      * set objects
