@@ -1,6 +1,6 @@
 <?php
 
-namespace Gewaer\Traits\Notifications;
+namespace Gewaer\Notifications;
 
 class AppsNotifications extends Notifications
 {

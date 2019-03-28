@@ -14,6 +14,10 @@ class NotificationsSeeder extends AbstractSeed
             [
                 'name' => 'Apps',
                 'created_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'name' => 'Users',
+                'created_at' => date('Y-m-d H:m:s')
             ]
         ];
 
