@@ -1,6 +1,8 @@
 <?php
 
-namespace Gewaer\Interfaces;
+namespace Gewaer\Contracts;
+
+use Gewaer\Models\Users;
 
 interface INotifications
 {

@@ -2,6 +2,8 @@
 
 namespace Gewaer\Notifications;
 
+use Gewaer\Contracts\INotifications;
+
 class Notifications implements INotifications
 {
     /**
