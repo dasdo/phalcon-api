@@ -129,19 +129,11 @@ class UserLinkedSourcesController extends BaseController
             }
         }
 
-        $app = $this->request->getPost('app', 'string');
-
-        //Get Source
-
-        $source = Sources::getByTitle($app);
-
-        if (!is_object($source)) {
-            throw new NotFoundHttpException('Source not found');
-        }
+        $sourceId = $this->request->getPost('source_id', 'int');
 
         $userSource = UserLinkedSources::findFirst([
                 'conditions' => 'users_id = ?0 and source_id = ?1 and source_users_id_text = ?2 and is_deleted = 0',
-                'bind' => [$this->userData->getId(), $source->getId(), $deviceId]
+                'bind' => [$this->userData->getId(), $sourceId, $deviceId]
             ]);
 
         //Check if User Linked Sources exists by users_id and source_users_id_text
