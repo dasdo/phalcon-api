@@ -72,7 +72,7 @@ class DevicesCest
 
         $I->haveHttpHeader('Authorization', $userData->token);
         $I->sendDelete('/v1/' . "users/2/devices/{$this->deviceId}/detach", [
-            'app' => 'baka'
+            'source_id' => 1
         ]);
 
         $I->seeResponseIsSuccessful();

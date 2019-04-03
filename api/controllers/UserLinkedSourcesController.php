@@ -119,7 +119,7 @@ class UserLinkedSourcesController extends BaseController
     {
         //Validation
         $validation = new Validation();
-        $validation->add('app', new PresenceOf(['message' => _('App name is required.')]));
+        $validation->add('source_id', new PresenceOf(['message' => _('Source Id is required.')]));
 
         //validate this form for password
         $messages = $validation->validate($this->request->getPost());
