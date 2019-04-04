@@ -8,6 +8,7 @@ use Gewaer\Providers\DatabaseProvider;
 use Phalcon\Di\FactoryDefault;
 use UnitTester;
 use Phalcon\Queue\Beanstalk\Extended as Beanstalk;
+use \PhpAmqpLib\Connection\AMQPStreamConnection  as Rabbitmq;
 
 class QueueCest
 {
@@ -27,6 +28,6 @@ class QueueCest
         $I->assertTrue($diContainer->has('queue'));
 
         $queue = $diContainer->getShared('queue');
-        $I->assertTrue($queue instanceof Beanstalk);
+        $I->assertTrue($queue instanceof Rabbitmq);
     }
 }
