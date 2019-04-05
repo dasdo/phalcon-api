@@ -21,6 +21,7 @@ use Gewaer\Traits\UsersAssociatedTrait;
  * @property DefaultCompany $default_company
  * @property CompaniesBranches $branch
  * @property CompaniesBranches $branches
+ * @property Subscription $subscription
  * @property Config $config
  * @property UserCompanyApps $app
  * @property \Phalcon\Di $di
