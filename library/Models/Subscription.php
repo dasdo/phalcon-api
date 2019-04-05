@@ -71,6 +71,12 @@ class Subscription extends PhalconSubscription
 
     /**
      *
+     * @var integer
+     */
+    public $payment_frequency_id;
+
+    /**
+     *
      * @var string
      */
     public $trial_ends_at;

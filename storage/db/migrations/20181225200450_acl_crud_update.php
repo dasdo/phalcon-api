@@ -28,8 +28,5 @@ class AclCrudUpdate extends AbstractMigration
                 'after' => 'roles_id',
             ])
             ->save();
-        if ($this->table('roles_inherits')->hasColumn('roles_name')) {
-            $this->table('roles_inherits')->removeColumn('roles_name')->update();
-        }
     }
 }

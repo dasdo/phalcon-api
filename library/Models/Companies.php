@@ -494,6 +494,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $subscription->trial_ends_days = $trialEndsAt->diffInDays(Carbon::now());
         $subscription->is_freetrial = 1;
         $subscription->is_active = 1;
+        $subscription->payment_frequency_id = 1;
 
         if (!$subscription->save()) {
             throw new ServerErrorHttpException((string)'Subscription for new company couldnt be created ' . current($this->getMessages()));
