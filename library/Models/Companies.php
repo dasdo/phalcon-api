@@ -12,7 +12,7 @@ use Gewaer\Traits\ModelSettingsTrait;
 use Gewaer\Traits\UsersAssociatedTrait;
 
 /**
- * Class Companies
+ * Class Companies.
  *
  * @package Gewaer\Models
  *
@@ -89,7 +89,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     public $is_deleted;
 
     /**
-     * Provide the app plan id
+     * Provide the app plan id.
      *
      * @var integer
      */
@@ -211,7 +211,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
             [
                 'alias' => 'subscription',
                 'params' => [
-                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId() . ' AND ends_at is null AND is_deleted = 0 ',
+                    'conditions' => 'apps_id = ' . $this->di->getApp()->getId() . '  AND is_deleted = 0 ',
                     'order' => 'id DESC'
                 ]
             ]
@@ -262,7 +262,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     }
 
     /**
-     * Model validation
+     * Model validation.
      *
      * @return void
      */
@@ -282,7 +282,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     }
 
     /**
-    * Register a company given a user and name
+    * Register a company given a user and name.
     *
     * @param  Users  $user
     * @param  string $name
@@ -312,7 +312,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     }
 
     /**
-     * Confirm if a user belongs to this current company
+     * Confirm if a user belongs to this current company.
      *
      * @param Users $user
      * @return boolean
@@ -323,7 +323,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     }
 
     /**
-     * Get the stripe customer id from the
+     * Get the stripe customer id from the.
      *
      * @return ?string
      */
@@ -333,7 +333,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     }
 
     /**
-     * Before crate company
+     * Before crate company.
      *
      * @return void
      */
@@ -347,7 +347,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     }
 
     /**
-     * After creating the company
+     * After creating the company.
      *
      * @return void
      */
@@ -414,7 +414,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     }
 
     /**
-     * Get the default company the users has selected
+     * Get the default company the users has selected.
      *
      * @param  Users  $user
      * @return Companies
@@ -446,7 +446,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     }
 
     /**
-     * After the model was update we need to update its custom fields
+     * After the model was update we need to update its custom fields.
      *
      * @return void
      */
@@ -474,7 +474,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     }
 
     /**
-     * Start a free trial for a new company
+     * Start a free trial for a new company.
      *
      * @return string //the customer id
      */
