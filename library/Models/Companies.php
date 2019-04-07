@@ -320,7 +320,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
      */
     public function userAssociatedToCompany(Users $user): bool
     {
-        return is_object($this->getUsersAssociatedCompanies('users_id =' . $user->getId())) ? true : false;
+        return is_object($this->getUsersAssociatedCompanies('users_id =' . $user->getId()));
     }
 
     /**
