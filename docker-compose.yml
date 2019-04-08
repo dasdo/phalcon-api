@@ -26,8 +26,8 @@ services:
         - .:/app
         - ./storage/ci/nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
-      local-network:
-             ipv4_address: 172.18.0.10
+      - local-network
+      - public-network
 
   redis:
     image: 'redis:5.0-alpine'
@@ -71,8 +71,7 @@ services:
     volumes:
       - "db-data:/var/lib/mysql"
     networks:
-        local-network:
-             ipv4_address: 172.18.0.6
+        - local-network
   
   rabbitmq:
     image: rabbitmq:3.7
@@ -106,7 +105,4 @@ volumes:
 
 networks:
   local-network:
-        ipam:
-            driver: default
-            config:
-                - subnet: 172.18.0.0/16
+  public-network:
