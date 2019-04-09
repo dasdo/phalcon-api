@@ -40,10 +40,10 @@ class QueueTask extends PhTask
         /**
          * Need to convert it to rabbitmq msg
          */
-        $msg = new \PhpAmqpLib\Message\AMQPMessage(
-            json_encode($jobArray, JSON_UNESCAPED_SLASHES),
-            ['delivery_mode' => 2] // make message persistent
-    );
+        // $msg = new \PhpAmqpLib\Message\AMQPMessage(
+        //     json_encode($jobArray, JSON_UNESCAPED_SLASHES),
+        //     ['delivery_mode' => 2] // make message persistent
+        // );
 
         /**
          * Actual way to send jobs to queue
