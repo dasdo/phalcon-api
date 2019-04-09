@@ -11,6 +11,7 @@ class EventManagerProvider implements ServiceProviderInterface
 {
     /**
      * @param DiInterface $container
+     * @property Providers $providers
      */
     public function register(DiInterface $container)
     {

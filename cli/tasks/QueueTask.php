@@ -15,6 +15,9 @@ use Throwable;
  * @property Config $config
  * @property \Pusher\Pusher $pusher
  * @property \Monolog\Logger $log
+ * @property Channel $channel
+ * @property Queue $queue
+ * 
  */
 class QueueTask extends PhTask
 {
@@ -28,11 +31,11 @@ class QueueTask extends PhTask
         /**
          * The job itself
          */
-        $jobArray = [
-        'id' => $job_id++,
-        'notification' => 'hello you need to pay your account',
-        'sleep_period' => rand(0, 3)
-    ];
+    //     $jobArray = [
+    //     'id' => $job_id++,
+    //     'notification' => 'hello you need to pay your account',
+    //     'sleep_period' => rand(0, 3)
+    // ];
 
         /**
          * Need to convert it to rabbitmq msg
@@ -45,7 +48,7 @@ class QueueTask extends PhTask
         /**
          * Actual way to send jobs to queue
          */
-        $channel->basic_publish($msg, '', RABBITMQ_QUEUE_NAME);
+        // $channel->basic_publish($msg, '', RABBITMQ_QUEUE_NAME);
 
 
         ///////////////////////////////////////////////////////////////////////
@@ -103,6 +106,6 @@ class QueueTask extends PhTask
         }
 
         $channel->close();
-        $connection->close();
+        $this->queue->close();
     }
 }

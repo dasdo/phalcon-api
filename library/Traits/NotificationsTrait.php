@@ -20,6 +20,7 @@ use Phalcon\Di;
  * @property Companies $company
  * @property UserCompanyApps $app
  * @property \Phalcon\Di $di
+ * @property Id $id
  *
  */
 trait NotificationsTrait
@@ -28,8 +29,8 @@ trait NotificationsTrait
      * Create a new notification
      * @param Users $user
      * @param string $content
-     * @param int notification_type_id
-     * @param string systemModule;
+     * @param int $notificationTypeId
+     * @param string $systemModule
      * @return void
      */
     public static function create(Users $user, string $content, int $notificationTypeId, string $systemModule): void

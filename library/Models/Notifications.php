@@ -47,7 +47,13 @@ class Notifications extends AbstractModel
      *
      * @var integer
      */
-    public $system_modules_id;
+    public $system_module_id;
+
+    /**
+     *
+     * @var integer
+     */
+    public $notification_type_id;
 
     /**
      *
