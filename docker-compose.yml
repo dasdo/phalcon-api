@@ -86,8 +86,7 @@ services:
       - "15672:15672"
       - "5672:5672"
     networks:
-        local-network:
-             ipv4_address: 172.18.0.7
+      - local-network
 
   beanstalkd:
     image: schickling/beanstalkd:latest
