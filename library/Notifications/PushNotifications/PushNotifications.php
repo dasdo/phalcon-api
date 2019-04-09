@@ -47,7 +47,6 @@ class PushNotifications extends Notification implements PushNotificationsContrac
          * Send to notifications queue
          */
         Di::getDefault()->getManager()->trigger($notification);
-
     }
 
     /**

@@ -32,7 +32,7 @@ trait NotificationsTrait
      * @param string systemModule;
      * @return void
      */
-    public static function create(Users $user, string $content, int $notificationTypeId,string $systemModule): void
+    public static function create(Users $user, string $content, int $notificationTypeId, string $systemModule): void
     {
         $notification =  new Notifications();
         $notification->users_id = $user->getId();
@@ -44,7 +44,7 @@ trait NotificationsTrait
         $notification->content = $content;
         $notification->created_at = date('Y-m-d H:i:s');
 
-        if(!$notification->save()){
+        if (!$notification->save()){
             Di::getDefault()->getLog()->error((string)current($notification->getMessages()));
         }
     }

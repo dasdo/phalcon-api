@@ -19,7 +19,7 @@ class SystemPushNotifications extends PushNotifications implements PushNotificat
     /**
      * Constructor
      */
-    public function __construct( Users $user,string $content, string $systemModule)
+    public function __construct(Users $user, string $content, string $systemModule)
     {
         $this->user = $user;
         $this->content  = $content;
