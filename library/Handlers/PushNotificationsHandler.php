@@ -10,16 +10,10 @@ use Phalcon\Di;
 use Gewaer\Notifications\PushNotifications\AppsPushNotifications;
 use Gewaer\Notifications\PushNotifications\PushNotifications;
 use Gewaer\Models\Notifications;
-use Gewaer\Traits\NotificationsTrait;
 use Gewaer\Models\SystemModules;
 
 class PushNotificationsHandler implements HandlerInterface
 {
-    /**
-     * Notifications Trait
-     */
-    use NotificationsTrait;
-
     /**
      * Stablishes type of handler
      */
@@ -34,29 +28,8 @@ class PushNotificationsHandler implements HandlerInterface
      */
     public function handle(NotificationInterface $notification)
     {
-        $this->create($notification->user,$notification->content,$notification->notificationTypeId,$notification->systemModule);
-        die();
-        $notificationType = $notification->notificationTypeId;
 
-        switch ($notificationType) {
-            case '1':
-                $newTypeRecord =  new AppsPushNotifications($notification->getMessage(), $notification->notificationTypeId);
-                Di::getDefault()->getLog()->info($newTypeRecord->getMessage());
-                break;
-            // case '2':
-            // $notificationType =  new AppsPushNotifications($notification->getMessage(), $notification->source_id);
-            // Di::getDefault()->getLog()->info($notificationType->getMessage());
-            // break;
-
-            // case '3':
-            // $notificationType =  new AppsPushNotifications($notification->getMessage(), $notification->source_id);
-            // Di::getDefault()->getLog()->info($notificationType->getMessage());
-            // break;
-            
-            default:
-                $newTypeRecord =  new PushNotifications($notification->getMessage(), $notification->notificationTypeId);
-                Di::getDefault()->getLog()->info($newTypeRecord->getMessage());
-                break;
-        }
+        //Push the notification.In this case we are just logging the info
+        Di::getDefault()->getLog()->info($notification->assemble());
     }
 }

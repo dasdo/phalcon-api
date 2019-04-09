@@ -32,13 +32,13 @@ trait NotificationsTrait
      * @param string systemModule;
      * @return void
      */
-    public function create(Users $user, string $content, int $notificationTypeId,string $systemModule): void
+    public static function create(Users $user, string $content, int $notificationTypeId,string $systemModule): void
     {
         $notification =  new Notifications();
         $notification->users_id = $user->getId();
         $notification->companies_id = Di::getDefault()->getUserData()->currentCompanyId();
         $notification->apps_id = Di::getDefault()->getApp()->getId();
-        // $notification->notification_type_id = $notificationTypeId;
+        $notification->notification_type_id = $notificationTypeId;
         $notification->system_module_id = SystemModules::getSystemModuleByModelName($systemModule)->id;
         $notification->entity_id = $user->getId();
         $notification->content = $content;

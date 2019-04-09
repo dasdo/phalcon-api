@@ -4,19 +4,39 @@ namespace Gewaer\Notifications\PushNotifications;
 
 use Namshi\Notificator\Notification;
 use Gewaer\Contracts\PushNotificationsContract;
+use Gewaer\Models\Users;
+use Gewaer\Models\Notifications;
 use Gewaer\Notifications\PushNotifications\PushNotifications as PushNotifications;
+use Gewaer\Traits\NotificationsTrait;
 
 class AppsPushNotifications extends PushNotifications implements PushNotificationsContract
 {
-    public function __construct( Users $user,string $content, int $system_module_id = 0)
+    /**
+     * Notifications Trait
+     */
+    use NotificationsTrait;
+
+    /**
+     * Constructor
+     */
+    public function __construct( Users $user,string $content, string $systemModule)
     {
         $this->user = $user;
         $this->content  = $content;
-        $this->system_module_id = $system_module_id;
+        $this->systemModule = $systemModule;
     }
 
+    /**
+     * Assemble an Apps Push Notification
+     * @todo Create specific assembler for apps push notifications
+     */
     public function assemble()
     {
+        /**
+         * Create a new database record
+         */
+        self::create($this->user,$this->content,Notifications::APPS,$this->systemModule);
+
         return $this->content . " From Apps";
     }
 }
