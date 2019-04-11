@@ -121,6 +121,12 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     public $currency;
 
     /**
+     * System Module Id
+     * @var integer
+     */
+    public $system_modules_id;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
@@ -345,6 +351,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $this->language = $this->di->getApp()->getSettings('language');
         $this->timezone = $this->di->getApp()->getSettings('timezone');
         $this->currency_id = Currencies::findFirstByCode($this->di->getApp()->getSettings('currency'))->getId();
+        $this->system_modules_id = 1;
     }
 
     /**
