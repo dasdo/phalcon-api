@@ -17,7 +17,7 @@ use Throwable;
  * @property \Monolog\Logger $log
  * @property Channel $channel
  * @property Queue $queue
- * 
+ *
  */
 class QueueTask extends PhTask
 {
@@ -31,11 +31,11 @@ class QueueTask extends PhTask
         /**
          * The job itself
          */
-    //     $jobArray = [
-    //     'id' => $job_id++,
-    //     'notification' => 'hello you need to pay your account',
-    //     'sleep_period' => rand(0, 3)
-    // ];
+        //     $jobArray = [
+        //     'id' => $job_id++,
+        //     'notification' => 'hello you need to pay your account',
+        //     'sleep_period' => rand(0, 3)
+        // ];
 
         /**
          * Need to convert it to rabbitmq msg
@@ -72,24 +72,26 @@ class QueueTask extends PhTask
 
         $callback = function ($msg) {
 
-            /**
-             * Assign  message body as an assoc array to job
-             */
-            $job = json_decode($msg->body, $assocForm = true);
+            // /**
+            //  * Assign  message body as an assoc array to job
+            //  */
+            // $job = json_decode($msg->body, $assocForm = true);
 
-            /**
-             * Custom actions here on jobs
-             */
-            echo($job['notification']);
-            sleep($job['sleep_period']);
+            // /**
+            //  * Custom actions here on jobs
+            //  */
+            // echo($job['notification']);
+            // sleep($job['sleep_period']);
+
+            echo ' [x] Received ', $msg->body, "\n";
 
             /**
              * Log the delivery info
              */
-            $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
+            // $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
         };
 
-        $channel->basic_qos(null, 1, null);
+        // $channel->basic_qos(null, 1, null);
 
         $channel->basic_consume(
             $queue = "notifications",
