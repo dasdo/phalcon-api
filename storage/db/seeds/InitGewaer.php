@@ -31,11 +31,13 @@ class InitGewaer extends AbstractSeed
             [
                 'name' => 'Canvas',
                 'users_id' => 1,
+                'system_modules_id' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'is_deleted' => 0
             ], [
                 'name' => 'CRM',
                 'users_id' => 1,
+                'system_modules_id' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'is_deleted' => 0
             ],
@@ -96,6 +98,7 @@ class InitGewaer extends AbstractSeed
                 'lastname' => 'Idiot',
                 'default_company' => 1,
                 'displayname' => 'nobody',
+                'system_modules_id' => 2,
                 'default_company_branch' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'status' => 1,

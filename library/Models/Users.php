@@ -89,6 +89,12 @@ class Users extends \Baka\Auth\Models\Users
     public $active_subscription_id;
 
     /**
+     * System Module Id
+     * @var integer
+     */
+    public $system_modules_id;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
@@ -341,6 +347,8 @@ class Users extends \Baka\Auth\Models\Users
     public function beforeCreate()
     {
         parent::beforeCreate();
+
+        $this->system_modules_id = 2;
 
         //this is only empty when creating a new user
         if (!$this->isFirstSignup()) {
