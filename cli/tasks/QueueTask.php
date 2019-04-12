@@ -65,9 +65,7 @@ class QueueTask extends PhTask
                  case 3:
                     $notification = new SystemPushNotifications((array)$msgObject->user, $msgObject->content, $msgObject->system_module);
                      break;
-                 
                  default:
-                     # code...
                      break;
              }
 
