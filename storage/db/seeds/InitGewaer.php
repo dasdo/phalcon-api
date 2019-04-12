@@ -49,6 +49,10 @@ class InitGewaer extends AbstractSeed
             [
                 'name' => 'Default',
                 'users_id' => 1,
+                'address' => 'default',
+                'zipcode' => '32234',
+                'email' => 'default@default.com',
+                'phone' => '123142341',
                 'companies_id' => 1,
                 'is_default' => 1,
                 'created_at' => date('Y-m-d H:i:s'),

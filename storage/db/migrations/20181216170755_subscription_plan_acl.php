@@ -42,7 +42,7 @@ class SubscriptionPlanAcl extends AbstractMigration
         }
 
         $table = $this->table('companies_branches');
-        $table->addColumn('is_default', 'boolean', ['null' => true, 'default' => '0', 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'description'])->save();
+        $table->addColumn('is_default', 'boolean', ['null' => true, 'default' => '0', 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'zipcode'])->save();
         //  $this->table("company_branches")->changeColumn('created_at', 'datetime', ['null' => false, 'after' => 'is_default'])->update();
         // $this->table("company_branches")->changeColumn('updated_at', 'datetime', ['null' => true, 'after' => 'created_at'])->update();
         // $this->table("company_branches")->changeColumn('is_deleted', 'boolean', ['null' => true, 'default' => "0", 'limit' => MysqlAdapter::INT_TINY, 'precision' => 3, 'after' => 'updated_at'])->update();

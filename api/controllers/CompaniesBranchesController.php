@@ -24,14 +24,14 @@ class CompaniesBranchesController extends BaseController
      *
      * @var array
      */
-    protected $createFields = ['name', 'description', 'is_default'];
+    protected $createFields = ['name', 'address','email','zipcode','phone', 'is_default'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['name', 'description', 'is_default'];
+    protected $updateFields = ['name', 'address','email','zipcode','phone', 'is_default'];
 
     /**
      * set objects
