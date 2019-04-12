@@ -19,7 +19,7 @@ class AppsPushNotifications extends PushNotifications implements PushNotificatio
     /**
      * Constructor
      */
-    public function __construct(Users $user, string $content, string $systemModule)
+    public function __construct(array $user, string $content, string $systemModule)
     {
         $this->user = $user;
         $this->content  = $content;
@@ -35,7 +35,7 @@ class AppsPushNotifications extends PushNotifications implements PushNotificatio
         /**
          * Create a new database record
          */
-        self::create($this->user,$this->content,Notifications::APPS,$this->systemModule);
+        self::create($this->user, $this->content, Notifications::APPS, $this->systemModule);
 
         return $this->content . " From Apps";
     }

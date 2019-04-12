@@ -5,9 +5,7 @@ namespace Gewaer\Notifications\PushNotifications;
 use Namshi\Notificator\Notification;
 use Gewaer\Contracts\PushNotificationsContract;
 use Gewaer\Models\Users;
-use Gewaer\Notifications\PushNotifications\AppsPushNotifications;
-use Gewaer\Notifications\PushNotifications\UsersPushNotifications;
-use Gewaer\Notifications\PushNotifications\SystemPushNotifications;
+use Gewaer\Models\Notifications;
 use Phalcon\Di;
 use PhpAmqpLib\Message\AMQPMessage;
 
@@ -39,32 +37,30 @@ class PushNotifications extends Notification implements PushNotificationsContrac
      * @param Users $user
      * @return void
      */
-    public static function apps(string $content, string $systemModule, Users $user = null): void
+    public static function apps(string $content, string $systemModule, array $user = null): void
     {
         if (!isset($user)) {
             $user =  Di::getDefault()->getUserData();
         }
         /**
-         * Create a new Apps Push Notification
+         * Create an array of  Apps Push Notification
          */
-        $notification =  new AppsPushNotifications($user, $content, $systemModule);
+        $notificationArray =  array(
+            'user'=> $user->toArray(),
+            'content'=> $content,
+            'system_module'=>$systemModule,
+            'notification_type_id'=> Notifications::APPS
+        );
 
 
         /**
          * Convert notification to Rabbitmq message
          */
-        $msg =  new AMQPMessage($notification->assemble(), ['delivery_mode' => 2]);
+        $msg =  new AMQPMessage(json_encode($notificationArray, JSON_UNESCAPED_SLASHES), ['delivery_mode' => 2]);
 
         $channel = Di::getDefault()->getQueue()->channel();
 
         $channel->basic_publish($msg, '', 'notifications');
-        die();
-        
-
-        /**
-         * Send to notifications queue
-         */
-        Di::getDefault()->getManager()->trigger($notification);
     }
 
     /**
@@ -81,14 +77,24 @@ class PushNotifications extends Notification implements PushNotificationsContrac
         }
 
         /**
-         * Create a new Apps Push Notification
+         * Create an array of  Apps Push Notification
          */
-        $notification =  new UsersPushNotifications(Di::getDefault()->getUserData(), $content, $systemModule);
+        $notificationArray =  array(
+            'user'=> $user->toArray(),
+            'content'=> $content,
+            'system_module'=>$systemModule,
+            'notification_type_id'=> Notifications::USERS
+        );
+
 
         /**
-         * Send to notifications queue
+         * Convert notification to Rabbitmq message
          */
-        Di::getDefault()->getManager()->trigger($notification);
+        $msg =  new AMQPMessage(json_encode($notificationArray, JSON_UNESCAPED_SLASHES), ['delivery_mode' => 2]);
+
+        $channel = Di::getDefault()->getQueue()->channel();
+
+        $channel->basic_publish($msg, '', 'notifications');
     }
 
     /**
@@ -105,13 +111,23 @@ class PushNotifications extends Notification implements PushNotificationsContrac
         }
 
         /**
-         * Create a new Apps Push Notification
+         * Create an array of  Apps Push Notification
          */
-        $notification =  new SystemPushNotifications(Di::getDefault()->getUserData(), $content, $systemModule);
+        $notificationArray =  array(
+            'user'=> $user->toArray(),
+            'content'=> $content,
+            'system_module'=>$systemModule,
+            'notification_type_id'=> Notifications::SYSTEM
+        );
+
 
         /**
-         * Send to notifications queue
+         * Convert notification to Rabbitmq message
          */
-        Di::getDefault()->getManager()->trigger($notification);
+        $msg =  new AMQPMessage(json_encode($notificationArray, JSON_UNESCAPED_SLASHES), ['delivery_mode' => 2]);
+
+        $channel = Di::getDefault()->getQueue()->channel();
+
+        $channel->basic_publish($msg, '', 'notifications');
     }
 }

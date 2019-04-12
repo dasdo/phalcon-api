@@ -6,6 +6,10 @@ use Phalcon\Cli\Task as PhTask;
 use Gewaer\Models\UserLinkedSources;
 use Gewaer\Models\Users;
 use Throwable;
+use Phalcon\Di;
+use Gewaer\Notifications\PushNotifications\AppsPushNotifications;
+use Gewaer\Notifications\PushNotifications\UsersPushNotifications;
+use Gewaer\Notifications\PushNotifications\SystemPushNotifications;
 
 /**
  * CLI To send push ontification and pusher msg
@@ -23,37 +27,6 @@ class QueueTask extends PhTask
 {
     public function notificationAction()
     {
-
-         /**
-     * Every handler needs the below code
-     */
-
-        /**
-         * The job itself
-         */
-        //     $jobArray = [
-        //     'id' => $job_id++,
-        //     'notification' => 'hello you need to pay your account',
-        //     'sleep_period' => rand(0, 3)
-        // ];
-
-        /**
-         * Need to convert it to rabbitmq msg
-         */
-        // $msg = new \PhpAmqpLib\Message\AMQPMessage(
-        //     json_encode($jobArray, JSON_UNESCAPED_SLASHES),
-        //     ['delivery_mode' => 2] // make message persistent
-        // );
-
-        /**
-         * Actual way to send jobs to queue
-         */
-        // $channel->basic_publish($msg, '', RABBITMQ_QUEUE_NAME);
-
-
-        ///////////////////////////////////////////////////////////////////////
-
-    
         $channel = $this->queue->channel();
 
         // Create the queue if it doesnt already exist.
@@ -71,27 +44,46 @@ class QueueTask extends PhTask
         echo ' [*] Waiting for notifications. To exit press CTRL+C', "\n";
 
         $callback = function ($msg) {
+            $msgObject = json_decode($msg->body);
 
-            // /**
-            //  * Assign  message body as an assoc array to job
-            //  */
-            // $job = json_decode($msg->body, $assocForm = true);
 
-            // /**
-            //  * Custom actions here on jobs
-            //  */
-            // echo($job['notification']);
-            // sleep($job['sleep_period']);
 
-            echo ' [x] Received ', $msg->body, "\n";
+            echo ' [x] Received from system module: ',$msgObject->system_module, "\n";
+
+
+            /**
+             * Lets determine what type of notification we are dealing with
+             */
+            switch ($msgObject->notification_type_id) {
+                 case 1:
+                      $notification = new AppsPushNotifications((array)$msgObject->user, $msgObject->content, $msgObject->system_module);
+                     break;
+                 case 2:
+                    $notification = new UsersPushNotifications((array)$msgObject->user, $msgObject->content, $msgObject->system_module);
+                     break;
+
+                 case 3:
+                    $notification = new SystemPushNotifications((array)$msgObject->user, $msgObject->content, $msgObject->system_module);
+                     break;
+                 
+                 default:
+                     # code...
+                     break;
+             }
+
+
+            /**
+             * Trigger Event Manager
+             */
+            Di::getDefault()->getManager()->trigger($notification);
 
             /**
              * Log the delivery info
              */
-            // $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
+            $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
         };
 
-        // $channel->basic_qos(null, 1, null);
+        $channel->basic_qos(null, 1, null);
 
         $channel->basic_consume(
             $queue = "notifications",

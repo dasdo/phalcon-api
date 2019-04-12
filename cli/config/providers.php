@@ -18,6 +18,7 @@ use Gewaer\Providers\PusherProvider;
 use Gewaer\Providers\AclProvider;
 use Gewaer\Providers\AppProvider;
 use Gewaer\Providers\FileSystemProvider;
+use Gewaer\Providers\EventManagerProvider;
 
 return [
     ConfigProvider::class,
@@ -34,4 +35,5 @@ return [
     AclProvider::class,
     AppProvider::class,
     FileSystemProvider::class,
+    EventManagerProvider::class
 ];
