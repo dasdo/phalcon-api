@@ -8,7 +8,7 @@ use Gewaer\Providers\DatabaseProvider;
 use Phalcon\Di\FactoryDefault;
 use UnitTester;
 use Phalcon\Queue\Beanstalk\Extended as Beanstalk;
-use \PhpAmqpLib\Connection\AMQPStreamConnection  as Rabbitmq;
+use PhpAmqpLib\Connection\AMQPStreamConnection  as Rabbitmq;
 
 class QueueCest
 {
