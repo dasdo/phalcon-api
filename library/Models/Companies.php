@@ -120,6 +120,12 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     public $currency;
 
     /**
+     *
+     * @var string
+     */
+    public $phone;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
