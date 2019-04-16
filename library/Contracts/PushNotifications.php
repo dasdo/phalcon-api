@@ -4,7 +4,7 @@ namespace Gewaer\Contracts;
 
 use Namshi\Notificator\NotificationInterface;
 
-interface PushNotificationsContract extends NotificationInterface
+interface PushNotifications extends NotificationInterface
 {
     /**
      * Assemble Notification

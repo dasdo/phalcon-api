@@ -3,7 +3,7 @@
 namespace Gewaer\Notifications\PushNotifications;
 
 use Namshi\Notificator\Notification;
-use Gewaer\Contracts\PushNotificationsContract;
+use Gewaer\Contracts\PushNotifications as PushNotificationsContract;
 use Gewaer\Models\Users;
 use Gewaer\Models\Notifications;
 use Phalcon\Di;

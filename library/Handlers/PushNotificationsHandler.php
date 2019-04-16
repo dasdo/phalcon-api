@@ -3,7 +3,7 @@
 namespace Gewaer\Handlers;
 
 use Namshi\Notificator\Notification\Handler\HandlerInterface;
-use Gewaer\Contracts\PushNotificationsContract;
+use Gewaer\Contracts\PushNotifications as PushNotificationsContract;
 use Phalcon\Http\Response;
 use Namshi\Notificator\NotificationInterface;
 use Phalcon\Di;
