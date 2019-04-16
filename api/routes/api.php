@@ -81,7 +81,8 @@ $defaultCrudRoutes = [
     'roles',
     'locales',
     'currencies',
-    'UserLinkedSources' => 'devices'
+    'UserLinkedSources' => 'devices',
+    'PaymentFrequencies'=> 'payment-frequencies'
 ];
 
 foreach ($defaultCrudRoutes as $key => $route) {

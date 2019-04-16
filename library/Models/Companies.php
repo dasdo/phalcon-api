@@ -21,6 +21,7 @@ use Gewaer\Traits\UsersAssociatedTrait;
  * @property DefaultCompany $default_company
  * @property CompaniesBranches $branch
  * @property CompaniesBranches $branches
+ * @property Subscription $subscription
  * @property Config $config
  * @property UserCompanyApps $app
  * @property \Phalcon\Di $di
@@ -119,6 +120,11 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
      */
     public $currency;
 
+     * System Module Id
+     * @var integer
+     */
+    private $system_modules_id = 1;
+  
     /**
      *
      * @var string
@@ -325,7 +331,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
      */
     public function userAssociatedToCompany(Users $user): bool
     {
-        return is_object($this->getUsersAssociatedCompanies('users_id =' . $user->getId())) ? true : false;
+        return is_object($this->getUsersAssociatedCompanies('users_id =' . $user->getId()));
     }
 
     /**
@@ -499,6 +505,7 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $subscription->trial_ends_days = $trialEndsAt->diffInDays(Carbon::now());
         $subscription->is_freetrial = 1;
         $subscription->is_active = 1;
+        $subscription->payment_frequency_id = 1;
 
         if (!$subscription->save()) {
             throw new ServerErrorHttpException((string)'Subscription for new company couldnt be created ' . current($this->getMessages()));
