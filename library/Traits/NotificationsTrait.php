@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Gewaer\Traits;
 
-use Gewaer\Models\Users;
 use Gewaer\Models\SystemModules;
 use Gewaer\Models\Notifications;
 use Phalcon\Di;
@@ -27,7 +26,7 @@ trait NotificationsTrait
 {
     /**
      * Create a new notification
-     * @param Users $user
+     * @param array $user
      * @param string $content
      * @param int $notificationTypeId
      * @param string $systemModule

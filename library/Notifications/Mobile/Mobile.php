@@ -1,6 +1,6 @@
 <?php
 
-namespace Gewaer\Notifications\PushNotifications;
+namespace Gewaer\Notifications\Mobile;
 
 use Namshi\Notificator\Notification;
 use Gewaer\Contracts\PushNotifications as PushNotificationsContract;
@@ -9,7 +9,7 @@ use Gewaer\Models\Notifications;
 use Phalcon\Di;
 use PhpAmqpLib\Message\AMQPMessage;
 
-class PushNotifications extends Notification implements PushNotificationsContract
+class Mobile extends Notification implements PushNotificationsContract
 {
     public $user;
 

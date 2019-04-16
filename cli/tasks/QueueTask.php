@@ -7,9 +7,9 @@ use Gewaer\Models\UserLinkedSources;
 use Gewaer\Models\Users;
 use Throwable;
 use Phalcon\Di;
-use Gewaer\Notifications\PushNotifications\AppsPushNotifications;
-use Gewaer\Notifications\PushNotifications\UsersPushNotifications;
-use Gewaer\Notifications\PushNotifications\SystemPushNotifications;
+use Gewaer\Notifications\Mobile\Apps as AppsPushNotifications;
+use Gewaer\Notifications\Mobile\Users as UsersPushNotifications;
+use Gewaer\Notifications\Mobile\System as SystemPushNotifications;
 
 /**
  * CLI To send push ontification and pusher msg

@@ -1,15 +1,14 @@
 <?php
 
-namespace Gewaer\Notifications\PushNotifications;
+namespace Gewaer\Notifications\Mobile;
 
 use Namshi\Notificator\Notification;
 use Gewaer\Contracts\PushNotifications as PushNotificationsContract;
-use Gewaer\Models\Users;
 use Gewaer\Models\Notifications;
-use Gewaer\Notifications\PushNotifications\PushNotifications as PushNotifications;
+use Gewaer\Notifications\Mobile\Mobile;
 use Gewaer\Traits\NotificationsTrait;
 
-class SystemPushNotifications extends PushNotifications implements PushNotificationsContract
+class Users extends Mobile implements PushNotificationsContract
 {
     /**
      * Notifications Trait
@@ -25,8 +24,8 @@ class SystemPushNotifications extends PushNotifications implements PushNotificat
         /**
          * Create a new database record
          */
-        self::create($this->user, $this->content, Notifications::SYSTEM, $this->systemModule);
+        self::create($this->user, $this->content, Notifications::USERS, $this->systemModule);
 
-        return $this->content . " From System";
+        return $this->content . " From Users";
     }
 }
