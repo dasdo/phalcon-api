@@ -89,6 +89,12 @@ class Users extends \Baka\Auth\Models\Users
     public $active_subscription_id;
 
     /**
+     * System Module Id
+     * @var integer
+     */
+    private $system_modules_id = 2;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
