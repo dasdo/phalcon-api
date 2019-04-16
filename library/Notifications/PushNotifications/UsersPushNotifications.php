@@ -17,16 +17,6 @@ class UsersPushNotifications extends PushNotifications implements PushNotificati
     use NotificationsTrait;
 
     /**
-     * Constructor
-     */
-    public function __construct(array $user, string $content, string $systemModule)
-    {
-        $this->user = $user;
-        $this->content  = $content;
-        $this->systemModule = $systemModule;
-    }
-
-    /**
      * Assemble an Apps Push Notification
      * @todo Create specific assembler for apps push notifications
      */

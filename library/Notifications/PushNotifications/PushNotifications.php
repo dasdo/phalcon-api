@@ -17,9 +17,11 @@ class PushNotifications extends Notification implements PushNotificationsContrac
 
     public $systemModule;
 
-    public function __construct(string $content)
+    public function __construct(array $user, string $content, string $systemModule)
     {
+        $this->user = $user;
         $this->content  = $content;
+        $this->systemModule = $systemModule;
     }
 
     /**
