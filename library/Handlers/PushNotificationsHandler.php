@@ -7,8 +7,8 @@ use Gewaer\Contracts\PushNotifications as PushNotificationsContract;
 use Phalcon\Http\Response;
 use Namshi\Notificator\NotificationInterface;
 use Phalcon\Di;
-use Gewaer\Notifications\PushNotifications\AppsPushNotifications;
-use Gewaer\Notifications\PushNotifications\PushNotifications;
+use Gewaer\Notifications\Mobile\Apps;
+use Gewaer\Notifications\Mobile\Mobile;
 use Gewaer\Models\Notifications;
 use Gewaer\Models\SystemModules;
 
