@@ -120,7 +120,8 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
      */
     public $currency;
 
-     * System Module Id
+    /**
+     *
      * @var integer
      */
     private $system_modules_id = 1;
