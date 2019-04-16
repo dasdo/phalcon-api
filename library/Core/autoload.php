@@ -14,10 +14,7 @@ $namespaces = [
     'Gewaer\Api\Controllers' => appPath('/api/controllers'),
     'Gewaer\Cli\Tasks' => appPath('/cli/tasks'),
     'Niden\Tests' => appPath('/tests'),
-    'Gewaer\Tests' => appPath('/tests'),
-    'Gewaer\Contracts' => appPath('/library/Contracts'),
-    'Gewaer\Handlers' => appPath('/library/Handlers'),
-    'Gewaer\Notifications\PushNotifications' => appPath('/library/Notifications/PushNotifications/')
+    'Gewaer\Tests' => appPath('/tests')
 ];
 
 $loader->registerNamespaces($namespaces);
