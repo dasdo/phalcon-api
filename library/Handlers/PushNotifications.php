@@ -12,7 +12,7 @@ use Gewaer\Notifications\Mobile\Mobile;
 use Gewaer\Models\Notifications;
 use Gewaer\Models\SystemModules;
 
-class PushNotificationsHandler implements HandlerInterface
+class PushNotifications implements HandlerInterface
 {
     /**
      * Stablishes type of handler

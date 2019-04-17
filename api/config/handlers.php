@@ -4,8 +4,8 @@
  * Enabled handlers. Order does matter
  */
 
-use Gewaer\Handlers\PushNotificationsHandler;
+use Gewaer\Handlers\PushNotifications;
 
 return [
-    new PushNotificationsHandler()
+    new PushNotifications()
 ];

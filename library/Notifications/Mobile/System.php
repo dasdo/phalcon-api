@@ -24,7 +24,7 @@ class System extends Mobile implements PushNotificationsContract
         /**
          * Create a new database record
          */
-        self::create($this->user, $this->content, Notifications::SYSTEM, $this->systemModule);
+        self::create((array)$this->user, $this->content, Notifications::SYSTEM, $this->systemModule);
 
         return $this->content . " From System";
     }

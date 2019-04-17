@@ -4,7 +4,7 @@ namespace Gewaer\Notifications\Mobile;
 
 use Namshi\Notificator\Notification;
 use Gewaer\Contracts\PushNotifications as PushNotificationsContract;
-use Gewaer\Models\Users;
+use Gewaer\Models\Users as Users;
 use Gewaer\Models\Notifications;
 use Phalcon\Di;
 use PhpAmqpLib\Message\AMQPMessage;
