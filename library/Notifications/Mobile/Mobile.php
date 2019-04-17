@@ -4,7 +4,7 @@ namespace Gewaer\Notifications\Mobile;
 
 use Namshi\Notificator\Notification;
 use Gewaer\Contracts\PushNotifications as PushNotificationsContract;
-use Gewaer\Models\Users as Users;
+use Gewaer\Models\Users as UsersModel;
 use Gewaer\Models\Notifications;
 use Phalcon\Di;
 use PhpAmqpLib\Message\AMQPMessage;
@@ -36,10 +36,10 @@ class Mobile extends Notification implements PushNotificationsContract
      * Create a new Apps Notification
      * @param string $content
      * @param string $systemModule
-     * @param Users $user
+     * @param UsersModel $user
      * @return void
      */
-    public static function apps(string $content, string $systemModule, array $user = null): void
+    public static function apps(string $content, string $systemModule, UsersModel $user = null): void
     {
         if (!isset($user)) {
             $user =  Di::getDefault()->getUserData();
@@ -72,7 +72,7 @@ class Mobile extends Notification implements PushNotificationsContract
      * @param Users $user
      * @return void
      */
-    public static function users(string $content, string $systemModule, Users $user = null): void
+    public static function users(string $content, string $systemModule, UsersModel $user = null): void
     {
         if (!isset($user)) {
             $user =  Di::getDefault()->getUserData();
@@ -106,7 +106,7 @@ class Mobile extends Notification implements PushNotificationsContract
      * @param Users $user
      * @return void
      */
-    public static function system(string $content, string $systemModule, Users $user = null): void
+    public static function system(string $content, string $systemModule, UsersModel $user = null): void
     {
         if (!isset($user)) {
             $user =  Di::getDefault()->getUserData();
