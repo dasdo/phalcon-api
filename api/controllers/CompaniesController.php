@@ -25,14 +25,14 @@ class CompaniesController extends BaseCustomFieldsController
      *
      * @var array
      */
-    protected $createFields = ['name', 'profile_image', 'website', 'users_id', 'address', 'zipcode', 'email', 'language', 'timezone', 'currency_id'];
+    protected $createFields = ['name', 'profile_image', 'website', 'users_id', 'address', 'zipcode', 'email', 'language', 'timezone', 'currency_id','phone'];
 
     /*
      * fields we accept to create
      *
      * @var array
      */
-    protected $updateFields = ['name', 'profile_image', 'website', 'address', 'zipcode', 'email', 'language', 'timezone', 'currency_id'];
+    protected $updateFields = ['name', 'profile_image', 'website', 'address', 'zipcode', 'email', 'language', 'timezone', 'currency_id','phone'];
 
     /**
      * set objects

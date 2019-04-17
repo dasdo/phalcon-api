@@ -30,7 +30,25 @@ class CompaniesBranches extends AbstractModel
      *
      * @var string
      */
-    public $description;
+    public $address;
+
+    /**
+     *
+     * @var string
+     */
+    public $email;
+
+    /**
+     *
+     * @var string
+     */
+    public $zipcode;
+
+    /**
+     *
+     * @var string
+     */
+    public $phone;
 
     /**
      *

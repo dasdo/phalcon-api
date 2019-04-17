@@ -20,6 +20,7 @@ use Gewaer\Providers\AclProvider;
 use Gewaer\Providers\AppProvider;
 use Gewaer\Providers\ResponseProvider;
 use Gewaer\Providers\FileSystemProvider;
+use Gewaer\Providers\EventManagerProvider;
 
 return [
     ConfigProvider::class,
@@ -37,5 +38,6 @@ return [
     AclProvider::class,
     AppProvider::class,
     ResponseProvider::class,
-    FileSystemProvider::class
+    FileSystemProvider::class,
+    EventManagerProvider::class
 ];

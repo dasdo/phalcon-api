@@ -121,10 +121,16 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
     public $currency;
 
     /**
-     * System Module Id
+     *
      * @var integer
      */
     private $system_modules_id = 1;
+  
+    /**
+     *
+     * @var string
+     */
+    public $phone;
 
     /**
      * Initialize method for model.
@@ -389,7 +395,6 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
         $branch->users_id = $this->user->getId();
         $branch->name = 'Default';
         $branch->is_default = 1;
-        $branch->description = '';
         if (!$branch->save()) {
             throw new ServerErrorHttpException((string)current($branch->getMessages()));
         }
