@@ -28,6 +28,6 @@ class QueueCest
         $I->assertTrue($diContainer->has('queue'));
 
         $queue = $diContainer->getShared('queue');
-        $I->assertTrue($queue instanceof Rabbitmq);
+        $I->assertTrue($queue instanceof Beanstalk);
     }
 }
