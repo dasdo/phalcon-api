@@ -3,7 +3,7 @@
     "php": ">= 7.1",
     "ext-openssl": "*",
     "ext-phalcon": ">=3.2.0 <4.0",
-    "baka/auth": "^0.1",
+    "baka/auth": "^0.2",
     "baka/cashier": "dev-master",
     "baka/database": "^0.1",
     "baka/http": "^0.1",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2b5deef22a605d9d850a4bca5eb23cc",
+    "content-hash": "dda0dfa29f388a4e10bdfe4ccee042a4",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -90,22 +90,23 @@
         },
         {
             "name": "baka/auth",
-            "version": "v0.1.7",
+            "version": "v0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bakaphp/auth.git",
-                "reference": "1cd00e6f9276e473604c5201578ced25962c96e4"
+                "reference": "379f713ddced0ea975c4cba7a874e0f925c244ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bakaphp/auth/zipball/1cd00e6f9276e473604c5201578ced25962c96e4",
-                "reference": "1cd00e6f9276e473604c5201578ced25962c96e4",
+                "url": "https://api.github.com/repos/bakaphp/auth/zipball/379f713ddced0ea975c4cba7a874e0f925c244ef",
+                "reference": "379f713ddced0ea975c4cba7a874e0f925c244ef",
                 "shasum": ""
             },
             "require": {
                 "baka/database": "^0.1",
                 "baka/http": "^0.1",
                 "ext-phalcon": ">=3.0.0",
+                "lcobucci/jwt": "^3.2",
                 "phalcon/incubator": "~3.0",
                 "php": ">=7.1",
                 "robmorgan/phinx": "^0.10",
@@ -120,8 +121,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Baka\\Auth\\": "src/",
-                    "Baka\\Auth\\Models\\": "src/models/"
+                    "Baka\\Auth\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -135,7 +135,7 @@
                 }
             ],
             "description": "Baka Component for user authentification",
-            "time": "2018-12-25T06:25:56+00:00"
+            "time": "2019-04-18T16:29:57+00:00"
         },
         {
             "name": "baka/cashier",
@@ -143,16 +143,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bakaphp/cashier.git",
-                "reference": "1cbd6e33d536c79a29b7bceed30879e061395209"
+                "reference": "f01ff0e424f3225024182795ad02276659b70f09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bakaphp/cashier/zipball/1cbd6e33d536c79a29b7bceed30879e061395209",
-                "reference": "1cbd6e33d536c79a29b7bceed30879e061395209",
+                "url": "https://api.github.com/repos/bakaphp/cashier/zipball/f01ff0e424f3225024182795ad02276659b70f09",
+                "reference": "f01ff0e424f3225024182795ad02276659b70f09",
                 "shasum": ""
             },
             "require": {
-                "baka/auth": "~0.1",
+                "baka/auth": "~0.2",
                 "baka/database": "~0.1",
                 "dompdf/dompdf": "^0.6.1",
                 "nesbot/carbon": "~1.0",
@@ -186,7 +186,7 @@
                 "phalcon",
                 "stripe"
             ],
-            "time": "2019-03-27T18:10:32+00:00"
+            "time": "2019-04-18T16:25:33+00:00"
         },
         {
             "name": "baka/database",
