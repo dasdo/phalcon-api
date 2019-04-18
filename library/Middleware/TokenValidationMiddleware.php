@@ -6,16 +6,18 @@ namespace Gewaer\Middleware;
 
 use Gewaer\Exception\ModelException;
 use Phalcon\Mvc\Micro;
-use Phalcon\Mvc\Micro\MiddlewareInterface;
 use Phalcon\Http\Request;
+use Lcobucci\JWT\ValidationData;
 use Exception;
+use function Gewaer\Core\envValue;
+use Gewaer\Exception\PermissionException;
 
 /**
- * Class TokenValidationMiddleware
+ * Class TokenValidationMiddleware.
  *
  * @package Gewaer\Middleware
  */
-class TokenValidationMiddleware implements MiddlewareInterface
+class TokenValidationMiddleware extends TokenBase
 {
     /**
      * @param Micro $api
@@ -25,13 +27,33 @@ class TokenValidationMiddleware implements MiddlewareInterface
      */
     public function call(Micro $api)
     {
-        $auth = $api->getService('auth');
-        // to get the payload
-        $data = $auth->data();
+        $cache = $api->getService('cache');
+        /** @var Config $config */
+        $config = $api->getService('config');
+        /** @var Request $request */
+        $request = $api->getService('request');
+        /** @var Response $response */
+        $response = $api->getService('response');
 
-        if (!empty($data) && $data['iat'] <= strtotime('-10 seconds')) {
-            // return false to invalidate the authentication
-            //throw new Exception("Old Request");
+        if ($this->isValidCheck($request)) {
+            /**
+             * This is where we will validate the token that was sent to us
+             * using Bearer Authentication.
+             *
+             * Find the user attached to this token
+             */
+            $token = $this->getToken($request->getBearerTokenFromHeader());
+
+            $validationData = new ValidationData();
+            $validationData->setIssuer(envValue('TOKEN_AUDIENCE'));
+            $validationData->setAudience(envValue('TOKEN_AUDIENCE'));
+            $validationData->setId($token->getHeader('jti'));
+            $validationData->setCurrentTime(time() + 500);
+
+            if (false === $token->validate($validationData)) {
+                throw new PermissionException('Invalid Token');
+                //return false;
+            }
         }
 
         return true;

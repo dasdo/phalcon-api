@@ -35,7 +35,7 @@ class RouterProvider implements ServiceProviderInterface
     }
 
     /**
-     * Attaches the middleware to the application
+     * Attaches the middleware to the application.
      *
      * @param Micro   $application
      * @param Manager $eventsManager
@@ -45,7 +45,7 @@ class RouterProvider implements ServiceProviderInterface
         $middleware = $this->getMiddleware();
 
         /**
-         * Get the events manager and attach the middleware to it
+         * Get the events manager and attach the middleware to it.
          */
         foreach ($middleware as $class => $function) {
             $eventsManager->attach('micro', new $class());
@@ -54,7 +54,7 @@ class RouterProvider implements ServiceProviderInterface
     }
 
     /**
-     * Attaches the routes to the application; lazy loaded
+     * Attaches the routes to the application; lazy loaded.
      *
      * @param Micro $application
      */
@@ -68,22 +68,22 @@ class RouterProvider implements ServiceProviderInterface
     }
 
     /**
-     * Returns the array for the middleware with the action to attach
+     * Returns the array for the middleware with the action to attach.
      *
      * @return array
      */
     private function getMiddleware(): array
     {
         return [
+            TokenValidationMiddleware::class => 'before',
             NotFoundMiddleware::class => 'before',
             AuthenticationMiddleware::class => 'before',
-            TokenValidationMiddleware::class => 'before',
             AclMiddleware::class => 'before',
         ];
     }
 
     /**
-     * Returns the array for all the routes on this system
+     * Returns the array for all the routes on this system.
      *
      * @return array
      */

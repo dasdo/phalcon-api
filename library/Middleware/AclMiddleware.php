@@ -11,14 +11,14 @@ use Gewaer\Exception\PermissionException;
 use Gewaer\Models\Subscription;
 
 /**
- * Class AclMiddleware
+ * Class AclMiddleware.
  *
  * @package Gewaer\Middleware
  */
-class AclMiddleware implements MiddlewareInterface
+class AclMiddleware extends TokenBase
 {
     /**
-     * Call me
+     * Call me.
      *
      * @param Micro $api
      * @todo need to check section for auth here
@@ -26,14 +26,14 @@ class AclMiddleware implements MiddlewareInterface
      */
     public function call(Micro $api)
     {
-        $auth = $api->getService('auth');
         $router = $api->getService('router');
         $request = $api->getService('request');
 
-        if (!$auth->isIgnoreUri()) {
+        if ($this->isValidCheck($request)) {
             // explode() by / , postiion #1 is always the controller , so its the resource ^.^
             $matchRouter = explode('/', $router->getMatchedRoute()->getCompiledPattern());
-            $resource = ucfirst($matchRouter[2]); //2 is alwasy the controller of the router
+
+            $resource = ucfirst(isset($matchRouter[2]) ? $matchRouter[2] : $matchRouter[1]); //2 is alwasy the controller of the router
             $userData = $api->getService('userData');
 
             $action = null;

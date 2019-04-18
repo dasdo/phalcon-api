@@ -10,13 +10,11 @@ use Phalcon\Mvc\Micro;
 use Gewaer\Http\Response;
 use Phalcon\Http\Request;
 use Throwable;
-use Dmkit\Phalcon\Auth\Middleware\Micro as AuthMicro;
 use Gewaer\Exception\ServerErrorHttpException;
 use Gewaer\Constants\Flags;
-use Baka\Http\RouterCollection;
 
 /**
- * Class Api
+ * Class Api.
  *
  * @package Gewaer\Bootstrap
  *
@@ -25,27 +23,13 @@ use Baka\Http\RouterCollection;
 class Api extends AbstractBootstrap
 {
     /**
-     * Run the application
+     * Run the application.
      *
      * @return mixed
      */
     public function run()
     {
         try {
-            $config = $this->container->getConfig()->jwt->toArray();
-
-            //if the router has jwt ignore url we always overwrite the app config
-            $routerJwtIgnoreUrl = RouterCollection::getJwtIgnoreRoutes();
-            if (!empty($routerJwtIgnoreUrl)) {
-                $config['ignoreUri'] = $routerJwtIgnoreUrl;
-            } elseif (!$this->container->getConfig()->application->jwtSecurity) {
-                //ignore token validation if disable
-                $config['ignoreUri'] = ['regex: *'];
-            }
-
-            //JWT Validation
-            new AuthMicro($this->application, $config);
-
             return $this->application->handle();
         } catch (Throwable $e) {
             $this->handleException($e)->send();
@@ -53,7 +37,7 @@ class Api extends AbstractBootstrap
     }
 
     /**
-     * Handle the exception we throw from our api
+     * Handle the exception we throw from our api.
      *
      * @param Throwable $e
      * @return Response
