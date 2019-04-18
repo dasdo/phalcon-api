@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Gewaer\Middleware;
 
 use Gewaer\Http\Request;
-use Gewaer\Traits\QueryTrait;
 use Gewaer\Traits\ResponseTrait;
 use Gewaer\Traits\TokenTrait;
 use Phalcon\Mvc\Micro\MiddlewareInterface;

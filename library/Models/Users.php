@@ -426,7 +426,6 @@ class Users extends \Baka\Auth\Models\Users
             if (!$company->save()) {
                 throw new Exception((string) current($company->getMessages()));
             }
-            return true;
 
             $this->default_company = $company->getId();
 
