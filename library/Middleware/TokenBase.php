@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace Gewaer\Middleware;
 
 use Gewaer\Http\Request;
-use Gewaer\Traits\ResponseTrait;
 use Gewaer\Traits\TokenTrait;
 use Phalcon\Mvc\Micro\MiddlewareInterface;
-use Gewaer\Exception\NotFoundHttpException;
+use Gewaer\Exception\UnauthorizedHttpException;
 
 /**
  * Class AuthenticationMiddleware.
@@ -17,7 +16,6 @@ use Gewaer\Exception\NotFoundHttpException;
  */
 abstract class TokenBase implements MiddlewareInterface
 {
-    use ResponseTrait;
     use TokenTrait;
 
     /**
@@ -28,11 +26,9 @@ abstract class TokenBase implements MiddlewareInterface
     protected function isValidCheck(Request $request): bool
     {
         if (!$request->ignoreJwt() && $request->isEmptyBearerToken()) {
-            throw new NotFoundHttpException('Missing Token');
+            throw new UnauthorizedHttpException('Missing Token');
         }
 
-        return (
-            true !== $request->ignoreJwt()
-        );
+        return !$request->ignoreJwt();
     }
 }
