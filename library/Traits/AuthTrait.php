@@ -30,27 +30,16 @@ trait AuthTrait
     {
         $userIp = !defined('API_TESTS') ? $this->request->getClientAddress() : '127.0.0.1';
 
-        $random = new \Phalcon\Security\Random();
-
         $userData = Users::login($email, $password, 1, 0, $userIp);
+        $token = $userData->getToken();
 
-        $sessionId = $random->uuid();
-
-        //save in user logs
-        $payload = [
-            'sessionId' => $sessionId,
-            'email' => $userData->getEmail(),
-            'iat' => time(),
-        ];
-
-        $token = $this->auth->make($payload);
 
         //start session
         $session = new Sessions();
-        $session->start($userData, $sessionId, $token, $userIp, 1);
+        $session->start($userData, $token['sessionId'], $token['token'], $userIp, 1);
 
         return [
-            'token' => $token,
+            'token' => $token['token'],
             'time' => date('Y-m-d H:i:s'),
             'expires' => date('Y-m-d H:i:s', time() + $this->config->jwt->payload->exp),
             'id' => $userData->getId(),

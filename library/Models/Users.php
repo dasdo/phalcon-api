@@ -16,7 +16,7 @@ use Phalcon\Validation\Validator\Regex;
 use Phalcon\Validation\Validator\Uniqueness;
 
 /**
- * Class Users
+ * Class Users.
  *
  * @package Gewaer\Models
  *
@@ -33,42 +33,42 @@ class Users extends \Baka\Auth\Models\Users
     use SubscriptionPlanLimitTrait;
 
     /**
-     * Default Company Branch
+     * Default Company Branch.
      *
      * @var integer
      */
     public $default_company_branch;
 
     /**
-     * Roles id
+     * Roles id.
      *
      * @var integer
      */
     public $roles_id;
 
     /**
-     * Stripe id
+     * Stripe id.
      *
      * @var string
      */
     public $stripe_id;
 
     /**
-     * Card last four numbers
+     * Card last four numbers.
      *
      * @var integer
      */
     public $card_last_four;
 
     /**
-     * Card Brand
+     * Card Brand.
      *
      * @var integer
      */
     public $card_brand;
 
     /**
-     * Trial end date
+     * Trial end date.
      *
      * @var string
      */
@@ -76,20 +76,20 @@ class Users extends \Baka\Auth\Models\Users
 
     /**
      * Provide the app plan id
-     * if the user is signing up a new company
+     * if the user is signing up a new company.
      *
      * @var integer
      */
     public $appPlanId = null;
 
     /**
-     * Active subscription id.Not an actual table field, used temporarily
+     * Active subscription id.Not an actual table field, used temporarily.
      * @var string
      */
     public $active_subscription_id;
 
     /**
-     * System Module Id
+     * System Module Id.
      * @var integer
      */
     private $system_modules_id = 2;
@@ -198,7 +198,7 @@ class Users extends \Baka\Auth\Models\Users
     }
 
     /**
-     * Validations and business logic
+     * Validations and business logic.
      */
     public function validation()
     {
@@ -251,7 +251,7 @@ class Users extends \Baka\Auth\Models\Users
     }
 
     /**
-     * Get the User key for redis
+     * Get the User key for redis.
      *
      * @return string
      */
@@ -263,7 +263,7 @@ class Users extends \Baka\Auth\Models\Users
     /**
      * A company owner is the first person that register this company
      * This only ocurres when signing up the first time, after that all users invites
-     * come with a default_company id attached
+     * come with a default_company id attached.
      *
      * @return boolean
      */
@@ -305,7 +305,7 @@ class Users extends \Baka\Auth\Models\Users
     }
 
     /**
-     * Strat a free trial
+     * Strat a free trial.
      *
      * @param Users $user
      * @return Subscription
@@ -340,7 +340,7 @@ class Users extends \Baka\Auth\Models\Users
     }
 
     /**
-     * Before create
+     * Before create.
      *
      * @return void
      */
@@ -362,7 +362,7 @@ class Users extends \Baka\Auth\Models\Users
     }
 
     /**
-     * Get an array of the associates companies Ids
+     * Get an array of the associates companies Ids.
      *
      * @return array
      */
@@ -397,7 +397,7 @@ class Users extends \Baka\Auth\Models\Users
 
     /**
      * What to do after the creation of a new users
-     *  - Assign default role
+     *  - Assign default role.
      *
      * @return void
      */
@@ -407,8 +407,16 @@ class Users extends \Baka\Auth\Models\Users
         $isFirstSignup = $this->isFirstSignup();
 
         /**
+         * if we dont find the userdata di lets create it.
+         * @todo this is not ideal lets fix it later
+         */
+        if (!$this->di->has('userData')) {
+            $this->di->setShared('userData', $this);
+        }
+
+        /**
          * User signing up for a new app / plan
-         * How do we know? well he doesnt have a default_company
+         * How do we know? well he doesnt have a default_company.
          */
         if ($isFirstSignup) {
             $company = new Companies();
@@ -418,6 +426,7 @@ class Users extends \Baka\Auth\Models\Users
             if (!$company->save()) {
                 throw new Exception((string) current($company->getMessages()));
             }
+            return true;
 
             $this->default_company = $company->getId();
 

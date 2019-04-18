@@ -7,9 +7,7 @@ namespace Gewaer\Middleware;
 use Gewaer\Exception\ModelException;
 use Phalcon\Mvc\Micro;
 use Phalcon\Http\Request;
-use Lcobucci\JWT\ValidationData;
-use Exception;
-use function Gewaer\Core\envValue;
+use Gewaer\Models\Users;
 use Gewaer\Exception\PermissionException;
 
 /**
@@ -27,13 +25,8 @@ class TokenValidationMiddleware extends TokenBase
      */
     public function call(Micro $api)
     {
-        $cache = $api->getService('cache');
-        /** @var Config $config */
-        $config = $api->getService('config');
         /** @var Request $request */
         $request = $api->getService('request');
-        /** @var Response $response */
-        $response = $api->getService('response');
 
         if ($this->isValidCheck($request)) {
             /**
@@ -44,13 +37,7 @@ class TokenValidationMiddleware extends TokenBase
              */
             $token = $this->getToken($request->getBearerTokenFromHeader());
 
-            $validationData = new ValidationData();
-            $validationData->setIssuer(envValue('TOKEN_AUDIENCE'));
-            $validationData->setAudience(envValue('TOKEN_AUDIENCE'));
-            $validationData->setId($token->getHeader('jti'));
-            $validationData->setCurrentTime(time() + 500);
-
-            if (false === $token->validate($validationData)) {
+            if (!$token->validate(Users::getValidationData($token->getHeader('jti')))) {
                 throw new PermissionException('Invalid Token');
                 //return false;
             }
