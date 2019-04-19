@@ -9,6 +9,8 @@ use ApiTester;
 use Gewaer\Models\Companies;
 use Gewaer\Models\Users;
 use Exception;
+use Phalcon\Di;
+use Page\Data;
 
 class SubscriptionLimitCest
 {
@@ -32,6 +34,14 @@ class SubscriptionLimitCest
 
         $I->haveHttpHeader('Authorization', $userData->token);
 
+        //set di
+        Di::getDefault()->set(
+            'userData',
+            function () {
+                return Users::findFirstByEmail(Data::loginJson()['email']);
+            }
+        );
+        
         //set limit to 10 so we can fail
         $appPlanSettings = AppsPlans::findFirst(1)->set('users_total', 10);
 

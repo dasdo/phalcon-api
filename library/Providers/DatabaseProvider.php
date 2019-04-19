@@ -10,6 +10,7 @@ use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\DiInterface;
 use PDOException;
 use Gewaer\Exception\ServerErrorHttpException;
+use PDO;
 
 class DatabaseProvider implements ServiceProviderInterface
 {
@@ -27,6 +28,7 @@ class DatabaseProvider implements ServiceProviderInterface
                     'password' => envValue('DATA_API_MYSQL_PASS', ''),
                     'dbname' => envValue('DATA_API_MYSQL_NAME', 'gonano'),
                     'charset' => 'utf8',
+                    "options" => [ PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING ]
                 ];
 
                 try {

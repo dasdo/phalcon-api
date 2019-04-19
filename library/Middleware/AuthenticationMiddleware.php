@@ -12,14 +12,14 @@ use Gewaer\Exception\UnauthorizedHttpException;
 use Gewaer\Constants\Flags;
 
 /**
- * Class AuthenticationMiddleware
+ * Class AuthenticationMiddleware.
  *
  * @package Niden\Middleware
  */
-class AuthenticationMiddleware implements MiddlewareInterface
+class AuthenticationMiddleware extends TokenBase
 {
     /**
-     * Call me
+     * Call me.
      *
      * @param Micro $api
      * @todo need to check section for auth here
@@ -27,36 +27,40 @@ class AuthenticationMiddleware implements MiddlewareInterface
      */
     public function call(Micro $api)
     {
-        $auth = $api->getService('auth');
         $config = $api->getService('config');
         $request = $api->getService('request');
 
-        // to get the payload
-        $data = $auth->data();
+        if ($this->isValidCheck($request, $api)) {
+            /**
+             * This is where we will find if the user exists based on
+             * the token passed using Bearer Authentication.
+             */
+            $data = $this->getToken($request->getBearerTokenFromHeader());
 
-        $api->getDI()->setShared(
-            'userData',
-            function () use ($config, $data, $request) {
-                $session = new Sessions();
+            $api->getDI()->setShared(
+                'userData',
+                function () use ($config, $data, $request) {
+                    $session = new Sessions();
 
-                //all is empty and is dev, ok take use the first user
-                if (empty($data) && empty($data['sessionId']) && strtolower($config->app->env) == Flags::DEVELOPMENT) {
-                    return Users::findFirst(1);
-                }
-
-                if (!empty($data) && !empty($data['sessionId'])) {
-                    //user
-                    if (!$user = Users::getByEmail($data['email'])) {
-                        throw new UnauthorizedHttpException('User not found');
+                    //all is empty and is dev, ok take use the first user
+                    if (empty($data->getClaim('sessionId')) && strtolower($config->app->env) == Flags::DEVELOPMENT) {
+                        return Users::findFirst(1);
                     }
 
-                    $ip = !defined('API_TESTS') ? $request->getClientAddress() : '127.0.0.1';
-                    return $session->check($user, $data['sessionId'], (string) $ip, 1);
-                } else {
-                    throw new UnauthorizedHttpException('User not found');
+                    if (!empty($data->getClaim('sessionId'))) {
+                        //user
+                        if (!$user = Users::getByEmail($data->getClaim('email'))) {
+                            throw new UnauthorizedHttpException('User not found');
+                        }
+
+                        $ip = !defined('API_TESTS') ? $request->getClientAddress() : '127.0.0.1';
+                        return $session->check($user, $data->getClaim('sessionId'), (string) $ip, 1);
+                    } else {
+                        throw new UnauthorizedHttpException('User not found');
+                    }
                 }
-            }
-        );
+            );
+        }
 
         return true;
     }

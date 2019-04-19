@@ -13,14 +13,6 @@ class Tests extends Api
      */
     public function run()
     {
-        $config = $this->container->getConfig()->jwt->toArray();
-
-        //ignore token validation if disable
-        $config['ignoreUri'] = ['regex: *'];
-
-        //JWT Validation
-        new AuthMicro($this->application, $config);
-
         return $this->application;
     }
 }

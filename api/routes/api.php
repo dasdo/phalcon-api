@@ -163,9 +163,6 @@ $router->post('/users/invite', [
 $router->post('/users-invite/{hash}', [
     'Gewaer\Api\Controllers\UsersInviteController',
     'processUserInvite',
-    'options' => [
-        'jwt' => false,
-    ]
 ]);
 
 $router->get('/users-invite/validate/{hash}', [
@@ -180,9 +177,6 @@ $router->get('/users-invite/validate/{hash}', [
 $router->get('/custom-fields-modules/{id}/fields', [
     'Gewaer\Api\Controllers\CustomFieldsModulesController',
     'customFieldsByModulesId',
-    'options' => [
-        'jwt' => false,
-    ]
 ]);
 
 $router->post('/webhook/payments', [
@@ -197,25 +191,16 @@ $router->post('/webhook/payments', [
 $router->post('/email-templates/{id}/copy', [
     'Gewaer\Api\Controllers\EmailTemplatesController',
     'copy',
-    'options' => [
-        'jwt' => false,
-    ]
 ]);
 
 $router->post('/email-templates/test', [
     'Gewaer\Api\Controllers\EmailTemplatesController',
     'sendTestEmail',
-    'options' => [
-        'jwt' => false,
-    ]
 ]);
 
 $router->put('/apps-plans/{id}/method', [
     'Gewaer\Api\Controllers\AppsPlansController',
     'updatePaymentMethod',
-    'options' => [
-        'jwt' => true,
-    ]
 ]);
 
 $router->mount();

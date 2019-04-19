@@ -6,16 +6,17 @@ namespace Gewaer\Middleware;
 
 use Gewaer\Exception\ModelException;
 use Phalcon\Mvc\Micro;
-use Phalcon\Mvc\Micro\MiddlewareInterface;
 use Phalcon\Http\Request;
-use Exception;
+use Gewaer\Models\Users;
+use Gewaer\Exception\PermissionException;
+use Baka\Http\RouterCollection;
 
 /**
- * Class TokenValidationMiddleware
+ * Class TokenValidationMiddleware.
  *
  * @package Gewaer\Middleware
  */
-class TokenValidationMiddleware implements MiddlewareInterface
+class TokenValidationMiddleware extends TokenBase
 {
     /**
      * @param Micro $api
@@ -25,13 +26,22 @@ class TokenValidationMiddleware implements MiddlewareInterface
      */
     public function call(Micro $api)
     {
-        $auth = $api->getService('auth');
-        // to get the payload
-        $data = $auth->data();
+        /** @var Request $request */
+        $request = $api->getService('request');
 
-        if (!empty($data) && $data['iat'] <= strtotime('-10 seconds')) {
-            // return false to invalidate the authentication
-            //throw new Exception("Old Request");
+        if ($this->isValidCheck($request, $api)) {
+            /**
+             * This is where we will validate the token that was sent to us
+             * using Bearer Authentication.
+             *
+             * Find the user attached to this token
+             */
+            $token = $this->getToken($request->getBearerTokenFromHeader());
+
+            if (!$token->validate(Users::getValidationData($token->getHeader('jti')))) {
+                throw new PermissionException('Invalid Token');
+                //return false;
+            }
         }
 
         return true;
