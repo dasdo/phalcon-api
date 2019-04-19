@@ -14,7 +14,7 @@ use Page\Data;
 class AclCest
 {
     /**
-     * Initiliaze ACL.
+     * Initiliaze ACL
      *
      * @return void
      */
@@ -118,7 +118,5 @@ class AclCest
         $I->assertTrue($userData->removeRole('Default.Admins'));
 
         $I->assertTrue($userData->assignRole('Default.Admins'));
-        //assign delete for other test we need it
-        $acl->addResource('Default.Users', ['read', 'list', 'create', 'update', 'delete']);
     }
 }
