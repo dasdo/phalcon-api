@@ -22,6 +22,7 @@ use Phalcon\Di\FactoryDefault;
 use function Gewaer\Core\isJson;
 use Phalcon\Mvc\Router\Route;
 use Baka\Http\RouterCollection;
+use Gewaer\Contracts\RequestJwtInterface;
 
 /**
  * Class SwooleRequest
@@ -34,7 +35,7 @@ use Baka\Http\RouterCollection;
  *
  * @property \Phalcon\Di $di
  */
-class SwooleRequest implements RequestInterface, InjectionAwareInterface
+class SwooleRequest implements RequestInterface, InjectionAwareInterface, RequestJwtInterface
 {
     protected $_dependencyInjector;
 
@@ -1357,5 +1358,21 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
 
         //nop we dont have this route in ignore jwt
         return false;
+    }
+
+    /**
+    * @return string
+    */
+    public function getBearerTokenFromHeader(): string
+    {
+        return str_replace('Bearer ', '', $this->getHeader('Authorization'));
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmptyBearerToken(): bool
+    {
+        return empty($this->getBearerTokenFromHeader());
     }
 }

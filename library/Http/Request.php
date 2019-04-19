@@ -7,8 +7,9 @@ namespace Gewaer\Http;
 use Phalcon\Http\Request as PhRequest;
 use Baka\Http\RouterCollection;
 use Phalcon\Mvc\Router\Route;
+use Gewaer\Contracts\RequestJwtInterface;
 
-class Request extends PhRequest
+class Request extends PhRequest implements RequestJwtInterface
 {
     /**
     * @return string
@@ -23,7 +24,7 @@ class Request extends PhRequest
      */
     public function isEmptyBearerToken(): bool
     {
-        return true === empty($this->getBearerTokenFromHeader());
+        return empty($this->getBearerTokenFromHeader());
     }
 
     /**
