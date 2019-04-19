@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.91.6",
+            "version": "3.92.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9185a0e00f833ca407ab85451dc523b9dd78fbab"
+                "reference": "c701dae225f5418d2fcffbffcd377a461a4db0d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9185a0e00f833ca407ab85451dc523b9dd78fbab",
-                "reference": "9185a0e00f833ca407ab85451dc523b9dd78fbab",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c701dae225f5418d2fcffbffcd377a461a4db0d1",
+                "reference": "c701dae225f5418d2fcffbffcd377a461a4db0d1",
                 "shasum": ""
             },
             "require": {
@@ -86,7 +86,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-04-17T18:08:24+00:00"
+            "time": "2019-04-18T18:10:56+00:00"
         },
         {
             "name": "baka/auth",
@@ -234,16 +234,16 @@
         },
         {
             "name": "baka/http",
-            "version": "v0.1.5.3",
+            "version": "v0.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bakaphp/http.git",
-                "reference": "b2f3b046cfb7eee15fd7096515690d5bb7078120"
+                "reference": "e99d7e1408066c4b30450455c32adb810ce41e49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bakaphp/http/zipball/b2f3b046cfb7eee15fd7096515690d5bb7078120",
-                "reference": "b2f3b046cfb7eee15fd7096515690d5bb7078120",
+                "url": "https://api.github.com/repos/bakaphp/http/zipball/e99d7e1408066c4b30450455c32adb810ce41e49",
+                "reference": "e99d7e1408066c4b30450455c32adb810ce41e49",
                 "shasum": ""
             },
             "require": {
@@ -276,7 +276,7 @@
                 }
             ],
             "description": "Baka Http component",
-            "time": "2019-04-11T23:01:57+00:00"
+            "time": "2019-04-19T03:18:03+00:00"
         },
         {
             "name": "baka/mail",
@@ -2464,16 +2464,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v6.31.5",
+            "version": "v6.32.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "93393b090f7b98f47e7477e8dada4fdab8fcc394"
+                "reference": "f3991b50321372a7ea03d0b90ca64ce29c91ceb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/93393b090f7b98f47e7477e8dada4fdab8fcc394",
-                "reference": "93393b090f7b98f47e7477e8dada4fdab8fcc394",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/f3991b50321372a7ea03d0b90ca64ce29c91ceb4",
+                "reference": "f3991b50321372a7ea03d0b90ca64ce29c91ceb4",
                 "shasum": ""
             },
             "require": {
@@ -2516,7 +2516,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2019-04-12T17:10:19+00:00"
+            "time": "2019-04-18T19:25:56+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

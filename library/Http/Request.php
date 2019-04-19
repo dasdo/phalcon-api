@@ -38,6 +38,7 @@ class Request extends PhRequest
             return isset(RouterCollection::getJwtIgnoreRoutes()[$route->getHttpMethods()][md5($route->getPattern())]);
         }
 
+        //nop we dont have this route in ignore jwt
         return false;
     }
 }
