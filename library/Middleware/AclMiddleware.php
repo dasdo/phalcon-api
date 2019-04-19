@@ -29,7 +29,7 @@ class AclMiddleware extends TokenBase
         $router = $api->getService('router');
         $request = $api->getService('request');
 
-        if ($this->isValidCheck($request)) {
+        if ($this->isValidCheck($request, $api)) {
             // explode() by / , postiion #1 is always the controller , so its the resource ^.^
             $matchRouter = explode('/', $router->getMatchedRoute()->getCompiledPattern());
 

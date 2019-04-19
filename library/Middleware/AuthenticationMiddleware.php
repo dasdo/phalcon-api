@@ -30,7 +30,7 @@ class AuthenticationMiddleware extends TokenBase
         $config = $api->getService('config');
         $request = $api->getService('request');
 
-        if ($this->isValidCheck($request)) {
+        if ($this->isValidCheck($request, $api)) {
             /**
              * This is where we will find if the user exists based on
              * the token passed using Bearer Authentication.

@@ -9,6 +9,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Http\Request;
 use Gewaer\Models\Users;
 use Gewaer\Exception\PermissionException;
+use Baka\Http\RouterCollection;
 
 /**
  * Class TokenValidationMiddleware.
@@ -28,7 +29,7 @@ class TokenValidationMiddleware extends TokenBase
         /** @var Request $request */
         $request = $api->getService('request');
 
-        if ($this->isValidCheck($request)) {
+        if ($this->isValidCheck($request, $api)) {
             /**
              * This is where we will validate the token that was sent to us
              * using Bearer Authentication.

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Gewaer\Http;
 
 use Phalcon\Http\Request as PhRequest;
+use Baka\Http\RouterCollection;
+use Phalcon\Mvc\Router\Route;
 
 class Request extends PhRequest
 {
@@ -29,8 +31,13 @@ class Request extends PhRequest
      *
      * @return bool
      */
-    public function ignoreJwt() : bool
+    public function ignoreJwt(Route $route) : bool
     {
-        return ('//v1/auth' === $this->getURI() || '/v1/auth' === $this->getURI() || '/v1/users' === $this->getURI());
+        //did we find the router?
+        if (is_array(RouterCollection::getJwtIgnoreRoutes()[$route->getHttpMethods()])) {
+            return isset(RouterCollection::getJwtIgnoreRoutes()[$route->getHttpMethods()][md5($route->getPattern())]);
+        }
+
+        return false;
     }
 }

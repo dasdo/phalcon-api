@@ -20,7 +20,7 @@ use Gewaer\Exception\ModelException;
 use Gewaer\Traits\AuthTrait;
 
 /**
- * Class LanguagesController
+ * Class LanguagesController.
  * @property Users $userData
  * @property Request $request
  * @property Config $config
@@ -52,21 +52,26 @@ class UsersInviteController extends BaseController
     protected $updateFields = ['invite_hash', 'companies_id', 'role_id', 'app_id', 'email'];
 
     /**
-     * set objects
+     * set objects.
      *
      * @return void
      */
     public function onConstruct()
     {
         $this->model = new UsersInvite();
-        $this->additionalSearchFields = [
+        $additionaFields = [
             ['is_deleted', ':', '0'],
-            ['companies_id', ':', $this->userData->currentCompanyId()],
         ];
+
+        if ($this->di->has('userData')) {
+            $additionaFields[] = ['companies_id', ':', $this->userData->currentCompanyId()];
+        }
+        
+        $this->additionalSearchFields = $additionaFields;
     }
 
     /**
-     * Get users invite by hash
+     * Get users invite by hash.
      * @param string $hash
      * @return Response
      */
@@ -85,7 +90,7 @@ class UsersInviteController extends BaseController
     }
 
     /**
-     * Sets up invitation information for a would be user
+     * Sets up invitation information for a would be user.
      * @return Response
      */
     public function insertInvite(): Response
@@ -133,7 +138,7 @@ class UsersInviteController extends BaseController
     }
 
     /**
-     * Send users invite email
+     * Send users invite email.
      * @param string $email
      * @return void
      */
@@ -161,7 +166,7 @@ class UsersInviteController extends BaseController
     }
 
     /**
-     * Add invited user to our system
+     * Add invited user to our system.
      * @return Response
      */
     public function processUserInvite(string $hash): Response
@@ -195,9 +200,9 @@ class UsersInviteController extends BaseController
 
         //Lets find users_invite by hash on our database
         $usersInvite = $this->model::findFirst([
-                'conditions' => 'invite_hash = ?0 and is_deleted = 0',
-                'bind' => [$hash]
-            ]);
+            'conditions' => 'invite_hash = ?0 and is_deleted = 0',
+            'bind' => [$hash]
+        ]);
 
         if (!is_object($usersInvite)) {
             throw new NotFoundHttpException('Users Invite not found');
