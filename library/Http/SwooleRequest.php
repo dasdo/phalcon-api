@@ -20,6 +20,8 @@ use swoole_http_request;
 use Exception;
 use Phalcon\Di\FactoryDefault;
 use function Gewaer\Core\isJson;
+use Phalcon\Mvc\Router\Route;
+use Baka\Http\RouterCollection;
 
 /**
  * Class SwooleRequest
@@ -1339,5 +1341,21 @@ class SwooleRequest implements RequestInterface, InjectionAwareInterface
                 $headers['Authorization'] = $headers['Php-Auth-Digest'];
             }
         }
+    }
+
+    /**
+     * Did we specify we dont need to validate JWT Token on this section?
+     *
+     * @return bool
+     */
+    public function ignoreJwt(Route $route) : bool
+    {
+        //did we find the router?
+        if (is_array(RouterCollection::getJwtIgnoreRoutes()[$route->getHttpMethods()])) {
+            return isset(RouterCollection::getJwtIgnoreRoutes()[$route->getHttpMethods()][md5($route->getPattern())]);
+        }
+
+        //nop we dont have this route in ignore jwt
+        return false;
     }
 }
