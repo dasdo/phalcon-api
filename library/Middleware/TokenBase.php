@@ -9,8 +9,7 @@ use Gewaer\Traits\TokenTrait;
 use Phalcon\Mvc\Micro\MiddlewareInterface;
 use Gewaer\Exception\UnauthorizedHttpException;
 use Phalcon\Mvc\Micro;
-use Gewaer\Contracts\RequestJwtInterface;
-
+use Phalcon\Http\RequestInterface;
 /**
  * Class AuthenticationMiddleware.
  *
@@ -25,7 +24,7 @@ abstract class TokenBase implements MiddlewareInterface
      *
      * @return bool
      */
-    protected function isValidCheck(RequestJwtInterface $request, Micro $app): bool
+    protected function isValidCheck(RequestInterface $request, Micro $app): bool
     {
         $ignoreJwt = $request->ignoreJwt($app['router']->getMatchedRoute());
         if (!$ignoreJwt && $request->isEmptyBearerToken()) {
