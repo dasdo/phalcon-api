@@ -92,7 +92,7 @@ class Users extends \Baka\Auth\Models\Users
      * System Module Id.
      * @var integer
      */
-    private $system_modules_id = 2;
+    public $system_modules_id = 2;
 
     /**
      * Initialize method for model.
