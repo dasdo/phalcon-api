@@ -124,8 +124,8 @@ class Companies extends \Gewaer\CustomFields\AbstractCustomFieldsModel
      *
      * @var integer
      */
-    private $system_modules_id = 1;
-  
+    public $system_modules_id = 1;
+
     /**
      *
      * @var string
