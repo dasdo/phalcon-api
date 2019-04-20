@@ -26,19 +26,6 @@ class Swoole extends AbstractBootstrap
      */
     public function run()
     {
-        $config = $this->container->getConfig()->jwt->toArray();
-
-        //if the router has jwt ignore url we always overwrite the app config
-        $routerJwtIgnoreUrl = RouterCollection::getJwtIgnoreRoutes();
-        if (!empty($routerJwtIgnoreUrl)) {
-            $config['ignoreUri'] = $routerJwtIgnoreUrl;
-        } elseif (!$this->container->getConfig()->application->jwtSecurity) {
-            //ignore token validation if disable
-            $config['ignoreUri'] = ['regex: *'];
-        }
-        //JWT Validation
-        new AuthMicro($this->application, $config);
-
         return $this->application->handle($this->container->getRequest()->getServer('request_uri', null, '/'));
     }
 
