@@ -45,4 +45,6 @@ trait RequestJwtTrait
         //nop we dont have this route in ignore jwt
         return false;
     }
+
+    abstract public function getHeader($header);
 }
