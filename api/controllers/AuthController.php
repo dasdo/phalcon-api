@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Gewaer\Api\Controllers;
 
-use Gewaer\Models\Users;
-use Gewaer\Models\UserLinkedSources;
-use Gewaer\Exception\ServerErrorHttpException;
+use Canvas\Models\Users;
+use Canvas\Models\UserLinkedSources;
+use Canvas\Exception\ServerErrorHttpException;
 use Baka\Auth\Models\Users as BakaUsers;
 
 /**

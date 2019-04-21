@@ -1,7 +1,7 @@
 <?php
 
-use function Gewaer\Core\appPath;
-use function Gewaer\Core\envValue;
+use function Canvas\Core\appPath;
+use function Canvas\Core\envValue;
 
 return [
     'application' => [ //@todo migration to app

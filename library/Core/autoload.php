@@ -2,14 +2,16 @@
 
 use Dotenv\Dotenv;
 use Phalcon\Loader;
-use function Gewaer\Core\appPath;
+use function Canvas\Core\appPath;
+use function Canvas\Core\canvasPath;
 
 // Register the auto loader
-require __DIR__ . '/functions.php';
+#require __DIR__ . '/functions.php';
+require  '/canvas-core/src/Core/functions.php';
 
 $loader = new Loader();
 $namespaces = [
-    'Niden' => appPath('/library'),
+    'Canvas' => '/canvas-core/src',
     'Gewaer' => appPath('/library'),
     'Gewaer\Api\Controllers' => appPath('/api/controllers'),
     'Gewaer\Cli\Tasks' => appPath('/cli/tasks'),

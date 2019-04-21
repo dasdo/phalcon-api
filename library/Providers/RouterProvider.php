@@ -4,61 +4,23 @@ declare(strict_types=1);
 
 namespace Gewaer\Providers;
 
-use function Gewaer\Core\appPath;
+use function Canvas\Core\appPath;
 use Gewaer\Middleware\NotFoundMiddleware;
 use Gewaer\Middleware\AuthenticationMiddleware;
 use Gewaer\Middleware\TokenValidationMiddleware;
 use Gewaer\Middleware\AclMiddleware;
-use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
-use Phalcon\Events\Manager;
 use Phalcon\Mvc\Micro;
+use Canvas\Providers\RouterProvider as CanvasRouterProvider;
 
-class RouterProvider implements ServiceProviderInterface
+class RouterProvider extends CanvasRouterProvider
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @param DiInterface $container
-     */
-    public function register(DiInterface $container)
-    {
-        /** @var Micro $application */
-        $application = $container->getShared('application');
-        /** @var Manager $eventsManager */
-        $eventsManager = $container->getShared('eventsManager');
-
-        $this->attachRoutes($application);
-        $this->attachMiddleware($application, $eventsManager);
-
-        $application->setEventsManager($eventsManager);
-    }
-
-    /**
-     * Attaches the middleware to the application.
-     *
-     * @param Micro   $application
-     * @param Manager $eventsManager
-     */
-    private function attachMiddleware(Micro $application, Manager $eventsManager)
-    {
-        $middleware = $this->getMiddleware();
-
-        /**
-         * Get the events manager and attach the middleware to it.
-         */
-        foreach ($middleware as $class => $function) {
-            $eventsManager->attach('micro', new $class());
-            $application->{$function}(new $class());
-        }
-    }
 
     /**
      * Attaches the routes to the application; lazy loaded.
      *
      * @param Micro $application
      */
-    private function attachRoutes(Micro $application)
+    protected function attachRoutes(Micro $application)
     {
         $routes = $this->getRoutes();
 
@@ -72,7 +34,7 @@ class RouterProvider implements ServiceProviderInterface
      *
      * @return array
      */
-    private function getMiddleware(): array
+    protected function getMiddleware(): array
     {
         return [
             TokenValidationMiddleware::class => 'before',
@@ -87,7 +49,7 @@ class RouterProvider implements ServiceProviderInterface
      *
      * @return array
      */
-    private function getRoutes(): array
+    protected function getRoutes(): array
     {
         $path = appPath('api/routes');
 
