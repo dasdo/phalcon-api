@@ -14,7 +14,6 @@ use Canvas\Providers\RouterProvider as CanvasRouterProvider;
 
 class RouterProvider extends CanvasRouterProvider
 {
-
     /**
      * Attaches the routes to the application; lazy loaded.
      *
@@ -52,9 +51,11 @@ class RouterProvider extends CanvasRouterProvider
     protected function getRoutes(): array
     {
         $path = appPath('api/routes');
+        $canvsaPath = getenv('CANVAS_CORE_PATH');
 
         $routes = [
             'api' => $path . '/api.php',
+            'canvas' =>  $canvsaPath. '/routes/api.php'
         ];
 
         return $routes;

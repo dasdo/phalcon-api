@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Api\Controllers;
 
-use Baka\Http\Rest\CrudExtendedController;
+use Canvas\Api\Controllers\BaseController as CanvasBaseController;
 
 /**
  * Class BaseController
@@ -12,11 +12,7 @@ use Baka\Http\Rest\CrudExtendedController;
  * @package Gewaer\Api\Controllers
  *
  */
-abstract class BaseController extends CrudExtendedController
+abstract class BaseController extends CanvasBaseController
 {
-    /**
-     * activate softdelete
-     * @var int
-     */
-    public $softDelete = 1;
+   
 }
