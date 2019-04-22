@@ -2,12 +2,12 @@
 
 namespace Gewaer\Tests\integration\library\Models;
 
-use Gewaer\Models\Apps;
+use Canvas\Models\Apps;
 use IntegrationTester;
 use Gewaer\Providers\ConfigProvider;
 use Phalcon\Di\FactoryDefault;
-use Gewaer\Models\Roles;
-use Gewaer\Models\Companies;
+use Canvas\Models\Roles;
+use Canvas\Models\Companies;
 use Gewaer\Models\Users;
 use Page\Data;
 

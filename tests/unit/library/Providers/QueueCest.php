@@ -2,7 +2,7 @@
 
 namespace Gewaer\Tests\unit\library\Providers;
 
-use Gewaer\Providers\QueueProvider;
+use Canvas\Providers\QueueProvider;
 use Gewaer\Providers\ConfigProvider;
 use Gewaer\Providers\DatabaseProvider;
 use Phalcon\Di\FactoryDefault;

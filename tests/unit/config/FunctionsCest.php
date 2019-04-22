@@ -3,15 +3,15 @@
 namespace Gewaer\Tests\unit\config;
 
 use UnitTester;
-use function Gewaer\Core\appPath;
-use function Gewaer\Core\envValue;
+use function Canvas\Core\appPath;
+use function Canvas\Core\envValue;
 
 class FunctionsCest
 {
     public function checkApppath(UnitTester $I)
     {
         $path = dirname(dirname(dirname(__DIR__)));
-        $I->assertEquals($path, appPath());
+        $I->assertEquals($path . '/', appPath());
     }
 
     public function checkApppathWithParameter(UnitTester $I)

@@ -2,12 +2,12 @@
 
 namespace Gewaer\Tests\unit\library\Providers;
 
-use Gewaer\Providers\AclProvider;
+use Canvas\Providers\AclProvider;
 use Gewaer\Providers\ConfigProvider;
 use Gewaer\Providers\DatabaseProvider;
 use Phalcon\Di\FactoryDefault;
 use UnitTester;
-use Gewaer\Acl\Manager as AclManager;
+use Canvas\Acl\Manager as AclManager;
 
 class AclCest
 {

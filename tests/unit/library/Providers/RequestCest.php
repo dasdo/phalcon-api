@@ -6,7 +6,7 @@ use Gewaer\Providers\RequestProvider;
 use Gewaer\Providers\ConfigProvider;
 use Phalcon\Di\FactoryDefault;
 use UnitTester;
-use Gewaer\Http\Request;
+use Canvas\Http\Request;
 
 class RequestCest
 {

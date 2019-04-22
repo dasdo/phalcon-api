@@ -1,6 +1,6 @@
 <?php
 
-use Gewaer\Bootstrap\Api;
+use Canvas\Bootstrap\Api;
 
 require_once __DIR__ . '/../../library/Core/autoload.php';
 

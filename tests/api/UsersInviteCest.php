@@ -4,7 +4,7 @@ namespace Gewaer\Tests\api;
 
 use Phalcon\Security\Random;
 use ApiTester;
-use Gewaer\Models\AppsPlans;
+use Canvas\Models\AppsPlans;
 
 class UsersInviteCest
 {

@@ -3,12 +3,12 @@
 namespace Gewaer\Tests\integration\library\Acl;
 
 use IntegrationTester;
-use Gewaer\Acl\Manager as AclManager;
+use Canvas\Acl\Manager as AclManager;
 use Phalcon\Di\FactoryDefault;
-use Gewaer\Providers\AclProvider;
+use Canvas\Providers\AclProvider;
 use Gewaer\Providers\ConfigProvider;
 use Gewaer\Providers\DatabaseProvider;
-use Gewaer\Models\Users;
+use Canvas\Models\Users;
 use Page\Data;
 
 class AclCest

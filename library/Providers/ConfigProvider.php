@@ -4,25 +4,9 @@ declare(strict_types=1);
 
 namespace Gewaer\Providers;
 
-use function Gewaer\Core\appPath;
-use Phalcon\DiInterface;
-use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\Config;
+use Canvas\Providers\ConfigProvider as CanvasConfigProvider;
 
-class ConfigProvider implements ServiceProviderInterface
+class ConfigProvider extends CanvasConfigProvider
 {
-    /**
-     * @param DiInterface $container
-     */
-    public function register(DiInterface $container)
-    {
-        $container->setShared(
-            'config',
-            function () {
-                $data = require appPath('library/Core/config.php');
 
-                return new Config($data);
-            }
-        );
-    }
 }

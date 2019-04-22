@@ -1,5 +1,5 @@
 <?php
 
-use Gewaer\Bootstrap\Cli;
+use Canvas\Bootstrap\Cli;
 
 return (new Cli())->run();

@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Api\Controllers;
 
-use Gewaer\Models\FileSystem;
-use Gewaer\Traits\FileManagementTrait;
+use Canvas\Api\Controllers\FilesystemController as CanvasFilesystemController;
 
 /**
  * Class BaseController
@@ -18,39 +17,7 @@ use Gewaer\Traits\FileManagementTrait;
  * @property \Baka\Mail\Message $mail
  * @property Apps $app
  */
-class FilesystemController extends BaseController
+class FilesystemController extends CanvasFilesystemController
 {
-    use FileManagementTrait;
 
-    /*
-        * fields we accept to create
-        *
-        * @var array
-        */
-    protected $createFields = [];
-
-    /*
-     * fields we accept to create
-     *
-     * @var array
-     */
-    protected $updateFields = [];
-
-    /**
-     * set objects
-     *
-     * @return void
-     */
-    public function onConstruct()
-    {
-        $this->model = new FileSystem();
-        $this->model->users_id = $this->userData->getId();
-        $this->model->companies_id = $this->userData->currentCompanyId();
-
-        $this->additionalSearchFields = [
-            ['is_deleted', ':', '0'],
-            ['companies_id', ':', $this->userData->currentCompanyId()],
-            ['apps_id', ':', $this->app->getId()]
-        ];
-    }
 }

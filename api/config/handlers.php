@@ -4,7 +4,7 @@
  * Enabled handlers. Order does matter
  */
 
-use Gewaer\Handlers\PushNotifications;
+use Canvas\Handlers\PushNotifications;
 
 return [
     new PushNotifications()

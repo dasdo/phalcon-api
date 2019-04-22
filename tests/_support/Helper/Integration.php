@@ -5,11 +5,11 @@ namespace Helper;
 use Codeception\Module;
 use Codeception\Exception\TestRuntimeException;
 use Codeception\TestInterface;
-use Gewaer\Bootstrap\Api;
-use Gewaer\Mvc\Model\AbstractModel;
+use Canvas\Bootstrap\Api;
+use Canvas\Mvc\Model\AbstractModel;
 use Phalcon\DI\FactoryDefault as PhDI;
 use Phalcon\Config as PhConfig;
-use Gewaer\Models\Users;
+use Canvas\Models\Users;
 use Page\Data;
 
 // here you can define custom actions
@@ -26,7 +26,7 @@ class Integration extends Module
     protected $config = ['rollback' => false];
 
     /**
-     * Test initializer
+     * Test initializer.
      */
     public function _before(TestInterface $test)
     {
@@ -34,6 +34,7 @@ class Integration extends Module
 
         $app = new Api();
         $app->setup();
+
         $this->diContainer = $app->getContainer();
 
         //set userData to emulae logged in user
@@ -83,7 +84,7 @@ class Integration extends Module
     }
 
     /**
-     * Returns the relationships that a model has
+     * Returns the relationships that a model has.
      *
      * @param string $class
      *
@@ -111,7 +112,7 @@ class Integration extends Module
     }
 
     /**
-     * Get a record from $modelName with fields provided
+     * Get a record from $modelName with fields provided.
      *
      * @param string $modelName
      * @param array  $fields
@@ -157,7 +158,7 @@ class Integration extends Module
     }
 
     /**
-     * Checks model fields
+     * Checks model fields.
      *
      * @param string $modelName
      * @param array  $fields
@@ -185,7 +186,7 @@ class Integration extends Module
     }
 
     /**
-     * Create a record for $modelName with fields provided
+     * Create a record for $modelName with fields provided.
      *
      * @param string $modelName
      * @param array  $fields
@@ -228,7 +229,7 @@ class Integration extends Module
 
     /**
      * Check that record created with haveRecordWithFields can be fetched and
-     * all its fields contain valid values
+     * all its fields contain valid values.
      *
      * @param       $modelName
      * @param       $by
@@ -291,7 +292,7 @@ class Integration extends Module
     }
 
     /**
-     * Checks that record exists and has provided fields
+     * Checks that record exists and has provided fields.
      *
      * @param $model
      * @param $by

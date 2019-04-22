@@ -2,14 +2,14 @@
 
 namespace Gewaer\Tests\unit\library;
 
-use Gewaer\ErrorHandler;
-use Gewaer\Logger;
-use Gewaer\Providers\ConfigProvider;
-use Gewaer\Providers\LoggerProvider;
+use Canvas\ErrorHandler;
+use Canvas\Logger;
+use Canvas\Providers\ConfigProvider;
+use Canvas\Providers\LoggerProvider;
 use Phalcon\Config;
 use Phalcon\Di\FactoryDefault;
 use UnitTester;
-use function Gewaer\Core\appPath;
+use function Canvas\Core\appPath;
 
 class ErrorHandlerCest
 {

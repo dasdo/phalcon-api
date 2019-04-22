@@ -2,7 +2,7 @@
 
 namespace Gewaer\Tests\unit\library\Http;
 
-use Gewaer\Http\Response;
+use Canvas\Http\Response;
 use UnitTester;
 use function is_string;
 use function json_decode;

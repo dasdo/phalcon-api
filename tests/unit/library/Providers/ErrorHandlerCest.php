@@ -4,7 +4,7 @@ namespace Gewaer\Tests\unit\library\Providers;
 
 use Gewaer\Providers\ConfigProvider;
 use Gewaer\Providers\ErrorHandlerProvider;
-use Gewaer\Providers\LoggerProvider;
+use Canvas\Providers\LoggerProvider;
 use Phalcon\Di\FactoryDefault;
 use UnitTester;
 use function date_default_timezone_get;

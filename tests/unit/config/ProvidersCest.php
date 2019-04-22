@@ -2,16 +2,16 @@
 
 namespace Gewaer\Tests\unit\config;
 
-use Gewaer\Providers\CliDispatcherProvider;
+use Canvas\Providers\CliDispatcherProvider;
 use Gewaer\Providers\ConfigProvider;
 use Gewaer\Providers\DatabaseProvider;
 use Gewaer\Providers\ErrorHandlerProvider;
-use Gewaer\Providers\LoggerProvider;
+use Canvas\Providers\LoggerProvider;
 use Gewaer\Providers\ModelsMetadataProvider;
 use Gewaer\Providers\RequestProvider;
 use Gewaer\Providers\RouterProvider;
 use UnitTester;
-use function Gewaer\Core\appPath;
+use function Canvas\Core\appPath;
 
 class ProvidersCest
 {

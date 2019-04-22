@@ -1,6 +1,6 @@
 <?php
 
-use Gewaer\Bootstrap\Tests;
+use Canvas\Bootstrap\Tests;
 
 require_once __DIR__ . '/../../library/Core/autoload.php';
 
