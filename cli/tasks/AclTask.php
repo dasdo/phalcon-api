@@ -2,7 +2,7 @@
 
 namespace Gewaer\Cli\Tasks;
 
-use Canvas\Cli\Tasks\AclTasks as CanvasAclTask;
+use Canvas\Cli\Tasks\AclTask as CanvasAclTask;
 
 /**
  * Class AclTask.
