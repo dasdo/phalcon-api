@@ -1,6 +1,6 @@
 <?php
 
-use Gewaer\Models\Subscription;
+use Canvas\Models\Subscription;
 use Gewaer\Tests\api\PaymentsCest;
 
 class AppsPlanCest

@@ -4,7 +4,7 @@ namespace Gewaer\Tests\unit;
 
 use CliTester;
 use Codeception\Util\HttpCode;
-use function Gewaer\Core\appPath;
+use function Canvas\Core\appPath;
 
 class BootstrapCest
 {

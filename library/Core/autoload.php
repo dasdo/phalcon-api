@@ -3,7 +3,6 @@
 use Dotenv\Dotenv;
 use Phalcon\Loader;
 use function Canvas\Core\appPath;
-use function Canvas\Core\canvasPath;
 
 // Register the auto loader
 #require __DIR__ . '/functions.php';
@@ -26,7 +25,7 @@ $loader->register();
 /**
  * Composer Autoloader
  */
-require appPath('/vendor/autoload.php');
+require appPath('vendor/autoload.php');
 
 // Load environment
 (new Dotenv(appPath()))->overload();

@@ -3,11 +3,11 @@
 namespace Gewaer\Tests\api;
 
 use Phalcon\Security\Random;
-use Gewaer\Models\UserCompanyAppsActivities;
-use Gewaer\Models\AppsPlans;
+use Canvas\Models\UserCompanyAppsActivities;
+use Canvas\Models\AppsPlans;
 use ApiTester;
-use Gewaer\Models\Companies;
-use Gewaer\Models\Users;
+use Canvas\Models\Companies;
+use Canvas\Models\Users;
 use Exception;
 use Phalcon\Di;
 use Page\Data;

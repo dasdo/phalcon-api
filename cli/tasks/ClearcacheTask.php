@@ -2,7 +2,7 @@
 
 namespace Gewaer\Cli\Tasks;
 
-use function Gewaer\Core\appPath;
+use function Canvas\Core\appPath;
 use Phalcon\Cache\Backend\Libmemcached;
 use Phalcon\Cli\Task as PhTask;
 use RecursiveDirectoryIterator;

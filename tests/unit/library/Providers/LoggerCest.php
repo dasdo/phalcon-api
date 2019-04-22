@@ -4,7 +4,7 @@ namespace Gewaer\Tests\unit\library\Providers;
 
 use Monolog\Logger;
 use Gewaer\Providers\ConfigProvider;
-use Gewaer\Providers\LoggerProvider;
+use Canvas\Providers\LoggerProvider;
 use Phalcon\Di\FactoryDefault;
 use UnitTester;
 

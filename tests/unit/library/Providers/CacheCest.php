@@ -2,7 +2,7 @@
 
 namespace Gewaer\Tests\unit\library\Providers;
 
-use Gewaer\Providers\CacheDataProvider;
+use Canvas\Providers\CacheDataProvider;
 use Phalcon\Cache\Backend\Libmemcached;
 use Phalcon\Di\FactoryDefault;
 use UnitTester;

@@ -7,7 +7,7 @@ use Page\Data;
 use function json_decode;
 use Exception;
 use Phalcon\Security\Random;
-use Gewaer\Models\Users;
+use Canvas\Models\Users;
 
 class AuthCest
 {

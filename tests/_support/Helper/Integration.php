@@ -5,11 +5,11 @@ namespace Helper;
 use Codeception\Module;
 use Codeception\Exception\TestRuntimeException;
 use Codeception\TestInterface;
-use Gewaer\Bootstrap\Api;
-use Gewaer\Mvc\Model\AbstractModel;
+use Canvas\Bootstrap\Api;
+use Canvas\Mvc\Model\AbstractModel;
 use Phalcon\DI\FactoryDefault as PhDI;
 use Phalcon\Config as PhConfig;
-use Gewaer\Models\Users;
+use Canvas\Models\Users;
 use Page\Data;
 
 // here you can define custom actions
@@ -34,6 +34,7 @@ class Integration extends Module
 
         $app = new Api();
         $app->setup();
+      
         $this->diContainer = $app->getContainer();
 
         //set userData to emulae logged in user

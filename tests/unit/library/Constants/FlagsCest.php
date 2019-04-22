@@ -3,7 +3,7 @@
 namespace Gewaer\Tests\unit\library\Constants;
 
 use CliTester;
-use Gewaer\Constants\Flags;
+use Canvas\Constants\Flags;
 
 class FlagsCest
 {

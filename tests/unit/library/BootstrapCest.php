@@ -2,7 +2,7 @@
 
 namespace Gewaer\Tests\unit\library;
 
-use Gewaer\Bootstrap\Api;
+use Canvas\Bootstrap\Api;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Micro;
 use UnitTester;

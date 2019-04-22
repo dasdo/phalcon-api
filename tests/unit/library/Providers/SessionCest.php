@@ -2,7 +2,7 @@
 
 namespace Gewaer\Tests\unit\library\Providers;
 
-use Gewaer\Providers\SessionProvider;
+use Canvas\Providers\SessionProvider;
 use Gewaer\Providers\ConfigProvider;
 use Phalcon\Di\FactoryDefault;
 use UnitTester;

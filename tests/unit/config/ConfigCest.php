@@ -4,7 +4,7 @@ namespace Gewaer\Tests\unit\config;
 
 use UnitTester;
 use function is_array;
-use function Gewaer\Core\appPath;
+use function Canvas\Core\appPath;
 
 class ConfigCest
 {

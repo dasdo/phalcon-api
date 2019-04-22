@@ -1,24 +1,22 @@
 <?php
 
 /**
- * Enabled providers. Order does matter
+ * Enabled providers. Order does matter.
  */
 
-use Gewaer\Providers\CacheDataProvider;
-use Gewaer\Providers\CliDispatcherProvider;
+use Canvas\Providers\CacheDataProvider;
 use Gewaer\Providers\ConfigProvider;
 use Gewaer\Providers\DatabaseProvider;
 use Gewaer\Providers\ErrorHandlerProvider;
-use Gewaer\Providers\LoggerProvider;
+use Canvas\Providers\LoggerProvider;
 use Gewaer\Providers\ModelsMetadataProvider;
-use Gewaer\Providers\QueueProvider;
+use Canvas\Providers\QueueProvider;
 use Gewaer\Providers\MailProvider;
-use Gewaer\Providers\RedisProvider;
-use Gewaer\Providers\PusherProvider;
-use Gewaer\Providers\AclProvider;
-use Gewaer\Providers\AppProvider;
-use Gewaer\Providers\FileSystemProvider;
-use Gewaer\Providers\EventManagerProvider;
+use Canvas\Providers\RedisProvider;
+use Canvas\Providers\AclProvider;
+use Canvas\Providers\AppProvider;
+use Canvas\Providers\FileSystemProvider;
+use Canvas\Providers\EventManagerProvider;
 
 return [
     ConfigProvider::class,

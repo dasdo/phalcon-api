@@ -3,8 +3,8 @@
 namespace Gewaer\Tests\unit\config;
 
 use UnitTester;
-use function Gewaer\Core\appPath;
-use function Gewaer\Core\envValue;
+use function Canvas\Core\appPath;
+use function Canvas\Core\envValue;
 
 class FunctionsCest
 {

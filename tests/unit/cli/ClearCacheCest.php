@@ -4,12 +4,12 @@ namespace Gewaer\Tests\unit\cli;
 
 use FilesystemIterator;
 use Gewaer\Cli\Tasks\ClearcacheTask;
-use Gewaer\Providers\CacheDataProvider;
+use Canvas\Providers\CacheDataProvider;
 use Phalcon\Di\FactoryDefault\Cli;
 use UnitTester;
 use function fclose;
 use function iterator_count;
-use function Gewaer\Core\appPath;
+use function Canvas\Core\appPath;
 use function ob_end_clean;
 use function ob_get_contents;
 use function ob_start;
