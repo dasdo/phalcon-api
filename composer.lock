@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94f2a0e79277f9ee68e9b2afa5513480",
+    "content-hash": "a5aec58a2ffd1a21fe2797483c256b62",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -661,6 +661,86 @@
                 "utility"
             ],
             "time": "2019-03-14T14:41:29+00:00"
+        },
+        {
+            "name": "canvas/core",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bakaphp/canvas-core.git",
+                "reference": "132dc0044533f02774eb6c47dd69e39c0038d19a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bakaphp/canvas-core/zipball/132dc0044533f02774eb6c47dd69e39c0038d19a",
+                "reference": "132dc0044533f02774eb6c47dd69e39c0038d19a",
+                "shasum": ""
+            },
+            "require": {
+                "baka/auth": "^0.2",
+                "baka/cashier": "dev-master",
+                "baka/database": "^0.1",
+                "baka/http": "^0.1",
+                "baka/mail": "^0.1",
+                "dariuszp/cli-progress-bar": "^1.0",
+                "dmkit/phalcon-jwt-auth": "dev-master",
+                "duncan3dc/fork-helper": "^2.2.0",
+                "ext-phalcon": ">=3.3.0",
+                "firebase/php-jwt": "^5.0",
+                "lcobucci/jwt": "^3.2",
+                "league/flysystem": "^1.0",
+                "league/flysystem-aws-s3-v3": "^1.0",
+                "league/fractal": "^0.17.0",
+                "monolog/monolog": "^1.23",
+                "namshi/notificator": " 1.0.*",
+                "nesbot/carbon": "~1.18",
+                "phalcon/incubator": "~3.4",
+                "php": ">=7.2",
+                "php-amqplib/php-amqplib": "^2.9",
+                "psr/log": "^1.0",
+                "pusher/pusher-php-server": "^3.0",
+                "robmorgan/phinx": "^0.10",
+                "sentry/sentry": "^1.9",
+                "sly/notification-pusher": "2.x",
+                "vlucas/phpdotenv": "^2.4"
+            },
+            "require-dev": {
+                "codeception/codeception": "2.4",
+                "codeception/verify": "*",
+                "odan/phinx-migrations-generator": "dev-master",
+                "phalcon/ide-stubs": "^3.3",
+                "phpstan/phpstan": "^0.9.2",
+                "squizlabs/php_codesniffer": "^3.2",
+                "symfony/browser-kit": "3.4",
+                "symfony/config": "3.4",
+                "symfony/console": "3.4",
+                "symfony/css-selector": "3.4",
+                "symfony/debug": "3.4",
+                "symfony/dom-crawler": "3.4",
+                "symfony/event-dispatcher": "3.4",
+                "symfony/filesystem": "3.4",
+                "symfony/finder": "3.4",
+                "symfony/process": "3.4",
+                "symfony/yaml": "3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Canvas\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "kaioken",
+                    "email": "max@mctekk.com"
+                }
+            ],
+            "description": "Saas Canvas Ecosystem Packages",
+            "time": "2019-04-22T03:59:25+00:00"
         },
         {
             "name": "container-interop/container-interop",
@@ -6705,6 +6785,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "baka/cashier": 20,
+        "canvas/core": 20,
         "dmkit/phalcon-jwt-auth": 20,
         "odan/phinx-migrations-generator": 20
     },
