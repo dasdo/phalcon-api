@@ -17,6 +17,8 @@ use Canvas\Providers\AclProvider;
 use Canvas\Providers\AppProvider;
 use Canvas\Providers\FileSystemProvider;
 use Canvas\Providers\EventManagerProvider;
+use Canvas\Providers\CliDispatcherProvider;
+use Canvas\Providers\PusherProvider;
 
 return [
     ConfigProvider::class,

@@ -42,6 +42,6 @@ class AutoloaderCest
 
         $class = new Response();
         $I->assertTrue($class instanceof Response);
-        $I->assertTrue(function_exists('Gewaer\Core\envValue'));
+        $I->assertTrue(function_exists('Canvas\Core\envValue'));
     }
 }

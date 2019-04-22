@@ -11,7 +11,7 @@ class FunctionsCest
     public function checkApppath(UnitTester $I)
     {
         $path = dirname(dirname(dirname(__DIR__)));
-        $I->assertEquals($path, appPath());
+        $I->assertEquals($path . '/', appPath());
     }
 
     public function checkApppathWithParameter(UnitTester $I)

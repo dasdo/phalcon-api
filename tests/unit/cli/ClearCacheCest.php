@@ -48,10 +48,8 @@ class ClearCacheCest
         $I->assertGreaterOrEquals(0, strpos($actual, 'Cleared Cache folders'));
 
         $iterator = new FilesystemIterator($path, FilesystemIterator::SKIP_DOTS);
-        /**
-         * @todo check this should be just 1
-         */
-        $I->assertEquals(2, iterator_count($iterator));
+        
+        $I->assertEquals(1, iterator_count($iterator));
     }
 
     private function createFile()
