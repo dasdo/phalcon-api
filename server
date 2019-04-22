@@ -9,9 +9,9 @@ define('IS_CLI', false);
 define('ENGINE', 'SWOOLE');
 
 use Phalcon\Di\FactoryDefault;
-use Gewaer\Bootstrap\Swoole;
-use Gewaer\Http\SwooleResponse;
-use Gewaer\Exception\ServerErrorHttpException;
+use Canvas\Bootstrap\Swoole;
+use Canvas\Http\SwooleResponse;
+use Canvas\Exception\ServerErrorHttpException;
 
 $script = $argv[0];
 if (empty($argv[1])) {
@@ -25,7 +25,7 @@ $action = $argv[1];
 require_once __DIR__ . '/vendor/autoload.php';
 
 /**
- * Get config service for use in inline setup below
+ * Get config service for use in inline setup below.
  */
 $pidDir = ROOT_PATH;
 $logDir = ROOT_PATH . '/logs';
