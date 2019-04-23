@@ -2,6 +2,8 @@
 
 use Canvas\Models\Subscription;
 use Gewaer\Tests\api\PaymentsCest;
+use Canvas\Models\CompaniesSettings;
+use Canvas\Exception\UnauthorizedHttpException;
 
 class AppsPlanCest
 {
@@ -145,5 +147,44 @@ class AppsPlanCest
         $data = json_decode($response, true);
 
         $I->assertTrue(current($data) == 'Webhook Handled');
+    }
+
+   
+    /**
+     * Failed Payment permitted routes access Test
+     * @param ApiTester $I
+     * @return void
+     */
+    public function FailPaymentPermittedRoutesAccess(ApiTester $I) : void
+    {
+        $userData = $I->apiLogin();
+        $apiException = null;
+        $I->haveHttpHeader('Authorization', $userData->token);
+
+        //Fetch Paid Setting of Company
+        $paidSetting =  CompaniesSettings::findFirst([
+            'conditions'=>'companies_id = ?0 and name = ?1 and is_deleted = 0',
+            'bind'=>[3,'paid']
+        ]);
+
+        //Modify paid to 0
+        $paidSetting->value = 0;
+        $paidSetting->update();
+
+        //try a random route
+        try {
+            $I->sendGet('/v1/locales');
+            $I->seeResponseIsSuccessful();
+            $response = $I->grabResponse();
+            $data = json_decode($response, true);
+        } catch (UnauthorizedHttpException $e) {
+            $apiException =  $e;
+        }
+        
+        $I->assertTrue($apiException instanceof UnauthorizedHttpException);
+
+        //Modify paid to 1
+        $paidSetting->value = 1;
+        $paidSetting->update();
     }
 }
