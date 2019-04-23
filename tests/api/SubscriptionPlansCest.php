@@ -3,7 +3,7 @@
 use Canvas\Models\Subscription;
 use Gewaer\Tests\api\PaymentsCest;
 use Canvas\Models\CompaniesSettings;
-use Canvas\Exception\UnauthorizedHttpException;
+use Canvas\Exception\SubscriptionPlanFailureException;
 
 class AppsPlanCest
 {
@@ -177,14 +177,12 @@ class AppsPlanCest
             $I->seeResponseIsSuccessful();
             $response = $I->grabResponse();
             $data = json_decode($response, true);
-        } catch (UnauthorizedHttpException $e) {
+        } catch (SubscriptionPlanFailureException $e) {
             $apiException =  $e;
         }
-        
-        $I->assertTrue($apiException instanceof UnauthorizedHttpException);
 
-        //Modify paid to 1
         $paidSetting->value = 1;
         $paidSetting->update();
+        $I->assertTrue($apiException instanceof SubscriptionPlanFailureException);
     }
 }
