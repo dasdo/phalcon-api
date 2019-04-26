@@ -10,22 +10,22 @@ Implementation of an API application using the Phalcon Framework [https://phalco
 
 ### Installation
 - Clone the project
-- In the project folder run `nanobox run` , this will start nanobox and leave you inside the console
-- In the project folder run `nanobox run start-nginx`  , will start nginx 
-- In the project folder run `nanobox run start-php` , will start php-fpm
-- Now to add your local address inside the project folder run `nanobox dns add local bakaapi.local`
-- To view the information mysql , redis a dn other information needed to configure your .env variables run insde the project folder `nanobox info local`
-- Inside the nanobox console run  `./vendor/bin/phinx migrate -e production` to create the db , you need to have the phinx.php file , if you dont see it on your main filder you can find the copy at `storage/ci/phinx.php`
-- Inside the nanobox console run `./vendor/bin/phinx seed:run` to create the necesary initial data
-- Inside the nanobox console run `php cli/cli.php acl` AND `php cli/cli.php acl crm` to create the default roles of the system
-- If you need to update a migration run `./vendor/bin/phinx-migrations  generate` , inside the nanobox console
+- Copy `storage/ci/.env.example` and paste it in the root of the project and rename it `.env`
+- On `phalcon-api/.env` in `MYSQL_ROOT_PASSWORD` and `DATA_API_MYSQL_PASS` assign the root password for MySQL.
+- Download [Canvas Core](https://github.com/bakaphp/canvas-core) and copy it on the same folder where `phalcon-api` is located(Both projects must be in the same folder).
+- Run Docker containers with the `docker-compose up --build` command
+- After the build, access the project main container with `docker exec -it id_of_docker_container sh`
+- Inside the container's console run  `./app/vendor/bin/phinx migrate -e production` to create the db , you need to have the phinx.php file , if you dont see it on your main filder you can       find the copy at `storage/ci/phinx.php`
+- Inside the container's console run `./app/vendor/bin/phinx seed:run` to create the necesary initial data
+- Inside the container's console run `php cli/cli.php acl` AND `php cli/cli.php acl crm` to create the default roles of the system
+- Inside the container's console run `./app/vendor/bin/codecept run` to run project tests.
 
-**NOTE** This requires [nanobox](https://nanobox.io) to be present in your system. Visit their site for installation instructions.
+**NOTE** This requires [docker](https://www.docker.com/) to be present in your system. Visit their site for installation instructions.
 
 ### CLI
-- On every deploy crear the session caches `php cli/cli.php clearcache` 
-- On every deploy update your DB `./vendor/bin/phinx migrate -e production`
-- Queue to clear jwt sessions `php cli/cli.php clearcache sessions`
+- On every deploy crear the session caches `./app/php cli/cli.php clearcache` 
+- On every deploy update your DB `./app/vendor/bin/phinx migrate -e production`
+- Queue to clear jwt sessions `./app/php cli/cli.php clearcache sessions`
 
 ### Features
 - User Managament
