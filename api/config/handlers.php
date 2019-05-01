@@ -5,7 +5,9 @@
  */
 
 use Canvas\Handlers\PushNotifications;
+use Canvas\Handlers\EmailNotifications;
 
 return [
-    new PushNotifications()
+    new PushNotifications(),
+    new EmailNotifications()
 ];
