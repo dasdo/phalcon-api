@@ -13,6 +13,8 @@ Implementation of an API application using the Phalcon Framework [https://phalco
 - Copy `storage/ci/.env.example` and paste it in the root of the project and rename it `.env`
 - On `phalcon-api/.env` in `MYSQL_ROOT_PASSWORD` and `DATA_API_MYSQL_PASS` assign the root password for MySQL.
 - Download [Canvas Core](https://github.com/bakaphp/canvas-core) and copy it on the same folder where `phalcon-api` is located(Both projects must be in the same folder).
+- On  `phalcon-api/library/Core/autoload.php` comment `require dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . '/vendor/canvas/core/src/Core/functions.php';` and uncomment `require  '/         canvas-core/src/Core/functions.php';`
+- On `phalcon-api/library/Core/autoload.php` uncomment `'Canvas' => '/canvas-core/src',`
 - Run Docker containers with the `docker-compose up --build` command
 - After the build, access the project main container with `docker exec -it id_of_docker_container sh`
 - Inside the container's console run  `./app/vendor/bin/phinx migrate -e production` to create the db , you need to have the phinx.php file , if you dont see it on your main filder you can       find the copy at `storage/ci/phinx.php`
