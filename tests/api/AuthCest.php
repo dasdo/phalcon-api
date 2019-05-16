@@ -106,7 +106,7 @@ class AuthCest
 
         //Try to change user's email
         $I->haveHttpHeader('Authorization', $userData->token);
-        $I->sendPost('/v1/change-email/' . $user['user_activation_email'], [
+        $I->sendPost('/v1/users/' . $user['user_activation_email']. '/request-email-change', [
             'new_email' => $newEmail,
             'password'=>Data::loginJson()['password']
         ]);
@@ -119,7 +119,7 @@ class AuthCest
 
         // //Revert to old email
         $I->haveHttpHeader('Authorization', $data['token']);
-        $I->sendPost('/v1/change-email/' . $user['user_activation_email'], [
+        $I->sendPost('/v1/users/' . $user['user_activation_email']. '/request-email-change', [
             'new_email' => 'tes2t@baka.io',
             'password'=>Data::loginJson()['password']
         ]);
