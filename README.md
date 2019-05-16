@@ -12,7 +12,8 @@ Implementation of an API application using the Phalcon Framework [https://phalco
 - Clone the project
 - Copy `storage/ci/.env.example` and paste it in the root of the project and rename it `.env`
 - On `phalcon-api/.env` in `MYSQL_ROOT_PASSWORD` and `DATA_API_MYSQL_PASS` assign the root password for MySQL.
-- On `phalcon-api/.env`, update MySQL credentials (`DATA_API_MYSQL_HOST,DATA_API_MYSQL_NAME,DATA_API_MYSQL_USER,DATA_API_MYSQL_PASS`)
+- On `phalcon-api/.env`, update MySQL credentials (`DATA_API_MYSQL_NAME,DATA_API_MYSQL_USER,DATA_API_MYSQL_PASS`)
+- On `phalcon-api/.env`, change `DATA_API_MYSQL_HOST =  localhost` to `DATA_API_MYSQL_HOST =  mysql`
 - Download [Canvas Core](https://github.com/bakaphp/canvas-core) and copy it on the same folder where `phalcon-api` is located(Both projects must be in the same folder).
 - On  `phalcon-api/library/Core/autoload.php` comment `require dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . '/vendor/canvas/core/src/Core/functions.php';` and uncomment `require  '/         canvas-core/src/Core/functions.php';`
 - On `phalcon-api/library/Core/autoload.php` uncomment `'Canvas' => '/canvas-core/src',`
