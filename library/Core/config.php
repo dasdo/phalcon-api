@@ -142,5 +142,10 @@ return [
     'stripe' => [
         'secret' => getenv('STRIPE_SECRET'),
         'public' => getenv('STRIPE_PUBLIC'),
+    ],
+    'throttle'=>[
+        'bucketSize' => getenv('THROTTLE_BUCKET_SIZE'),
+        'refillTime' => getenv('THROTTLE_REFILL_TIME'),
+        'refillAmount' => getenv('THROTTLE_REFILL_AMOUNT'),
     ]
 ];
