@@ -22,6 +22,7 @@ use Canvas\Providers\ResponseProvider;
 use Canvas\Providers\FileSystemProvider;
 use Canvas\Providers\EventManagerProvider;
 use Canvas\Providers\MapperProvider;
+use Canvas\Providers\ThrottleProvider;
 
 return [
     ConfigProvider::class,
@@ -41,5 +42,6 @@ return [
     ResponseProvider::class,
     FileSystemProvider::class,
     EventManagerProvider::class,
-    MapperProvider::class
+    MapperProvider::class,
+    ThrottleProvider::class
 ];
