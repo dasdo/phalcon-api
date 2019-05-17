@@ -36,23 +36,13 @@ class RouterProvider extends CanvasRouterProvider
      */
     protected function getMiddleware(): array
     {
-        if (!defined('API_TESTS')) {
-            return [
-                ThrottleMiddleware::class => 'before',
-                TokenValidationMiddleware::class => 'before',
-                NotFoundMiddleware::class => 'before',
-                AuthenticationMiddleware::class => 'before',
-                AclMiddleware::class => 'before',
-            ];
-        }
-
         return [
+            // ThrottleMiddleware::class => 'before',
             TokenValidationMiddleware::class => 'before',
             NotFoundMiddleware::class => 'before',
             AuthenticationMiddleware::class => 'before',
             AclMiddleware::class => 'before',
         ];
-        
     }
 
     /**
