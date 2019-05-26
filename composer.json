@@ -3,13 +3,8 @@
     "php": ">= 7.1",
     "ext-openssl": "*",
     "ext-phalcon": ">=3.2.0 <4.0",
-    "baka/auth": "^0.2",
-    "baka/cashier": "dev-master",
-    "baka/database": "^0.1",
-    "baka/http": "^0.1",
-    "baka/mail": "^0.1",
-    "canvas/core": "dev-master",
     "dariuszp/cli-progress-bar": "^1.0",
+    "canvas/core": "dev-master",
     "dmkit/phalcon-jwt-auth": "dev-master",
     "duncan3dc/fork-helper": "^2.2.0",
     "firebase/php-jwt": "^5.0",
@@ -27,7 +22,9 @@
     "robmorgan/phinx": "^0.10",
     "sentry/sentry": "^1.9",
     "sly/notification-pusher": "2.x",
-    "vlucas/phpdotenv": "^2.4"
+    "vlucas/phpdotenv": "^2.4",
+    "elasticsearch/elasticsearch": "^6.1",
+    "mark-gerarts/auto-mapper-plus": "^1.3"
   },
   "require-dev": {
     "codeception/codeception": "^2.4",
