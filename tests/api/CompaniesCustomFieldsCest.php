@@ -70,6 +70,12 @@ class CompaniesCustomFieldsCest
         $I->assertTrue($data['value'] == $updatedValue);
     }
 
+    /**
+     * Confirm custom field
+     *
+     * @param ApiTester $I
+     * @return void
+     */
     public function confirmCustomField(ApiTester $I): void
     {
         //Create a new company with a custom field
@@ -101,7 +107,6 @@ class CompaniesCustomFieldsCest
         $response = $I->grabResponse();
         $customFieldData = json_decode($response, true);
 
-     
         $I->assertTrue(isset($data[$customFieldName]));
         $I->assertTrue($customfield == $customFieldData[0]['name']);
     }
