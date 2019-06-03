@@ -9,6 +9,7 @@ use Gewaer\Middleware\NotFoundMiddleware;
 use Gewaer\Middleware\AuthenticationMiddleware;
 use Gewaer\Middleware\TokenValidationMiddleware;
 use Gewaer\Middleware\AclMiddleware;
+use Canvas\Middleware\ThrottleMiddleware;
 use Phalcon\Mvc\Micro;
 use Canvas\Providers\RouterProvider as CanvasRouterProvider;
 
@@ -36,6 +37,7 @@ class RouterProvider extends CanvasRouterProvider
     protected function getMiddleware(): array
     {
         return [
+            // ThrottleMiddleware::class => 'before',
             TokenValidationMiddleware::class => 'before',
             NotFoundMiddleware::class => 'before',
             AuthenticationMiddleware::class => 'before',
