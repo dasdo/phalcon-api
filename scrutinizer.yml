@@ -37,6 +37,9 @@ build:
           PHINX_CONFIG_DIR: "/home/scrutinizer/build/storage"
 
 
+    services:
+      mariadb: 10
+      
     cache:
         directories:
           - ~/cphalcon
