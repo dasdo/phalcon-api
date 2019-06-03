@@ -4,13 +4,11 @@ build:
     services:
       # For available tags, see https://hub.docker.com/_/mariadb/
       mariadb: 10.4
-      rabbitmq: 3.7
-      
+            
     environment:
         selenium: false
         memcached: true
         elasticsearch: false
-        rabbitmq: false
         postgresql: false
         redis: true
         node: false
