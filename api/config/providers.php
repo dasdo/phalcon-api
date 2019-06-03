@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Enabled providers. Order does matter
+ * Enabled providers. Order does matter.
  */
 
 use Canvas\Providers\CacheDataProvider;
@@ -22,7 +22,7 @@ use Canvas\Providers\ResponseProvider;
 use Canvas\Providers\FileSystemProvider;
 use Canvas\Providers\EventManagerProvider;
 use Canvas\Providers\MapperProvider;
-use Canvas\Providers\ThrottleProvider;
+use Canvas\Providers\ElasticProvider;
 
 return [
     ConfigProvider::class,
@@ -43,5 +43,5 @@ return [
     FileSystemProvider::class,
     EventManagerProvider::class,
     MapperProvider::class,
-    ThrottleProvider::class
+    ElasticProvider::class
 ];
