@@ -4,7 +4,7 @@ namespace Gewaer\Tests\integration\library\Models;
 
 use Canvas\Models\Apps;
 use IntegrationTester;
-use Gewaer\Providers\ConfigProvider;
+use Canvas\Providers\ConfigProvider;
 use Phalcon\Di\FactoryDefault;
 
 class AppsCest
