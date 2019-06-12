@@ -6,8 +6,8 @@ use IntegrationTester;
 use Canvas\Acl\Manager as AclManager;
 use Phalcon\Di\FactoryDefault;
 use Canvas\Providers\AclProvider;
-use Gewaer\Providers\ConfigProvider;
-use Gewaer\Providers\DatabaseProvider;
+use Canvas\Providers\ConfigProvider;
+use Canvas\Providers\DatabaseProvider;
 use Canvas\Models\Users;
 use Page\Data;
 
