@@ -23,6 +23,7 @@ use Canvas\Providers\FileSystemProvider;
 use Canvas\Providers\EventManagerProvider;
 use Canvas\Providers\MapperProvider;
 use Canvas\Providers\ElasticProvider;
+use Gewaer\Providers\MiddlewareProvider;
 
 return [
     ConfigProvider::class,
@@ -32,6 +33,7 @@ return [
     ModelsMetadataProvider::class,
     RequestProvider::class,
     RouterProvider::class,
+    MiddlewareProvider::class,
     CacheDataProvider::class,
     SessionProvider::class,
     QueueProvider::class,
@@ -43,5 +45,5 @@ return [
     FileSystemProvider::class,
     EventManagerProvider::class,
     MapperProvider::class,
-    ElasticProvider::class
+    ElasticProvider::class,
 ];

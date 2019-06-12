@@ -1,32 +1,15 @@
 <?php
 
-use Baka\Http\Router\Collection;
+use Baka\Router\RouteGroup;
+use Baka\Router\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for api.
- */
+$routes = [
+    Route::get('/')->controller('IndexController'),
+    Route::get('/status')->controller('IndexController')->action('status'),
+];
 
-$router = new Collection($application);
-$router->setPrefix('/v1');
+$routeGroup = RouteGroup::from($routes)
+                ->defaultNamespace('Gewaer\Api\Controllers')
+                ->defaultPrefix('/v1');
 
-$router->get('/', [
-    'Gewaer\Api\Controllers\IndexController',
-    'index',
-    'options' => [
-        'jwt' => false,
-    ]
-]);
-
-$router->get('/status', [
-    'Gewaer\Api\Controllers\IndexController',
-    'status',
-    'options' => [
-        'jwt' => false,
-    ]
-]);
-
-$router->mount();
+return $routeGroup->toCollections();
