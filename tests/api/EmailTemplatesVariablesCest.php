@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Phalcon\Security\Random;
 
@@ -7,7 +7,7 @@ class EmailTemplatesVariablesCest
     /**
      * Model
      */
-    protected $model = 'templates-variables';
+    protected $model = 'email-templates-variables';
 
     /**
      * Create a new Email Templates Variable
