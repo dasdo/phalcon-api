@@ -10,7 +10,7 @@ use Phalcon\Di\FactoryDefault;
 class AppsCest
 {
     /**
-     * Confirm the default apps exist
+     * Confirm the default apps exist.
      *
      * @param IntegrationTester $I
      * @return void
@@ -22,7 +22,7 @@ class AppsCest
     }
 
     /**
-     * Confirm the default apps exist
+     * Confirm the default apps exist.
      *
      * @param IntegrationTester $I
      * @return void
@@ -35,6 +35,6 @@ class AppsCest
         $provider->register($diContainer);
 
         $app = Apps::getACLApp('Gewaer');
-        $I->assertTrue($app->getId() == $diContainer->getShared('config')->app->id);
+        $I->assertTrue($app->key == $diContainer->getShared('config')->app->id);
     }
 }
