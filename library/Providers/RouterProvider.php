@@ -21,8 +21,8 @@ class RouterProvider extends CanvasRouterProvider
 
         //app routes
         $routes = [
+            'canvas' => $canvsaPath . '/routes/api.php',
             'api' => $path . '/api.php',
-            'canvas' =>  $canvsaPath. '/routes/api.php'
         ];
 
         return $routes;
