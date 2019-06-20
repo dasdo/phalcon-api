@@ -52,17 +52,17 @@ class FileSystemCest
         $response = $I->grabResponse();
         $data = json_decode($response, true);
 
+        $newFileName = 'newfile2.png';
         $I->haveHttpHeader('Content-Type', 'multipart/form-data');
         $I->sendPUT('/v1/' . $this->model . '/' . $data[count($data) - 1]['id'], [
-            'system_modules_id' => 2,
-            'entity_id' => 12123
+            'name' => $newFileName,
         ]);
 
         $I->seeResponseIsSuccessful();
         $response = $I->grabResponse();
         $data = json_decode($response, true);
 
-        $I->assertTrue($data['system_modules_id'] == 2);
-        $I->assertTrue($data['entity_id'] == 12123);
+        $I->assertTrue($data['name'] == $newFileName);
+        //$I->assertTrue($data['entity_id'] == 12123);
     }
 }
