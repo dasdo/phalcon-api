@@ -16,7 +16,7 @@ use Canvas\Providers\RedisProvider;
 use Canvas\Providers\AclProvider;
 use Canvas\Providers\AppProvider;
 use Canvas\Providers\FileSystemProvider;
-use Canvas\Providers\EventManagerProvider;
+use Gewaer\Providers\EventsManagerProvider;
 use Canvas\Providers\CliDispatcherProvider;
 use Canvas\Providers\PusherProvider;
 
@@ -35,5 +35,5 @@ return [
     AclProvider::class,
     AppProvider::class,
     FileSystemProvider::class,
-    EventManagerProvider::class
+    EventsManagerProvider::class
 ];

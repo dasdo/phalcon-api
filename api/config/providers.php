@@ -20,13 +20,14 @@ use Canvas\Providers\AclProvider;
 use Canvas\Providers\AppProvider;
 use Canvas\Providers\ResponseProvider;
 use Canvas\Providers\FileSystemProvider;
-use Canvas\Providers\EventManagerProvider;
+use Gewaer\Providers\EventsManagerProvider;
 use Canvas\Providers\MapperProvider;
 use Canvas\Providers\ElasticProvider;
 use Gewaer\Providers\MiddlewareProvider;
 
 return [
     ConfigProvider::class,
+    EventsManagerProvider::class,
     LoggerProvider::class,
     ErrorHandlerProvider::class,
     DatabaseProvider::class,
@@ -43,7 +44,6 @@ return [
     AppProvider::class,
     ResponseProvider::class,
     FileSystemProvider::class,
-    EventManagerProvider::class,
     MapperProvider::class,
     ElasticProvider::class,
 ];
