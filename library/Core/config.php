@@ -146,9 +146,16 @@ return [
         'secret' => getenv('STRIPE_SECRET'),
         'public' => getenv('STRIPE_PUBLIC'),
     ],
-    'throttle'=>[
+    'throttle' => [
         'bucketSize' => getenv('THROTTLE_BUCKET_SIZE'),
         'refillTime' => getenv('THROTTLE_REFILL_TIME'),
         'refillAmount' => getenv('THROTTLE_REFILL_AMOUNT'),
+    ],
+    'social' => [
+        'callback' => getenv('SOCIAL_CALLBACK_URL'),
+        'facebook' => [
+            'id' => getenv('SOCIAL_FACEBOOK_ID'),
+            'secret' => getenv('SOCIAL_FACEBOOK_SECRET'),
+        ]
     ]
 ];

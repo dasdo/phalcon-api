@@ -23,6 +23,7 @@ use Canvas\Providers\FileSystemProvider;
 use Gewaer\Providers\EventsManagerProvider;
 use Canvas\Providers\MapperProvider;
 use Canvas\Providers\ElasticProvider;
+use Canvas\Providers\SocialLoginProvider;
 use Gewaer\Providers\MiddlewareProvider;
 
 return [
@@ -46,4 +47,5 @@ return [
     FileSystemProvider::class,
     MapperProvider::class,
     ElasticProvider::class,
+    SocialLoginProvider::class
 ];
