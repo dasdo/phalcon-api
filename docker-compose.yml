@@ -1,4 +1,4 @@
-version: "3"
+version: "3.5"
 
 services:
 
@@ -74,6 +74,7 @@ services:
       - "db-data:/var/lib/mysql"
     networks:
         - local-network
+        - canvasproxynet
   
   rabbitmq:
     image: rabbitmq:3.7
@@ -107,3 +108,5 @@ volumes:
 networks:
   local-network:
   public-network:
+  canvasproxynet:
+    name: canvas_network
