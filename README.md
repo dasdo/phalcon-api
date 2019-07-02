@@ -63,18 +63,24 @@ We use the library [Baka HTTP](https://github.com/bakaphp/http) to handle our Ro
 
 #### Requests
 
-**Error**
+## Ecosystem
+When working with other local apps we have created a docker network called `canvas_network` , this will allow other local ecosystem apps to connect to it if needed
 
-```json
-{
-  "errors": {
-    "Description of the error no 1",
-    "Description of the error no 2"
-  },
-}
+Add to your local docker-compose file on the app network
+
+``` 
+  my-proxy-net:
+    external:
+      name: canvas_network
+``` 
+
+And on your contianer network info
+
+```
+    networks:
+      - local-network
+      - my-proxy-net
 ```
 
-                                                  
 ### TODO
-- Create docs endpoint
-- Migrate Testing to Baka
+- Documentation
