@@ -7,14 +7,10 @@ build:
       rabbitmq: 3-management
       elasticsearch: 6.4.2
 
-    nodes:
-      my-node:
-        services:
-          mysql: 5.7
-
     environment:
         selenium: false
         memcached: true
+        mysql: 5.7
         elasticsearch: false
         postgresql: false
         redis: true
