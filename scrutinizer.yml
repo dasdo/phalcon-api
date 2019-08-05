@@ -14,7 +14,8 @@ build:
         postgresql: false
         redis: true
         node: false
-        mysql: 5.7
+        mysql: 
+          version: 5.7
         php:
           version: 7.2
           ini:
