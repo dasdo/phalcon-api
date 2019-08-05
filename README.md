@@ -10,7 +10,7 @@ Implementation of an API application using the Phalcon Framework [https://phalco
 
 ### Installation
 - Clone the project
-- Copy `storage/ci/.env.example` and paste it in the root of the project and rename it `.env`
+- Copy `storage/ci/.env.prod` and paste it in the root of the project and rename it `.env`
 - On `phalcon-api/.env` in `MYSQL_ROOT_PASSWORD` and `DATA_API_MYSQL_PASS` assign the root password for MySQL.
 - On `phalcon-api/.env`, update MySQL credentials (`DATA_API_MYSQL_NAME,DATA_API_MYSQL_USER,DATA_API_MYSQL_PASS`)
 - On `phalcon-api/.env`, change `DATA_API_MYSQL_HOST =  localhost` to `DATA_API_MYSQL_HOST =  mysql`
