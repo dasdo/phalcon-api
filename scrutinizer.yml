@@ -15,6 +15,11 @@ build:
             postgresql: false
             redis: true
             node: false
+            mysql:
+              version: 5.7
+              ini:
+                'innodb_file_per_table': '1'
+                'innodb_file_format ': 'Barracuda'
             php:
               version: 7.2
               ini:
