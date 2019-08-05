@@ -19,10 +19,12 @@ use Canvas\Providers\FileSystemProvider;
 use Gewaer\Providers\EventsManagerProvider;
 use Canvas\Providers\CliDispatcherProvider;
 use Canvas\Providers\PusherProvider;
+use Canvas\Providers\RegistryProvider;
 
 return [
     ConfigProvider::class,
     LoggerProvider::class,
+    RegistryProvider::class,
     ErrorHandlerProvider::class,
     DatabaseProvider::class,
     ModelsMetadataProvider::class,
