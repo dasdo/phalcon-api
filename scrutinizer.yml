@@ -1,48 +1,48 @@
 build:
     root_path: './'
 
-    nodes:
-      my-node:
+    environment:
+        selenium: false
+        memcached: true
+        elasticsearch: false
+        postgresql: false
+        redis: true
+        node: false
+        mysql: 5.7
+        php:
+          version: 7.2
+          ini:
+            'date.timezone': 'UTC'
+        hosts:
+          api.baka.ld: '127.0.0.1'
+        apache2:
+          modules: ['rewrite']
+          sites:
+            api:
+              web_root: 'public'
+              host: 'api.baka.ld'
+        variables:
+          DATA_API_MYSQL_HOST: "127.0.0.1"
+          DATA_API_MYSQL_PASS: ""
+          DATA_API_MYSQL_USER: "root"
+          DATA_API_MYSQL_NAME: "gonano"
+          DATA_API_MEMCACHED_HOST: "127.0.0.1"
+          DATA_API_MEMCACHED_PORT: 11211
+          DATA_API_MEMCACHED_WEIGHT: 100
+          REDIS_HOST: "127.0.0.1"
+          REDIS_PORT: 6379
+          APP_IP: "api.baka.ld"
+          APP_ENV: development
+          JWT_SECURITY: 0
+          GEWAER_APP_ID: 1
+          PHINX_CONFIG_DIR: "/home/scrutinizer/build/storage"
 
-        services:
-          rabbitmq: 3-management
-
-        environment:
-            selenium: false
-            memcached: true
-            elasticsearch: false
-            postgresql: false
-            redis: true
-            node: false
-            mysql: 5.7
-            php:
-              version: 7.2
-              ini:
-                'date.timezone': 'UTC'
-            hosts:
-              api.baka.ld: '127.0.0.1'
-            apache2:
-              modules: ['rewrite']
-              sites:
-                api:
-                  web_root: 'public'
-                  host: 'api.baka.ld'
-            variables:
-              DATA_API_MYSQL_HOST: "127.0.0.1"
-              DATA_API_MYSQL_PASS: ""
-              DATA_API_MYSQL_USER: "root"
-              DATA_API_MYSQL_NAME: "gonano"
-              DATA_API_MEMCACHED_HOST: "127.0.0.1"
-              DATA_API_MEMCACHED_PORT: 11211
-              DATA_API_MEMCACHED_WEIGHT: 100
-              REDIS_HOST: "127.0.0.1"
-              REDIS_PORT: 6379
-              APP_IP: "api.baka.ld"
-              APP_ENV: development
-              JWT_SECURITY: 0
-              GEWAER_APP_ID: 1
-              PHINX_CONFIG_DIR: "/home/scrutinizer/build/storage"
-
+    services:
+      # For available tags, see https://hub.docker.com/_/mariadb/
+      mariadb: 10
+      mysql: 5.7
+      rabbitmq: 3-management
+      elasticsearch: 6.4.2
 
     cache:
         directories:
