@@ -14,9 +14,6 @@ Implementation of an API application using the Phalcon Framework [https://phalco
 - On `phalcon-api/.env` in `MYSQL_ROOT_PASSWORD` and `DATA_API_MYSQL_PASS` assign the root password for MySQL.
 - On `phalcon-api/.env`, update MySQL credentials (`DATA_API_MYSQL_NAME,DATA_API_MYSQL_USER,DATA_API_MYSQL_PASS`)
 - On `phalcon-api/.env`, change `DATA_API_MYSQL_HOST =  localhost` to `DATA_API_MYSQL_HOST =  mysql`
-- Download [Canvas Core](https://github.com/bakaphp/canvas-core) and copy it on the same folder where `phalcon-api` is located(Both projects must be in the same folder).
-- On  `phalcon-api/library/Core/autoload.php` comment `require dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . '/vendor/canvas/core/src/Core/functions.php';` and uncomment `require  '/         canvas-core/src/Core/functions.php';`
-- On `phalcon-api/library/Core/autoload.php` uncomment `'Canvas' => '/canvas-core/src',`
 - Run Docker containers with the `docker-compose up --build` command
 - After the build, access the project main container with `docker exec -it id_of_docker_container sh`
 - Inside the container's console run get inside the `apps` folder, `cd app/`
@@ -29,30 +26,36 @@ Implementation of an API application using the Phalcon Framework [https://phalco
 
 **NOTE** : To ensure the project runs smoothly in a development environment you must comment or remove `canvas/core": "dev-master"` dependency from composer.json
 
+### Kanvas Core Developer Mode
+If you need to work with the kanvas core directly
+- Download [Canvas Core](https://github.com/bakaphp/canvas-core) and copy it on the same folder where `phalcon-api` is located(Both projects must be in the same folder).
+- On  `phalcon-api/library/Core/autoload.php` comment `require dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . '/vendor/canvas/core/src/Core/functions.php';` and uncomment `require  '/         canvas-core/src/Core/functions.php';`
+- On `phalcon-api/library/Core/autoload.php` uncomment `'Canvas' => '/canvas-core/src',`
+
 ### CLI
 - On every deploy crear the session caches `./app/php cli/cli.php clearcache` 
 - On every deploy update your DB `./app/vendor/bin/phinx migrate -e production`
 - Queue to clear jwt sessions `./app/php cli/cli.php clearcache sessions`
 
+### QUEUES
+The Kanvas Core uses RabbitMQ to manage our queue process. Internally we handle 3 queue jobs to start
+- `php cli/cli.php queue jobs`
+- `php cli/cli.php queue events`
+- `php cli/cli.php queue notifications`
+
+- Jobs -> will handle normal Jobs run on any moment during the runtime of the app
+- Events -> will handle events we run send to the queue `$this->events->fireToQueue('user:test', Users::findFirst(), ['test'])`
+- Notifications -> will handle notifications we send to the queue `Users::findFirst(18)->notify(new CanvasSubscription(Companies::findFirst(10)))`
+
 ### Features
 - User Managament
   - Registration , Login, Multi Tenant 
-- ACL *working on it
-- Saas Configuracion *working on it
+- ACL 
+- Saas Configuracion
  - Company Configuration
  - Payment / Free trial flow
 - Rapid API CRUD Creation
 
-
-### QUEUES
-The Kanvas Core uses RabbitMQ to manage our queue process. Internally we handle 3 queue jobs to start
-`php cli/cli.php queue jobs`
-`php cli/cli.php queue events`
-`php cli/cli.php queue notifications`
-
-Jobs -> will handle normal Jobs run on any moment during the runtime of the app
-Events -> will handle events we run send to the queue `$this->events->fireToQueue('user:test', Users::findFirst(), ['test'])`
-Notifications -> will handle notifications we send to the queue `Users::findFirst(18)->notify(new CanvasSubscription(Companies::findFirst(10)))`
 
 ### Baka HTTP
 We use the library [Baka HTTP](https://github.com/bakaphp/http) to handle our Routing 
