@@ -42,7 +42,9 @@ The Kanvas Core uses RabbitMQ to manage our queue process. Internally we handle 
 - `php cli/cli.php queue notifications`
 
 **Jobs** : will handle normal Jobs run on any moment during the runtime of the app
+
 **Events** : will handle events we run send to the queue `$this->events->fireToQueue('user:test', Users::findFirst(), ['test'])`
+
 **Notifications** : will handle notifications we send to the queue `Users::findFirst(18)->notify(new CanvasSubscription(Companies::findFirst(10)))`
 
 ### Features
