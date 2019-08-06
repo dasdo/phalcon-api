@@ -1,12 +1,10 @@
-# phalcon-api
-Baka API using Phalcon
+# kanvas-api
+Kanvas Ecosystem API powered by PhalconPHP
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bakaphp/phalcon-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bakaphp/phalcon-api/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/bakaphp/phalcon-api/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/bakaphp/phalcon-api/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/bakaphp/phalcon-api/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bakaphp/phalcon-api/build-status/master)
 
-
-Implementation of an API application using the Phalcon Framework [https://phalconphp.com](https://phalconphp.com)
 
 ### Installation
 - Clone the project
