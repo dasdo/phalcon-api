@@ -77,14 +77,14 @@ services:
         - canvasproxynet
   
   rabbitmq:
-    image: rabbitmq:3.7
+    image: rabbitmq:3.7.16-management
     hostname: "rabbit"
     env_file:
       - '.env'
     labels:
       NAME: "rabbitmq1"
     volumes:
-      - "rabbit:/var/lib/rabbitmq"
+      - "rabbitsvolumns:/var/lib/rabbitmq"
     ports:
       - "15672:15672"
       - "5672:5672"
@@ -103,7 +103,7 @@ volumes:
   db-data:
   redis:
   esdata:
-  rabbit:
+  rabbitsvolumns:
 
 networks:
   local-network:

@@ -43,20 +43,18 @@ Implementation of an API application using the Phalcon Framework [https://phalco
  - Payment / Free trial flow
 - Rapid API CRUD Creation
 
-##### JWT Tokens
-As part of the security of the API, [JWT](https://jwt.io) are used. JSON Web Tokens offer an easy way for a consumer of the API to send requests without the need to authenticate all the time. The expiry of each token depends on the setup of the API. An admin can easily keep the expiry very short, thus consumers will always have to log in first and then access a resource, or they can increase the "life" of each token, thus having less calls to the API.
 
-##### Middleware
-- Lazy loading to save resources per request
-- Stop execution as early as possible when an error occurs
-- Execution
-    - NotFound          - 404 when the resource requested is not found
-    - Authentication    - After a `/login` checks the `Authentication` header
-    - TokenUser         - When a token is supplied, check if it corresponds to a user in the database
-    - TokenVerification - When a token is supplied, check if it is correctly signed
-    - TokenValidation   - When a token is supplied, check if it is valid (`issuedAt`, `notBefore`, `expires`) 
+### QUEUES
+The Kanvas Core uses RabbitMQ to manage our queue process. Internally we handle 3 queue jobs to start
+`php cli/cli.php queue jobs`
+`php cli/cli.php queue events`
+`php cli/cli.php queue notifications`
 
-##### Baka HTTP
+Jobs -> will handle normal Jobs run on any moment during the runtime of the app
+Events -> will handle events we run send to the queue `$this->events->fireToQueue('user:test', Users::findFirst(), ['test'])`
+Notifications -> will handle notifications we send to the queue `Users::findFirst(18)->notify(new CanvasSubscription(Companies::findFirst(10)))`
+
+### Baka HTTP
 We use the library [Baka HTTP](https://github.com/bakaphp/http) to handle our Routing 
 
 ### Usage
