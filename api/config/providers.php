@@ -29,6 +29,7 @@ use Canvas\Providers\RegistryProvider;
 
 return [
     ConfigProvider::class,
+    AppProvider::class,
     EventsManagerProvider::class,
     LoggerProvider::class,
     RegistryProvider::class,
@@ -44,7 +45,6 @@ return [
     MailProvider::class,
     RedisProvider::class,
     AclProvider::class,
-    AppProvider::class,
     ResponseProvider::class,
     FileSystemProvider::class,
     MapperProvider::class,
