@@ -25,10 +25,11 @@ use Canvas\Providers\MapperProvider;
 use Canvas\Providers\ElasticProvider;
 use Canvas\Providers\SocialLoginProvider;
 use Gewaer\Providers\MiddlewareProvider;
-use Gewaer\Providers\RegistryProvider;
+use Canvas\Providers\RegistryProvider;
 
 return [
     ConfigProvider::class,
+    AppProvider::class,
     EventsManagerProvider::class,
     LoggerProvider::class,
     RegistryProvider::class,
@@ -44,7 +45,6 @@ return [
     MailProvider::class,
     RedisProvider::class,
     AclProvider::class,
-    AppProvider::class,
     ResponseProvider::class,
     FileSystemProvider::class,
     MapperProvider::class,

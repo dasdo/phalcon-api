@@ -23,6 +23,7 @@ use Canvas\Providers\RegistryProvider;
 
 return [
     ConfigProvider::class,
+    AppProvider::class,
     LoggerProvider::class,
     RegistryProvider::class,
     ErrorHandlerProvider::class,
@@ -35,7 +36,6 @@ return [
     RedisProvider::class,
     PusherProvider::class,
     AclProvider::class,
-    AppProvider::class,
     FileSystemProvider::class,
     EventsManagerProvider::class
 ];
