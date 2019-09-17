@@ -8,21 +8,26 @@ use Canvas\Models\AppsPlans;
 
 class SocialLoginCest
 {
-
     public $provider = 'facebook';
 
     public $testEmail;
 
+    public $random;
+
+    public function onConstruct()
+    {
+        $this->random = $random = new Random();
+    }
+
     /**
-     * Login a user that is not in the system and does not have a linked sourced from Facebook
+     * Login a user that is not in the system and does not have a linked sourced from Facebook.
      * @param ApiTester
      * @return void
      */
     public function loginFirstTimeUser(ApiTester $I):void
     {
         $userData = $I->apiLogin();
-        $random = new Random();
-        $userName = $random->base58();
+        $userName = $this->random->base58();
 
         $this->testEmail = $userName . '@example.com';
 
@@ -30,7 +35,9 @@ class SocialLoginCest
         $I->sendPost('/v1/users/social', [
             'provider' => $this->provider,
             'social_id' => 3434,
-            'email' => $this->testEmail
+            'email' => $this->testEmail,
+            'firstname' => 'Firstname-' . $this->random->base58(),
+            'lastname' => 'Lastname-' . $this->random->base58()
         ]);
 
         $I->seeResponseIsSuccessful();
@@ -46,11 +53,10 @@ class SocialLoginCest
         $userCurrentData = json_decode($response, true);
 
         $I->assertTrue($userCurrentData['email'] == $this->testEmail);
-
     }
 
     /**
-     * Login a user that is already in the system and has a linked sourced from Facebook
+     * Login a user that is already in the system and has a linked sourced from Facebook.
      * @param ApiTester
      * @return void
      */
@@ -62,7 +68,9 @@ class SocialLoginCest
         $I->sendPost('/v1/users/social', [
             'provider' => $this->provider,
             'social_id' => 3434,
-            'email' => $this->testEmail
+            'email' => $this->testEmail,
+            'firstname' => 'Firstname-' . $this->random->base58(),
+            'lastname' => 'Lastname-' . $this->random->base58()
         ]);
 
         $I->seeResponseIsSuccessful();
@@ -78,11 +86,10 @@ class SocialLoginCest
         $userCurrentData = json_decode($response, true);
 
         $I->assertTrue($userCurrentData['email'] == $this->testEmail);
-
     }
 
     /**
-     * Login a user that is already in the system and has a linked sourced from Facebook
+     * Login a user that is already in the system and has a linked sourced from Facebook.
      * @param ApiTester
      * @return void
      */
@@ -94,7 +101,9 @@ class SocialLoginCest
         $I->sendPost('/v1/users/social', [
             'provider' => $this->provider,
             'social_id' => 343,
-            'email' => $this->testEmail
+            'email' => $this->testEmail,
+            'firstname' => 'Firstname-' . $this->random->base58(),
+            'lastname' => 'Lastname-' . $this->random->base58()
         ]);
 
         $I->seeResponseIsSuccessful();
@@ -110,6 +119,5 @@ class SocialLoginCest
         $userCurrentData = json_decode($response, true);
 
         $I->assertTrue($userCurrentData['email'] == $this->testEmail);
-
     }
 }
