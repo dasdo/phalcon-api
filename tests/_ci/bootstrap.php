@@ -1,10 +1,10 @@
 <?php
 
-use Canvas\Bootstrap\Api;
+use Canvas\Bootstrap\Tests;
 
 require_once __DIR__ . '/../../library/Core/autoload.php';
 
-$bootstrap = new Api();
+$bootstrap = new Tests();
 $bootstrap->setup();
 
 return $bootstrap->run();
