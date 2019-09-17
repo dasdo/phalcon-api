@@ -12,13 +12,6 @@ class SocialLoginCest
 
     public $testEmail;
 
-    public $random;
-
-    public function onConstruct()
-    {
-        $this->random = $random = new Random();
-    }
-
     /**
      * Login a user that is not in the system and does not have a linked sourced from Facebook.
      * @param ApiTester
@@ -27,7 +20,8 @@ class SocialLoginCest
     public function loginFirstTimeUser(ApiTester $I):void
     {
         $userData = $I->apiLogin();
-        $userName = $this->random->base58();
+        $random = new Random();
+        $userName = $random->base58();
 
         $this->testEmail = $userName . '@example.com';
 
@@ -36,8 +30,8 @@ class SocialLoginCest
             'provider' => $this->provider,
             'social_id' => 3434,
             'email' => $this->testEmail,
-            'firstname' => 'Firstname-' . $this->random->base58(),
-            'lastname' => 'Lastname-' . $this->random->base58()
+            'firstname' => 'ExampleFN',
+            'lastname' => 'ExampleLN'
         ]);
 
         $I->seeResponseIsSuccessful();
@@ -69,8 +63,8 @@ class SocialLoginCest
             'provider' => $this->provider,
             'social_id' => 3434,
             'email' => $this->testEmail,
-            'firstname' => 'Firstname-' . $this->random->base58(),
-            'lastname' => 'Lastname-' . $this->random->base58()
+            'firstname' => 'ExampleFN',
+            'lastname' => 'ExampleLN'
         ]);
 
         $I->seeResponseIsSuccessful();
@@ -102,8 +96,8 @@ class SocialLoginCest
             'provider' => $this->provider,
             'social_id' => 343,
             'email' => $this->testEmail,
-            'firstname' => 'Firstname-' . $this->random->base58(),
-            'lastname' => 'Lastname-' . $this->random->base58()
+            'firstname' => 'ExampleFN',
+            'lastname' => 'ExampleLN'
         ]);
 
         $I->seeResponseIsSuccessful();
