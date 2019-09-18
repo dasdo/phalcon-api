@@ -40,6 +40,9 @@ cache:
     - $HOME/.composer/cache
     - ~/cphalcon
 
+before_install:
+  - printf "\n" | pecl install swoole
+
 install:
   - composer self-update
   - cd ~/ && rm -rf cphalcon && git clone -b 3.4.x -q --depth=1 https://github.com/phalcon/cphalcon.git && cd cphalcon/build && ./install
