@@ -184,9 +184,8 @@ class RolesCrudAccessListCest extends BakaRestTest
         $I->seeResponseIsSuccessful();
         $response = $I->grabResponse();
         $data = json_decode($response, true);
-        $roleId = (int)$data[count($data) - 1]['roles_id'];
 
-        $I->sendDELETE("/v1/{$this->model}/" . $roleId);
+        $I->sendDELETE("/v1/{$this->model}/" . $data[count($data) - 1]['roles_id']);
 
         $I->seeResponseIsSuccessful();
         $response = $I->grabResponse();

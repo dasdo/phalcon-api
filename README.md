@@ -3,7 +3,7 @@ Kanvas Ecosystem API powered by PhalconPHP
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bakaphp/phalcon-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bakaphp/phalcon-api/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/bakaphp/phalcon-api/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/bakaphp/phalcon-api/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/bakaphp/phalcon-api/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bakaphp/phalcon-api/build-status/master)
+[![Build Status](https://travis-ci.com/bakaphp/phalcon-api.svg?branch=master)](https://travis-ci.com/bakaphp/phalcon-api)
 
 
 ### Installation
