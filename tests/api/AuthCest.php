@@ -12,7 +12,7 @@ use Canvas\Models\Users;
 class AuthCest
 {
     /**
-     * Test login error
+     * Test login error.
      *
      * @param ApiTester $I
      * @return void
@@ -23,7 +23,7 @@ class AuthCest
             $I->sendPOST(
                 Data::$loginUrl,
                 [
-                    'email' => 'user',
+                    'email' => 'user@example.com',
                     'password' => 'pass',
                 ]
             );
@@ -37,7 +37,7 @@ class AuthCest
     }
 
     /**
-     * Create new users
+     * Create new users.
      *
      * @param ApiTester $I
      * @return void
@@ -69,7 +69,7 @@ class AuthCest
     }
 
     /**
-     * Test login user
+     * Test login user.
      *
      * @param ApiTester $I
      * @return void
@@ -87,14 +87,14 @@ class AuthCest
     }
 
     /**
-     * Change user's email and relogin
+     * Change user's email and relogin.
      * @param ApiTester $I
      * @return void
      */
     public function changeUserEmail(ApiTester $I)
     {
         $userData = $I->apiLogin();
-        $newEmail =  'tes3t@baka.io';
+        $newEmail = 'tes3t@baka.io';
 
         //Get current user info
         $I->haveHttpHeader('Authorization', $userData->token);
@@ -106,9 +106,9 @@ class AuthCest
 
         //Try to change user's email
         $I->haveHttpHeader('Authorization', $userData->token);
-        $I->sendPost('/v1/users/' . $user['user_activation_email']. '/change-email', [
+        $I->sendPost('/v1/users/' . $user['user_activation_email'] . '/change-email', [
             'new_email' => $newEmail,
-            'password'=>Data::loginJson()['password']
+            'password' => Data::loginJson()['password']
         ]);
 
         $I->seeResponseIsSuccessful();
@@ -119,9 +119,9 @@ class AuthCest
 
         // //Revert to old email
         $I->haveHttpHeader('Authorization', $data['token']);
-        $I->sendPost('/v1/users/' . $user['user_activation_email']. '/change-email', [
+        $I->sendPost('/v1/users/' . $user['user_activation_email'] . '/change-email', [
             'new_email' => 'tes2t@baka.io',
-            'password'=>Data::loginJson()['password']
+            'password' => Data::loginJson()['password']
         ]);
 
         $I->seeResponseIsSuccessful();
