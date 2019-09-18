@@ -10,7 +10,7 @@ class RolesCrudAccessListCest extends BakaRestTest
     protected $model = 'roles-acceslist';
 
     /**
-     * Create
+     * Create.
      *
      * @param ApiTester $I
      * @return void
@@ -50,7 +50,7 @@ class RolesCrudAccessListCest extends BakaRestTest
     }
 
     /**
-     * update
+     * update.
      *
      * @param ApiTester $I
      * @return void
@@ -96,7 +96,7 @@ class RolesCrudAccessListCest extends BakaRestTest
     }
 
     /**
-     * List
+     * List.
      *
      * @param ApiTester $I
      * @return void
@@ -116,7 +116,7 @@ class RolesCrudAccessListCest extends BakaRestTest
     }
 
     /**
-     * Get
+     * Get.
      *
      * @param ApiTester $I
      * @return void
@@ -142,7 +142,7 @@ class RolesCrudAccessListCest extends BakaRestTest
     }
 
     /**
-     * Get
+     * Get.
      *
      * @param ApiTester $I
      * @return void
@@ -169,7 +169,7 @@ class RolesCrudAccessListCest extends BakaRestTest
     }
 
     /**
-     * Delete
+     * Delete.
      *
      * @param ApiTester $I
      * @return void
