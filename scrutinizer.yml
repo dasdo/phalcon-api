@@ -29,6 +29,10 @@ build:
     dependencies:
         override:
           - true
+
+    tests:
+        override:
+          - true
           
 
 filter:
