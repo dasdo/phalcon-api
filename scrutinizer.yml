@@ -15,11 +15,6 @@ build:
               web_root: 'public'
               host: 'api.baka.ld'
 
-
-    cache:
-        directories:
-          - ~/cphalcon
-
 filter:
   paths: ['./*']
   excluded_paths:
