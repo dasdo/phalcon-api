@@ -1,6 +1,12 @@
 build:
     root_path: './'
 
+    services:
+      # For available tags, see https://hub.docker.com/_/mariadb/
+      mariadb: 10
+      rabbitmq: 3-management
+      elasticsearch: 6.4.2
+
     environment:
         php:
           version: 7.2
@@ -14,6 +20,16 @@ build:
             api:
               web_root: 'public'
               host: 'api.baka.ld'
+
+
+    cache:
+        directories:
+          - ~/cphalcon
+
+    dependencies:
+        override:
+          - true
+          
 
 filter:
   paths: ['./*']
